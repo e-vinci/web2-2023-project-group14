@@ -75,6 +75,7 @@
     - bouton de création de compte et de connexion 
     - classement (en fonction du nbr de victoires)
     - mode de jeu 1vs1 à 2 joueurs sur le même ordinateur
+    - paramètres du jeu 
 - **Medium priority** :
     - historiques des parties
     - pouvoirs (boule de feu, foudre,etc)
