@@ -69,18 +69,24 @@
 - **High priority** :
     - Faire bouger les personnages
     - Faire apparaitre la base des deux joueurs
-    - Faire apparaitre la map
     - Afficher le hud (perso disponibles etc) (Igor)
     - Faire apparaitre les personnages
     - Pouvoir tuer un ennemi
     - Pouvoir quitter la partie
     - Pouvoir savoir qu'une unite est morte
     - Indication des ressources et statistiques du joueur(vie,or,nombre d'unités)
-    - Afficher le vainceur
+    - Afficher le vainqueur
     - Statistiques des personnages(hp,atk,atkspd,def,speed,range) (Igor)
     - paramètres du jeu (Igor)
-    - Ajouter du gold en fonction de qui tue
     - Afficher les regles du jeux
+    - timer pour gold
+    - timer de la partie
+    - mode de jeu à deux joueurs en local
+    - page "About" (crédits, explication du projets, etc)
+    - écran du menu démarer du jeu
+    - écran de chargement du jeu
+    - background du jeu
+    - logo + bouton home
 - **Medium priority** :
     - bouton de création de compte et de connexion 
     - historiques des parties
@@ -93,4 +99,5 @@
     - Le joueur peux évoluer l'âge de sa civilisation
     - choix du type de déploiement des unités
     - minimap avec positions des unités
-    - mode de jeu 1vs1 contre une IA 
+    - mode de jeu 1vs1 contre une IA
+    - afficher une minicarte
