@@ -73,11 +73,15 @@
     - Statistiques des personnages(hp,atk,atkspd,def,speed,range)
     - règles du jeu
     - bouton de création de compte et de connexion 
+    - classement (en fonction du nbr de victoires)
+    - mode de jeu 1vs1 à 2 joueurs sur le même ordinateur
 - **Medium priority** :
     - historiques des parties
-    - classement (en fonction du nbr de victoires)
+    - pouvoirs (boule de feu, foudre,etc)
+    - drop bonus à la mort d'un ennemis (kit de soin, or, invicibilité,etc)
     
 - **Low priority** :
     - Le joueur peux évoluer l'âge de sa civilisation
     - choix du type de déploiement des unités
     - minimap avec positions des unités
+    - mode de jeu 1vs1 contre une IA 
