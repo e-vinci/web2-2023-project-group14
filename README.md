@@ -64,3 +64,20 @@
 
 ## Revues de projets par les pairs
 - Une fois votre projet soumis, vous devrez réaliser un minimum de 5 revues qui vous seront attribuées automatiquement via le site du cours.
+
+## Cas d'utilisations 
+- **High priority** :
+    - Faire apparaitre les personnages, ils se tapent et meurt
+    - Indication des ressources et statistiques du joueur(vie,or,nombre d'unités) 
+    - La partie se finit et définit un gagnant
+    - Statistiques des personnages(hp,atk,atkspd,def,speed,range)
+    - règles du jeu
+    - bouton de création de compte et de connexion 
+- **Medium priority** :
+    - historiques des parties
+    - classement (en fonction du nbr de victoires)
+    
+- **Low priority** :
+    - Le joueur peux évoluer l'âge de sa civilisation
+    - choix du type de déploiement des unités
+    - minimap avec positions des unités
