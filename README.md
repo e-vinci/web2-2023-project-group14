@@ -67,19 +67,27 @@
 
 ## Cas d'utilisations 
 - **High priority** :
-    - Faire apparaitre les personnages, ils se tapent et meurt
-    - Indication des ressources et statistiques du joueur(vie,or,nombre d'unités) 
-    - La partie se finit et définit un gagnant
-    - Statistiques des personnages(hp,atk,atkspd,def,speed,range)
-    - règles du jeu
-    - bouton de création de compte et de connexion 
-    - classement (en fonction du nbr de victoires)
-    - mode de jeu 1vs1 à 2 joueurs sur le même ordinateur
-    - paramètres du jeu 
+    - Faire bouger les personnages
+    - Faire apparaitre la base des deux joueurs
+    - Faire apparaitre la map
+    - Afficher le hud (perso disponibles etc) (Igor)
+    - Faire apparaitre les personnages
+    - Pouvoir tuer un ennemi
+    - Pouvoir quitter la partie
+    - Pouvoir savoir qu'une unite est morte
+    - Indication des ressources et statistiques du joueur(vie,or,nombre d'unités)
+    - Afficher le vainceur
+    - Statistiques des personnages(hp,atk,atkspd,def,speed,range) (Igor)
+    - paramètres du jeu (Igor)
+    - Ajouter du gold en fonction de qui tue
+    - Afficher les regles du jeux
 - **Medium priority** :
+    - bouton de création de compte et de connexion 
     - historiques des parties
     - pouvoirs (boule de feu, foudre,etc)
     - drop bonus à la mort d'un ennemis (kit de soin, or, invicibilité,etc)
+    - classement (en fonction du nbr de victoires) (Igor)
+    - Pouvoir changer le volume (Igor)
     
 - **Low priority** :
     - Le joueur peux évoluer l'âge de sa civilisation
