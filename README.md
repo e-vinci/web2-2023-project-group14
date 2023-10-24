@@ -70,7 +70,6 @@
     - Faire bouger les personnages(Robert)
     - Faire apparaitre la base des deux joueurs(Robert)
     - Afficher le hud (perso disponibles etc) (Igor)
-    - Faire apparaitre les personnages(Robert)
     - Pouvoir tuer un ennemi(Robert)
     - Pouvoir quitter la partie
     - Indication des ressources et statistiques du joueur(vie,or,nombre d'unités) ()
@@ -82,20 +81,18 @@
     - timer de la partie
     - mode de jeu à deux joueurs en local(Robert)
     - page "About" (crédits, explication du projets, etc)(Flaviu)
-    -Wiki pour chaque perso(Flaviu)
+    - Wiki pour chaque perso(Flaviu)
     - écran du menu démarer du jeu
     - écran de chargement du jeu
     - background du jeu/map(Flaviu)
     - logo + bouton home
-    - bouton de création de compte et de connexion 
+    - création de compte et de connexion 
+    - classement (en fonction du nbr de victoires) (Igor)
 - **Medium priority** :
     - historiques des parties(Flaviu)
     - pouvoirs (boule de feu, foudre,etc)
     - drop bonus à la mort d'un ennemis (kit de soin, or, invicibilité,etc)
-    - classement (en fonction du nbr de victoires) (Igor)
-    - Pouvoir changer le volume (Igor)
     
 - **Low priority** :
     - minimap avec positions des unités
     - mode de jeu 1vs1 contre une IA
-    - afficher une minicarte
