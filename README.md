@@ -67,37 +67,35 @@
 
 ## Cas d'utilisations 
 - **High priority** :
-    - Faire bouger les personnages
-    - Faire apparaitre la base des deux joueurs
+    - Faire bouger les personnages(Robert)
+    - Faire apparaitre la base des deux joueurs(Robert)
     - Afficher le hud (perso disponibles etc) (Igor)
-    - Faire apparaitre les personnages
-    - Pouvoir tuer un ennemi
+    - Faire apparaitre les personnages(Robert)
+    - Pouvoir tuer un ennemi(Robert)
     - Pouvoir quitter la partie
-    - Pouvoir savoir qu'une unite est morte
-    - Indication des ressources et statistiques du joueur(vie,or,nombre d'unités)
-    - Afficher le vainqueur
+    - Indication des ressources et statistiques du joueur(vie,or,nombre d'unités) ()
+    - Afficher le vainqueur(Flaviu)
     - Statistiques des personnages(hp,atk,atkspd,def,speed,range) (Igor)
     - paramètres du jeu (Igor)
-    - Afficher les regles du jeux
+    - Afficher les regles du jeux(Flaviu)
     - timer pour gold
     - timer de la partie
-    - mode de jeu à deux joueurs en local
-    - page "About" (crédits, explication du projets, etc)
+    - mode de jeu à deux joueurs en local(Robert)
+    - page "About" (crédits, explication du projets, etc)(Flaviu)
+    -Wiki pour chaque perso(Flaviu)
     - écran du menu démarer du jeu
     - écran de chargement du jeu
-    - background du jeu
+    - background du jeu/map(Flaviu)
     - logo + bouton home
-- **Medium priority** :
     - bouton de création de compte et de connexion 
-    - historiques des parties
+- **Medium priority** :
+    - historiques des parties(Flaviu)
     - pouvoirs (boule de feu, foudre,etc)
     - drop bonus à la mort d'un ennemis (kit de soin, or, invicibilité,etc)
     - classement (en fonction du nbr de victoires) (Igor)
     - Pouvoir changer le volume (Igor)
     
 - **Low priority** :
-    - Le joueur peux évoluer l'âge de sa civilisation
-    - choix du type de déploiement des unités
     - minimap avec positions des unités
     - mode de jeu 1vs1 contre une IA
     - afficher une minicarte
