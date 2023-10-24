@@ -82,7 +82,7 @@
     - timer de la partie
     - mode de jeu à deux joueurs en local(Robert)
     - page "About" (crédits, explication du projets, etc)(Flaviu)
-    -Wiki pour chaque perso(Flaviu)
+    - Wiki pour chaque perso(Flaviu)
     - écran du menu démarer du jeu
     - écran de chargement du jeu
     - background du jeu/map(Flaviu)
@@ -91,7 +91,7 @@
 - **Medium priority** :
     - historiques des parties(Flaviu)
     - pouvoirs (boule de feu, foudre,etc)
-    - drop bonus à la mort d'un ennemis (kit de soin, or, invicibilité,etc)
+    - drop bonus à la mort d'un ennemis (kit de soin, or, invicibilité,etc)(Robert)
     - classement (en fonction du nbr de victoires) (Igor)
     - Pouvoir changer le volume (Igor)
     
