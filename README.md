@@ -71,28 +71,28 @@
     - Faire apparaitre la base des deux joueurs(Robert)
     - Afficher le hud (perso disponibles etc) (Igor)
     - Pouvoir tuer un ennemi(Robert)
-    - Pouvoir quitter la partie
-    - Indication des ressources et statistiques du joueur(vie,or,nombre d'unités) ()
+    - Pouvoir quitter la partie(Laurent)
+    - Indication des ressources et statistiques du joueur(vie,or,nombre d'unités) (Laurent)
     - Afficher le vainqueur(Flaviu)
     - Statistiques des personnages(hp,atk,atkspd,def,speed,range) (Igor)
     - paramètres du jeu (Igor)
     - Afficher les regles du jeux(Flaviu)
-    - timer pour gold
-    - timer de la partie
+    - afficher timer pour gold (Hubert)
+    - afficher timer de la partie (Hubert)
     - mode de jeu à deux joueurs en local(Robert)
     - page "About" (crédits, explication du projets, etc)(Flaviu)
-    - Wiki pour chaque perso(Flaviu)
-    - écran du menu démarer du jeu
-    - écran de chargement du jeu
+    - affichage de l'écran du menu démarer du jeu (Laurent)
+    - affichage de l'écran de chargement du jeu (Laurent)
     - background du jeu/map(Flaviu)
-    - logo + bouton home
-    - création de compte et de connexion 
+    - logo + bouton home (Igor)
+    - création de compte et de connexion (Hubert)
     - classement (en fonction du nbr de victoires) (Igor)
 - **Medium priority** :
     - historiques des parties(Flaviu)
-    - pouvoirs (boule de feu, foudre,etc)
-    - drop bonus à la mort d'un ennemis (kit de soin, or, invicibilité,etc)
+    - pouvoirs (boule de feu, foudre,etc) (Hubert)
+    - drop bonus à la mort d'un ennemis (kit de soin, or, invicibilité,etc) (Flaviu)
+    - Wiki pour chaque unités(Flaviu)
     
 - **Low priority** :
-    - minimap avec positions des unités
-    - mode de jeu 1vs1 contre une IA
+    - minimap avec positions des unités (Flaviu)
+    - mode de jeu 1vs1 contre une IA (Laurent)
