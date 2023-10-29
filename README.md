@@ -76,7 +76,7 @@
     - Afficher le vainqueur(Flaviu)
     - Statistiques des personnages(hp,atk,atkspd,def,speed,range) (Igor)
     - paramètres du jeu (Igor)
-    - Afficher les regles du jeux(Flaviu)
+    - Afficher les regles du jeux(Flaviu).
     - afficher timer pour gold (Hubert)
     - afficher timer de la partie (Hubert)
     - mode de jeu à deux joueurs en local(Robert)
