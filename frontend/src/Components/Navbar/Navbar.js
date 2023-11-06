@@ -1,6 +1,8 @@
 // eslint-disable-next-line no-unused-vars
 import { Navbar as BootstrapNavbar } from 'bootstrap';
 
+import logo from '../../img/ARMADA_ASSAULT_LOGO_TEXT_NOBACKGROUND.png';
+
 /**
  * Render the Navbar which is styled by using Bootstrap
  * Each item in the Navbar is tightly coupled with the Router configuration :
@@ -14,7 +16,7 @@ const Navbar = () => {
   <nav class="navbar navbar-expand-lg navbar-dark footerColor">
         <div class="container-fluid">
           <a class="navbar-brand" href="#"> 
-          <img src="../../img/ARMADA_ASSAULT_LOGO_TEXT_NOBACKGROUND.png" height="50px" alt="Logo"</a>
+          <img src="${logo}" width="200px" alt="Logo Armada Assault"</a>
           <button
             class="navbar-toggler"
             type="button"
