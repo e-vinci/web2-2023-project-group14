@@ -1,7 +1,9 @@
 // eslint-disable-next-line no-unused-vars
 import { Navbar as BootstrapNavbar } from 'bootstrap';
-
-import logo from '../../img/ARMADA_ASSAULT_LOGO_TEXT_NOBACKGROUND.png';
+// import { getAuthenticatedUser, isAuthenticated } from '../../utils/auths';
+import logoImage from '../../img/ARMADA_ASSAULT_LOGO_TEXT_NOBACKGROUND.png';
+import Navigate from '../Router/Navigate';
+import { renderImage } from '../../utils/render';
 
 /**
  * Render the Navbar which is styled by using Bootstrap
@@ -10,13 +12,22 @@ import logo from '../../img/ARMADA_ASSAULT_LOGO_TEXT_NOBACKGROUND.png';
  * - the router will show the Page associated to this URI when the user click on a nav-link
  */
 
+
 const Navbar = () => {
+  renderNavbar();
+  
+};
+
+
+function renderNavbar() {
   const navbarWrapper = document.querySelector('#navbarWrapper');
-  const navbar = `
+  const nonAuthUserNavBar = `
   <nav class="navbar navbar-expand-lg navbar-dark footerColor">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#"> 
-          <img src="${logo}" width="200px" alt="Logo Armada Assault"</a>
+        <div class="container-fluid navbar-container">
+          <a class="navbar-brand d-flex align-itms-center" href="#" data-uri="/"> 
+          <div class="logo ms-3 me-1"></div>
+          ARMADA ASSAULT
+          </a>
           <button
             class="navbar-toggler"
             type="button"
@@ -31,20 +42,33 @@ const Navbar = () => {
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="#" data-uri="/">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" data-uri="/game">Game</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" data-uri="/new">New Page</a>
-              </li>                        
+                    <a class="nav-link" aria-current="page" href="#" data-uri="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-uri="/game">Game</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#" data-uri="/leaderboard">Classement</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link left-item ms-5 p-0 auth-btn-mobile" href="#" data-uri="/login">Se connecter</a>
+                </li>        
+                <li class="nav-item">
+                  <a class="nav-link left-item ms-5 p-0 auth-btn-mobile" href="#" data-uri="/register">S'inscire</a>
+                </li>                                    
             </ul>
           </div>
         </div>
       </nav>
   `;
-  navbarWrapper.innerHTML = navbar;
-};
+  navbarWrapper.innerHTML = nonAuthUserNavBar;
+  renderImage(logoImage,'logo-img-div', 40, '.logo');
+
+  const logo = document.querySelector('.logo');
+  logo.addEventListener('click', (e) => {
+    e.preventDefault();
+    Navigate('/');
+  })
+}
 
 export default Navbar;
