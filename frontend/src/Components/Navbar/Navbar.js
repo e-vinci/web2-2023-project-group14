@@ -26,7 +26,6 @@ function renderNavbar() {
         <div class="container-fluid navbar-container">
           <a class="navbar-brand d-flex align-itms-center" href="#" data-uri="/"> 
           <div class="logo ms-3 me-1"></div>
-          ARMADA ASSAULT
           </a>
           <button
             class="navbar-toggler"
@@ -49,13 +48,15 @@ function renderNavbar() {
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#" data-uri="/leaderboard">Classement</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link left-item ms-5 p-0 auth-btn-mobile" href="#" data-uri="/login">Se connecter</a>
-                </li>        
-                <li class="nav-item">
-                  <a class="nav-link left-item ms-5 p-0 auth-btn-mobile" href="#" data-uri="/register">S'inscire</a>
-                </li>                                    
+                </li>                                 
+            </ul>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="btn btn-primary nav-link auth-btn px-3" href="#" data-uri="/login">Se connecter</a>
+              </li>   
+              <li class="nav-item ms-3">
+                <a class="btn btn-primary nav-link auth-btn me-3 px-3" href="#" data-uri="/register">S'inscrire</a>
+              </li>                         
             </ul>
           </div>
         </div>
