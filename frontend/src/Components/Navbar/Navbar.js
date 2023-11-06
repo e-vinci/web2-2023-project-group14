@@ -11,9 +11,10 @@ import { Navbar as BootstrapNavbar } from 'bootstrap';
 const Navbar = () => {
   const navbarWrapper = document.querySelector('#navbarWrapper');
   const navbar = `
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-dark footerColor">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Add your brand here</a>
+          <a class="navbar-brand" href="#"> 
+          <img src="./ARMADA_ASSAULT_LOGO_TEXT_NOBACKGROUND.png" height="50px" alt="Logo" Armada Assault</a>
           <button
             class="navbar-toggler"
             type="button"
