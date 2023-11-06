@@ -12,12 +12,9 @@ import { renderImage } from '../../utils/render';
  * - the router will show the Page associated to this URI when the user click on a nav-link
  */
 
-
 const Navbar = () => {
   renderNavbar();
-  
 };
-
 
 function renderNavbar() {
   const navbarWrapper = document.querySelector('#navbarWrapper');
@@ -63,13 +60,13 @@ function renderNavbar() {
       </nav>
   `;
   navbarWrapper.innerHTML = nonAuthUserNavBar;
-  renderImage(logoImage,'logo-img-div', 40, '.logo');
+  renderImage(logoImage, 'logo-img-div', 40, '.logo');
 
   const logo = document.querySelector('.logo');
   logo.addEventListener('click', (e) => {
     e.preventDefault();
     Navigate('/');
-  })
+  });
 }
 
 export default Navbar;

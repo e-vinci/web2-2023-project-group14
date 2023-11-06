@@ -1,6 +1,6 @@
 const HomePage = () => {
   const main = document.querySelector('main');
-  main.innerHTML = 'Caa';
+  main.innerHTML = 'random stuff go!';
 };
 
 export default HomePage;

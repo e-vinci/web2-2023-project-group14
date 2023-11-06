@@ -18,5 +18,5 @@ const renderImage = (url, className, height, div) => {
   image.height = height;
   const imageWrapper = document.querySelector(div);
   imageWrapper.append(image);
-}
+};
 export { clearPage, renderPageTitle, renderImage };
