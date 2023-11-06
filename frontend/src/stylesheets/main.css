@@ -9,3 +9,9 @@
   color: #3e2723;
   font-family: 'Tahoma';
 }
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
