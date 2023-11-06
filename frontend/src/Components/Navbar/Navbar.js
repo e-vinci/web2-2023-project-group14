@@ -52,10 +52,10 @@ function renderNavbar() {
             </ul>
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="btn btn-primary nav-link auth-btn px-3" href="#" data-uri="/login">Se connecter</a>
+                <a class="btn nav-link auth-btn px-3" href="#" data-uri="/login">Se connecter</a>
               </li>   
               <li class="nav-item ms-3">
-                <a class="btn btn-primary nav-link auth-btn me-3 px-3" href="#" data-uri="/register">S'inscrire</a>
+                <a class="btn nav-link auth-btn me-3 px-3" href="#" data-uri="/register">S'inscrire</a>
               </li>                         
             </ul>
           </div>
