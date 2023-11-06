@@ -14,7 +14,7 @@ const Navbar = () => {
   <nav class="navbar navbar-expand-lg navbar-dark footerColor">
         <div class="container-fluid">
           <a class="navbar-brand" href="#"> 
-          <img src="./ARMADA_ASSAULT_LOGO_TEXT_NOBACKGROUND.png" height="50px" alt="Logo" Armada Assault</a>
+          <img src="../../img/ARMADA_ASSAULT_LOGO_TEXT_NOBACKGROUND.png" height="50px" alt="Logo"</a>
           <button
             class="navbar-toggler"
             type="button"
