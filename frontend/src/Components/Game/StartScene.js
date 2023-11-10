@@ -30,8 +30,6 @@ export default class StartUI extends Phaser.Scene {
             }
         ).setOrigin(0.5);
 
-
-    
         jouerText.setInteractive();
         jouerText.on('pointerover', () => { jouerText.setFontSize(52); jouerText.setColor('#ffff99');});
         jouerText.on('pointerout', () => { jouerText.setFontSize(40);  jouerText.setColor('#ffffff');});

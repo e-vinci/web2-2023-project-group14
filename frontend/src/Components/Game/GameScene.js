@@ -6,6 +6,7 @@ import platformAsset from '../../assets/platform.png';
 import starAsset from '../../assets/star.png';
 import bombAsset from '../../assets/bomb.png';
 import dudeAsset from '../../assets/dude.png';
+import music from '../../assets/music.mp3';
 
 const GROUND_KEY = 'ground';
 const DUDE_KEY = 'dude';
@@ -21,6 +22,8 @@ class GameScene extends Phaser.Scene {
     this.stars = undefined;
     this.bombSpawner = undefined;
     this.gameOver = false;
+    this.soundOn = true;
+    this.soundButton = undefined;
   }
 
   preload() {
@@ -28,6 +31,7 @@ class GameScene extends Phaser.Scene {
     this.load.image(GROUND_KEY, platformAsset);
     this.load.image(STAR_KEY, starAsset);
     this.load.image(BOMB_KEY, bombAsset);
+    this.load.audio('theme', music);
 
     this.load.spritesheet(DUDE_KEY, dudeAsset, {
       frameWidth: 32,
@@ -52,6 +56,27 @@ class GameScene extends Phaser.Scene {
 
     /* The Collider takes two objects and tests for collision and performs separation against them.
     Note that we could call a callback in case of collision... */
+
+     // Add sound toggle button
+     const musicT = this.sound.add('theme');
+     musicT.play();
+     this.soundButton = this.add.image(this.sys.game.config.width - 30, 30, this.soundOn ? 'soundOn' : 'soundOff');
+     this.soundButton.setInteractive();
+     this.soundButton.on('pointerdown', this.toggleSound, this);
+
+  }
+
+  toggleSound() {
+    this.soundOn = !this.soundOn;
+    if (this.soundOn) {
+      // Logic to turn sound on
+      this.soundButton.setTexture('soundOn');
+      this.sound.play('theme');
+    } else {
+      // Logic to turn sound off
+      this.soundButton.setTexture('soundOff');
+      this.sound.stopAll();
+    }
   }
 
   update() {
