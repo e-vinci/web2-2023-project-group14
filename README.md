@@ -76,6 +76,7 @@
     - Afficher le vainqueur(Flaviu)
     - Statistiques des personnages(hp,atk,atkspd,def,speed,range) (Igor)
     - paramètres du jeu (Igor)
+    - Miniatures des personnages (Igor)
     - Afficher les regles du jeux(Flaviu).
     - afficher timer pour gold (Hubert)
     - afficher timer de la partie (Hubert)
