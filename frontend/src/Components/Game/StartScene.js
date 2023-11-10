@@ -4,12 +4,11 @@ import logoAsset from '../../assets/ARMADA_ASSAULT_LOGO_TEXT_NOBACKGROUND.png';
 
 export default class StartUI extends Phaser.Scene {
     constructor() {
-        super('game-start');
+        super('start-scene');
     }
 
     preload(){
         this.load.image('logoAsset', logoAsset);
-       
     }
 
     create() {
@@ -32,7 +31,7 @@ export default class StartUI extends Phaser.Scene {
 
         jouerText.setInteractive();
         jouerText.on('pointerover', () => { jouerText.setFontSize(52); jouerText.setColor('#ffff99');});
-        jouerText.on('pointerout', () => { jouerText.setFontSize(40);  jouerText.setColor('#ffffff');});
+        jouerText.on('pointerout', () =>  { jouerText.setFontSize(40);  jouerText.setColor('#ffffff');});
         jouerText.on('pointerdown', () => {
             this.scene.start('game-scene');
         });

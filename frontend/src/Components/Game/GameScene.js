@@ -64,6 +64,16 @@ class GameScene extends Phaser.Scene {
      this.soundButton.setInteractive();
      this.soundButton.on('pointerdown', this.toggleSound, this);
 
+    const pauseButton = this.add.text(10, 500, 'Pause', { font: '24px Arial', fill: '#ffffff' });
+    pauseButton.setInteractive();
+    
+    pauseButton.on('pointerover', () => { pauseButton.setFontSize(30); pauseButton.setColor('#ffff99');pauseButton.setX(10);pauseButton.setY(495)});
+    pauseButton.on('pointerout',  () => { pauseButton.setFontSize(24); pauseButton.setColor('#ffffff');pauseButton.setX(10);pauseButton.setY(500)});
+    pauseButton.on('pointerdown', () => {
+      this.scene.launch('PauseScene');
+      this.scene.pause();
+    });
+
   }
 
   toggleSound() {
