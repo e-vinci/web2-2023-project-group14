@@ -81,7 +81,7 @@
     - afficher timer de la partie (Hubert)
     - mode de jeu à deux joueurs en local(Robert)
     - page "About" (crédits, explication du projets, etc)(Flaviu)
-    - affichage de l'écran du menu démarer du jeu (Laurent)
+    - affichage de l'écran de pause(Laurent)
     - affichage de l'écran de chargement du jeu (Laurent)
     - background du jeu/map(Flaviu)
     - logo + bouton home (Igor)
