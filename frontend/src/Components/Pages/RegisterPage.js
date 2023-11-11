@@ -1,17 +1,17 @@
 import Navigate from '../Router/Navigate';
 import { clearPage } from '../../utils/render';
 
-const LoginPage = () => {
+const RegisterPage = () => {
   clearPage();
-  renderLoginForm();
+  renderRegisterForm();
 };
 
-function renderLoginForm() {
+function renderRegisterForm() {
   const main = document.querySelector('main');
 
 
-  const loginWrapper = document.createElement('div');
-  loginWrapper.className = 'd-flex justify-content-center align-items-center h-75 mt-2 pt-4'
+  const registerWrapper = document.createElement('div');
+  registerWrapper.className = 'd-flex justify-content-center align-items-center h-75 mt-5 pt-5'
   const formWrapper = document.createElement('div');
   formWrapper.className = 'container border border-3 border-success rounded-5 w-50';
   const formTop = document.createElement('div');
@@ -19,7 +19,7 @@ function renderLoginForm() {
   const formTopDiv = document.createElement('div');
   const formTopTitle = document.createElement('h1');
   formTopDiv.className = 'text-center p-3 ';
-  formTopTitle.innerHTML = 'Connexion';
+  formTopTitle.innerHTML = 'Inscription';
 
   const formBottom = document.createElement('div');
   formBottom.className = 'form-bottom w-100 p-3 ';
@@ -57,17 +57,32 @@ function renderLoginForm() {
   password.placeholder = 'mot de passe';
   password.className = 'form-control mb-3 border border-3 rounded-3 border-success';
 
+  const passwordConfDiv = document.createElement('div');
+  passwordConfDiv.className = 'mb-4 mx-4'
+
+  const passwordConfLabel = document.createElement('label');
+  passwordConfLabel.className = 'form-label ps-1';
+  passwordConfLabel.htmlFor = 'passwordConf';
+  passwordConfLabel.innerHTML = "Confirmation de mot de passe";
+
+  const passwordConf = document.createElement('input');
+  passwordConf.type = 'password';
+  passwordConf.id = 'passwordConf';
+  passwordConf.required = true;
+  passwordConf.placeholder = 'confirmation de mot de passe';
+  passwordConf.className = 'form-control mb-3 border border-3 rounded-3 border-success';
+
   const submitDiv = document.createElement('div');
   submitDiv.className = 'text-center mb-4';
   const submit = document.createElement('input');
-  submit.value = 'Se connecter';
+  submit.value = "S'inscrire";
   submit.type = 'submit';
   submit.className = 'btn btn-success';
 
-  const noAccountDiv = document.createElement('div');
-  const noAccountP = document.createElement('p');
-  noAccountDiv.className = 'text-center';
-  noAccountDiv.innerHTML = `Pas encore de compte? <a href="/register">Inscrivez-vous</a>`
+  const alreadyAccountDiv = document.createElement('div');
+  const alreadyAccountP = document.createElement('p');
+  alreadyAccountDiv.className = 'text-center';
+  alreadyAccountDiv.innerHTML = `Déjà un compte? <a href="/login">Connectez-vous</a>`
 
 
   usernameDiv.appendChild(usernameLabel);
@@ -76,16 +91,20 @@ function renderLoginForm() {
   passwordDiv.appendChild(passwordLabel);
   passwordDiv.appendChild(password);
 
+  passwordConfDiv.appendChild(passwordConfLabel);
+  passwordConfDiv.appendChild(passwordConf);
+
   submitDiv.appendChild(submit);
 
   form.appendChild(usernameDiv);
   form.appendChild(passwordDiv);
+  form.appendChild(passwordConfDiv)
   form.appendChild(submitDiv);
 
-  noAccountDiv.appendChild(noAccountP);
+  alreadyAccountDiv.appendChild(alreadyAccountP);
 
   formBottom.appendChild(form);
-  formBottom.appendChild(noAccountDiv);
+  formBottom.appendChild(alreadyAccountDiv);
   
   formTopDiv.appendChild(formTopTitle);
 
@@ -94,13 +113,13 @@ function renderLoginForm() {
   formWrapper.appendChild(formTop);
   formWrapper.appendChild(formBottom);
 
-  loginWrapper.appendChild(formWrapper);
+  registerWrapper.appendChild(formWrapper);
 
-  main.appendChild(loginWrapper);
+  main.appendChild(registerWrapper);
 
   submit.addEventListener('click', () => {
     Navigate('/');
   });
 }
 
-export default LoginPage;
+export default RegisterPage;
