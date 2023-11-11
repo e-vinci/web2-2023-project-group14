@@ -4,12 +4,16 @@ import GameScene from '../Game/GameScene';
 import PauseScene from '../Game/PauseScene';
 
 import archerLogo from '../../assets/archerCard.png';
-import botLogo from '../../assets/botCard.png';
+import exterminatorLogo from '../../assets/botCard.png';
 import knightLogo from '../../assets/knightCard.png';
 import necromancerLogo from '../../assets/necromancerCard.png';
 import warriorLogo from '../../assets/warriorCard.png';
 
 import archerWiki from '../../assets/artwork_wiki/archerWiki.png';
+import exterminatorWiki from '../../assets/artwork_wiki/exterminatorWiki.png';
+import knightWiki from '../../assets/artwork_wiki/knightWiki.png';
+import necromancerWiki from '../../assets/artwork_wiki/necromancerWiki.png';
+import warriorWiki from '../../assets/artwork_wiki/warriorWiki.png';
 
 let game;
 
@@ -21,35 +25,59 @@ const GamePage = () => {
       <h5 class="card-title">Stats:</h5>
       <p class="card-text">~Write stats here~</p>
     </div>
+    <div class="card-body">
+      <h5 class="card-title">Story:</h5>
+      <p class="card-text">Lost in the middle of a mysterious forest, a young girl in a red hood stands up against terrifying creatures. Each monster she faces strengthens her resolve, making her a true heroine in this dark world.</p>
+    </div>
     <img class="card-img-bottom" src="${archerWiki}" alt="Card image cap">
   </div>
   <div class="card text-white bg-success m-3 border-light" style="max-width: 18rem; border-width: 3px;">
-    <div class="card-header"><h5>The Bot</h5> <img src="${botLogo}" height= "70px" class="rounded" alt="bot logo"></div>
+    <div class="card-header"><h5>The exterminator</h5> <img src="${exterminatorLogo}" height= "70px" class="rounded" alt="bot logo"></div>
     <div class="card-body">
       <h5 class="card-title">Stats:</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <p class="card-text">~Write stats here~ </p>
     </div>
+    <div class="card-body">
+      <h5 class="card-title">Story:</h5>
+      <p class="card-text">In the depths of a dark, misty forest, a black robot stands guard. Despite its intimidating appearance, it holds a gun not for malice, but for protection. Its mechanical heart is guided by a virtuous code. Amidst the shadows and fog, it serves as a beacon of justice, a silent protector in the eerie wilderness.</p>
+    </div>
+    <img class="card-img-bottom" src="${exterminatorWiki}" alt="Card image cap">
   </div>
   <div class="card text-white bg-success m-3 border-warning" style="max-width: 18rem; border-width: 3px;">
     <div class="card-header"><h5>The Knight</h5> <img src="${knightLogo}" height= "70px" class="rounded" alt="knight logo"></div>
     <div class="card-body">
       <h5 class="card-title">Stats:</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <p class="card-text">~Write stats here~</p>
     </div>
+    <div class="card-body">
+      <h5 class="card-title">Story:</h5>
+      <p class="card-text">In the heart of a dark, misty forest, a knight clad in red armor stands tall. His fire longblade glows brightly, casting a warm light in the gloom. His virtuous heart is as strong as his armor, and his courage as fiery as his blade. He is a beacon of hope in this shadowy world, a symbol of valor and honor.</p>
+    </div>
+    <img class="card-img-bottom" src="${knightWiki}" alt="Card image cap">
   </div>
   <div class="card text-white bg-success m-3 border-dark" style="max-width: 18rem; border-width: 3px;">
     <div class="card-header"><h5>The Necromancer</h5> <img src="${necromancerLogo}" height= "70px" class="rounded" alt="necromancer logo"></div>
     <div class="card-body">
       <h5 class="card-title">Stats:</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <p class="card-text">~Write stats here~</p>
     </div>
+    <div class="card-body">
+      <h5 class="card-title">Story:</h5>
+      <p class="card-text">Cloaked in black and adorned with a red belt, a necromancer haunts the depths of a foggy forest. His staff, aflame with red fire, illuminates the darkness, while a skull rests in his left hand, a testament to his dark arts. His aura seeps into every corner of the forest, marking him as a malevolent force to be reckoned with. </p>
+    </div>
+    <img class="card-img-bottom" src="${necromancerWiki}" alt="Card image cap">
   </div>
   <div class="card text-white bg-success m-3 border-primary" style="max-width: 18rem; border-width: 3px;">
     <div class="card-header"><h5>The Warrior</h5> <img src="${warriorLogo}" height= "70px" class="rounded" alt="warrior logo"></div>
     <div class="card-body">
       <h5 class="card-title">Stats:</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <p class="card-text">~Write stats here~</p>
     </div>
+    <div class="card-body">
+      <h5 class="card-title">Story:</h5>
+      <p class="card-text">Emerging from the shadows of a dense, foggy forest is a devil, black as the night itself. His long horns and purple eyes radiate an eerie glow. His purple neon belt and the purple electricity sword in his right hand are a testament to his dark powers. His presence sends chills down the spine of every creature, marking him as the undisputed villain of this realm.</p>
+    </div>
+    <img class="card-img-bottom" src="${warriorWiki}" alt="Card image cap">
   </div>
 </div>`;
 
