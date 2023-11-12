@@ -7,6 +7,8 @@ import starAsset from '../../assets/star.png';
 import bombAsset from '../../assets/bomb.png';
 import dudeAsset from '../../assets/dude.png';
 import music from '../../assets/music.mp3';
+import soundOnAsset from '../../assets/soundOn.png';
+import soundOffAsset from '../../assets/soundOff.png';
 import backgroundGameAsset from '../../assets/background.png';
 import hud from '../../assets/armadaHUD.png';
 
@@ -35,6 +37,8 @@ class GameScene extends Phaser.Scene {
     this.load.image(GROUND_KEY, platformAsset);
     this.load.image(STAR_KEY, starAsset);
     this.load.image(BOMB_KEY, bombAsset);
+    this.load.image('soundOn',soundOnAsset);
+    this.load.image('soundOff',soundOffAsset);
     this.load.audio('theme', music);
 
     this.load.spritesheet(DUDE_KEY, dudeAsset, {
