@@ -2,31 +2,29 @@ import Phaser from 'phaser';
 import logoAsset from '../../assets/ARMADA_ASSAULT_LOGO_TEXT_NOBACKGROUND.png';
 import backgroundAsset from '../../assets/start_background.png';
 
-
 export default class StartUI extends Phaser.Scene {
     constructor() {
         super('start-scene');
     }
 
-    preload(){
+    preload() {
         this.load.image('logoAsset', logoAsset);
-        this.load.image('background',backgroundAsset);
+        this.load.image('background', backgroundAsset);
     }
 
     create() {
-
         // Add the background image and set darker tint
         const background = this.add.image(this.scale.width * 0.5, this.scale.height * 0.5, 'background').setOrigin(0.5).setDepth(-1);
         background.setScale(this.scale.width / background.width, this.scale.height / background.height);
         background.setTint(0x999999);
 
-        // Charger le logo
+        // Load the logo
         const logo = this.add.image(this.scale.width * 0.5, this.scale.height * 0.45, 'logoAsset').setOrigin(0.5).setDepth(-0.9);
 
-        // Ajuster la luminosité du logo (augmenter la clarté)
-        logo.setTint(0xffffff); // La valeur 0xffffff représente le blanc pur.
+        // Adjust the brightness of the logo
+        logo.setTint(0xffffff);
 
-        // Créer le texte "JOUER" sous le logo
+        // Create the "PLAY!" text under the logo
         const playText = this.add.text(this.scale.width * 0.5, logo.y + logo.displayHeight, 'PLAY!',
             {
                 fontFamily: 'Blackletter, serif',
@@ -37,13 +35,14 @@ export default class StartUI extends Phaser.Scene {
         ).setOrigin(0.5);
 
         playText.setInteractive();
-        playText.on('pointerover', () => { playText.setFontSize(52); playText.setColor('#ffff99');});
-        playText.on('pointerout', () =>  { playText.setFontSize(40);  playText.setColor('#ffffff');});
+        playText.on('pointerover', () => { playText.setFontSize(52); playText.setColor('#ffff99'); });
+        playText.on('pointerout', () => { playText.setFontSize(40); playText.setColor('#ffffff'); });
         playText.on('pointerdown', () => {
             this.scene.start('game-scene');
         });
 
-        const instructionText = this.add.text(this.scale.width * 0.5, playText.y + playText.displayHeight+ 10, 'How to play?',
+        // Create the "How to play?" text
+        const instructionText = this.add.text(this.scale.width * 0.5, playText.y + playText.displayHeight + 10, 'How to play?',
             {
                 fontFamily: 'Blackletter, serif',
                 fontSize: '30px',
@@ -53,10 +52,21 @@ export default class StartUI extends Phaser.Scene {
         ).setOrigin(0.5);
 
         instructionText.setInteractive();
-        instructionText.on('pointerover', () => { instructionText.setFontSize(36); instructionText.setColor('#ffff99');});
-        instructionText.on('pointerout', () =>  { instructionText.setFontSize(30);  instructionText.setColor('#ffffff');});
+        instructionText.on('pointerover', () => { instructionText.setFontSize(36); instructionText.setColor('#ffff99'); });
+        instructionText.on('pointerout', () => { instructionText.setFontSize(30); instructionText.setColor('#ffffff'); });
         instructionText.on('pointerdown', () => {
             this.scene.start('instruction-scene');
+        });
+
+        // Add pulsating effect to the logo
+        this.tweens.add({
+            targets: playText,
+            scaleX: 1.15,  // Scale up by 10%
+            scaleY: 1.15,
+            duration: 2000,  // 1 second for each pulse
+            yoyo: true,  // Play the tween in reverse
+            repeat: -1,  // Repeat indefinitely
+            ease: 'Cubic.easeInOut',
         });
     }
 }
