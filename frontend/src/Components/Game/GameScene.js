@@ -7,7 +7,7 @@ import starAsset from '../../assets/star.png';
 import bombAsset from '../../assets/bomb.png';
 import dudeAsset from '../../assets/dude.png';
 import music from '../../assets/music.mp3';
-import background from '../../assets/background.png';
+import backgroundGameAsset from '../../assets/background.png';
 import hud from '../../assets/armadaHUD.png';
 
 const GROUND_KEY = 'ground';
@@ -30,7 +30,7 @@ class GameScene extends Phaser.Scene {
 
   preload() {
     this.load.image('sky', skyAsset);
-    this.load.image('background', background);
+    this.load.image('backgroundGame', backgroundGameAsset);
     this.load.image('hud', hud);
     this.load.image(GROUND_KEY, platformAsset);
     this.load.image(STAR_KEY, starAsset);
@@ -44,6 +44,8 @@ class GameScene extends Phaser.Scene {
   }
 
   create() {
+    const backgroundGame = this.add.image(this.scale.width * 0.5, this.scale.height * 0.5, 'backgroundGame').setOrigin(0.5).setDepth(-1);
+    backgroundGame.setScale(this.scale.width / backgroundGame.width, this.scale.height / backgroundGame.height);
     const platforms = this.createPlatforms();
     this.player = this.createPlayer();
     this.stars = this.createStars();
