@@ -2,6 +2,7 @@ import Phaser from 'phaser';
 import StartScene from '../Game/StartScene';
 import GameScene from '../Game/GameScene';
 import PauseScene from '../Game/PauseScene';
+import InstructionScene from '../Game/InstructionScene';
 
 import archerLogo from '../../assets/archerCard.png';
 import exterminatorLogo from '../../assets/botCard.png';
@@ -99,7 +100,7 @@ const GamePage = () => {
         debug: false,
       },
     },
-    scene: [StartScene,GameScene,PauseScene],
+    scene: [StartScene,GameScene,PauseScene,InstructionScene],
     //  parent DOM element into which the canvas created by the renderer will be injected.
     parent: 'gameDiv',
   };
