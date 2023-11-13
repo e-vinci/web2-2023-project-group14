@@ -11,6 +11,8 @@ import { createCards, preloadCards } from './CardCreator';
 class GameScene extends Phaser.Scene {
   constructor() {
     super('game-scene');
+    this.soundOn = true;
+    this.soundButton = undefined;
   }
 
   preload() {
@@ -47,11 +49,9 @@ class GameScene extends Phaser.Scene {
     // Add sound toggle button
     const musicT = this.sound.add('theme');
     musicT.play();
-    this.soundButton = this.add.image(
-      this.sys.game.config.width - 30,
-      300,
-      this.soundOn ? 'soundOn' : 'soundOff',
-    );
+    this.soundButton = this.add
+      .image(this.sys.game.config.width - 30, 450, this.soundOn ? 'soundOn' : 'soundOff')
+      .setDepth(1);
     this.soundButton.setInteractive();
     this.soundButton.on('pointerdown', this.toggleSound, this);
     this.soundButton.on('pointerover', () => {
@@ -61,7 +61,9 @@ class GameScene extends Phaser.Scene {
       this.soundButton.setScale(1);
     });
 
-    const pauseButton = this.add.text(10, 450, 'Pause', { font: '24px Arial', fill: '#ffffff' });
+    const pauseButton = this.add
+      .text(10, 450, 'Pause', { font: '24px Arial', fill: '#ffffff' })
+      .setDepth(1);
     pauseButton.setInteractive();
 
     pauseButton.on('pointerover', () => {
