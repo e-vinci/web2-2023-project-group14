@@ -8,7 +8,7 @@ class Player  {
         this.golds = Player.DEFAULT_GOLDS;
     }    
 
-    addingGolds(amount) {
+    addGolds(amount) {
         this.golds += amount;
         return this.golds;
     }

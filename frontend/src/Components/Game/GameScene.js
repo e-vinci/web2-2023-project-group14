@@ -13,7 +13,7 @@ class GameScene extends Phaser.Scene {
     super('game-scene');
     this.soundOn = true;
     this.soundButton = undefined;
-    this.player = new Player();
+    this.player1 = new Player();
   }
 
   preload() {
@@ -46,6 +46,18 @@ class GameScene extends Phaser.Scene {
 
     // Cards creator
     const cardsPlayers = createCards(this);
+
+    // Golds background creation
+    const box = this.add.graphics().setDepth(1);
+    const boxWidth = 100;
+    const boxHeight = 40;
+    const cornerRadius = 10;
+
+    box.fillStyle(0x000000, 1).setDepth(1); // Black color
+    box.fillRoundedRect(this.scale.width * 0.1, this.scale.height * 0.11, boxWidth, boxHeight, cornerRadius).setDepth(1);
+
+    box.lineStyle(4, 0x808080, 1).setDepth(1); // Border color grey
+    box.strokeRoundedRect(this.scale.width * 0.1, this.scale.height * 0.11, boxWidth, boxHeight, cornerRadius).setDepth(1);
 
     // Add sound toggle button
     const musicT = this.sound.add('theme');
