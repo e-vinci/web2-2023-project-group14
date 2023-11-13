@@ -11,6 +11,7 @@ import Player from './Player'
 import warriorSpriteSheet from '../../assets/sprites/NightBorneRun.png';
 
 
+
 class GameScene extends Phaser.Scene {
   constructor() {
     super('game-scene');
@@ -27,13 +28,28 @@ class GameScene extends Phaser.Scene {
     this.load.audio('theme', music);
     // preloading cards assets
     preloadCards(this);
-  
+    
     this.load.spritesheet('NightBorne', warriorSpriteSheet, {frameWidth: 80, frameHeight:64});
   }
 
   create() {
     // Adding card for the charachters
     createCards(this);
+   
+      // Warrior Run Animation Creation
+    this.anims.create({
+      key: 'WarriorRun',
+      frames: this.anims.generateFrameNumbers('NightBorne', {start:0, end:5}),
+      frameRate:10,
+      repeat: -1
+    });
+     
+   
+    // Creation de warrior
+   // eslint-disable-next-line prefer-const
+    let warrior = this.add.sprite(300,300, 'NightBorne');
+    warrior.play('run').setDepth(1);
+     
 
     // eslint-disable-next-line no-console
 
@@ -54,19 +70,9 @@ class GameScene extends Phaser.Scene {
       .setDepth(0.9);
     hudGame.setScale(this.scale.width / hudGame.width, this.scale.height / hudGame.height);
 
-    // Warrior Run Animation Creation
-    this.anims.create({
-      key: 'run',
-      frames: this.anims.generateFrameNumbers('NightBorne', {start:0, end:5}),
-      frameRate:10,
-      repeat: -1
-      
-    });
+   
 
-     // Creation de warrior
-    // eslint-disable-next-line prefer-const
-    let warrior = this.add.sprite(300,300, 'NightBorne');
-    warrior.play('run');
+  
 
     // Golds background creation
     const boxTimer = this.add.graphics().setDepth(1);
