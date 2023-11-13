@@ -5,14 +5,15 @@ import soundOnAsset from '../../assets/soundOn.png';
 import soundOffAsset from '../../assets/soundOff.png';
 import backgroundGameAsset from '../../assets/background.png';
 import hudAsset from '../../assets/armadaHUD.png';
-
 import { createCards, preloadCards } from './CardCreator';
+import Player from './Player'
 
 class GameScene extends Phaser.Scene {
   constructor() {
     super('game-scene');
     this.soundOn = true;
     this.soundButton = undefined;
+    this.player = new Player();
   }
 
   preload() {
