@@ -25,19 +25,15 @@ class GameScene extends Phaser.Scene {
     this.load.image('soundOn', soundOnAsset);
     this.load.image('soundOff', soundOffAsset);
     this.load.audio('theme', music);
-
-    this.load.image('archerCard', archerCardAsset);
-    this.load.image('botCard', botCardAsset);
-    this.load.image('knightCard', knightCardAsset);
-    this.load.image('necromancerCard', necromancerCardAsset);
-    this.load.image('warriorCard', warriorCardAsset);
+    // preloading cards assets
+    preloadCards(this);
   
     this.load.spritesheet('NightBorne', warriorSpriteSheet, {frameWidth: 80, frameHeight:64});
   }
 
   create() {
-    
-    
+    // Adding card for the charachters
+    createCards(this);
 
     // eslint-disable-next-line no-console
 
@@ -66,20 +62,11 @@ class GameScene extends Phaser.Scene {
       repeat: -1
       
     });
-    
 
      // Creation de warrior
     // eslint-disable-next-line prefer-const
     let warrior = this.add.sprite(300,300, 'NightBorne');
     warrior.play('run');
-
-   
-
-    // Adding card for the charachters
-    const archerCardP1 = this.add.image(this.scale.width * 0.05, this.scale.height * 0.65, 'archerCard').setOrigin(0.5,0.5).setDepth(1).setScale(0.38);
-    archerCardP1.setInteractive();
-    archerCardP1.on('pointerover', () => {archerCardP1.setScale(0.45)});
-    archerCardP1.on('pointerout', () => {archerCardP1.setScale(0.38)});
 
     // Golds background creation
     const boxTimer = this.add.graphics().setDepth(1);
