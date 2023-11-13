@@ -48,16 +48,16 @@ class GameScene extends Phaser.Scene {
     const cardsPlayers = createCards(this);
 
     // Golds background creation
-    const box = this.add.graphics().setDepth(1);
-    const boxWidth = 100;
-    const boxHeight = 40;
-    const cornerRadius = 10;
+    const boxTimer = this.add.graphics().setDepth(1);
+    const boxWidthTimer = 100;
+    const boxHeightTimer = 40;
+    const cornerRadiusTimer = 10;
 
-    box.fillStyle(0x000000, 1).setDepth(1); // Black color
-    box.fillRoundedRect(this.scale.width * 0.1, this.scale.height * 0.11, boxWidth, boxHeight, cornerRadius).setDepth(1);
+    boxTimer.fillStyle(0x000000, 1).setDepth(1); // Black color
+    boxTimer.fillRoundedRect(this.scale.width * 0.1, this.scale.height * 0.11, boxWidthTimer, boxHeightTimer, cornerRadiusTimer).setDepth(1);
 
-    box.lineStyle(4, 0x808080, 1).setDepth(1); // Border color grey
-    box.strokeRoundedRect(this.scale.width * 0.1, this.scale.height * 0.11, boxWidth, boxHeight, cornerRadius).setDepth(1);
+    boxTimer.lineStyle(4, 0x808080, 1).setDepth(1); // Border color grey
+    boxTimer.strokeRoundedRect(this.scale.width * 0.1, this.scale.height * 0.11, boxWidthTimer, boxHeightTimer, cornerRadiusTimer).setDepth(1);
 
     // Add sound toggle button
     const musicT = this.sound.add('theme');
