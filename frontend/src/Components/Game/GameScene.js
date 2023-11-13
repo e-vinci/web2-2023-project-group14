@@ -129,6 +129,12 @@ class GameScene extends Phaser.Scene {
     box.lineStyle(4, 0x808080, 1).setDepth(1); // Couleur de bordure grise
     box.strokeRoundedRect((this.sys.game.config.width - boxWidth) / 2, 60, boxWidth, boxHeight, cornerRadius).setDepth(1);
 
+    const GoldsText = this.add.text(this.sys.game.config.width *0.1, 80, '100', {
+      fontSize: '24px',
+      fill: '#ffffff'
+    }).setOrigin(0.5)
+    .setDepth(1);
+
     const timerText = this.add.text(this.sys.game.config.width / 2, 80, '15', {
       fontSize: '24px',
       fill: '#ffffff'
@@ -137,12 +143,18 @@ class GameScene extends Phaser.Scene {
 
     let timeLeft = 15;
 
+    let incrementAmount = 100;
+
     const updateTimer = () => {
       timeLeft -= 1;
       timerText.setText(`${timeLeft}`);
 
       if (timeLeft === 0) {
         timeLeft = 16; // Réinitialiser le temps à 15 une fois qu'il atteint zéro
+        this.player1.addGolds(incrementAmount);
+        const currentGolds = this.player1.golds; // Met à jour le nombre actuel de golds
+        GoldsText.setText(`${currentGolds}`);
+        incrementAmount *= 1.5; // Montant à incrémenter (peut être ajusté)
       }
     };
 
@@ -153,6 +165,11 @@ class GameScene extends Phaser.Scene {
       loop: true
     });  
 
+    
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  update() {
   }
 
   toggleSound() {
