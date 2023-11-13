@@ -67,6 +67,7 @@ export default class StartUI extends Phaser.Scene {
             yoyo: true,  // Play the tween in reverse
             repeat: -1,  // Repeat indefinitely
             ease: 'Cubic.easeInOut',
+            delay: 1000,
         });
     }
 }
