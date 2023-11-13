@@ -74,6 +74,7 @@ class GameScene extends Phaser.Scene {
       this.soundButton.setScale(1);
     });
 
+    // Add pause button
     const pauseButton = this.add
       .text(10, 450, 'Pause', { font: '24px Arial', fill: '#ffffff' })
       .setDepth(1);
@@ -95,6 +96,42 @@ class GameScene extends Phaser.Scene {
       this.scene.launch('PauseScene');
       this.scene.pause();
     });
+
+    const box = this.add.graphics().setDepth(1);
+    const boxWidth = 100;
+    const boxHeight = 40;
+    const cornerRadius = 10;
+
+    box.fillStyle(0x000000, 1).setDepth(1); // Couleur noire
+    box.fillRoundedRect((this.sys.game.config.width - boxWidth) / 2, 60, boxWidth, boxHeight, cornerRadius).setDepth(1);
+
+    box.lineStyle(4, 0x808080, 1).setDepth(1); // Couleur de bordure grise
+    box.strokeRoundedRect((this.sys.game.config.width - boxWidth) / 2, 60, boxWidth, boxHeight, cornerRadius).setDepth(1);
+
+    const timerText = this.add.text(this.sys.game.config.width / 2, 80, '15', {
+      fontSize: '24px',
+      fill: '#ffffff'
+    }).setOrigin(0.5)
+    .setDepth(1);
+
+    let timeLeft = 15;
+
+    const updateTimer = () => {
+      timeLeft -= 1;
+      timerText.setText(`${timeLeft}`);
+
+      if (timeLeft === 0) {
+        timeLeft = 16; // Réinitialiser le temps à 15 une fois qu'il atteint zéro
+      }
+    };
+
+    const timerEvent = this.time.addEvent({
+      delay: 1000, // Mise à jour toutes les secondes
+      callback: updateTimer,
+      callbackScope: this,
+      loop: true
+    });  
+
   }
 
   toggleSound() {
