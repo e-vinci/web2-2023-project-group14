@@ -130,13 +130,13 @@ class GameScene extends Phaser.Scene {
     box.strokeRoundedRect((this.sys.game.config.width - boxWidth) / 2, 60, boxWidth, boxHeight, cornerRadius).setDepth(1);
 
     const player1GoldsText = this.add.text(this.sys.game.config.width *0.11, 95, '100', {
-      fontSize: '24px',
+      fontSize: '18px',
       fill: '#ffffff'
     }).setOrigin(0.5)
     .setDepth(1);
 
     const player2GoldsText = this.add.text(this.sys.game.config.width *0.89, 95, '100', {
-      fontSize: '24px',
+      fontSize: '18px',
       fill: '#ffffff'
     }).setOrigin(0.5)
     .setDepth(1);
