@@ -51,6 +51,7 @@ class GameScene extends Phaser.Scene {
     const backgroundGame = this.add.image(this.scale.width * 0.5, this.scale.height * 0.5, 'backgroundGame').setOrigin(0.5).setDepth(-1);
     backgroundGame.setScale(this.scale.width / backgroundGame.width, this.scale.height / backgroundGame.height);
     const platforms = this.createPlatforms();
+    this.theme = this.sound.add('theme')
     this.player = this.createPlayer();
     this.stars = this.createStars();
     this.scoreLabel = this.createScoreLabel(16, 16, 0);
@@ -68,8 +69,8 @@ class GameScene extends Phaser.Scene {
 
      // Add sound toggle button
      const musicT = this.sound.add('theme');
-     musicT.play();
-     this.soundButton = this.add.image(this.sys.game.config.width - 30, 30, this.soundOn ? 'soundOn' : 'soundOff');
+     this.theme.play({loop:true});
+     musicT.play();this.soundButton = this.add.image(this.sys.game.config.width - 30, 30, this.soundOn ? 'soundOn' : 'soundOff');
      this.soundButton.setInteractive();
      this.soundButton.on('pointerdown', this.toggleSound, this);
 
@@ -90,7 +91,7 @@ class GameScene extends Phaser.Scene {
     if (this.soundOn) {
       // Logic to turn sound on
       this.soundButton.setTexture('soundOn');
-      this.sound.play('theme');
+      this.theme.play({loop:true});
     } else {
       // Logic to turn sound off
       this.soundButton.setTexture('soundOff');
@@ -98,6 +99,14 @@ class GameScene extends Phaser.Scene {
     }
   }
 
+
+  shutdown() {
+    if (this.theme) {
+        this.theme.stop();
+    }
+}
+
+ 
   update() {
     if (this.gameOver) {
       return;
