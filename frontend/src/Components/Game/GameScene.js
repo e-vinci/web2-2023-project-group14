@@ -69,7 +69,7 @@ class GameScene extends Phaser.Scene {
     warrior.play('run');
 
     // Golds background creation
-    const boxTimer = this.add.graphics().setDepth(1);
+    /* const boxTimer = this.add.graphics().setDepth(1);
     const boxWidthTimer = 100;
     const boxHeightTimer = 40;
     const cornerRadiusTimer = 10;
@@ -79,7 +79,7 @@ class GameScene extends Phaser.Scene {
 
     boxTimer.lineStyle(4, 0x808080, 1).setDepth(1); // Border color grey
     boxTimer.strokeRoundedRect(this.scale.width * 0.1, this.scale.height * 0.11, boxWidthTimer, boxHeightTimer, cornerRadiusTimer).setDepth(1);
-
+*/
     // Add sound toggle button
     const musicT = this.sound.add('theme');
     musicT.play();
@@ -129,7 +129,13 @@ class GameScene extends Phaser.Scene {
     box.lineStyle(4, 0x808080, 1).setDepth(1); // Couleur de bordure grise
     box.strokeRoundedRect((this.sys.game.config.width - boxWidth) / 2, 60, boxWidth, boxHeight, cornerRadius).setDepth(1);
 
-    const GoldsText = this.add.text(this.sys.game.config.width *0.1, 80, '100', {
+    const player1GoldsText = this.add.text(this.sys.game.config.width *0.11, 95, '100', {
+      fontSize: '24px',
+      fill: '#ffffff'
+    }).setOrigin(0.5)
+    .setDepth(1);
+
+    const player2GoldsText = this.add.text(this.sys.game.config.width *0.89, 95, '100', {
       fontSize: '24px',
       fill: '#ffffff'
     }).setOrigin(0.5)
@@ -153,7 +159,8 @@ class GameScene extends Phaser.Scene {
         timeLeft = 16; // Réinitialiser le temps à 15 une fois qu'il atteint zéro
         this.player1.addGolds(incrementAmount);
         const currentGolds = this.player1.golds; // Met à jour le nombre actuel de golds
-        GoldsText.setText(`${currentGolds}`);
+        player1GoldsText.setText(`${currentGolds}`);
+        player2GoldsText.setText(`${currentGolds}`);
         incrementAmount *= 1.5; // Montant à incrémenter (peut être ajusté)
       }
     };
