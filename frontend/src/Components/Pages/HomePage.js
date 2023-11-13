@@ -8,7 +8,7 @@ const HomePage = () => {
     Créé par Hubert Lopaciuk, Igor Sterniczuk, Robert Ailenei, Flaviu Bilic et Laurent
     Beckman.
   </div>
-</div>`
+</div>`;
 };
 
 export default HomePage;

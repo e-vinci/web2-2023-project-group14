@@ -9,9 +9,8 @@ const LoginPage = () => {
 function renderLoginForm() {
   const main = document.querySelector('main');
 
-
   const loginWrapper = document.createElement('div');
-  loginWrapper.className = 'd-flex justify-content-center align-items-center h-75 mt-2 pt-4'
+  loginWrapper.className = 'd-flex justify-content-center align-items-center h-75 mt-2 pt-4';
   const formWrapper = document.createElement('div');
   formWrapper.className = 'container border border-3 border-success rounded-5 w-50';
   const formTop = document.createElement('div');
@@ -28,7 +27,7 @@ function renderLoginForm() {
   form.className = 'mb-1';
 
   const usernameDiv = document.createElement('div');
-  usernameDiv.className = 'mb-4 mx-4'
+  usernameDiv.className = 'mb-4 mx-4';
 
   const usernameLabel = document.createElement('label');
   usernameLabel.className = 'form-label ps-1';
@@ -43,12 +42,12 @@ function renderLoginForm() {
   username.className = 'form-control mb-3 border border-3 rounded-3 border-success';
 
   const passwordDiv = document.createElement('div');
-  passwordDiv.className = 'mb-4 mx-4'
+  passwordDiv.className = 'mb-4 mx-4';
 
   const passwordLabel = document.createElement('label');
   passwordLabel.className = 'form-label ps-1';
   passwordLabel.htmlFor = 'password';
-  passwordLabel.innerHTML = "Mot de passe";
+  passwordLabel.innerHTML = 'Mot de passe';
 
   const password = document.createElement('input');
   password.type = 'password';
@@ -67,12 +66,11 @@ function renderLoginForm() {
   const noAccountDiv = document.createElement('div');
   const noAccountP = document.createElement('p');
   noAccountDiv.className = 'text-center';
-  noAccountDiv.innerHTML = `Pas encore de compte? <a href="/register">Inscrivez-vous</a>`
-
+  noAccountDiv.innerHTML = `Pas encore de compte? <a href="/register">Inscrivez-vous</a>`;
 
   usernameDiv.appendChild(usernameLabel);
   usernameDiv.appendChild(username);
-  
+
   passwordDiv.appendChild(passwordLabel);
   passwordDiv.appendChild(password);
 
@@ -86,7 +84,7 @@ function renderLoginForm() {
 
   formBottom.appendChild(form);
   formBottom.appendChild(noAccountDiv);
-  
+
   formTopDiv.appendChild(formTopTitle);
 
   formTop.appendChild(formTopDiv);
