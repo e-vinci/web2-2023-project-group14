@@ -11,6 +11,9 @@ import knightCardAsset from '../../assets/knightCard.png';
 import necromancerCardAsset from '../../assets/necromancerCard.png';
 import warriorCardAsset from '../../assets/warriorCard.png';
 
+import warriorSpriteSheet from '../../assets/sprites/NightBorneRun.png';
+
+
 class GameScene extends Phaser.Scene {
   constructor() {
     super('game-scene');
@@ -28,9 +31,16 @@ class GameScene extends Phaser.Scene {
     this.load.image('knightCard', knightCardAsset);
     this.load.image('necromancerCard', necromancerCardAsset);
     this.load.image('warriorCard', warriorCardAsset);
+  
+    this.load.spritesheet('NightBorne', warriorSpriteSheet, {frameWidth: 80, frameHeight:64});
   }
 
   create() {
+    
+    
+
+    // eslint-disable-next-line no-console
+
     // Background map game
     const backgroundGame = this.add.image(this.scale.width * 0.5, this.scale.height * 0.5, 'backgroundGame').setOrigin(0.5).setDepth(-1);
     backgroundGame.setScale(this.scale.width / backgroundGame.width, this.scale.height / backgroundGame.height);
@@ -38,6 +48,23 @@ class GameScene extends Phaser.Scene {
     // Hud creation
     const hudGame = this.add.image(this.scale.width * 0.5, this.scale.height * 0.5, 'hud').setOrigin(0.5).setDepth(0.9);
     hudGame.setScale(this.scale.width / hudGame.width, this.scale.height / hudGame.height);
+
+    // Warrior Run Animation Creation
+    this.anims.create({
+      key: 'run',
+      frames: this.anims.generateFrameNumbers('NightBorne', {start:0, end:5}),
+      frameRate:10,
+      repeat: -1
+      
+    });
+    
+
+     // Creation de warrior
+    // eslint-disable-next-line prefer-const
+    let warrior = this.add.sprite(300,300, 'NightBorne');
+    warrior.play('run');
+
+   
 
     // Adding card for the charachters
     const archerCardP1 = this.add.image(this.scale.width * 0.05, this.scale.height * 0.65, 'archerCard').setOrigin(0.5,0.5).setDepth(1).setScale(0.38);
