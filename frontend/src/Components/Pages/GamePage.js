@@ -83,7 +83,7 @@ const GamePage = () => {
 </div>`;
 
   const phaserGame = `
-<div id="gameDiv" class="d-flex justify-content-center my-3">
+<div id="gameDiv" class="d-flex justify-content-center my-3 border-game">
 </div>`;
 
 

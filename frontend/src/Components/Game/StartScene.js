@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 import logoAsset from '../../assets/ARMADA_ASSAULT_LOGO_TEXT_NOBACKGROUND.png';
-import backgroundAsset from '../../assets/start_background.png';
+import backgroundAsset from '../../assets/start_background2.png';
 
 export default class StartUI extends Phaser.Scene {
   constructor() {
