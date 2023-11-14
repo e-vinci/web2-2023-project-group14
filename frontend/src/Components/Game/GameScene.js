@@ -8,7 +8,7 @@ import hudAsset from '../../assets/armadaHUD.png';
 import { createCards, preloadCards } from './CardCreator';
 import Player from './Player'; 
 import baseSpriteSheet from '../../assets/playerBase.png';
-import PlayerBase, { createPlayer, preloadPlayerBase } from './PlayerBase';
+import PlayerBase, { createPlayerBase, preloadPlayerBase } from './PlayerBase';
 
 // Warrior imports
 import warriorRunSpriteSheet from '../../assets/sprites/NightborneSprites/NightBorneRun.png';
