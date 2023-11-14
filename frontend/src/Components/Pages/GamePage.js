@@ -15,6 +15,7 @@ import exterminatorWiki from '../../assets/artwork_wiki/exterminatorWiki.png';
 import knightWiki from '../../assets/artwork_wiki/knightWiki.png';
 import necromancerWiki from '../../assets/artwork_wiki/necromancerWiki.png';
 import warriorWiki from '../../assets/artwork_wiki/warriorWiki.png';
+import EndScene from '../Game/EndScene';
 
 let game;
 
@@ -100,7 +101,7 @@ const GamePage = () => {
         debug: false,
       },
     },
-    scene: [StartScene, GameScene, PauseScene, InstructionScene],
+    scene: [StartScene, GameScene, PauseScene, InstructionScene, EndScene],
     //  parent DOM element into which the canvas created by the renderer will be injected.
     parent: 'gameDiv',
   };
