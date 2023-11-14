@@ -6,8 +6,9 @@ import soundOffAsset from '../../assets/soundOff.png';
 import backgroundGameAsset from '../../assets/background.png';
 import hudAsset from '../../assets/armadaHUD.png';
 import { createCards, preloadCards } from './CardCreator';
-import Player from './Player';
+import Player from './Player'; 
 import baseSpriteSheet from '../../assets/playerBase.png';
+import PlayerBase, { createPlayer, preloadPlayerBase } from './PlayerBase';
 
 // Warrior imports
 import warriorRunSpriteSheet from '../../assets/sprites/NightborneSprites/NightBorneRun.png';
@@ -25,12 +26,8 @@ class GameScene extends Phaser.Scene {
     super('game-scene');
     this.soundOn = true;
     this.soundButton = undefined;
-    this.player1 = new Player();
-    this.player2 = new Player();
-    this.player1Stats = undefined;
-    this.player2Stats = undefined;
-    this.player1Health = undefined;
-    this.player2Health = undefined;
+    this.player1 = new Player('player1');
+    this.player2 = new Player('player2');
     this.base1 = undefined;
     this.base2 = undefined;
   }
@@ -42,7 +39,7 @@ class GameScene extends Phaser.Scene {
     this.load.image('soundOff', soundOffAsset);
     this.load.audio('theme', music);
 
-    this.load.spritesheet('base', baseSpriteSheet, { frameWidth: 200, frameHeight: 400 });
+    
 
     // Warrior Loads
     this.load.spritesheet('NightBorneRun', warriorRunSpriteSheet, {
@@ -74,20 +71,19 @@ class GameScene extends Phaser.Scene {
 
     // preloading cards assets
     preloadCards(this);
+
+    preloadPlayerBase(this);
   }
 
   create() {
     // Adding card for the charachters
     createCards(this);
 
+    createPlayerBase(this);
+
     // Base Animation Creation
 
-    this.anims.create({
-      key: 'baseFloating',
-      frames: this.anims.generateFrameNumbers('base', { start: 0, end: 12 }),
-      frameRate: 10,
-      repeat: -1,
-    });
+   
 
     // Warrior Creates
 
@@ -99,18 +95,7 @@ class GameScene extends Phaser.Scene {
       repeat: -1,
     });
 
-    // Ajoutez les bases des joueurs à la scène.
-    const base1 = this.add.sprite(50, 250, 'base').setOrigin(0.5, 0.5);
-    const base2 = this.add.sprite(750, 250, 'base').setOrigin(0.5, 0.5);
-
-    // Redimensionnage
-    const scaleFactor = 0.5; // Ajustez cette valeur selon vos besoins.
-    base1.setScale(scaleFactor);
-    base2.setScale(scaleFactor);
-
-    // Ajoutez l'animation flottante à chaque base.
-    base1.play('baseFloating').setDepth(1);
-    base2.play('baseFloating').setDepth(1);
+   
 
     // Warrior Hit Animation Creation
     this.anims.create({
@@ -203,18 +188,6 @@ class GameScene extends Phaser.Scene {
       .setDepth(0.9);
     hudGame.setScale(this.scale.width / hudGame.width, this.scale.height / hudGame.height);
 
-    // Golds background creation
-    /* const boxTimer = this.add.graphics().setDepth(1);
-    const boxWidthTimer = 100;
-    const boxHeightTimer = 40;
-    const cornerRadiusTimer = 10;
-
-    boxTimer.fillStyle(0x000000, 1).setDepth(1); // Black color
-    boxTimer.fillRoundedRect(this.scale.width * 0.1, this.scale.height * 0.11, boxWidthTimer, boxHeightTimer, cornerRadiusTimer).setDepth(1);
-
-    boxTimer.lineStyle(4, 0x808080, 1).setDepth(1); // Border color grey
-    boxTimer.strokeRoundedRect(this.scale.width * 0.1, this.scale.height * 0.11, boxWidthTimer, boxHeightTimer, cornerRadiusTimer).setDepth(1);
-*/
     // Add sound toggle button
     const musicT = this.sound.add('theme');
     musicT.play();

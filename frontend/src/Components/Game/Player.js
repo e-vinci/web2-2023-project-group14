@@ -3,15 +3,20 @@ class Player {
 
   static DEFAULT_MAX_UNITS = 5;
 
-  static DEFAULT_HEALTH = 200;
+  static DEFAULT_HEALTH = 1000;
 
   golds;
 
+  playerName;
+
   health;
 
-  constructor() {
+  haveLost=false;
+
+  constructor(playerName) {
     this.golds = Player.DEFAULT_GOLDS;
     this.health = Player.DEFAULT_HEALTH;
+    this.playerName = playerName;
   }
 
   addGolds(amount) {
@@ -20,7 +25,10 @@ class Player {
   }
 
   playerIsDead() {
-    if (this.health <= 0) return true;
+    if (this.health <= 0){
+      this.haveLost=true;
+      return true;
+    } 
     return false;
   }
 }
