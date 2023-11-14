@@ -10,10 +10,15 @@ import Player from './Player'
 
 
 // Warrior imports
-import warriorRunSpriteSheet from '../../assets/sprites/NightBorneRun.png';
-import warriorHitSpriteSheet from '../../assets/sprites/NightBorneHit.png';
-import warriorDeathSpriteSheet from '../../assets/sprites/NightBorneDeath.png';
+import warriorRunSpriteSheet from '../../assets/sprites/NightborneSprites/NightBorneRun.png';
+import warriorHitSpriteSheet from '../../assets/sprites/NightborneSprites/NightBorneHit.png';
+import warriorDeathSpriteSheet from '../../assets/sprites/NightborneSprites/NightBorneDeath.png';
 
+// Exterminator imports
+
+import extMoveSpriteSheet from '../../assets/sprites/ExterminatorSprites/EXTmove.png';
+import extDeathSpriteSheet from '../../assets/sprites/ExterminatorSprites/EXTdeath.png';
+import extAttackSpriteSheet from '../../assets/sprites/ExterminatorSprites/EXTattack.png';
 
 class GameScene extends Phaser.Scene {
   constructor() {
@@ -35,6 +40,13 @@ class GameScene extends Phaser.Scene {
     this.load.spritesheet('NightBorneHit', warriorHitSpriteSheet, {frameWidth: 80, frameHeight:64});
     this.load.spritesheet('NightBorneDeath', warriorDeathSpriteSheet, {frameWidth: 80, frameHeight:64});
     
+    // Exterminator Loads
+    this.load.spritesheet('ExterminatorMove', extMoveSpriteSheet, {frameWidth: 100, frameHeight:26});
+    this.load.spritesheet('ExterminatorDeath', extDeathSpriteSheet, {frameWidth: 100, frameHeight:26});
+    this.load.spritesheet('ExterminatorAttack', extAttackSpriteSheet, {frameWidth: 100, frameHeight:26});
+
+
+
     // preloading cards assets
     preloadCards(this);
     
@@ -72,8 +84,57 @@ class GameScene extends Phaser.Scene {
     repeat: -1
     });
 
+    // Creates de Exterminator
 
-    // Creations de warrior
+
+    // Exterminator move animation
+
+    this.anims.create({
+      key: 'ExtMove',
+      frames: this.anims.generateFrameNumbers('ExterminatorMove', {start:0, end:7}),
+      frameRate:10,
+      repeat: -1
+      });
+
+
+    // Exterminator Death animation
+
+    this.anims.create({
+      key: 'ExtDeath',
+      frames: this.anims.generateFrameNumbers('ExterminatorDeath', {start:0, end:5}),
+      frameRate:7,
+      repeat: -1
+        });
+    
+    // Exterminator Attack Animation
+
+    this.anims.create({
+      key: 'ExtAttack',
+      frames: this.anims.generateFrameNumbers('ExterminatorAttack', {start:0, end:4}),
+      frameRate:7,
+      repeat: -1
+        });
+
+
+
+    // Instances de Exterminator
+    // eslint-disable-next-line prefer-const
+    let ext = this.add.sprite(300,300, 'ExterminatorMove');
+    ext.play('ExtMove').setDepth(1);
+
+    // eslint-disable-next-line prefer-const
+    let ext2 = this.add.sprite(300,350, 'ExterminatorDeath');
+    ext2.play('ExtDeath').setDepth(1);
+
+      // eslint-disable-next-line prefer-const
+    let ext3 = this.add.sprite(300,400, 'ExterminatorAttack');
+    ext3.play('ExtAttack').setDepth(1);   
+
+
+
+
+
+    // Instances de warrior
 
    // eslint-disable-next-line prefer-const
     let warrior = this.add.sprite(100,200, 'NightBorneRun');
