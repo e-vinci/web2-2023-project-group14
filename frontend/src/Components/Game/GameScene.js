@@ -7,6 +7,7 @@ import backgroundGameAsset from '../../assets/background.png';
 import hudAsset from '../../assets/armadaHUD.png';
 import { createCards, preloadCards } from './CardCreator';
 import Player from './Player'
+import baseSpriteSheet from '../../assets/playerBase.png';
 
 
 // Warrior imports
@@ -41,6 +42,8 @@ class GameScene extends Phaser.Scene {
     this.load.image('soundOn', soundOnAsset);
     this.load.image('soundOff', soundOffAsset);
     this.load.audio('theme', music);
+
+    this.load.spritesheet('base', baseSpriteSheet, { frameWidth: 200, frameHeight: 400 });
 
     // Warrior Loads
     this.load.spritesheet('NightBorneRun', warriorRunSpriteSheet, {frameWidth: 80, frameHeight:64});
