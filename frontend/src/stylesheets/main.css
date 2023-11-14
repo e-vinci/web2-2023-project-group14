@@ -1,11 +1,14 @@
 .footerColor {
-  background-color: #006400;
+  background-color: #808080;
   color: #fffff0;
   font-family: 'Impact', sans-serif;
 }
 
 .mainColor {
-  background-color: #8fbc8f;
+  background-image:url('../assets/site_background/OIG.gXgEjGngjB6-transformed.png');
+	background-position: center; 
+  background-size: cover;
+	 background-repeat:no-repeat;
   color: #3e2723;
   font-family: 'Tahoma';
 }
@@ -14,4 +17,40 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+.card-color{
+  background-color: #929292cd;
+  
+}
+
+/* Charachters cards */
+.border-archer{
+  border-width: 3px;
+  border-color: red;
+  max-width: 18rem;
+}
+
+.border-bot{
+  border-width: 3px;
+  border-color: white;
+  max-width: 18rem;
+}
+
+.border-knight{
+  border-width: 3px;
+  border-color: yellow;
+  max-width: 18rem;
+}
+
+.border-necro{
+  border-width: 3px;
+  border-color: black;
+  max-width: 18rem;
+}
+
+.border-warrior{
+  border-width: 3px;
+  border-color: rgb(230, 0, 230);
+  max-width: 18rem;
 }
