@@ -86,6 +86,7 @@ const GamePage = () => {
 <div id="gameDiv" class="d-flex justify-content-center my-3">
 </div>`;
 
+
   const main = document.querySelector('main');
   main.innerHTML = phaserGame + wikiContent;
 
