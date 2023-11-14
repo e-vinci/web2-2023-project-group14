@@ -19,8 +19,8 @@ import warriorWiki from '../../assets/artwork_wiki/warriorWiki.png';
 let game;
 
 const GamePage = () => {
-  const wikiContent = `<div class="d-flex flex-wrap card-container">
-  <div class="card text-white bg-success m-3 border-danger" style="max-width: 18rem; border-width: 3px;">
+  const wikiContent = `<div class="d-flex flex-wrap card-container card-text">
+  <div class="card card-color m-3 border-archer">
     <div class="card-header"><h5>The Archer</h5> <img src="${archerLogo}" height= "70px" class="rounded" alt="archer logo"></div>
     <div class="card-body">
       <h5 class="card-title">Stats:</h5>
@@ -32,7 +32,7 @@ const GamePage = () => {
     </div>
     <img class="card-img-bottom" src="${archerWiki}" alt="Card image cap">
   </div>
-  <div class="card text-white bg-success m-3 border-light" style="max-width: 18rem; border-width: 3px;">
+  <div class="card card-color border-bot m-3">
     <div class="card-header"><h5>The exterminator</h5> <img src="${exterminatorLogo}" height= "70px" class="rounded" alt="bot logo"></div>
     <div class="card-body">
       <h5 class="card-title">Stats:</h5>
@@ -44,7 +44,7 @@ const GamePage = () => {
     </div>
     <img class="card-img-bottom" src="${exterminatorWiki}" alt="Card image cap">
   </div>
-  <div class="card text-white bg-success m-3 border-warning" style="max-width: 18rem; border-width: 3px;">
+  <div class="card card-color m-3 border-knight" style="max-width: 18rem; border-width: 3px;">
     <div class="card-header"><h5>The Knight</h5> <img src="${knightLogo}" height= "70px" class="rounded" alt="knight logo"></div>
     <div class="card-body">
       <h5 class="card-title">Stats:</h5>
@@ -56,7 +56,7 @@ const GamePage = () => {
     </div>
     <img class="card-img-bottom" src="${knightWiki}" alt="Card image cap">
   </div>
-  <div class="card text-white bg-success m-3 border-dark" style="max-width: 18rem; border-width: 3px;">
+  <div class="card  card-color m-3 border-necro" style="max-width: 18rem; border-width: 3px;">
     <div class="card-header"><h5>The Necromancer</h5> <img src="${necromancerLogo}" height= "70px" class="rounded" alt="necromancer logo"></div>
     <div class="card-body">
       <h5 class="card-title">Stats:</h5>
@@ -68,7 +68,7 @@ const GamePage = () => {
     </div>
     <img class="card-img-bottom" src="${necromancerWiki}" alt="Card image cap">
   </div>
-  <div class="card text-white bg-success m-3 border-primary" style="max-width: 18rem; border-width: 3px;">
+  <div class="card card-color m-3 border-warrior" style="max-width: 18rem; border-width: 3px;">
     <div class="card-header"><h5>The Warrior</h5> <img src="${warriorLogo}" height= "70px" class="rounded" alt="warrior logo"></div>
     <div class="card-body">
       <h5 class="card-title">Stats:</h5>
@@ -85,6 +85,7 @@ const GamePage = () => {
   const phaserGame = `
 <div id="gameDiv" class="d-flex justify-content-center my-3">
 </div>`;
+
 
   const main = document.querySelector('main');
   main.innerHTML = phaserGame + wikiContent;
