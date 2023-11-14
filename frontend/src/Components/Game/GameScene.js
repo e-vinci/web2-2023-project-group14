@@ -8,8 +8,11 @@ import hudAsset from '../../assets/armadaHUD.png';
 import { createCards, preloadCards } from './CardCreator';
 import Player from './Player'
 
-import warriorSpriteSheet from '../../assets/sprites/NightBorneRun.png';
 
+// Warrior imports
+import warriorRunSpriteSheet from '../../assets/sprites/NightBorneRun.png';
+import warriorHitSpriteSheet from '../../assets/sprites/NightBorneHit.png';
+import warriorDeathSpriteSheet from '../../assets/sprites/NightBorneDeath.png';
 
 
 class GameScene extends Phaser.Scene {
@@ -26,30 +29,63 @@ class GameScene extends Phaser.Scene {
     this.load.image('soundOn', soundOnAsset);
     this.load.image('soundOff', soundOffAsset);
     this.load.audio('theme', music);
+
+    // Warrior Loads
+    this.load.spritesheet('NightBorneRun', warriorRunSpriteSheet, {frameWidth: 80, frameHeight:64});
+    this.load.spritesheet('NightBorneHit', warriorHitSpriteSheet, {frameWidth: 80, frameHeight:64});
+    this.load.spritesheet('NightBorneDeath', warriorDeathSpriteSheet, {frameWidth: 80, frameHeight:64});
+    
     // preloading cards assets
     preloadCards(this);
     
-    this.load.spritesheet('NightBorne', warriorSpriteSheet, {frameWidth: 80, frameHeight:64});
+    
   }
 
   create() {
     // Adding card for the charachters
     createCards(this);
    
-      // Warrior Run Animation Creation
-    this.anims.create({
-      key: 'WarriorRun',
-      frames: this.anims.generateFrameNumbers('NightBorne', {start:0, end:5}),
-      frameRate:10,
-      repeat: -1
+   
+    // Warrior Creates
+   
+    // Warrior Run Animation Creation
+  this.anims.create({
+    key: 'WarriorRun',
+    frames: this.anims.generateFrameNumbers('NightBorneRun', {start:0, end:5}),
+    frameRate:10,
+    repeat: -1
     });
      
-   
-    // Creation de warrior
+       // Warrior Hit Animation Creation
+  this.anims.create({
+    key: 'WarriorHit',
+    frames: this.anims.generateFrameNumbers('NightBorneHit', {start:0, end:12}),
+    frameRate:15,
+    repeat: -1
+    });
+
+   // Warrior Death Animation Creation
+   this.anims.create({
+    key: 'WarriorDeath',
+    frames: this.anims.generateFrameNumbers('NightBorneDeath', {start:0, end:24}),
+    frameRate:10,
+    repeat: -1
+    });
+
+
+    // Creations de warrior
+
    // eslint-disable-next-line prefer-const
-    let warrior = this.add.sprite(300,300, 'NightBorne');
-    warrior.play('run').setDepth(1);
-     
+    let warrior = this.add.sprite(100,200, 'NightBorneRun');
+    warrior.play('WarriorRun').setDepth(1);
+    
+    // eslint-disable-next-line prefer-const
+    let warrior2 = this.add.sprite(100,250, 'NightBorneHit');
+    warrior2.play('WarriorHit').setDepth(1);
+
+     // eslint-disable-next-line prefer-const
+     let warrior3 = this.add.sprite(100,300, 'NightBorneDeath');
+     warrior3.play('WarriorDeath').setDepth(1);
 
     // eslint-disable-next-line no-console
 
