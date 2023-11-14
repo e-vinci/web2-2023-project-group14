@@ -9,6 +9,7 @@ import { createCards, preloadCards } from './CardCreator';
 import Player from './Player'
 
 import warriorSpriteSheet from '../../assets/sprites/NightBorneRun.png';
+import baseSpriteSheet from '../../assets/playerBase.png';
 
 
 
@@ -18,6 +19,13 @@ class GameScene extends Phaser.Scene {
     this.soundOn = true;
     this.soundButton = undefined;
     this.player1 = new Player();
+    this.player2 = new Player();
+    this.player1Stats = undefined
+    this.player2Stats = undefined
+    this.player1Health = undefined;
+    this.player2Health = undefined;
+    this.base1 = undefined;
+    this.base2 = undefined;
   }
 
   preload() {
@@ -26,6 +34,7 @@ class GameScene extends Phaser.Scene {
     this.load.image('soundOn', soundOnAsset);
     this.load.image('soundOff', soundOffAsset);
     this.load.audio('theme', music);
+    this.load.spritesheet('base', baseSpriteSheet, { frameWidth: 200, frameHeight: 400 });
     // preloading cards assets
     preloadCards(this);
     
@@ -35,6 +44,17 @@ class GameScene extends Phaser.Scene {
   create() {
     // Adding card for the charachters
     createCards(this);
+
+  // Base Animation Creation
+
+  this.anims.create({
+    key: 'baseFloating',
+    frames: this.anims.generateFrameNumbers('base', { start: 0, end: 12 }),
+    frameRate: 10,
+    repeat: -1
+  });
+
+
    
       // Warrior Run Animation Creation
     this.anims.create({
@@ -43,12 +63,26 @@ class GameScene extends Phaser.Scene {
       frameRate:10,
       repeat: -1
     });
+
+    // Ajoutez les bases des joueurs à la scène.
+    const base1 = this.add.sprite(50, 250, 'base').setOrigin(0.5, 0.5);
+    const base2 = this.add.sprite(750, 250, 'base').setOrigin(0.5, 0.5);
+
+    // Redimensionnage
+    const scaleFactor = 0.5; // Ajustez cette valeur selon vos besoins.
+    base1.setScale(scaleFactor);
+    base2.setScale(scaleFactor);
+
+    // Ajoutez l'animation flottante à chaque base.
+    base1.play('baseFloating').setDepth(1);
+    base2.play('baseFloating').setDepth(1);
+
      
    
     // Creation de warrior
    // eslint-disable-next-line prefer-const
     let warrior = this.add.sprite(300,300, 'NightBorne');
-    warrior.play('run').setDepth(1);
+    warrior.play('WarriorRun').setDepth(1);
      
 
     // eslint-disable-next-line no-console
@@ -178,6 +212,19 @@ class GameScene extends Phaser.Scene {
       loop: true
     });  
 
+    this.player1Stats= {
+      health : 10000,
+      golds : Player.DEFAULT_GOLDS,
+      maxUnits : Player.DEFAULT_MAX_UNITS
+    }
+
+    this.player2Stats= {
+      health : 10000,
+      golds : Player.DEFAULT_GOLDS,
+      maxUnits : Player.DEFAULT_MAX_UNITS
+    }
+
+    
     
   }
 
