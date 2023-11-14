@@ -5,10 +5,10 @@
 }
 
 .mainColor {
-  background-image:url('../assets/site_background/OIG.gXgEjGngjB6-transformed.png');
-	background-position: center; 
+  background-image: url('../assets/site_background/OIG.gXgEjGngjB6-transformed.png');
+  background-position: center;
   background-size: cover;
-	 background-repeat:no-repeat;
+  background-repeat: no-repeat;
   color: #3e2723;
   font-family: 'Tahoma';
 }
@@ -19,43 +19,42 @@
   flex-wrap: wrap;
 }
 
-.card-color{
+.card-color {
   background-color: #929292cd;
-  
 }
 
 /* Charachters cards */
-.border-archer{
+.border-archer {
   border-width: 3px;
   border-color: red;
   max-width: 18rem;
 }
 
-.border-game{
+.border-game {
   background-color: rgba(255, 255, 255, 0.205);
   padding-top: 10px;
   padding-bottom: 10px;
 }
 
-.border-bot{
+.border-bot {
   border-width: 3px;
   border-color: white;
   max-width: 18rem;
 }
 
-.border-knight{
+.border-knight {
   border-width: 3px;
   border-color: yellow;
   max-width: 18rem;
 }
 
-.border-necro{
+.border-necro {
   border-width: 3px;
   border-color: black;
   max-width: 18rem;
 }
 
-.border-warrior{
+.border-warrior {
   border-width: 3px;
   border-color: rgb(230, 0, 230);
   max-width: 18rem;

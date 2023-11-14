@@ -6,9 +6,8 @@ import soundOffAsset from '../../assets/soundOff.png';
 import backgroundGameAsset from '../../assets/background.png';
 import hudAsset from '../../assets/armadaHUD.png';
 import { createCards, preloadCards } from './CardCreator';
-import Player from './Player'
+import Player from './Player';
 import baseSpriteSheet from '../../assets/playerBase.png';
-
 
 // Warrior imports
 import warriorRunSpriteSheet from '../../assets/sprites/NightborneSprites/NightBorneRun.png';
@@ -28,8 +27,8 @@ class GameScene extends Phaser.Scene {
     this.soundButton = undefined;
     this.player1 = new Player();
     this.player2 = new Player();
-    this.player1Stats = undefined
-    this.player2Stats = undefined
+    this.player1Stats = undefined;
+    this.player2Stats = undefined;
     this.player1Health = undefined;
     this.player2Health = undefined;
     this.base1 = undefined;
@@ -46,47 +45,58 @@ class GameScene extends Phaser.Scene {
     this.load.spritesheet('base', baseSpriteSheet, { frameWidth: 200, frameHeight: 400 });
 
     // Warrior Loads
-    this.load.spritesheet('NightBorneRun', warriorRunSpriteSheet, {frameWidth: 80, frameHeight:64});
-    this.load.spritesheet('NightBorneHit', warriorHitSpriteSheet, {frameWidth: 80, frameHeight:64});
-    this.load.spritesheet('NightBorneDeath', warriorDeathSpriteSheet, {frameWidth: 80, frameHeight:64});
-    
+    this.load.spritesheet('NightBorneRun', warriorRunSpriteSheet, {
+      frameWidth: 80,
+      frameHeight: 64,
+    });
+    this.load.spritesheet('NightBorneHit', warriorHitSpriteSheet, {
+      frameWidth: 80,
+      frameHeight: 64,
+    });
+    this.load.spritesheet('NightBorneDeath', warriorDeathSpriteSheet, {
+      frameWidth: 80,
+      frameHeight: 64,
+    });
+
     // Exterminator Loads
-    this.load.spritesheet('ExterminatorMove', extMoveSpriteSheet, {frameWidth: 100, frameHeight:26});
-    this.load.spritesheet('ExterminatorDeath', extDeathSpriteSheet, {frameWidth: 100, frameHeight:26});
-    this.load.spritesheet('ExterminatorAttack', extAttackSpriteSheet, {frameWidth: 100, frameHeight:26});
-
-
+    this.load.spritesheet('ExterminatorMove', extMoveSpriteSheet, {
+      frameWidth: 100,
+      frameHeight: 26,
+    });
+    this.load.spritesheet('ExterminatorDeath', extDeathSpriteSheet, {
+      frameWidth: 100,
+      frameHeight: 26,
+    });
+    this.load.spritesheet('ExterminatorAttack', extAttackSpriteSheet, {
+      frameWidth: 100,
+      frameHeight: 26,
+    });
 
     // preloading cards assets
     preloadCards(this);
-    
-    
   }
 
   create() {
     // Adding card for the charachters
     createCards(this);
 
-  // Base Animation Creation
+    // Base Animation Creation
 
-  this.anims.create({
-    key: 'baseFloating',
-    frames: this.anims.generateFrameNumbers('base', { start: 0, end: 12 }),
-    frameRate: 10,
-    repeat: -1
-  });
+    this.anims.create({
+      key: 'baseFloating',
+      frames: this.anims.generateFrameNumbers('base', { start: 0, end: 12 }),
+      frameRate: 10,
+      repeat: -1,
+    });
 
-
-   
-   
     // Warrior Creates
-   
+
     // Warrior Run Animation Creation
-  this.anims.create({
-    key: 'WarriorRun',
-    frames: this.anims.generateFrameNumbers('NightBorneRun', {start:0, end:5}),
-    frameRate:10,
-    repeat: -1
+    this.anims.create({
+      key: 'WarriorRun',
+      frames: this.anims.generateFrameNumbers('NightBorneRun', { start: 0, end: 5 }),
+      frameRate: 10,
+      repeat: -1,
     });
 
     // Ajoutez les bases des joueurs à la scène.
@@ -102,86 +112,77 @@ class GameScene extends Phaser.Scene {
     base1.play('baseFloating').setDepth(1);
     base2.play('baseFloating').setDepth(1);
 
-     
-       // Warrior Hit Animation Creation
-  this.anims.create({
-    key: 'WarriorHit',
-    frames: this.anims.generateFrameNumbers('NightBorneHit', {start:0, end:12}),
-    frameRate:15,
-    repeat: -1
+    // Warrior Hit Animation Creation
+    this.anims.create({
+      key: 'WarriorHit',
+      frames: this.anims.generateFrameNumbers('NightBorneHit', { start: 0, end: 12 }),
+      frameRate: 15,
+      repeat: -1,
     });
 
-   // Warrior Death Animation Creation
-   this.anims.create({
-    key: 'WarriorDeath',
-    frames: this.anims.generateFrameNumbers('NightBorneDeath', {start:0, end:24}),
-    frameRate:10,
-    repeat: -1
+    // Warrior Death Animation Creation
+    this.anims.create({
+      key: 'WarriorDeath',
+      frames: this.anims.generateFrameNumbers('NightBorneDeath', { start: 0, end: 24 }),
+      frameRate: 10,
+      repeat: -1,
     });
 
     // Creates de Exterminator
-
 
     // Exterminator move animation
 
     this.anims.create({
       key: 'ExtMove',
-      frames: this.anims.generateFrameNumbers('ExterminatorMove', {start:0, end:7}),
-      frameRate:10,
-      repeat: -1
-      });
-
+      frames: this.anims.generateFrameNumbers('ExterminatorMove', { start: 0, end: 7 }),
+      frameRate: 10,
+      repeat: -1,
+    });
 
     // Exterminator Death animation
 
     this.anims.create({
       key: 'ExtDeath',
-      frames: this.anims.generateFrameNumbers('ExterminatorDeath', {start:0, end:5}),
-      frameRate:7,
-      repeat: -1
-        });
-    
+      frames: this.anims.generateFrameNumbers('ExterminatorDeath', { start: 0, end: 5 }),
+      frameRate: 7,
+      repeat: -1,
+    });
+
     // Exterminator Attack Animation
 
     this.anims.create({
       key: 'ExtAttack',
-      frames: this.anims.generateFrameNumbers('ExterminatorAttack', {start:0, end:4}),
-      frameRate:7,
-      repeat: -1
-        });
-
-
+      frames: this.anims.generateFrameNumbers('ExterminatorAttack', { start: 0, end: 4 }),
+      frameRate: 7,
+      repeat: -1,
+    });
 
     // Instances de Exterminator
     // eslint-disable-next-line prefer-const
-    let ext = this.add.sprite(300,300, 'ExterminatorMove');
+    let ext = this.add.sprite(300, 300, 'ExterminatorMove');
     ext.play('ExtMove').setDepth(1);
 
     // eslint-disable-next-line prefer-const
-    let ext2 = this.add.sprite(300,350, 'ExterminatorDeath');
+    let ext2 = this.add.sprite(300, 350, 'ExterminatorDeath');
     ext2.play('ExtDeath').setDepth(1);
 
-      // eslint-disable-next-line prefer-const
-    let ext3 = this.add.sprite(300,400, 'ExterminatorAttack');
-    ext3.play('ExtAttack').setDepth(1);   
-
-
-
-
+    // eslint-disable-next-line prefer-const
+    let ext3 = this.add.sprite(300, 400, 'ExterminatorAttack');
+    ext3.play('ExtAttack').setDepth(1);
 
     // Instances de warrior
 
-   // eslint-disable-next-line prefer-const
-    let warrior = this.add.sprite(100,200, 'NightBorneRun');
-    warrior.play('WarriorRun').setDepth(1);
-    
     // eslint-disable-next-line prefer-const
-    let warrior2 = this.add.sprite(100,250, 'NightBorneHit');
+    let warrior = this.add.sprite(100, 200, 'NightBorneRun');
+    warrior.play('WarriorRun').setDepth(1);
+
+    // eslint-disable-next-line prefer-const
+    let warrior2 = this.add.sprite(100, 250, 'NightBorneHit');
     warrior2.play('WarriorHit').setDepth(1);
 
-     // eslint-disable-next-line prefer-const
-     let warrior3 = this.add.sprite(100,300, 'NightBorneDeath');
-     warrior3.play('WarriorDeath').setDepth(1);
+    // eslint-disable-next-line prefer-const
+    let warrior3 = this.add.sprite(100, 300, 'NightBorneDeath');
+    warrior3.play('WarriorDeath').setDepth(1);
 
     // eslint-disable-next-line no-console
 
@@ -201,10 +202,6 @@ class GameScene extends Phaser.Scene {
       .setOrigin(0.5)
       .setDepth(0.9);
     hudGame.setScale(this.scale.width / hudGame.width, this.scale.height / hudGame.height);
-
-   
-
-  
 
     // Golds background creation
     /* const boxTimer = this.add.graphics().setDepth(1);
@@ -262,28 +259,50 @@ class GameScene extends Phaser.Scene {
     const cornerRadius = 10;
 
     box.fillStyle(0x000000, 1).setDepth(1); // Couleur noire
-    box.fillRoundedRect((this.sys.game.config.width - boxWidth) / 2, 60, boxWidth, boxHeight, cornerRadius).setDepth(1);
+    box
+      .fillRoundedRect(
+        (this.sys.game.config.width - boxWidth) / 2,
+        60,
+        boxWidth,
+        boxHeight,
+        cornerRadius,
+      )
+      .setDepth(1);
 
     box.lineStyle(4, 0x808080, 1).setDepth(1); // Couleur de bordure grise
-    box.strokeRoundedRect((this.sys.game.config.width - boxWidth) / 2, 60, boxWidth, boxHeight, cornerRadius).setDepth(1);
+    box
+      .strokeRoundedRect(
+        (this.sys.game.config.width - boxWidth) / 2,
+        60,
+        boxWidth,
+        boxHeight,
+        cornerRadius,
+      )
+      .setDepth(1);
 
-    const player1GoldsText = this.add.text(this.sys.game.config.width *0.11, 95, '100', {
-      fontSize: '18px',
-      fill: '#ffffff'
-    }).setOrigin(0.5)
-    .setDepth(1);
+    const player1GoldsText = this.add
+      .text(this.sys.game.config.width * 0.11, 95, '100', {
+        fontSize: '18px',
+        fill: '#ffffff',
+      })
+      .setOrigin(0.5)
+      .setDepth(1);
 
-    const player2GoldsText = this.add.text(this.sys.game.config.width *0.89, 95, '100', {
-      fontSize: '18px',
-      fill: '#ffffff'
-    }).setOrigin(0.5)
-    .setDepth(1);
+    const player2GoldsText = this.add
+      .text(this.sys.game.config.width * 0.89, 95, '100', {
+        fontSize: '18px',
+        fill: '#ffffff',
+      })
+      .setOrigin(0.5)
+      .setDepth(1);
 
-    const timerText = this.add.text(this.sys.game.config.width / 2, 80, '15', {
-      fontSize: '24px',
-      fill: '#ffffff'
-    }).setOrigin(0.5)
-    .setDepth(1);
+    const timerText = this.add
+      .text(this.sys.game.config.width / 2, 80, '15', {
+        fontSize: '24px',
+        fill: '#ffffff',
+      })
+      .setOrigin(0.5)
+      .setDepth(1);
 
     let timeLeft = 15;
 
@@ -307,28 +326,24 @@ class GameScene extends Phaser.Scene {
       delay: 1000, // Mise à jour toutes les secondes
       callback: updateTimer,
       callbackScope: this,
-      loop: true
-    });  
+      loop: true,
+    });
 
-    this.player1Stats= {
-      health : 10000,
-      golds : Player.DEFAULT_GOLDS,
-      maxUnits : Player.DEFAULT_MAX_UNITS
-    }
+    this.player1Stats = {
+      health: 10000,
+      golds: Player.DEFAULT_GOLDS,
+      maxUnits: Player.DEFAULT_MAX_UNITS,
+    };
 
-    this.player2Stats= {
-      health : 10000,
-      golds : Player.DEFAULT_GOLDS,
-      maxUnits : Player.DEFAULT_MAX_UNITS
-    }
-
-    
-    
+    this.player2Stats = {
+      health: 10000,
+      golds: Player.DEFAULT_GOLDS,
+      maxUnits: Player.DEFAULT_MAX_UNITS,
+    };
   }
 
   // eslint-disable-next-line class-methods-use-this
-  update() {
-  }
+  update() {}
 
   toggleSound() {
     this.soundOn = !this.soundOn;

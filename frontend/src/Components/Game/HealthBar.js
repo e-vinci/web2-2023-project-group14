@@ -1,12 +1,10 @@
 import Phaser from 'phaser';
 
-
-export default class HealthBar extends Phaser.GameObjects.Graphics{
+export default class HealthBar extends Phaser.GameObjects.Graphics {
   constructor(scene, x, y, health, style) {
     super(scene, x, y, health, style);
     this.health = health;
   }
-
 
   setHealth(health) {
     this.health = health;
@@ -14,7 +12,7 @@ export default class HealthBar extends Phaser.GameObjects.Graphics{
   }
 
   updateHealthText() {
-    this.setText((this.health));
+    this.setText(this.health);
   }
 }
 
