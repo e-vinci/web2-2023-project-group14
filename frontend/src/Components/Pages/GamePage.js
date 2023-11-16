@@ -30,7 +30,7 @@ const GamePage = () => {
             <li>HP: 70</li>
             <li>Range: 8</li>
             <li>Damage: 25</li>
-            <li>Attack speed : 1.5s</li>
+            <li>Attack speed : 0.67s</li>
             <li>Movement speed: 4</li>
             <li>Price: 90 Gold</li>
         </ul>
