@@ -120,7 +120,16 @@ const GamePage = () => {
     <div class="card-header"><h5>The Warrior</h5> <img src="${warriorLogo}" height= "70px" class="rounded" alt="warrior logo"></div>
     <div class="card-body">
       <h5 class="card-title">Stats:</h5>
-      <p class="card-text">~Write stats here~</p>
+      <p class="card-text">
+        <ul>
+              <li>HP: 70</li>
+              <li>Range: 8</li>
+              <li>Damage: 25</li>
+              <li>Attack speed : 1.5s</li>
+              <li>Movement speed: 4</li>
+              <li>Price: 90 Gold</li>
+          </ul>
+      </p>
     </div>
     <div class="card-body">
       <h5 class="card-title">Story:</h5>
