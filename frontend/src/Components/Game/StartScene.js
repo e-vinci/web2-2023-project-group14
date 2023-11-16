@@ -50,7 +50,7 @@ export default class StartUI extends Phaser.Scene {
       playText.setColor('#ffffff');
     });
     playText.on('pointerdown', () => {
-      this.scene.start('game-scene');
+      this.scene.switch('game-scene');
     });
 
     // Create the "How to play?" text

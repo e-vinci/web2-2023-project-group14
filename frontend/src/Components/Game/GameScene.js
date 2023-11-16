@@ -190,6 +190,7 @@ class GameScene extends Phaser.Scene {
 
     // Add sound toggle button
     const musicT = this.sound.add('theme');
+    musicT.setVolume(0.1);
     musicT.play();
     this.soundButton = this.add
       .image(this.sys.game.config.width - 30, 450, this.soundOn ? 'soundOn' : 'soundOff')
@@ -204,7 +205,7 @@ class GameScene extends Phaser.Scene {
     });
 
 
-    // Dev button to go to the end scene
+    // Dev button to go to the end scene (to be delted later in developement)
     const goToEndSceneButton = this.add
     .text(400, 450, 'Dev: go to end scene', { font: '24px Arial', fill: '#ffffff' })
     .setDepth(1);
@@ -223,7 +224,10 @@ class GameScene extends Phaser.Scene {
     goToEndSceneButton.setY(450);
   });
   goToEndSceneButton.on('pointerdown', () => {
-    this.scene.launch('end-scene');
+    this.game.winner = this.player1;
+    this.sound.stopAll();
+    this.scene.stop('game-scene');
+    this.scene.switch('end-scene');
   });
 
 
