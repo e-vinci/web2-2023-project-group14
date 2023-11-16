@@ -36,7 +36,8 @@ export default class InstructionScene extends Phaser.Scene {
       backBtn.setColor('#ffffff');
     });
     backBtn.on('pointerdown', () => {
-      this.scene.start('start-scene');
+      this.scene.stop('instruction-scene');
+      this.scene.switch('start-scene');
     });
 
     // background setup
