@@ -8,9 +8,19 @@ export default class EndScene extends Phaser.Scene {
     }
 
     create(){
-        // this.scene.pause('game-scene');
-        const endBackground = this.add.rectangle(0, 0, 800, 600, 0x000000, 0.7).setOrigin(0,0);
-        
+      // not needed anymore
+      // const endBackground = this.add.rectangle(0, 0, 800, 600, 0x000000, 0.7).setOrigin(0,0);
+    
+    // showing winner
+    const winnerName = this.add
+      .text(this.scale.width * 0.5, this.scale.height * 0.3, `The winner is ${this.game.winner.playerName}!`, {
+        fontFamily: 'Blackletter, serif',
+        fontSize: '32px',
+        color: '#ffffff',
+        fontStyle: 'bold',
+      })
+      .setOrigin(0.5);
+
     // Restart button implementation
         const restartButton = this.add
       .text(this.scale.width * 0.5, this.scale.height * 0.5, 'Play again?', {
@@ -30,11 +40,7 @@ export default class EndScene extends Phaser.Scene {
       restartButton.setColor('#ffffff');
     });
     restartButton.on('pointerdown', () => {
-        this.scene.restart('game-scene'); 
-    });
-    // Listen to the 'restart' event of 'game-scene'
-    this.scene.get('game-scene').events.once('restart', () => {
-        this.scene.start('start-scene');
+        this.scene.start('game-scene'); 
     });
 
 // Main menu button implementation
@@ -56,7 +62,7 @@ export default class EndScene extends Phaser.Scene {
       mainMenuButton.setColor('#ffffff');
     });
     mainMenuButton.on('pointerdown', () => {
-        this.scene.start('start-scene');
+        this.scene.switch('start-scene');
     });
 
     }
