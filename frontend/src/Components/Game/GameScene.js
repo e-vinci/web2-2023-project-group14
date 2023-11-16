@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import Phaser from 'phaser';
-import music from '../../assets/music.mp3';
+import music from '../../assets/audio/theme_musics/C418 - Aria Math.mp3';
 import soundOnAsset from '../../assets/soundOn.png';
 import soundOffAsset from '../../assets/soundOff.png';
 import backgroundGameAsset from '../../assets/background.png';
@@ -190,8 +190,8 @@ class GameScene extends Phaser.Scene {
 
     // Add sound toggle button
     const musicT = this.sound.add('theme');
-    musicT.setVolume(0.1);
-    musicT.play();
+    musicT.setVolume(0.2);
+    musicT.play({loop : true});
     this.soundButton = this.add
       .image(this.sys.game.config.width - 30, 450, this.soundOn ? 'soundOn' : 'soundOff')
       .setDepth(1);
@@ -252,6 +252,7 @@ class GameScene extends Phaser.Scene {
     pauseButton.on('pointerdown', () => {
       this.scene.launch('PauseScene');
       this.scene.pause();
+      this.sound.pauseAll();
     });
 
     const box = this.add.graphics().setDepth(1);

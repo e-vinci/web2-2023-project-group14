@@ -1,5 +1,7 @@
 /* eslint-disable no-unused-vars */
 import Phaser from 'phaser';
+import backgroundAssetEnd from '../../assets/end_background.png';
+import musicAsset from '../../assets/audio/theme_musics/Casey_Tells_the_Truth.mp3';
 
 export default class EndScene extends Phaser.Scene {
 
@@ -7,9 +9,24 @@ export default class EndScene extends Phaser.Scene {
         super('end-scene');
     }
 
+    preload(){
+      this.load.image('backgroundEnd', backgroundAssetEnd);
+      this.load.audio('musicEndScene', musicAsset);
+    }
+
     create(){
-      // not needed anymore
-      // const endBackground = this.add.rectangle(0, 0, 800, 600, 0x000000, 0.7).setOrigin(0,0);
+      // end screen music
+      const themeSong = this.sound.add('musicEndScene');
+      themeSong.setVolume(0.5);
+      themeSong.play();
+
+      // Add the background image and set darker tint
+      const backgroundEnd = this.add
+      .image(this.scale.width * 0.5, this.scale.height * 0.5, 'backgroundEnd')
+      .setOrigin(0.5)
+      .setDepth(-1);
+    backgroundEnd.setScale(this.scale.width / backgroundEnd.width, this.scale.height / backgroundEnd.height);
+    backgroundEnd.setTint(0x999999);
     
     // showing winner
     const winnerName = this.add
@@ -40,6 +57,7 @@ export default class EndScene extends Phaser.Scene {
       restartButton.setColor('#ffffff');
     });
     restartButton.on('pointerdown', () => {
+      this.sound.stopAll();
         this.scene.start('game-scene'); 
     });
 
@@ -62,7 +80,8 @@ export default class EndScene extends Phaser.Scene {
       mainMenuButton.setColor('#ffffff');
     });
     mainMenuButton.on('pointerdown', () => {
-        this.scene.switch('start-scene');
+      this.sound.stopAll();
+      this.scene.start('start-scene');
     });
 
     }

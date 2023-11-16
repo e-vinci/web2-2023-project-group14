@@ -28,6 +28,7 @@ export default class PauseUI extends Phaser.Scene {
     continueButton.on('pointerdown', () => {
       this.scene.stop('PauseScene');
       this.scene.resume('game-scene');
+      this.scene.get('game-scene').sound.resumeAll();
     });
 
     const quitButton = this.add
@@ -50,7 +51,7 @@ export default class PauseUI extends Phaser.Scene {
     quitButton.on('pointerdown', () => {
       this.scene.stop('PauseScene'); // Arrêter la scène de pause
       this.scene.stop('game-scene'); // Arrêter la scène actuelle du jeu
-      this.scene.start('start-scene'); // Démarrer la scène d'accueil
+      this.scene.switch('start-scene'); // Démarrer la scène d'accueil
     });
   }
 }
