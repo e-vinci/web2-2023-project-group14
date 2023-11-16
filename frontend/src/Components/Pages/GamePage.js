@@ -122,12 +122,12 @@ const GamePage = () => {
       <h5 class="card-title">Stats:</h5>
       <p class="card-text">
         <ul>
-              <li>HP: 70</li>
-              <li>Range: 8</li>
-              <li>Damage: 25</li>
-              <li>Attack speed : 1.5s</li>
-              <li>Movement speed: 4</li>
-              <li>Price: 90 Gold</li>
+              <li>HP: 50</li>
+              <li>Range: 2</li>
+              <li>Damage: 40</li>
+              <li>Attack speed : 1/s</li>
+              <li>Movement speed: 6</li>
+              <li>Price: 120 Gold</li>
           </ul>
       </p>
     </div>
