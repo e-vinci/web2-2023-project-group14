@@ -7,7 +7,7 @@ const RankingPage = () => {
   renderRankingTable();
 };
 
-function renderGoBackHomeButton() {
+/*function renderGoBackHomeButton() {
   const main = document.querySelector('main');
   const backButton = document.createElement('input');
   backButton.value = 'Go back to HomePage';
@@ -17,7 +17,7 @@ function renderGoBackHomeButton() {
   });
 
   main.appendChild(backButton);
-}
+}*/
 
 function renderRankingTable() {
   const main = document.querySelector('main');
