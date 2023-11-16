@@ -5,6 +5,8 @@ import knightCardAsset from '../../assets/knightCard.png';
 import necromancerCardAsset from '../../assets/necromancerCard.png';
 import warriorCardAsset from '../../assets/warriorCard.png';
 
+
+
 // Load the card images
 export function preloadCards(scene) {
   scene.load.image('archerCard', archerCardAsset);
@@ -31,6 +33,8 @@ export function createCards(scene) {
   archerCardP1.on('pointerout', () => {
     archerCardP1.setScale(0.38);
   });
+
+  
 
   const botCardP1 = scene.add
     .image(scene.scale.width * 0.13, scene.scale.height * yValue, 'botCard')
