@@ -1,13 +1,11 @@
-import Navigate from '../Router/Navigate';
 import { clearPage } from '../../utils/render';
 
 const RankingPage = () => {
   clearPage();
-  renderGoBackHomeButton();
   renderRankingTable();
 };
 
-/*function renderGoBackHomeButton() {
+  /* function renderGoBackHomeButton() {
   const main = document.querySelector('main');
   const backButton = document.createElement('input');
   backButton.value = 'Go back to HomePage';
@@ -17,7 +15,7 @@ const RankingPage = () => {
   });
 
   main.appendChild(backButton);
-}*/
+} */
 
 function renderRankingTable() {
   const main = document.querySelector('main');
