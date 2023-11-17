@@ -15,7 +15,7 @@ const HomePage = () => {
   // Get the main element
   const main = document.querySelector('main');
 
-  // Create a "Play Now" button image element
+  // Create a "Play Now 1" button image element
   const playNowButton = document.createElement('img');
   playNowButton.src = playNowImage; // Set image path
   playNowButton.alt = 'Play Now'; // Set alt text for accessibility
@@ -27,6 +27,19 @@ const HomePage = () => {
     // Redirect to the game page when the button is clicked
     Navigate('/game');
   });
+
+   // Create a "Play Now 1" button image element
+   const playNowButtonEnd = document.createElement('img');
+   playNowButtonEnd.src = playNowImage; // Set image path
+   playNowButtonEnd.alt = 'Play Now'; // Set alt text for accessibility
+   playNowButtonEnd.className = 'play-now-button'; // Apply button styles
+ 
+   // Add cursor style and functionality when clicked
+   playNowButtonEnd.style.cursor = 'pointer';
+   playNowButtonEnd.addEventListener('click', () => {
+     // Redirect to the game page when the button is clicked
+     Navigate('/game');
+   });
 
   // Create an intro container
   const introContainer = document.createElement('div');
@@ -295,7 +308,7 @@ const HomePage = () => {
   endRow5.className = 'row justify-content-center my-3';
   const endCol5 = document.createElement('div');
   endCol5.className = 'text-center';
-  endCol5.appendChild(playNowButton);
+  endCol5.appendChild(playNowButtonEnd);
   endRow5.appendChild(endCol5);
 
   // Append rows to the intro container
