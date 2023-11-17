@@ -31,6 +31,10 @@ import necroRunSpriteSheet from '../../assets/sprites/NecroSprites/NecroRun.png'
 import necroDeathSpriteSheet from '../../assets/sprites/NecroSprites/NecroDeath.png';
 import necroAttackSpriteSheet from '../../assets/sprites/NecroSprites/NecroAttack.png';
 
+// Archer Imports
+import redRunSpriteSheet from '../../assets/sprites/RedSprites/ArcherRun.png';
+
+
 class GameScene extends Phaser.Scene {
   constructor() {
     super('game-scene');
@@ -49,6 +53,13 @@ class GameScene extends Phaser.Scene {
     this.load.image('soundOff', soundOffAsset);
     this.load.audio('theme', music);
     
+    // Archer Loads
+
+    this.load.spritesheet('ArcherRun', redRunSpriteSheet, {
+      frameWidth: 112,
+      frameHeight: 152,
+    });
+
 
     // Necro Loads
     this.load.spritesheet('NecroAttack', necroAttackSpriteSheet, {
@@ -119,6 +130,16 @@ class GameScene extends Phaser.Scene {
     createPlayerBase(this);
 
   // Base Animation Creation
+// Archer Creates
+// Archer Run Animation Creation
+this.anims.create({
+  key: 'RedRun',
+  frames: this.anims.generateFrameNumbers('ArcherRun', { start: 0, end: 12 }),
+  frameRate: 15,
+  repeat: -1,
+});
+const ar = this.add.sprite(600, 400, 'ArcherRun');
+ar.play('RedRun').setDepth(1);
 
 // Necro Creates
 // Necro Attack Animation Creation
@@ -150,7 +171,9 @@ nc2.play('NecDeath').setDepth(1);
 
 const nc3 = this.add.sprite(550, 300, 'NecroAttack');
 nc3.play('NecAttack').setDepth(1);
-  // Knight Creates
+
+
+// Knight Creates
 // Knight Attack Animation Creation
 this.anims.create({
   key: 'KnighAttack',
