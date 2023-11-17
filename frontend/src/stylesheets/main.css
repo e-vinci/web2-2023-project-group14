@@ -9,7 +9,7 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  color: #3e2723;
+  color: #ffffff;
   font-family: 'Tahoma';
 }
 
@@ -20,7 +20,7 @@
 }
 
 .card-color {
-  background-color: #929292cd;
+  background-color: #b2b2b2cd;
 }
 
 /* Charachters cards */
@@ -58,4 +58,67 @@
   border-width: 3px;
   border-color: rgb(230, 0, 230);
   max-width: 18rem;
+}
+
+/* borders main page */
+.border-archermain {
+  border-width: 3px;
+  border-color: red;
+}
+
+.border-bot-main {
+  border-width: 3px;
+  border-color: white;
+}
+
+.border-knight-main {
+  border-width: 3px;
+  border-color: yellow;
+}
+
+.border-necro-main {
+  border-width: 3px;
+  border-color: black;
+}
+
+.border-warrior-main {
+  border-width: 3px;
+  border-color: rgb(230, 0, 230);
+}
+
+.title-main-h1 {
+  margin-top: 30px;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-style: italic;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  padding-bottom: 5px;
+}
+
+.title-main-h2 {
+  margin-top: 15px;
+  font-style: italic;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  padding-top: 2px;
+  padding-bottom: 5px;
+}
+
+.textContent {
+  color: black;
+  background-color: #b2b2b2cd;
+  border-radius: 10px;
+  text-indent: 25px;
+}
+
+.accordion {
+  --bs-accordion-color: black;
+  --bs-accordion-btn-bg: #7e7e7e;
+  --bs-accordion-active-bg: #7e7e7e;
+  --bs-accordion-active-color: rgb(255, 255, 255);
+  --bs-accordion-bg: #ffffff1f;
+  --bs-accordion-btn-focus-box-shadow: none;
 }

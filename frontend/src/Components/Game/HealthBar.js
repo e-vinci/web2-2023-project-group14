@@ -4,11 +4,11 @@ export default class HealthBar extends Phaser.GameObjects.Graphics {
   constructor(scene, x, y, health) {
     super(scene, x, y, health);
     this.health = health;
-    this.maxWidth = 50; 
+    this.maxWidth = 50;
 
     this.draw();
     scene.add.existing(this);
-}
+  }
 
   setHealth(health) {
     this.health = health;
@@ -19,7 +19,7 @@ export default class HealthBar extends Phaser.GameObjects.Graphics {
   draw() {
     // Dessiner la barre de vie en fonction de la santé actuelle
     const barWidth = (this.health / 100) * this.maxWidth;
-    this.clear();  // clear the graphics object
+    this.clear(); // clear the graphics object
     this.fillStyle(0x00ff00); // Couleur verte
     this.fillRect(0, 0, barWidth, 5); // Dessiner la barre de vie
   }
