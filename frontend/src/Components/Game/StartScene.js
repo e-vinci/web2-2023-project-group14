@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 import logoAsset from '../../assets/ARMADA_ASSAULT_LOGO_TEXT_NOBACKGROUND.png';
 import backgroundAsset from '../../assets/start_background2.png';
-import musicAsset from '../../assets/audio/theme_musics/Fission.mp3'
+import musicAsset from '../../assets/audio/theme_musics/Fission.mp3';
 
 export default class StartUI extends Phaser.Scene {
   constructor() {
@@ -15,10 +15,9 @@ export default class StartUI extends Phaser.Scene {
   }
 
   create() {
-
     const themeSong = this.sound.add('musicStartScene');
     themeSong.setVolume(0.3);
-    themeSong.play({loop: true});
+    themeSong.play({ loop: true });
 
     // Add the background image and set darker tint
     const background = this.add
@@ -82,10 +81,9 @@ export default class StartUI extends Phaser.Scene {
       instructionText.setColor('#ffffff');
     });
     instructionText.on('pointerdown', () => {
-      if (this.scene.get('instruction-scene') === undefined){
-        this.scene.start('instruction-scene')
-      }else
-      this.scene.switch('instruction-scene');
+      if (this.scene.get('instruction-scene') === undefined) {
+        this.scene.start('instruction-scene');
+      } else this.scene.switch('instruction-scene');
     });
 
     // Add pulsating effect to the logo
