@@ -21,6 +21,11 @@ import extMoveSpriteSheet from '../../assets/sprites/ExterminatorSprites/EXTmove
 import extDeathSpriteSheet from '../../assets/sprites/ExterminatorSprites/EXTdeath.png';
 import extAttackSpriteSheet from '../../assets/sprites/ExterminatorSprites/EXTattack.png';
 
+// Knight Imports
+import knightRunSpriteSheet from '../../assets/sprites/KnightSprites/KnightRun.png';
+import knightAttackSpriteSheet from '../../assets/sprites/KnightSprites/KnightAttack.png';
+import knightDeathSpriteSheet from '../../assets/sprites/KnightSprites/KnightDeath.png';
+
 class GameScene extends Phaser.Scene {
   constructor() {
     super('game-scene');
@@ -39,8 +44,19 @@ class GameScene extends Phaser.Scene {
     this.load.image('soundOff', soundOffAsset);
     this.load.audio('theme', music);
 
-    
-
+    // Knight Loads
+    this.load.spritesheet('KnightAttack', knightAttackSpriteSheet, {
+      frameWidth: 288,
+      frameHeight: 128,
+    });
+    this.load.spritesheet('KnightRun', knightRunSpriteSheet, {
+      frameWidth: 288,
+      frameHeight: 124,
+    });
+    this.load.spritesheet('KnightDeath', knightDeathSpriteSheet, {
+      frameWidth: 288,
+      frameHeight: 80,
+    });
     // Warrior Loads
     this.load.spritesheet('NightBorneRun', warriorRunSpriteSheet, {
       frameWidth: 80,
@@ -81,9 +97,39 @@ class GameScene extends Phaser.Scene {
 
     createPlayerBase(this);
 
-    // Base Animation Creation
+  // Base Animation Creation
 
-   
+  // Knight Creates
+// Knight Attack Animation Creation
+this.anims.create({
+  key: 'KnighAttack',
+  frames: this.anims.generateFrameNumbers('KnightAttack', { start: 0, end: 17 }),
+  frameRate: 14,
+  repeat: -1,
+});
+  // Knight Run Animation Creation
+   this.anims.create({
+    key: 'KnighRun',
+    frames: this.anims.generateFrameNumbers('KnightRun', { start: 0, end: 8 }),
+    frameRate: 10,
+    repeat: -1,
+  });
+
+  // Knight Run Animation Creation
+  this.anims.create({
+    key: 'KnighDeath',
+    frames: this.anims.generateFrameNumbers('KnightDeath', { start: 0, end: 12 }),
+    frameRate: 10,
+    repeat: -1,
+  });
+  const kn = this.add.sprite(300, 200, 'KnightRun');
+  kn.play('KnighRun').setDepth(1);
+
+  const kn2 = this.add.sprite(360, 200, 'KnightAttack');
+  kn2.play('KnighAttack').setDepth(1);
+  
+  const kn3 = this.add.sprite(450, 200, 'KnightDeath');
+  kn3.play('KnighDeath').setDepth(1);
 
     // Warrior Creates
 
