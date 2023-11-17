@@ -6,7 +6,7 @@ import soundOffAsset from '../../assets/soundOff.png';
 import backgroundGameAsset from '../../assets/background.png';
 import hudAsset from '../../assets/armadaHUD.png';
 import { createCards, preloadCards } from './CardCreator';
-import Player from './Player'; 
+import Player from './Player';
 import baseSpriteSheet from '../../assets/playerBase.png';
 import PlayerBase, { createPlayerBase, preloadPlayerBase } from './PlayerBase';
 
@@ -38,8 +38,6 @@ class GameScene extends Phaser.Scene {
     this.load.image('soundOn', soundOnAsset);
     this.load.image('soundOff', soundOffAsset);
     this.load.audio('theme', music);
-
-    
 
     // Warrior Loads
     this.load.spritesheet('NightBorneRun', warriorRunSpriteSheet, {
@@ -83,8 +81,6 @@ class GameScene extends Phaser.Scene {
 
     // Base Animation Creation
 
-   
-
     // Warrior Creates
 
     // Warrior Run Animation Creation
@@ -94,8 +90,6 @@ class GameScene extends Phaser.Scene {
       frameRate: 10,
       repeat: -1,
     });
-
-   
 
     // Warrior Hit Animation Creation
     this.anims.create({
@@ -191,7 +185,7 @@ class GameScene extends Phaser.Scene {
     // Add sound toggle button
     const musicT = this.sound.add('theme');
     musicT.setVolume(0.2);
-    musicT.play({loop : true});
+    musicT.play({ loop: true });
     this.soundButton = this.add
       .image(this.sys.game.config.width - 30, 450, this.soundOn ? 'soundOn' : 'soundOff')
       .setDepth(1);
@@ -204,32 +198,30 @@ class GameScene extends Phaser.Scene {
       this.soundButton.setScale(1);
     });
 
-
     // Dev button to go to the end scene (to be delted later in developement)
     const goToEndSceneButton = this.add
-    .text(400, 450, 'Dev: go to end scene', { font: '24px Arial', fill: '#ffffff' })
-    .setDepth(1);
-  goToEndSceneButton.setInteractive();
+      .text(400, 450, 'Dev: go to end scene', { font: '24px Arial', fill: '#ffffff' })
+      .setDepth(1);
+    goToEndSceneButton.setInteractive();
 
-  goToEndSceneButton.on('pointerover', () => {
-    goToEndSceneButton.setFontSize(30);
-    goToEndSceneButton.setColor('#ffff99');
-    goToEndSceneButton.setX(400);
-    goToEndSceneButton.setY(445);
-  });
-  goToEndSceneButton.on('pointerout', () => {
-    goToEndSceneButton.setFontSize(24);
-    goToEndSceneButton.setColor('#ffffff');
-    goToEndSceneButton.setX(400);
-    goToEndSceneButton.setY(450);
-  });
-  goToEndSceneButton.on('pointerdown', () => {
-    this.game.winner = this.player1;
-    this.sound.stopAll();
-    this.scene.stop('game-scene');
-    this.scene.switch('end-scene');
-  });
-
+    goToEndSceneButton.on('pointerover', () => {
+      goToEndSceneButton.setFontSize(30);
+      goToEndSceneButton.setColor('#ffff99');
+      goToEndSceneButton.setX(400);
+      goToEndSceneButton.setY(445);
+    });
+    goToEndSceneButton.on('pointerout', () => {
+      goToEndSceneButton.setFontSize(24);
+      goToEndSceneButton.setColor('#ffffff');
+      goToEndSceneButton.setX(400);
+      goToEndSceneButton.setY(450);
+    });
+    goToEndSceneButton.on('pointerdown', () => {
+      this.game.winner = this.player1;
+      this.sound.stopAll();
+      this.scene.stop('game-scene');
+      this.scene.switch('end-scene');
+    });
 
     // Add pause button
     const pauseButton = this.add

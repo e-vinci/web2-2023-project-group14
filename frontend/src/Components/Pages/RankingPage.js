@@ -5,7 +5,7 @@ const RankingPage = () => {
   renderRankingTable();
 };
 
-  /* function renderGoBackHomeButton() {
+/* function renderGoBackHomeButton() {
   const main = document.querySelector('main');
   const backButton = document.createElement('input');
   backButton.value = 'Go back to HomePage';
@@ -28,7 +28,7 @@ function renderRankingTable() {
   const headers = ['Rank', 'Player', 'Wins'];
   const headerRow = document.createElement('tr');
 
-  headers.forEach(headerText => {
+  headers.forEach((headerText) => {
     const th = document.createElement('th');
     th.textContent = headerText;
     headerRow.appendChild(th);
@@ -44,9 +44,9 @@ function renderRankingTable() {
   ];
 
   // Create table rows with ranking data
-  rankingData.forEach(data => {
+  rankingData.forEach((data) => {
     const row = document.createElement('tr');
-    Object.values(data).forEach(value => {
+    Object.values(data).forEach((value) => {
       const td = document.createElement('td');
       td.textContent = value;
       row.appendChild(td);

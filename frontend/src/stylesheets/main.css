@@ -92,7 +92,7 @@
   padding-right: 5px;
   font-style: italic;
   font-weight: bold;
-  background-color:  rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.7);
   border-radius: 10px;
   padding-bottom: 5px;
 }
@@ -101,7 +101,7 @@
   margin-top: 15px;
   font-style: italic;
   font-weight: bold;
-  background-color:  rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.7);
   border-radius: 10px;
   padding-top: 2px;
   padding-bottom: 5px;
@@ -115,11 +115,10 @@
 }
 
 .accordion {
-  --bs-accordion-color: black;    
-  --bs-accordion-btn-bg:#7e7e7e;  
+  --bs-accordion-color: black;
+  --bs-accordion-btn-bg: #7e7e7e;
   --bs-accordion-active-bg: #7e7e7e;
   --bs-accordion-active-color: rgb(255, 255, 255);
   --bs-accordion-bg: #ffffff1f;
   --bs-accordion-btn-focus-box-shadow: none;
-  
 }

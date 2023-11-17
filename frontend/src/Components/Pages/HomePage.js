@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 // Import necessary dependencies
 import Navigate from '../Router/Navigate';
 import { clearPage } from '../../utils/render';
@@ -49,7 +48,8 @@ const HomePage = () => {
   const introCol2 = document.createElement('div');
   introCol2.className = 'col-md-7';
   const introText1 = document.createElement('p');
-  introText1.textContent = 'Step into a world where bravery meets darkness, valor confronts malevolence, and mysteries await your discovery. Before diving into the adventure, immerse yourself in the captivating lore that defines our fantastical realm.';
+  introText1.textContent =
+    'Step into a world where bravery meets darkness, valor confronts malevolence, and mysteries await your discovery. Before diving into the adventure, immerse yourself in the captivating lore that defines our fantastical realm.';
   introText1.className = 'textContent px-2';
   introCol2.appendChild(introText1);
   introRow2.appendChild(introCol2);
@@ -70,7 +70,8 @@ const HomePage = () => {
   const introCol4 = document.createElement('div');
   introCol4.className = 'col-md-7';
   const introText2 = document.createElement('p');
-  introText2.textContent = 'Engage with the enigmatic tales of heroes and villains, where each character bears a unique story waiting to be unraveled. Explore their intertwined destinies, a symphony of light and shadow, through the choice of their narratives before you start your own saga.';
+  introText2.textContent =
+    'Engage with the enigmatic tales of heroes and villains, where each character bears a unique story waiting to be unraveled. Explore their intertwined destinies, a symphony of light and shadow, through the choice of their narratives before you start your own saga.';
   introText2.className = 'px-2 textContent';
   introCol4.appendChild(introText2);
   introRow4.appendChild(introCol4);
@@ -104,7 +105,7 @@ const HomePage = () => {
   <p>As fate wove their destinies together, these disparate figures found themselves entwined in a dance of opposing forces. The Archer's resolve clashed with the Necromancer's dark influence, while the Knight's valor stood against the Warrior's malevolence. The Exterminator, a silent witness, stood vigilant amidst the clash, a beacon of justice amidst the chaos.</p>
   <p>Their intertwined stories, a symphony of light and shadow, bravery and malevolence, painted the canvas of this fantastical world, a tale waiting to be unfurled, inviting explorers to delve into the depths of mystery, courage, and the eternal struggle between darkness and light.</p>
   `;
-  
+
   const accordion1 = `<div class="accordion" id="accordionLore">
     <div class="accordion-item">
       <h2 class="accordion-header">
@@ -120,14 +121,14 @@ const HomePage = () => {
     </div>
   </div>
   `;
-  
+
   const introRow7 = document.createElement('div');
   introRow7.className = 'row justify-content-center';
   const introCol7 = document.createElement('div');
   introCol7.className = 'col-md-7';
   const introText3 = document.createElement('div');
   introText3.innerHTML = accordion1;
-  
+
   introText3.className = 'textContent';
   introCol7.appendChild(introText3);
   introRow7.appendChild(introCol7);
@@ -156,7 +157,7 @@ const HomePage = () => {
   // cards content
   const archerCardBodyText = `<p>In the heart of an enigmatic forest, shrouded in the mystery of ancient whispers, there stands a young girl, a figure of both innocence and unwavering courage. Wrapped in a vibrant red hood, she appears almost ethereal against the backdrop of looming trees and the lurking shadows that dance amidst the foliage.</p>
   <p>With every step through this labyrinth of secrets, the girl confronts terrifying creatures, their twisted forms challenging her mettle. Yet, she stands resolute, her bow taut with determination, each arrow fired a testament to her unyielding spirit. Each monstrous adversary becomes a stepping stone, fortifying her resolve and sculpting her into a beacon of bravery in this darkened realm.</p>
-  <p>Her story is not merely one of survival but of transformation, from a solitary figure navigating the unknown to a beacon of hope cutting through the veil of the mysterious forest. Each challenge embraced, each battle won, etches her name into the lore of this surreal world as a true heroine, a young archer of unparalleled strength and unwavering will.</p>`
+  <p>Her story is not merely one of survival but of transformation, from a solitary figure navigating the unknown to a beacon of hope cutting through the veil of the mysterious forest. Each challenge embraced, each battle won, etches her name into the lore of this surreal world as a true heroine, a young archer of unparalleled strength and unwavering will.</p>`;
 
   const extCardBodyText = `<p>Deep within the mist-laden embrace of an ancient forest, an imposing figure stands guard amidst the ominous shadows, a blackened automaton, its metallic frame bearing the scars of time and trials. This solemn guardian, despite its foreboding appearance, is not a harbinger of malevolence but a vigilant protector wielding its weapon not in aggression but in defense.</p>
   <p>Through the veil of fog and uncertainty, this machine holds steadfast, guided by an inner code of righteousness that surpasses its mechanical existence. Its presence is a beacon of justice amid the eerie wilderness, a silent sentinel watching over the enigmatic depths of the forest.</p>
@@ -181,7 +182,7 @@ const HomePage = () => {
     <h5 class="card-title">The Archer</h5>
     <p class="card-text">${archerCardBodyText}</p>
   </div>
-</div>`
+</div>`;
 
   const cardExtContent = `<div class="card my-5 border-bot-main card-color">
   <img src="${extImg.src}" class="card-img-top" alt="Exterminator image artwork">
@@ -189,7 +190,7 @@ const HomePage = () => {
     <h5 class="card-title">The Exterminator</h5>
     <p class="card-text">${extCardBodyText}</p>
   </div>
-  </div>`
+  </div>`;
 
   const cardKnightContent = `<div class="card my-5 border-knight-main card-color">
   <img src="${knightImg.src}" class="card-img-top" alt="knight image artwork">
@@ -197,7 +198,7 @@ const HomePage = () => {
     <h5 class="card-title">The Knight</h5>
     <p class="card-text">${knightCardBodyText}</p>
   </div>
-  </div>`
+  </div>`;
 
   const cardNecroContent = `<div class="card my-5 border-necro-main card-color">
   <img src="${necroImg.src}" class="card-img-top" alt="necro image artwork">
@@ -205,7 +206,7 @@ const HomePage = () => {
     <h5 class="card-title">The Knight</h5>
     <p class="card-text">${necroCardBodyText}</p>
   </div>
-  </div>`
+  </div>`;
 
   const cardWarriorContent = `<div class="card my-5 border-warrior-main card-color">
   <img src="${warriorImg.src}" class="card-img-top" alt="warrior image artwork">
@@ -213,9 +214,8 @@ const HomePage = () => {
     <h5 class="card-title">The Knight</h5>
     <p class="card-text">${warriorCardBodyText}</p>
   </div>
-  </div>`
+  </div>`;
 
-  
   // Fifth Section - "Cards"
   const cardRow1 = document.createElement('div');
   cardRow1.className = 'row justify-content-center';
@@ -239,64 +239,64 @@ const HomePage = () => {
   const cardColWarrior = document.createElement('div');
   cardColWarrior.className = 'col-12 col-sm-6 col-lg-4';
   cardColWarrior.innerHTML = cardWarriorContent;
-  
+
   cardRow1.appendChild(cardColArcher);
   cardRow1.appendChild(cardColExt);
   cardRow1.appendChild(cardColKnight);
   cardRow1.appendChild(cardColNecro);
   cardRow1.appendChild(cardColWarrior);
 
- // Sixth Section - "Before ending"
-const endRow1 = document.createElement('div');
-endRow1.className = 'row justify-content-center';
-const endCol1 = document.createElement('div');
-endCol1.className = 'col-md-7 text-center';
-const endTitle1 = document.createElement('h2');
-endTitle1.textContent = 'Forge Your Legend';
-endTitle1.className = 'title-main-h2';
-endCol1.appendChild(endTitle1);
-endRow1.appendChild(endCol1);
+  // Sixth Section - "Before ending"
+  const endRow1 = document.createElement('div');
+  endRow1.className = 'row justify-content-center';
+  const endCol1 = document.createElement('div');
+  endCol1.className = 'col-md-7 text-center';
+  const endTitle1 = document.createElement('h2');
+  endTitle1.textContent = 'Forge Your Legend';
+  endTitle1.className = 'title-main-h2';
+  endCol1.appendChild(endTitle1);
+  endRow1.appendChild(endCol1);
 
-const endRow2 = document.createElement('div');
-endRow2.className = 'row justify-content-center';
-const endCol2 = document.createElement('div');
-endCol2.className = 'col-md-7';
-const endText2 = document.createElement('p');
-endText2.textContent = "Now that you've delved into the rich lore and intricacies of our world, the stage is set for you to become a part of this enthralling tale. Embrace your destiny, choose your character, and step forth into this surreal landscape. Will you uphold the virtues of courage and honor, or shall you succumb to the temptations of darkness? Your legend awaits your creation.";
-endText2.className = 'px-2 textContent';
-endCol2.appendChild(endText2);
-endRow2.appendChild(endCol2);
+  const endRow2 = document.createElement('div');
+  endRow2.className = 'row justify-content-center';
+  const endCol2 = document.createElement('div');
+  endCol2.className = 'col-md-7';
+  const endText2 = document.createElement('p');
+  endText2.textContent =
+    "Now that you've delved into the rich lore and intricacies of our world, the stage is set for you to become a part of this enthralling tale. Embrace your destiny, choose your character, and step forth into this surreal landscape. Will you uphold the virtues of courage and honor, or shall you succumb to the temptations of darkness? Your legend awaits your creation.";
+  endText2.className = 'px-2 textContent';
+  endCol2.appendChild(endText2);
+  endRow2.appendChild(endCol2);
 
- // Seventh Section - "Ending"
- const endRow3 = document.createElement('div');
- endRow3.className = 'row justify-content-center';
- const endCol3 = document.createElement('div');
- endCol3.className = 'col-md-7 text-center';
- const endTitle2 = document.createElement('h2');
- endTitle2.textContent = 'Begin Your Adventure';
- endTitle2.className = 'title-main-h2';
- endCol3.appendChild(endTitle2);
- endRow3.appendChild(endCol3);
- 
- const endRow4 = document.createElement('div');
- endRow4.className = 'row justify-content-center';
- const endCol4 = document.createElement('div');
- endCol4.className = 'col-md-7';
- const endText4 = document.createElement('p');
- endText4.textContent = "Click the play button and immerse yourself in an experience unlike any other. Embark on a journey where every decision shapes your path, where the clash of opposing forces creates an unforgettable adventure. Join us and make your mark in this tapestry of bravery and malevolence.";
- endText4.className = 'px-2 textContent';
- endCol4.appendChild(endText4);
- endRow4.appendChild(endCol4);
+  // Seventh Section - "Ending"
+  const endRow3 = document.createElement('div');
+  endRow3.className = 'row justify-content-center';
+  const endCol3 = document.createElement('div');
+  endCol3.className = 'col-md-7 text-center';
+  const endTitle2 = document.createElement('h2');
+  endTitle2.textContent = 'Begin Your Adventure';
+  endTitle2.className = 'title-main-h2';
+  endCol3.appendChild(endTitle2);
+  endRow3.appendChild(endCol3);
 
- // Eigth Section - "Play Now" button at the end
-const endRow5 = document.createElement('div');
-endRow5.className = 'row justify-content-center my-3';
-const endCol5 = document.createElement('div');
-endCol5.className = 'text-center';
-endCol5.appendChild(playNowButton);
-endRow5.appendChild(endCol5);
+  const endRow4 = document.createElement('div');
+  endRow4.className = 'row justify-content-center';
+  const endCol4 = document.createElement('div');
+  endCol4.className = 'col-md-7';
+  const endText4 = document.createElement('p');
+  endText4.textContent =
+    'Click the play button and immerse yourself in an experience unlike any other. Embark on a journey where every decision shapes your path, where the clash of opposing forces creates an unforgettable adventure. Join us and make your mark in this tapestry of bravery and malevolence.';
+  endText4.className = 'px-2 textContent';
+  endCol4.appendChild(endText4);
+  endRow4.appendChild(endCol4);
 
-
+  // Eigth Section - "Play Now" button at the end
+  const endRow5 = document.createElement('div');
+  endRow5.className = 'row justify-content-center my-3';
+  const endCol5 = document.createElement('div');
+  endCol5.className = 'text-center';
+  endCol5.appendChild(playNowButton);
+  endRow5.appendChild(endCol5);
 
   // Append rows to the intro container
   introContainer.appendChild(introRow1);

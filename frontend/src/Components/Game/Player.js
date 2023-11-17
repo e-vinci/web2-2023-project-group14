@@ -11,7 +11,7 @@ class Player {
 
   health;
 
-  haveLost=false;
+  haveLost = false;
 
   constructor(playerName) {
     this.golds = Player.DEFAULT_GOLDS;
@@ -25,10 +25,10 @@ class Player {
   }
 
   playerIsDead() {
-    if (this.health <= 0){
-      this.haveLost=true;
+    if (this.health <= 0) {
+      this.haveLost = true;
       return true;
-    } 
+    }
     return false;
   }
 }

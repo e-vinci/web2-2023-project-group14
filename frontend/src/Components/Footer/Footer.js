@@ -2,7 +2,7 @@ const Footer = () => {
   renderFooter();
 };
 
-function renderFooter(){
+function renderFooter() {
   const footer = document.querySelector('footer');
   footer.innerHTML = `<div class="row">
     <div class="col footerColor py-3 text-center">
@@ -10,6 +10,6 @@ function renderFooter(){
       Beckman.
     </div>
   </div>`;
-};
+}
 
 export default Footer;
