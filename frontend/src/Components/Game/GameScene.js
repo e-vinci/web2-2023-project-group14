@@ -26,6 +26,11 @@ import knightRunSpriteSheet from '../../assets/sprites/KnightSprites/KnightRun.p
 import knightAttackSpriteSheet from '../../assets/sprites/KnightSprites/KnightAttack.png';
 import knightDeathSpriteSheet from '../../assets/sprites/KnightSprites/KnightDeath.png';
 
+// Necro Imports
+import necroRunSpriteSheet from '../../assets/sprites/NecroSprites/NecroRun.png';
+import necroDeathSpriteSheet from '../../assets/sprites/NecroSprites/NecroDeath.png';
+import necroAttackSpriteSheet from '../../assets/sprites/NecroSprites/NecroAttack.png';
+
 class GameScene extends Phaser.Scene {
   constructor() {
     super('game-scene');
@@ -43,6 +48,21 @@ class GameScene extends Phaser.Scene {
     this.load.image('soundOn', soundOnAsset);
     this.load.image('soundOff', soundOffAsset);
     this.load.audio('theme', music);
+    
+
+    // Necro Loads
+    this.load.spritesheet('NecroAttack', necroAttackSpriteSheet, {
+      frameWidth: 160,
+      frameHeight: 103,
+    });
+    this.load.spritesheet('NecroRun', necroRunSpriteSheet, {
+      frameWidth: 160,
+      frameHeight: 103,
+    });
+    this.load.spritesheet('NecroDeath', necroDeathSpriteSheet, {
+      frameWidth: 160,
+      frameHeight: 103,
+    });
 
     // Knight Loads
     this.load.spritesheet('KnightAttack', knightAttackSpriteSheet, {
@@ -57,6 +77,7 @@ class GameScene extends Phaser.Scene {
       frameWidth: 288,
       frameHeight: 80,
     });
+
     // Warrior Loads
     this.load.spritesheet('NightBorneRun', warriorRunSpriteSheet, {
       frameWidth: 80,
@@ -99,6 +120,36 @@ class GameScene extends Phaser.Scene {
 
   // Base Animation Creation
 
+// Necro Creates
+// Necro Attack Animation Creation
+this.anims.create({
+  key: 'NecAttack',
+  frames: this.anims.generateFrameNumbers('NecroAttack', { start: 0, end: 12 }),
+  frameRate: 7,
+  repeat: -1,
+});
+// Necro Death Animation Creation
+this.anims.create({
+  key: 'NecDeath',
+  frames: this.anims.generateFrameNumbers('NecroDeath', { start: 0, end: 8 }),
+  frameRate: 7,
+  repeat: -1,
+});
+// Necro Run Animation Creation
+this.anims.create({
+  key: 'NecRun',
+  frames: this.anims.generateFrameNumbers('NecroRun', { start: 0, end: 7 }),
+  frameRate: 7,
+  repeat: -1,
+});
+const nc = this.add.sprite(450, 300, 'NecroRun');
+nc.play('NecRun').setDepth(1);
+
+const nc2 = this.add.sprite(500, 300, 'NecroDeath');
+nc2.play('NecDeath').setDepth(1);
+
+const nc3 = this.add.sprite(550, 300, 'NecroAttack');
+nc3.play('NecAttack').setDepth(1);
   // Knight Creates
 // Knight Attack Animation Creation
 this.anims.create({
