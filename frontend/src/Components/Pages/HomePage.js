@@ -189,7 +189,7 @@ const HomePage = () => {
 
   // Fourth Section - "Lore story"
   const introRow6 = document.createElement('div');
-  introRow6.className = 'row justify-content-center appears';
+  introRow6.className = 'row justify-content-center appearsDelay';
   const introCol6 = document.createElement('div');
   introCol6.className = 'col-md-7 text-center';
   const introTitle3 = document.createElement('h2');
@@ -226,7 +226,7 @@ const HomePage = () => {
   `;
 
   const introRow7 = document.createElement('div');
-  introRow7.className = 'row justify-content-center appears';
+  introRow7.className = 'row justify-content-center appearsDelay';
   const introCol7 = document.createElement('div');
   introCol7.className = 'col-md-7';
   const introText3 = document.createElement('div');
@@ -236,19 +236,31 @@ const HomePage = () => {
   introCol7.appendChild(introText3);
   introRow7.appendChild(introCol7);
 
-  // Animation third and fourth section - Appears
+  // Animation - Appears
   setTimeout(() => {
     const appears1 = document.getElementsByClassName('appears');
   
     // Animation to slide in and fade in
     anime({
       targets: appears1,
-      translateX: '0',
       opacity: 1,
       duration: 2000,
       easing: 'easeInOutQuad',
     });
-  }, 4000); // Delay the animation for 1 second (1000 milliseconds)
+  }, 4000);
+
+  // Animation - Appears
+  setTimeout(() => {
+    const appearsDelay = document.getElementsByClassName('appearsDelay');
+  
+    // Animation to slide in and fade in
+    anime({
+      targets: appearsDelay,
+      opacity: 1,
+      duration: 2000,
+      easing: 'easeInOutQuad',
+    });
+  }, 6000);
 
   // cards imports
   const archerImg = document.createElement('img');
@@ -335,7 +347,7 @@ const HomePage = () => {
 
   // Fifth Section - "Cards"
   const cardRow1 = document.createElement('div');
-  cardRow1.className = 'row justify-content-center appears';
+  cardRow1.className = 'row justify-content-center appearsDelay';
 
   const cardColArcher = document.createElement('div');
   cardColArcher.className = 'col-12 col-sm-6 col-lg-4';
@@ -365,7 +377,7 @@ const HomePage = () => {
 
   // Sixth Section - "Before ending"
   const endRow1 = document.createElement('div');
-  endRow1.className = 'row justify-content-center appears';
+  endRow1.className = 'row justify-content-center appearsDelay';
   const endCol1 = document.createElement('div');
   endCol1.className = 'col-md-7 text-center';
   const endTitle1 = document.createElement('h2');
@@ -375,7 +387,7 @@ const HomePage = () => {
   endRow1.appendChild(endCol1);
 
   const endRow2 = document.createElement('div');
-  endRow2.className = 'row justify-content-center appears';
+  endRow2.className = 'row justify-content-center appearsDelay';
   const endCol2 = document.createElement('div');
   endCol2.className = 'col-md-7';
   const endText2 = document.createElement('p');
@@ -387,7 +399,7 @@ const HomePage = () => {
 
   // Seventh Section - "Ending"
   const endRow3 = document.createElement('div');
-  endRow3.className = 'row justify-content-center appears';
+  endRow3.className = 'row justify-content-center appearsDelay';
   const endCol3 = document.createElement('div');
   endCol3.className = 'col-md-7 text-center';
   const endTitle2 = document.createElement('h2');
@@ -397,7 +409,7 @@ const HomePage = () => {
   endRow3.appendChild(endCol3);
 
   const endRow4 = document.createElement('div');
-  endRow4.className = 'row justify-content-center appears';
+  endRow4.className = 'row justify-content-center appearsDelay';
   const endCol4 = document.createElement('div');
   endCol4.className = 'col-md-7';
   const endText4 = document.createElement('p');
@@ -409,7 +421,7 @@ const HomePage = () => {
 
   // Eigth Section - "Play Now" button at the end
   const endRow5 = document.createElement('div');
-  endRow5.className = 'row justify-content-center my-3 appears';
+  endRow5.className = 'row justify-content-center my-3 appearsDelay';
   const endCol5 = document.createElement('div');
   endCol5.className = 'text-center';
   endCol5.appendChild(playNowButtonEnd);
