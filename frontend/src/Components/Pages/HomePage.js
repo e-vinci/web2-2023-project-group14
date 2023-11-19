@@ -1,4 +1,6 @@
+/* eslint-disable no-unused-vars */
 // Import necessary dependencies
+import anime from 'animejs/lib/anime.es';
 import Navigate from '../Router/Navigate';
 import { clearPage } from '../../utils/render';
 import playNowImage from '../../assets/PlayNow.png';
@@ -47,7 +49,7 @@ const HomePage = () => {
 
   // First Section - Title and Description
   const introRow1 = document.createElement('div');
-  introRow1.className = 'row justify-content-center';
+  introRow1.className = 'row justify-content-center slide1 slide_Initial_Position_Left';
   const introCol1 = document.createElement('div');
   introCol1.className = 'col-md-7 text-center';
   const introTitle1 = document.createElement('h1');
@@ -57,7 +59,7 @@ const HomePage = () => {
   introRow1.appendChild(introCol1);
 
   const introRow2 = document.createElement('div');
-  introRow2.className = 'row justify-content-center';
+  introRow2.className = 'row justify-content-center slide2 slide_Initial_Position_Left';
   const introCol2 = document.createElement('div');
   introCol2.className = 'col-md-7';
   const introText1 = document.createElement('p');
@@ -67,9 +69,53 @@ const HomePage = () => {
   introCol2.appendChild(introText1);
   introRow2.appendChild(introCol2);
 
+  // Animation first section - Row 1 - Slide form left to right
+  setTimeout(() => {
+    const slide1 = document.getElementsByClassName('slide1');
+
+    // Set initial properties for the off-screen position
+    anime({
+      targets: slide1,
+      translateX: '-100%',
+      opacity: 0,
+      duration: 0,
+    });
+  
+    // Animation to slide in and fade in
+    anime({
+      targets: slide1,
+      translateX: '0',
+      opacity: 1,
+      duration: 1500,
+      easing: 'easeInOutQuad',
+    });
+  }, 0); // Delay the animation for 1 second (1000 milliseconds)
+
+  // Animation first section - Row 2 - Slide form left to right
+  setTimeout(() => {
+    const slide2 = document.getElementsByClassName('slide2');
+
+    // Set initial properties for the off-screen position
+    anime({
+      targets: slide2,
+      translateX: '-100%',
+      opacity: 0,
+      duration: 0,
+    });
+  
+    // Animation to slide in and fade in
+    anime({
+      targets: slide2,
+      translateX: '0',
+      opacity: 1,
+      duration: 1500,
+      easing: 'easeInOutQuad',
+    });
+  }, 500); // Delay the animation for 1 second (1000 milliseconds)
+
   // Second Section - Title and Description
   const introRow3 = document.createElement('div');
-  introRow3.className = 'row justify-content-center';
+  introRow3.className = 'row justify-content-center slide3 slide_Initial_Position_Right';
   const introCol3 = document.createElement('div');
   introCol3.className = 'col-md-7 text-center';
   const introTitle2 = document.createElement('h2');
@@ -79,7 +125,7 @@ const HomePage = () => {
   introRow3.appendChild(introCol3);
 
   const introRow4 = document.createElement('div');
-  introRow4.className = 'row justify-content-center';
+  introRow4.className = 'row justify-content-center slide4 slide_Initial_Position_Right';
   const introCol4 = document.createElement('div');
   introCol4.className = 'col-md-7';
   const introText2 = document.createElement('p');
@@ -89,9 +135,53 @@ const HomePage = () => {
   introCol4.appendChild(introText2);
   introRow4.appendChild(introCol4);
 
+   // Animation second section - Row 3 - Slide form right to left
+   setTimeout(() => {
+    const slide3 = document.getElementsByClassName('slide3');
+
+    // Set initial properties for the off-screen position
+    anime({
+      targets: slide3,
+      translateX: '100%',
+      opacity: 0,
+      duration: 0,
+    });
+  
+    // Animation to slide in and fade in
+    anime({
+      targets: slide3,
+      translateX: '0',
+      opacity: 1,
+      duration: 1500,
+      easing: 'easeInOutQuad',
+    });
+  }, 1500); // Delay the animation for 1 second (1000 milliseconds)
+
+  // Animation first section - Row 2 - Slide form left to right
+  setTimeout(() => {
+    const slide4 = document.getElementsByClassName('slide4');
+
+    // Set initial properties for the off-screen position
+    anime({
+      targets: slide4,
+      translateX: '100%',
+      opacity: 0,
+      duration: 0,
+    });
+  
+    // Animation to slide in and fade in
+    anime({
+      targets: slide4,
+      translateX: '0',
+      opacity: 1,
+      duration: 1500,
+      easing: 'easeInOutQuad',
+    });
+  }, 2000); // Delay the animation for 1 second (1000 milliseconds)
+
   // Third Section - "Play Now" button
   const introRow5 = document.createElement('div');
-  introRow5.className = 'row justify-content-center';
+  introRow5.className = 'row justify-content-center appears';
   const introCol5 = document.createElement('div');
   introCol5.className = 'text-center';
   introCol5.appendChild(playNowButton);
@@ -99,7 +189,7 @@ const HomePage = () => {
 
   // Fourth Section - "Lore story"
   const introRow6 = document.createElement('div');
-  introRow6.className = 'row justify-content-center';
+  introRow6.className = 'row justify-content-center appears';
   const introCol6 = document.createElement('div');
   introCol6.className = 'col-md-7 text-center';
   const introTitle3 = document.createElement('h2');
@@ -136,7 +226,7 @@ const HomePage = () => {
   `;
 
   const introRow7 = document.createElement('div');
-  introRow7.className = 'row justify-content-center';
+  introRow7.className = 'row justify-content-center appears';
   const introCol7 = document.createElement('div');
   introCol7.className = 'col-md-7';
   const introText3 = document.createElement('div');
@@ -145,6 +235,20 @@ const HomePage = () => {
   introText3.className = 'textContent';
   introCol7.appendChild(introText3);
   introRow7.appendChild(introCol7);
+
+  // Animation third and fourth section - Appears
+  setTimeout(() => {
+    const appears1 = document.getElementsByClassName('appears');
+  
+    // Animation to slide in and fade in
+    anime({
+      targets: appears1,
+      translateX: '0',
+      opacity: 1,
+      duration: 2000,
+      easing: 'easeInOutQuad',
+    });
+  }, 4000); // Delay the animation for 1 second (1000 milliseconds)
 
   // cards imports
   const archerImg = document.createElement('img');
@@ -216,7 +320,7 @@ const HomePage = () => {
   const cardNecroContent = `<div class="card my-5 border-necro-main card-color">
   <img src="${necroImg.src}" class="card-img-top" alt="necro image artwork">
   <div class="card-body">
-    <h5 class="card-title">The Knight</h5>
+    <h5 class="card-title">The Necromancer</h5>
     <p class="card-text">${necroCardBodyText}</p>
   </div>
   </div>`;
@@ -224,14 +328,14 @@ const HomePage = () => {
   const cardWarriorContent = `<div class="card my-5 border-warrior-main card-color">
   <img src="${warriorImg.src}" class="card-img-top" alt="warrior image artwork">
   <div class="card-body">
-    <h5 class="card-title">The Knight</h5>
+    <h5 class="card-title">The Warrior</h5>
     <p class="card-text">${warriorCardBodyText}</p>
   </div>
   </div>`;
 
   // Fifth Section - "Cards"
   const cardRow1 = document.createElement('div');
-  cardRow1.className = 'row justify-content-center';
+  cardRow1.className = 'row justify-content-center appears';
 
   const cardColArcher = document.createElement('div');
   cardColArcher.className = 'col-12 col-sm-6 col-lg-4';
@@ -261,7 +365,7 @@ const HomePage = () => {
 
   // Sixth Section - "Before ending"
   const endRow1 = document.createElement('div');
-  endRow1.className = 'row justify-content-center';
+  endRow1.className = 'row justify-content-center appears';
   const endCol1 = document.createElement('div');
   endCol1.className = 'col-md-7 text-center';
   const endTitle1 = document.createElement('h2');
@@ -271,7 +375,7 @@ const HomePage = () => {
   endRow1.appendChild(endCol1);
 
   const endRow2 = document.createElement('div');
-  endRow2.className = 'row justify-content-center';
+  endRow2.className = 'row justify-content-center appears';
   const endCol2 = document.createElement('div');
   endCol2.className = 'col-md-7';
   const endText2 = document.createElement('p');
@@ -283,7 +387,7 @@ const HomePage = () => {
 
   // Seventh Section - "Ending"
   const endRow3 = document.createElement('div');
-  endRow3.className = 'row justify-content-center';
+  endRow3.className = 'row justify-content-center appears';
   const endCol3 = document.createElement('div');
   endCol3.className = 'col-md-7 text-center';
   const endTitle2 = document.createElement('h2');
@@ -293,7 +397,7 @@ const HomePage = () => {
   endRow3.appendChild(endCol3);
 
   const endRow4 = document.createElement('div');
-  endRow4.className = 'row justify-content-center';
+  endRow4.className = 'row justify-content-center appears';
   const endCol4 = document.createElement('div');
   endCol4.className = 'col-md-7';
   const endText4 = document.createElement('p');
@@ -305,7 +409,7 @@ const HomePage = () => {
 
   // Eigth Section - "Play Now" button at the end
   const endRow5 = document.createElement('div');
-  endRow5.className = 'row justify-content-center my-3';
+  endRow5.className = 'row justify-content-center my-3 appears';
   const endCol5 = document.createElement('div');
   endCol5.className = 'text-center';
   endCol5.appendChild(playNowButtonEnd);
