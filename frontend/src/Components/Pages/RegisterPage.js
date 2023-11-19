@@ -12,9 +12,9 @@ function renderRegisterForm() {
   const registerWrapper = document.createElement('div');
   registerWrapper.className = 'd-flex justify-content-center align-items-center h-75 mt-5 pt-5';
   const formWrapper = document.createElement('div');
-  formWrapper.className = 'container border border-3 border-success rounded-5 w-50';
+  formWrapper.className = 'container border border-3 border-dark rounded-5 w-50 footerColor';
   const formTop = document.createElement('div');
-  formTop.className = 'form-top border-bottom border-2 border-success w-100';
+  formTop.className = 'form-top border-bottom border-2 border-dark w-100';
   const formTopDiv = document.createElement('div');
   const formTopTitle = document.createElement('h1');
   formTopDiv.className = 'text-center p-3 ';
@@ -39,7 +39,7 @@ function renderRegisterForm() {
   username.id = 'username';
   username.placeholder = "nom d'utilisateur";
   username.required = true;
-  username.className = 'form-control mb-3 border border-3 rounded-3 border-success';
+  username.className = 'form-control mb-3 border border-3 rounded-3 border-dark';
 
   const passwordDiv = document.createElement('div');
   passwordDiv.className = 'mb-4 mx-4';
@@ -54,7 +54,7 @@ function renderRegisterForm() {
   password.id = 'password';
   password.required = true;
   password.placeholder = 'mot de passe';
-  password.className = 'form-control mb-3 border border-3 rounded-3 border-success';
+  password.className = 'form-control mb-3 border border-3 rounded-3 border-dark';
 
   const passwordConfDiv = document.createElement('div');
   passwordConfDiv.className = 'mb-4 mx-4';
@@ -69,14 +69,14 @@ function renderRegisterForm() {
   passwordConf.id = 'passwordConf';
   passwordConf.required = true;
   passwordConf.placeholder = 'confirmation de mot de passe';
-  passwordConf.className = 'form-control mb-3 border border-3 rounded-3 border-success';
+  passwordConf.className = 'form-control mb-3 border border-3 rounded-3 border-dark';
 
   const submitDiv = document.createElement('div');
   submitDiv.className = 'text-center mb-4';
   const submit = document.createElement('input');
   submit.value = "S'inscrire";
   submit.type = 'submit';
-  submit.className = 'btn btn-success';
+  submit.className = 'btn btn-dark';
 
   const alreadyAccountDiv = document.createElement('div');
   const alreadyAccountP = document.createElement('p');

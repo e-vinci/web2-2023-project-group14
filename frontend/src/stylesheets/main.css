@@ -122,3 +122,17 @@
   --bs-accordion-bg: #ffffff1f;
   --bs-accordion-btn-focus-box-shadow: none;
 }
+
+.slide_Initial_Position_Left {
+  transform: translateX(-100vw); /* Move the element 100% of the viewport width to the left */
+  /* Additional styles */
+}
+
+.slide_Initial_Position_Right {
+  transform: translateX(+100vw); /* Move the element 100% of the viewport width to the left */
+  /* Additional styles */
+}
+
+.appears {
+  opacity: 0;
+}

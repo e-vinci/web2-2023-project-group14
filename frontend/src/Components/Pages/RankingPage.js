@@ -20,9 +20,13 @@ const RankingPage = () => {
 function renderRankingTable() {
   const main = document.querySelector('main');
 
+  const rankingWrapper = document.createElement('div');
+  rankingWrapper.className = 'd-flex justify-content-center align-items-center mt-5 mb-5';
+
+
   // Assuming you want to create a table, you can use the following example code
   const table = document.createElement('table');
-  table.className = 'ranking-table';
+  table.className = 'ranking-table text-center col-lg-6 border border-3 border-dark footerColor';
 
   // Create table headers
   const headers = ['Rank', 'Player', 'Wins'];
@@ -31,8 +35,10 @@ function renderRankingTable() {
   headers.forEach((headerText) => {
     const th = document.createElement('th');
     th.textContent = headerText;
+    th.className = 'border-bottom border-dark'
     headerRow.appendChild(th);
   });
+
 
   table.appendChild(headerRow);
 
@@ -40,8 +46,11 @@ function renderRankingTable() {
   const rankingData = [
     { rank: 1, player: 'Player 1', wins: 10 },
     { rank: 2, player: 'Player 2', wins: 8 },
+    { rank: 3, player: 'Player 3', wins: 6 },
+
     // Add more rows as needed
   ];
+
 
   // Create table rows with ranking data
   rankingData.forEach((data) => {
@@ -54,7 +63,8 @@ function renderRankingTable() {
     table.appendChild(row);
   });
 
-  main.appendChild(table);
+  rankingWrapper.appendChild(table);
+  main.appendChild(rankingWrapper);
 }
 
 export default RankingPage;
