@@ -89,7 +89,7 @@ const HomePage = () => {
       duration: 1500,
       easing: 'easeInOutQuad',
     });
-  }, 0); // Delay the animation for 1 second (1000 milliseconds)
+  }, 200); 
 
   // Animation first section - Row 2 - Slide form left to right
   setTimeout(() => {
@@ -111,7 +111,7 @@ const HomePage = () => {
       duration: 1500,
       easing: 'easeInOutQuad',
     });
-  }, 500); // Delay the animation for 1 second (1000 milliseconds)
+  }, 700); // Delay the animation for 1 second (1000 milliseconds)
 
   // Second Section - Title and Description
   const introRow3 = document.createElement('div');
@@ -155,7 +155,7 @@ const HomePage = () => {
       duration: 1500,
       easing: 'easeInOutQuad',
     });
-  }, 1500); // Delay the animation for 1 second (1000 milliseconds)
+  }, 2500); // Delay the animation for 1 second (1000 milliseconds)
 
   // Animation first section - Row 2 - Slide form left to right
   setTimeout(() => {
@@ -177,7 +177,7 @@ const HomePage = () => {
       duration: 1500,
       easing: 'easeInOutQuad',
     });
-  }, 2000); // Delay the animation for 1 second (1000 milliseconds)
+  }, 3000); // Delay the animation for 1 second (1000 milliseconds)
 
   // Third Section - "Play Now" button
   const introRow5 = document.createElement('div');
@@ -244,7 +244,7 @@ const HomePage = () => {
     anime({
       targets: appears1,
       opacity: 1,
-      duration: 2000,
+      duration: 1500,
       easing: 'easeInOutQuad',
     });
   }, 4000);
@@ -257,10 +257,10 @@ const HomePage = () => {
     anime({
       targets: appearsDelay,
       opacity: 1,
-      duration: 2000,
+      duration: 1500,
       easing: 'easeInOutQuad',
     });
-  }, 6000);
+  }, 5800);
 
   // cards imports
   const archerImg = document.createElement('img');
