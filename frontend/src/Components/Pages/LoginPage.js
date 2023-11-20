@@ -9,10 +9,13 @@ const LoginPage = () => {
 function renderLoginForm() {
   const main = document.querySelector('main');
   
+  const backgroundDiv = document.createElement('div');
+  backgroundDiv.className = 'h-100 backgroundLogin mt-0 border border-success';
+
   const loginWrapper = document.createElement('div');
-  loginWrapper.className = 'd-flex justify-content-center align-items-center h-75 mt-2 pt-4';
+  loginWrapper.className = 'd-flex justify-content-center align-items-center h-75 pt-5 backgroundLogin';
   const formWrapper = document.createElement('div');
-  formWrapper.className = 'container border border-3 border-dark rounded-5 w-50 footerColor';
+  formWrapper.className = 'container border border-3 border-dark rounded-5 w-50 footerColor formDiv';
   const formTop = document.createElement('div');
   formTop.className = 'form-top border-bottom border-2 border-dark w-100';
   const formTopDiv = document.createElement('div');
@@ -94,7 +97,9 @@ function renderLoginForm() {
 
   loginWrapper.appendChild(formWrapper);
 
-  main.appendChild(loginWrapper);
+  backgroundDiv.appendChild(loginWrapper);
+
+  main.appendChild(backgroundDiv);
 
   submit.addEventListener('click', () => {
     Navigate('/');

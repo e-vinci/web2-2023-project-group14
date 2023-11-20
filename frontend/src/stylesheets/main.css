@@ -165,3 +165,14 @@
 .appearsDelay {
   opacity: 0;
 }
+
+/* LoginPage */
+.backgroundLogin {
+  background-image: url('../assets/site_background/placeHolderBackground.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.formDiv {
+  min-width: 350px;
+}
