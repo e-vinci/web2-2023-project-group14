@@ -360,28 +360,30 @@ const HomePage = () => {
   const cardsContainer = document.createElement('div');
   cardsContainer.className = 'container-fluid secondSection'
 
+  const classNameCards = 'col-12 col-sm-6 col-lg-4 col-xl-3 col-xxl-2'
+
   // Fifth Section - "Cards"
   const cardRow1 = document.createElement('div');
   cardRow1.className = 'row justify-content-center appearsDelay';
 
   const cardColArcher = document.createElement('div');
-  cardColArcher.className = 'col-12 col-sm-6 col-lg-4';
+  cardColArcher.className = classNameCards;
   cardColArcher.innerHTML = cardArcherContent;
 
   const cardColExt = document.createElement('div');
-  cardColExt.className = 'col-12 col-sm-6 col-lg-4';
+  cardColExt.className = classNameCards;
   cardColExt.innerHTML = cardExtContent;
 
   const cardColKnight = document.createElement('div');
-  cardColKnight.className = 'col-12 col-sm-6 col-lg-4';
+  cardColKnight.className = classNameCards;
   cardColKnight.innerHTML = cardKnightContent;
 
   const cardColNecro = document.createElement('div');
-  cardColNecro.className = 'col-12 col-sm-6 col-lg-4';
+  cardColNecro.className = classNameCards;
   cardColNecro.innerHTML = cardNecroContent;
 
   const cardColWarrior = document.createElement('div');
-  cardColWarrior.className = 'col-12 col-sm-6 col-lg-4';
+  cardColWarrior.className = classNameCards;
   cardColWarrior.innerHTML = cardWarriorContent;
 
   cardRow1.appendChild(cardColArcher);
