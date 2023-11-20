@@ -166,7 +166,7 @@
   opacity: 0;
 }
 
-/* LoginPage */
+/* LoginPage - RegisterPage - RankingPage */
 .backgroundLogin {
   background-image: url('../assets/site_background/placeHolderBackground.png');
   background-size: cover;

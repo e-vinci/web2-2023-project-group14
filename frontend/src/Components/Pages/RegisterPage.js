@@ -10,7 +10,7 @@ function renderRegisterForm() {
   const main = document.querySelector('main');
 
   const backgroundDiv = document.createElement('div');
-  backgroundDiv.className = 'h-100 backgroundLogin mt-0';
+  backgroundDiv.className = 'h-100 backgroundLogin';
 
   const registerWrapper = document.createElement('div');
   registerWrapper.className = 'd-flex justify-content-center align-items-center h-75 pt-5 backgroundLogin';
