@@ -4,13 +4,38 @@
   font-family: 'Impact', sans-serif;
 }
 
+.mainText {
+  background-repeat: no-repeat;
+  color: #ffffff;
+  font-family: 'Tahoma';
+}
+
+.firstSection {
+  background-image: url('../assets/site_background/placeHolderBackground2.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.secondSection {
+  background-image: url('../assets/site_background/placeHolderBackground.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.thirdSection {
+  background-image: url('../assets/site_background/OIG.gXgEjGngjB6-transformed.png');
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
+}
+
 .mainColor {
   background-image: url('../assets/site_background/OIG.gXgEjGngjB6-transformed.png');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  color: #ffffff;
-  font-family: 'Tahoma';
 }
 
 .card-container {

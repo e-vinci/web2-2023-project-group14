@@ -8,7 +8,7 @@ const LoginPage = () => {
 
 function renderLoginForm() {
   const main = document.querySelector('main');
-
+  
   const loginWrapper = document.createElement('div');
   loginWrapper.className = 'd-flex justify-content-center align-items-center h-75 mt-2 pt-4';
   const formWrapper = document.createElement('div');
