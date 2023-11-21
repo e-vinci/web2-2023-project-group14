@@ -1,4 +1,3 @@
-import Phaser from 'phaser';
 import baseSpriteSheet from '../../assets/playerBase.png';
 
 export function preloadPlayerBase(scene) {
@@ -25,33 +24,4 @@ export function createPlayerBase(scene) {
   // Ajoutez l'animation flottante à chaque base.
   base1.play('baseFloating').setDepth(1);
   base2.play('baseFloating').setDepth(1);
-}
-
-export default class Base extends Phaser.GameObjects.Container {
-  constructor(scene, x, y, maxHealth) {
-    super(scene, x, y);
-
-    this.baseSprite = scene.add.sprite(0, 0, baseSpriteSheet);
-    this.add(this.baseSprite);
-
-    // Points de vie
-    this.health = maxHealth;
-    this.maxHealth = maxHealth;
-  }
-
-  takeDamage(damage) {
-    this.health -= damage;
-
-    if (this.health < 0) {
-      this.health = 0;
-    }
-  }
-
-  heal(amount) {
-    this.health += amount;
-
-    if (this.health > this.maxHealth) {
-      this.health = this.maxHealth;
-    }
-  }
 }

@@ -1,4 +1,6 @@
 /* eslint-disable no-unused-vars */
+
+// All the imports
 import Phaser from 'phaser';
 import music from '../../assets/audio/theme_musics/C418 - Aria Math.mp3';
 import soundOnAsset from '../../assets/soundOn.png';
@@ -7,8 +9,9 @@ import backgroundGameAsset from '../../assets/background.png';
 import hudAsset from '../../assets/armadaHUD.png';
 import { createCards, preloadCards } from './CardCreator';
 import Player from './Player';
-import baseSpriteSheet from '../../assets/playerBase.png';
-import PlayerBase, { createPlayerBase, preloadPlayerBase } from './PlayerBase';
+import { createPlayerBase, preloadPlayerBase } from './PlayerBase';
+import MobP1Ex from '../../assets/mobPlayer1Ex.png';
+// import KnightSpawn from './KnightSpawn';
 
 // Warrior imports
 import warriorRunSpriteSheet from '../../assets/sprites/NightborneSprites/NightBorneRun.png';
@@ -31,18 +34,37 @@ import necroRunSpriteSheet from '../../assets/sprites/NecroSprites/NecroRun.png'
 import necroDeathSpriteSheet from '../../assets/sprites/NecroSprites/NecroDeath.png';
 import necroAttackSpriteSheet from '../../assets/sprites/NecroSprites/NecroAttack.png';
 
+// All the key 
+const KNIGHT_KEY = 'knight';
+
+// Variables here
+let cursors;
+let player1CharactersGroup;
+let player2CharactersGroup;
+
 class GameScene extends Phaser.Scene {
   constructor() {
     super('game-scene');
     this.soundOn = true;
     this.soundButton = undefined;
-    this.player1 = new Player('player1');
-    this.player2 = new Player('player2');
+    this.player1 = undefined;
+    this.player2 = undefined;
     this.base1 = undefined;
     this.base2 = undefined;
+    this.cursors = undefined;
+    this.player1CharactersGroup = undefined;
+    this.player2CharactersGroup = undefined;
+    // this.KnightSpawn = undefined;
   }
 
+  // Preload
   preload() {
+
+    // TEST FOR EXEMPLE DONT DELETE THIS
+    this.load.image('KNIGHT_KEY', MobP1Ex)
+    // thx
+
+
     this.load.image('backgroundGame', backgroundGameAsset);
     this.load.image('hud', hudAsset);
     this.load.image('soundOn', soundOnAsset);
@@ -116,7 +138,18 @@ class GameScene extends Phaser.Scene {
     // Adding card for the charachters
     createCards(this);
 
+    // Adding Playerbases to the game
     createPlayerBase(this);
+    
+    // Creating players (will need to modify with backend)
+    this.player1= new Player();
+    this.player2= new Player();
+
+    player1CharactersGroup = this.physics.add.group();
+    player2CharactersGroup = this.physics.add.group();
+
+    // Define keybinds
+    cursors = this.input.keyboard.createCursorKeys();
 
   // Base Animation Creation
 
@@ -438,7 +471,11 @@ this.anims.create({
   }
 
   // eslint-disable-next-line class-methods-use-this
-  update() {}
+  update() {
+   // Phaser.Actions.Call(this.knightSpawn.group.getChildren(), (knight) =>
+    //  this.physics.moveToObject(knight, 'X', 10),
+    // );
+  }
 
   toggleSound() {
     this.soundOn = !this.soundOn;
