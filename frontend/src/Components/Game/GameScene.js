@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 /* eslint-disable no-unused-vars */
 
 // All the imports
@@ -45,6 +46,7 @@ let player2CharactersGroup;
 class GameScene extends Phaser.Scene {
   constructor() {
     super('game-scene');
+    this.necro= null;
     this.soundOn = true;
     this.soundButton = undefined;
     this.player1 = undefined;
@@ -133,11 +135,13 @@ class GameScene extends Phaser.Scene {
 
     preloadPlayerBase(this);
   }
-
+  
   create() {
     // Adding card for the charachters
-    createCards(this);
-
+  createCards(this);
+    // Creation hitbox map
+    const border= this.add.rectangle(400, 300, 800, 600);
+    this.physics.add.existing(border, true);
     // Adding Playerbases to the game
     createPlayerBase(this);
     
@@ -155,6 +159,9 @@ class GameScene extends Phaser.Scene {
 
 // Necro Creates
 // Necro Attack Animation Creation
+
+
+
 this.anims.create({
   key: 'NecAttack',
   frames: this.anims.generateFrameNumbers('NecroAttack', { start: 0, end: 12 }),
@@ -172,12 +179,16 @@ this.anims.create({
 this.anims.create({
   key: 'NecRun',
   frames: this.anims.generateFrameNumbers('NecroRun', { start: 0, end: 7 }),
-  frameRate: 7,
+  frameRate: 5,
   repeat: -1,
 });
-const nc = this.add.sprite(450, 300, 'NecroRun');
-nc.play('NecRun').setDepth(1);
+// eslint-disable-next-line prefer-const
 
+this.necro = this.physics.add.sprite(450, 300, 'NecroRun');
+this.necro.x=450;
+this.necro.setInteractive(this.input.makePixelPerfect());
+this.necro.play('NecRun').setDepth(1);
+this.physics.add.collider(border, this.necro);
 const nc2 = this.add.sprite(500, 300, 'NecroDeath');
 nc2.play('NecDeath').setDepth(1);
 
@@ -470,11 +481,21 @@ this.anims.create({
     };
   }
 
-  // eslint-disable-next-line class-methods-use-this
+  
   update() {
-   // Phaser.Actions.Call(this.knightSpawn.group.getChildren(), (knight) =>
+
+    // Phaser.Actions.Call(this.knightSpawn.group.getChildren(), (knight) =>
     //  this.physics.moveToObject(knight, 'X', 10),
     // );
+  
+  this.necro.x +=0.5 ;
+  const screenWidth = this.sys.game.config.width;
+
+        // Vérifiez si le nécromancien a atteint la limite de l'écran
+        if (this.necro.x >= screenWidth - this.necro.width / 2) {
+            // Arrêtez le mouvement du nécromancien
+            this.necro.x -= 0.5;
+        }
   }
 
   toggleSound() {

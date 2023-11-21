@@ -14,7 +14,9 @@ export function createPlayerBase(scene) {
 
   // Ajoutez les bases des joueurs à la scène.
   const base1 = scene.add.sprite(50, 250, 'base').setOrigin(0.5, 0.5).setDepth(1);
+  base1.setInteractive(scene.input.makePixelPerfect());
   const base2 = scene.add.sprite(750, 250, 'base').setOrigin(0.5, 0.5).setDepth(1);
+  base2.setInteractive(scene.input.makePixelPerfect());
 
   // Redimensionnage
   const scaleFactor = 0.5; // Ajustez cette valeur selon vos besoins.

@@ -16,10 +16,14 @@ import knightWiki from '../../assets/artwork_wiki/knightWiki.png';
 import necromancerWiki from '../../assets/artwork_wiki/necromancerWiki.png';
 import warriorWiki from '../../assets/artwork_wiki/warriorWiki.png';
 import EndScene from '../Game/EndScene';
+import { clearPage } from '../../utils/render';
 
 let game;
 
 const GamePage = () => {
+
+  clearPage();
+
   const wikiContent = `<div class="d-flex flex-wrap card-container card-text">
   <div class="card card-color m-3 border-archer">
     <div class="card-header"><h5>The Archer</h5> <img src="${archerLogo}" height= "70px" class="rounded" alt="archer logo"></div>
@@ -109,11 +113,15 @@ const GamePage = () => {
 </div>`;
 
   const phaserGame = `
-<div id="gameDiv" class="d-flex justify-content-center my-3 border-game">
+<div id="gameDiv" class="d-flex justify-content-center py-3 border-game">
 </div>`;
 
+  const divBackground = document.createElement('div');
+  divBackground.className = 'mainColor';
+  divBackground.innerHTML = phaserGame + wikiContent;
+
   const main = document.querySelector('main');
-  main.innerHTML = phaserGame + wikiContent;
+  main.appendChild(divBackground);
 
   const config = {
     type: Phaser.AUTO,
@@ -122,7 +130,7 @@ const GamePage = () => {
     physics: {
       default: 'arcade',
       arcade: {
-        gravity: { y: 300 },
+        gravity: { y: 0 },
         debug: false,
       },
     },
