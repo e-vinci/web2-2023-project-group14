@@ -1,7 +1,4 @@
-/* eslint-disable class-methods-use-this */
 /* eslint-disable no-unused-vars */
-
-// All the imports
 import Phaser from 'phaser';
 import music from '../../assets/audio/theme_musics/C418 - Aria Math.mp3';
 import soundOnAsset from '../../assets/soundOn.png';
@@ -10,9 +7,8 @@ import backgroundGameAsset from '../../assets/background.png';
 import hudAsset from '../../assets/armadaHUD.png';
 import { createCards, preloadCards } from './CardCreator';
 import Player from './Player';
-import { createPlayerBase, preloadPlayerBase } from './PlayerBase';
-import MobP1Ex from '../../assets/mobPlayer1Ex.png';
-// import KnightSpawn from './KnightSpawn';
+import baseSpriteSheet from '../../assets/playerBase.png';
+import PlayerBase, { createPlayerBase, preloadPlayerBase } from './PlayerBase';
 
 // Warrior imports
 import warriorRunSpriteSheet from '../../assets/sprites/NightborneSprites/NightBorneRun.png';
@@ -35,45 +31,34 @@ import necroRunSpriteSheet from '../../assets/sprites/NecroSprites/NecroRun.png'
 import necroDeathSpriteSheet from '../../assets/sprites/NecroSprites/NecroDeath.png';
 import necroAttackSpriteSheet from '../../assets/sprites/NecroSprites/NecroAttack.png';
 
-// All the key 
-const KNIGHT_KEY = 'knight';
+// Archer Imports
+import redSpriteSheet from '../../assets/sprites/RedSprites/Archer.png';
 
-// Variables here
-let cursors;
-let player1CharactersGroup;
-let player2CharactersGroup;
 
 class GameScene extends Phaser.Scene {
   constructor() {
     super('game-scene');
-    this.necro= null;
     this.soundOn = true;
     this.soundButton = undefined;
-    this.player1 = undefined;
-    this.player2 = undefined;
+    this.player1 = new Player('player1');
+    this.player2 = new Player('player2');
     this.base1 = undefined;
     this.base2 = undefined;
-    this.cursors = undefined;
-    this.player1CharactersGroup = undefined;
-    this.player2CharactersGroup = undefined;
-    // this.KnightSpawn = undefined;
   }
 
-  // Preload
   preload() {
-
-    // TEST FOR EXEMPLE DONT DELETE THIS
-    this.load.image('KNIGHT_KEY', MobP1Ex)
-    // thx
-
-
     this.load.image('backgroundGame', backgroundGameAsset);
     this.load.image('hud', hudAsset);
     this.load.image('soundOn', soundOnAsset);
     this.load.image('soundOff', soundOffAsset);
     this.load.audio('theme', music);
     
-   
+    // Archer Loads
+
+    this.load.spritesheet('ArcherAll', redSpriteSheet, {
+      frameWidth: 112,
+      frameHeight: 133,
+    });
 
     // Necro Loads
     this.load.spritesheet('NecroAttack', necroAttackSpriteSheet, {
@@ -136,43 +121,57 @@ class GameScene extends Phaser.Scene {
 
     preloadPlayerBase(this);
   }
-  
+
   create() {
     // Adding card for the charachters
-  createCards(this);
-    // Creation hitbox map
-    const border= this.add.rectangle(400, 300, 800, 600);
-    this.physics.add.existing(border, true);
-    // Adding Playerbases to the game
+    createCards(this);
+
     createPlayerBase(this);
-    
-    // Creating players (will need to modify with backend)
-    this.player1= new Player();
-    this.player2= new Player();
-
-    player1CharactersGroup = this.physics.add.group();
-    player2CharactersGroup = this.physics.add.group();
-
-    // Define keybinds
-    cursors = this.input.keyboard.createCursorKeys();
 
   // Base Animation Creation
 // Archer Creates
 // Archer Run Animation Creation
+
 this.anims.create({
   key: 'RedRun',
-  frames: this.anims.generateFrameNumbers('ArcherRun', { start: 0, end: 12 }),
+  frames: this.anims.generateFrameNumbers('ArcherAll', { start:0, end : 24}),
   frameRate: 15,
   repeat: -1,
 });
-const ar = this.add.sprite(600, 400, 'ArcherRun');
+
+const ar = this.add.sprite(600, 400, 'ArcherAll');
 ar.play('RedRun').setDepth(1);
+
+// Archer Attack Animation Creation
+
+this.anims.create({
+  key: 'RedAttack',
+  frames: this.anims.generateFrameNumbers('ArcherAll', { start:25, end : 34}),
+  frameRate: 15,
+  repeat: -1,
+});
+
+const ar2 = this.add.sprite(650, 400, 'ArcherAll');
+ar2.play('RedAttack').setDepth(1);
+
+
+// Archer Death Animation Creation
+
+this.anims.create({
+  key: 'RedDeath',
+  frames: this.anims.generateFrameNumbers('ArcherAll', { start:120, end : 127}),
+  frameRate: 8,
+  repeat: -1,
+});
+
+const ar3 = this.add.sprite(700, 400, 'ArcherAll');
+ar3.play('RedDeath').setDepth(1);
+
+
+
 
 // Necro Creates
 // Necro Attack Animation Creation
-
-
-
 this.anims.create({
   key: 'NecAttack',
   frames: this.anims.generateFrameNumbers('NecroAttack', { start: 0, end: 12 }),
@@ -190,16 +189,12 @@ this.anims.create({
 this.anims.create({
   key: 'NecRun',
   frames: this.anims.generateFrameNumbers('NecroRun', { start: 0, end: 7 }),
-  frameRate: 5,
+  frameRate: 7,
   repeat: -1,
 });
-// eslint-disable-next-line prefer-const
+const nc = this.add.sprite(450, 300, 'NecroRun');
+nc.play('NecRun').setDepth(1);
 
-this.necro = this.physics.add.sprite(450, 300, 'NecroRun');
-this.necro.x=450;
-this.necro.setInteractive(this.input.makePixelPerfect());
-this.necro.play('NecRun').setDepth(1);
-this.physics.add.collider(border, this.necro);
 const nc2 = this.add.sprite(500, 300, 'NecroDeath');
 nc2.play('NecDeath').setDepth(1);
 
@@ -494,22 +489,8 @@ this.anims.create({
     };
   }
 
-  
-  update() {
-
-    // Phaser.Actions.Call(this.knightSpawn.group.getChildren(), (knight) =>
-    //  this.physics.moveToObject(knight, 'X', 10),
-    // );
-  
-  this.necro.x +=0.5 ;
-  const screenWidth = this.sys.game.config.width;
-
-        // Vérifiez si le nécromancien a atteint la limite de l'écran
-        if (this.necro.x >= screenWidth - this.necro.width / 2) {
-            // Arrêtez le mouvement du nécromancien
-            this.necro.x -= 0.5;
-        }
-  }
+  // eslint-disable-next-line class-methods-use-this
+  update() {}
 
   toggleSound() {
     this.soundOn = !this.soundOn;
