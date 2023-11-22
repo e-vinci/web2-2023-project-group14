@@ -121,7 +121,13 @@ function renderRegisterForm() {
   main.appendChild(backgroundDiv);
 
   submit.addEventListener('click', () => {
-    Navigate('/');
+   
+    // recuperer les champs ( document.getElementbyId)
+    // faire appel a l'api externe
+    // recup reponse
+    // si pas ok faire popup
+    // si ok register(email, usernzme,..)
+     Navigate('/');
   });
 }
 
