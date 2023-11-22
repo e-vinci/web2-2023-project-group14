@@ -45,29 +45,35 @@ const HomePage = () => {
 
   // Create an intro container
   const introContainer = document.createElement('div');
-  introContainer.className = 'container';
+  introContainer.className = ' mainText';
+
+  // Create 1 out of 3 section for background pourposes
+  const divSection1 = document.createElement('div');
+  divSection1.className = 'firstSection pb-4';
 
   // First Section - Title and Description
   const introRow1 = document.createElement('div');
   introRow1.className = 'row justify-content-center slide1 slide_Initial_Position_Left';
   const introCol1 = document.createElement('div');
-  introCol1.className = 'col-md-7 text-center';
+  introCol1.className = 'col-sm-10 col-md-5 text-center';
   const introTitle1 = document.createElement('h1');
   introTitle1.textContent = 'Embark on an Epic Journey';
   introTitle1.className = 'title-main-h1';
   introCol1.appendChild(introTitle1);
   introRow1.appendChild(introCol1);
+  divSection1.appendChild(introRow1);
 
   const introRow2 = document.createElement('div');
-  introRow2.className = 'row justify-content-center slide2 slide_Initial_Position_Left';
+  introRow2.className = 'row justify-content-center slide2 slide_Initial_Position_Left ';
   const introCol2 = document.createElement('div');
-  introCol2.className = 'col-md-7';
+  introCol2.className = 'col-sm-10 col-md-5';
   const introText1 = document.createElement('p');
   introText1.textContent =
     'Step into a world where bravery meets darkness, valor confronts malevolence, and mysteries await your discovery. Before diving into the adventure, immerse yourself in the captivating lore that defines our fantastical realm.';
   introText1.className = 'textContent px-2';
   introCol2.appendChild(introText1);
   introRow2.appendChild(introCol2);
+  divSection1.appendChild(introRow2);
 
   // Animation first section - Row 1 - Slide form left to right
   setTimeout(() => {
@@ -89,7 +95,7 @@ const HomePage = () => {
       duration: 1500,
       easing: 'easeInOutQuad',
     });
-  }, 0); // Delay the animation for 1 second (1000 milliseconds)
+  }, 200); 
 
   // Animation first section - Row 2 - Slide form left to right
   setTimeout(() => {
@@ -111,29 +117,31 @@ const HomePage = () => {
       duration: 1500,
       easing: 'easeInOutQuad',
     });
-  }, 500); // Delay the animation for 1 second (1000 milliseconds)
+  }, 700); // Delay the animation for 1 second (1000 milliseconds)
 
   // Second Section - Title and Description
   const introRow3 = document.createElement('div');
   introRow3.className = 'row justify-content-center slide3 slide_Initial_Position_Right';
   const introCol3 = document.createElement('div');
-  introCol3.className = 'col-md-7 text-center';
+  introCol3.className = 'col-sm-10 col-md-5 text-center';
   const introTitle2 = document.createElement('h2');
   introTitle2.textContent = 'Unveil the Mysteries...';
   introTitle2.className = 'title-main-h2';
   introCol3.appendChild(introTitle2);
   introRow3.appendChild(introCol3);
+  divSection1.appendChild(introRow3);
 
   const introRow4 = document.createElement('div');
   introRow4.className = 'row justify-content-center slide4 slide_Initial_Position_Right';
   const introCol4 = document.createElement('div');
-  introCol4.className = 'col-md-7';
+  introCol4.className = 'col-sm-10 col-md-5';
   const introText2 = document.createElement('p');
   introText2.textContent =
     'Engage with the enigmatic tales of heroes and villains, where each character bears a unique story waiting to be unraveled. Explore their intertwined destinies, a symphony of light and shadow, through the choice of their narratives before you start your own saga.';
   introText2.className = 'px-2 textContent';
   introCol4.appendChild(introText2);
   introRow4.appendChild(introCol4);
+  divSection1.appendChild(introRow4);
 
    // Animation second section - Row 3 - Slide form right to left
    setTimeout(() => {
@@ -155,7 +163,7 @@ const HomePage = () => {
       duration: 1500,
       easing: 'easeInOutQuad',
     });
-  }, 1500); // Delay the animation for 1 second (1000 milliseconds)
+  }, 2500); // Delay the animation for 1 second (1000 milliseconds)
 
   // Animation first section - Row 2 - Slide form left to right
   setTimeout(() => {
@@ -177,7 +185,7 @@ const HomePage = () => {
       duration: 1500,
       easing: 'easeInOutQuad',
     });
-  }, 2000); // Delay the animation for 1 second (1000 milliseconds)
+  }, 3000); // Delay the animation for 1 second (1000 milliseconds)
 
   // Third Section - "Play Now" button
   const introRow5 = document.createElement('div');
@@ -186,17 +194,19 @@ const HomePage = () => {
   introCol5.className = 'text-center';
   introCol5.appendChild(playNowButton);
   introRow5.appendChild(introCol5);
+  divSection1.appendChild(introRow5);
 
   // Fourth Section - "Lore story"
   const introRow6 = document.createElement('div');
-  introRow6.className = 'row justify-content-center appears';
+  introRow6.className = 'row justify-content-center appearsDelay';
   const introCol6 = document.createElement('div');
-  introCol6.className = 'col-md-7 text-center';
+  introCol6.className = 'col-sm-10 col-md-5 text-center';
   const introTitle3 = document.createElement('h2');
   introTitle3.textContent = 'Discover our story and universe...';
   introTitle3.className = 'title-main-h2';
   introCol6.appendChild(introTitle3);
   introRow6.appendChild(introCol6);
+  divSection1.appendChild(introRow6);
 
   const introTextLong = `
   <p>Amidst the whispering trees and veils of mist that draped the mystical forest, an unlikely alliance emerged, a tapestry woven with threads of bravery, darkness, valor, and enigma.</p>
@@ -226,29 +236,42 @@ const HomePage = () => {
   `;
 
   const introRow7 = document.createElement('div');
-  introRow7.className = 'row justify-content-center appears';
+  introRow7.className = 'row justify-content-center appearsDelay';
   const introCol7 = document.createElement('div');
-  introCol7.className = 'col-md-7';
+  introCol7.className = 'col-sm-10 col-md-5';
   const introText3 = document.createElement('div');
   introText3.innerHTML = accordion1;
 
   introText3.className = 'textContent';
   introCol7.appendChild(introText3);
   introRow7.appendChild(introCol7);
+  divSection1.appendChild(introRow7);
 
-  // Animation third and fourth section - Appears
+  // Animation - Appears
   setTimeout(() => {
     const appears1 = document.getElementsByClassName('appears');
   
     // Animation to slide in and fade in
     anime({
       targets: appears1,
-      translateX: '0',
       opacity: 1,
-      duration: 2000,
+      duration: 1500,
       easing: 'easeInOutQuad',
     });
-  }, 4000); // Delay the animation for 1 second (1000 milliseconds)
+  }, 4000);
+
+  // Animation - Appears
+  setTimeout(() => {
+    const appearsDelay = document.getElementsByClassName('appearsDelay');
+  
+    // Animation to slide in and fade in
+    anime({
+      targets: appearsDelay,
+      opacity: 1,
+      duration: 1500,
+      easing: 'easeInOutQuad',
+    });
+  }, 5800);
 
   // cards imports
   const archerImg = document.createElement('img');
@@ -333,28 +356,34 @@ const HomePage = () => {
   </div>
   </div>`;
 
+  // Container for cards
+  const cardsContainer = document.createElement('div');
+  cardsContainer.className = 'container-fluid secondSection'
+
+  const classNameCards = 'col-12 col-sm-6 col-lg-4 col-xl-3 col-xxl-2'
+
   // Fifth Section - "Cards"
   const cardRow1 = document.createElement('div');
-  cardRow1.className = 'row justify-content-center appears';
+  cardRow1.className = 'row justify-content-center appearsDelay';
 
   const cardColArcher = document.createElement('div');
-  cardColArcher.className = 'col-12 col-sm-6 col-lg-4';
+  cardColArcher.className = classNameCards;
   cardColArcher.innerHTML = cardArcherContent;
 
   const cardColExt = document.createElement('div');
-  cardColExt.className = 'col-12 col-sm-6 col-lg-4';
+  cardColExt.className = classNameCards;
   cardColExt.innerHTML = cardExtContent;
 
   const cardColKnight = document.createElement('div');
-  cardColKnight.className = 'col-12 col-sm-6 col-lg-4';
+  cardColKnight.className = classNameCards;
   cardColKnight.innerHTML = cardKnightContent;
 
   const cardColNecro = document.createElement('div');
-  cardColNecro.className = 'col-12 col-sm-6 col-lg-4';
+  cardColNecro.className = classNameCards;
   cardColNecro.innerHTML = cardNecroContent;
 
   const cardColWarrior = document.createElement('div');
-  cardColWarrior.className = 'col-12 col-sm-6 col-lg-4';
+  cardColWarrior.className = classNameCards;
   cardColWarrior.innerHTML = cardWarriorContent;
 
   cardRow1.appendChild(cardColArcher);
@@ -362,73 +391,73 @@ const HomePage = () => {
   cardRow1.appendChild(cardColKnight);
   cardRow1.appendChild(cardColNecro);
   cardRow1.appendChild(cardColWarrior);
+  cardsContainer.appendChild(cardRow1);
+
+  //  last div for background
+  const divSection2 = document.createElement('div');
+  divSection2.className = 'thirdSection';
 
   // Sixth Section - "Before ending"
   const endRow1 = document.createElement('div');
-  endRow1.className = 'row justify-content-center appears';
+  endRow1.className = 'row justify-content-center appearsDelay';
   const endCol1 = document.createElement('div');
-  endCol1.className = 'col-md-7 text-center';
+  endCol1.className = 'col-sm-10 col-md-5 text-center';
   const endTitle1 = document.createElement('h2');
   endTitle1.textContent = 'Forge Your Legend';
   endTitle1.className = 'title-main-h2';
   endCol1.appendChild(endTitle1);
   endRow1.appendChild(endCol1);
+  divSection2.appendChild(endRow1);
 
   const endRow2 = document.createElement('div');
-  endRow2.className = 'row justify-content-center appears';
+  endRow2.className = 'row justify-content-center appearsDelay';
   const endCol2 = document.createElement('div');
-  endCol2.className = 'col-md-7';
+  endCol2.className = 'col-sm-10 col-md-5';
   const endText2 = document.createElement('p');
   endText2.textContent =
     "Now that you've delved into the rich lore and intricacies of our world, the stage is set for you to become a part of this enthralling tale. Embrace your destiny, choose your character, and step forth into this surreal landscape. Will you uphold the virtues of courage and honor, or shall you succumb to the temptations of darkness? Your legend awaits your creation.";
   endText2.className = 'px-2 textContent';
   endCol2.appendChild(endText2);
   endRow2.appendChild(endCol2);
+  divSection2.appendChild(endRow2);
 
   // Seventh Section - "Ending"
   const endRow3 = document.createElement('div');
-  endRow3.className = 'row justify-content-center appears';
+  endRow3.className = 'row justify-content-center appearsDelay';
   const endCol3 = document.createElement('div');
-  endCol3.className = 'col-md-7 text-center';
+  endCol3.className = 'col-sm-10 col-md-5 text-center';
   const endTitle2 = document.createElement('h2');
   endTitle2.textContent = 'Begin Your Adventure';
   endTitle2.className = 'title-main-h2';
   endCol3.appendChild(endTitle2);
   endRow3.appendChild(endCol3);
+  divSection2.appendChild(endRow3);
 
   const endRow4 = document.createElement('div');
-  endRow4.className = 'row justify-content-center appears';
+  endRow4.className = 'row justify-content-center appearsDelay';
   const endCol4 = document.createElement('div');
-  endCol4.className = 'col-md-7';
+  endCol4.className = 'col-sm-10 col-md-5';
   const endText4 = document.createElement('p');
   endText4.textContent =
     'Click the play button and immerse yourself in an experience unlike any other. Embark on a journey where every decision shapes your path, where the clash of opposing forces creates an unforgettable adventure. Join us and make your mark in this tapestry of bravery and malevolence.';
   endText4.className = 'px-2 textContent';
   endCol4.appendChild(endText4);
   endRow4.appendChild(endCol4);
+  divSection2.appendChild(endRow4);
 
   // Eigth Section - "Play Now" button at the end
   const endRow5 = document.createElement('div');
-  endRow5.className = 'row justify-content-center my-3 appears';
+  endRow5.className = 'row justify-content-center py-3 appearsDelay';
   const endCol5 = document.createElement('div');
   endCol5.className = 'text-center';
   endCol5.appendChild(playNowButtonEnd);
   endRow5.appendChild(endCol5);
+  divSection2.appendChild(endRow5);
 
   // Append rows to the intro container
-  introContainer.appendChild(introRow1);
-  introContainer.appendChild(introRow2);
-  introContainer.appendChild(introRow3);
-  introContainer.appendChild(introRow4);
-  introContainer.appendChild(introRow5);
-  introContainer.appendChild(introRow6);
-  introContainer.appendChild(introRow7);
-  introContainer.appendChild(cardRow1);
-  introContainer.appendChild(endRow1);
-  introContainer.appendChild(endRow2);
-  introContainer.appendChild(endRow3);
-  introContainer.appendChild(endRow4);
-  introContainer.appendChild(endRow5);
+  introContainer.appendChild(divSection1);
+  introContainer.appendChild(cardsContainer);
+  introContainer.appendChild(divSection2);
 
   // Append the intro container to the main element
   main.appendChild(introContainer);

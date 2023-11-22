@@ -9,10 +9,13 @@ const RegisterPage = () => {
 function renderRegisterForm() {
   const main = document.querySelector('main');
 
+  const backgroundDiv = document.createElement('div');
+  backgroundDiv.className = 'h-100 backgroundLogin';
+
   const registerWrapper = document.createElement('div');
-  registerWrapper.className = 'd-flex justify-content-center align-items-center h-75 mt-5 pt-5';
+  registerWrapper.className = 'd-flex justify-content-center align-items-center h-75 pt-5 backgroundLogin';
   const formWrapper = document.createElement('div');
-  formWrapper.className = 'container border border-3 border-dark rounded-5 w-50 footerColor';
+  formWrapper.className = 'container border border-3 border-dark rounded-5 w-50 footerColor mt-5 formDiv';
   const formTop = document.createElement('div');
   formTop.className = 'form-top border-bottom border-2 border-dark w-100';
   const formTopDiv = document.createElement('div');
@@ -113,7 +116,9 @@ function renderRegisterForm() {
 
   registerWrapper.appendChild(formWrapper);
 
-  main.appendChild(registerWrapper);
+  backgroundDiv.appendChild(registerWrapper);
+
+  main.appendChild(backgroundDiv);
 
   submit.addEventListener('click', () => {
     Navigate('/');
