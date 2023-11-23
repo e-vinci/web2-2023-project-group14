@@ -79,7 +79,7 @@ class GameScene extends Phaser.Scene {
 
   // creating ext animations
   createEXTAnim(this);
-  
+
 // Creating players (will need to modify with backend)
 this.player1= new Player();
 this.player2= new Player();
@@ -308,7 +308,7 @@ player2CharactersGroup = this.physics.add.group();
     //  this.physics.moveToObject(knight, 'X', 10),
     // );
 
-  this.necro.x +=0 ;
+  this.necro.x +=0.5 ;
   const screenWidth = this.sys.game.config.width;
 
         // Vérifiez si le nécromancien a atteint la limite de l'écran
