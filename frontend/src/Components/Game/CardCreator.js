@@ -230,8 +230,8 @@ export function createCards(scene) {
     hoverBotImageP2.setVisible(false);
   });
 
-  const hoverBotImageP2 = scene.add
-    .image(scene.scale.width * 0.5, scene.scale.height * 0.7, 'botCardPopUp')
+  const hoverArcherImageP2 = scene.add
+    .image(scene.scale.width * 0.5, scene.scale.height * 0.7, 'archerCardPopUp')
     .setOrigin(0.5, 0.5)
     .setDepth(2)
     .setScale(0.7)
@@ -245,8 +245,10 @@ export function createCards(scene) {
   archerCardP2.setInteractive();
   archerCardP2.on('pointerover', () => {
     archerCardP2.setScale(0.45);
+    hoverArcherImageP2.setVisible(true);
   });
   archerCardP2.on('pointerout', () => {
     archerCardP2.setScale(0.38);
+    hoverArcherImageP2.setVisible(false);
   });
 }
