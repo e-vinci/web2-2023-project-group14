@@ -27,9 +27,11 @@ router.post('/registerTestEmailAPI', async (req, res) => {
       if (responseData.format === true && responseData.disposable === false && responseData.dns === true && responseData.whitelist === true){
         console.log("The email is valid");
       // Now we can also save the whole user in the database TODO
+      } else {
+        console.log("The email is invalid!");
       }
       // Send the response back to the client
-      res.status(200).json({ message: 'Email validation successful', responseData });
+      res.status(200).json({ message: 'Email verification successful (or user got saved if correct, idk don t ask me, ask Dimitry brother XD', responseData });
     } else {
       // Handle unsuccessful response (status other than 200 OK)
       console.error('Request failed with status:', response.status);

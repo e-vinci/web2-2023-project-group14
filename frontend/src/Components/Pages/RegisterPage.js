@@ -142,16 +142,32 @@ async function renderRegisterForm() {
 
   main.appendChild(backgroundDiv);
 
-  submit.addEventListener('click', async () => {
+  // adding confirmation text to the dom for confiramtion
+  const confEmailFeedback = document.createElement('div');
+  confEmailFeedback.className = 'testAPI my-5'
+  backgroundDiv.appendChild(confEmailFeedback);
+
+  submit.addEventListener('click', async (event) => {
     // creating the new user object to send for verification to the backend
+
+    event.preventDefault(); // I think this is needed; if not, the page refreshes itself and wipes out the response
+
     const newUserData = {
+      /*
       newUserEmail: document.getElementById(userEmail).value,
       newUserName: document.getElementById(username).value,
       newUserPassword: document.getElementById(password).value,
       newUserConfirmedPassword: document.getElementById(passwordConf).value
+      */
+     // test with hardcoded values
+      newUserEmail: "flaviubilic@gmail.com",
+      newUserName: "flaviu",
+      newUserPassword: "flaviu123",
+      newUserConfirmedPassword: "flaviu123"
     }
+    console.log("checking if values are null here but i don t think so");
     try {
-      const response = await fetch ('http://localhost:3000/api/registerTestEmailAPI', {
+      const response = await fetch ('/api/auths/registerTestEmailAPI', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -162,12 +178,13 @@ async function renderRegisterForm() {
     
       if (response.ok) {
         const responseData = await response.json();
-        console.log('Registration successful:', responseData);
+        confEmailFeedback.innerHTML = JSON.stringify(responseData);
+        console.log('Registration successful: ', responseData);
         // Navigate('/'); // just a placeholder currently
         
       } else {
-        console.error('Registration failed:', response.status);
-
+        confEmailFeedback.innerHTML = "Okay so it didn t work but it should have";
+        console.log("The email is invalid!");
       }
 
     } catch (err) {

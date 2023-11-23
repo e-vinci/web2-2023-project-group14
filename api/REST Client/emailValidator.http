@@ -1,7 +1,29 @@
 @baseUrlApi = https://disify.com/api/email
-
+@baseUrl = http://localhost:3000
 ### Makes request to api to validate email
 POST https://disify.com/api/email
 Content-Type: application/x-www-form-urlencoded
 
 email=flaviubilic@gmail.com
+
+### testing our api with VALID email
+POST {{baseUrl}}/auths/registerTestEmailAPI
+Content-Type: application/json
+
+{
+    "newUserEmail":"flaviubilic@gmail.com",
+    "newUserName":"flaviu",
+    "newUserPassword":"flaviu123",
+    "newUserConfirmedPassword":"flaviu123"
+}
+
+### testing our api whit INVALID email
+POST {{baseUrl}}/auths/registerTestEmailAPI
+Content-Type: application/json
+
+{
+    "newUserEmail":"flaviubilic@gmailcom",
+    "newUserName":"flaviu",
+    "newUserPassword":"flaviu123",
+    "newUserConfirmedPassword":"flaviu123"
+}

@@ -176,3 +176,10 @@
 .formDiv {
   min-width: 350px;
 }
+
+/* test css for api TO BE DELETED AFTER */
+.testAPI {
+  
+  background-color: white;
+  color: black;
+}
