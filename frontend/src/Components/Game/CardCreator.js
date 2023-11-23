@@ -5,6 +5,13 @@ import knightCardAsset from '../../assets/knightCard.png';
 import necromancerCardAsset from '../../assets/necromancerCard.png';
 import warriorCardAsset from '../../assets/warriorCard.png';
 
+// Import the card image popup
+import archerCardPopup from '../../assets/archerPopUp.png';
+import botCardPopup from '../../assets/botPopUp.png';
+import knightCardPopup from '../../assets/knightPopUp.png';
+import necromancerCardPopup from '../../assets/necromancerPopUp.png';
+import warriorCardPopup from '../../assets/warriorPopUp.png';
+
 // Load the card images
 export function preloadCards(scene) {
   scene.load.image('archerCard', archerCardAsset);
@@ -12,12 +19,25 @@ export function preloadCards(scene) {
   scene.load.image('knightCard', knightCardAsset);
   scene.load.image('necromancerCard', necromancerCardAsset);
   scene.load.image('warriorCard', warriorCardAsset);
+
+  scene.load.image('archerCardPopUp', archerCardPopup);
+  scene.load.image('botCardPopUp', botCardPopup);
+  scene.load.image('knightCardPopUp', knightCardPopup);
+  scene.load.image('necromancerCardPopUp', necromancerCardPopup);
+  scene.load.image('warriorCardPopUp', warriorCardPopup);
 }
 
 // CardCreator.js
 const yValue = 0.907;
 
 export function createCards(scene) {
+  const hoverArcherImageP1 = scene.add
+    .image(scene.scale.width * 0.5, scene.scale.height * 0.5, 'archerCardPopup')
+    .setOrigin(0.5, 0.5)
+    .setDepth(2)
+    .setScale(0.5)
+    .setVisible(false); // Initially set to invisible
+
   // Adding card for the charachters
   const archerCardP1 = scene.add
     .image(scene.scale.width * 0.05, scene.scale.height * yValue, 'archerCard')
@@ -27,9 +47,11 @@ export function createCards(scene) {
   archerCardP1.setInteractive();
   archerCardP1.on('pointerover', () => {
     archerCardP1.setScale(0.45);
+    hoverArcherImageP1.setVisible(true);
   });
   archerCardP1.on('pointerout', () => {
     archerCardP1.setScale(0.38);
+    hoverArcherImageP1.setVisible(false);
   });
 
   const botCardP1 = scene.add
