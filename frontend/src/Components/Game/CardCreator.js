@@ -32,7 +32,7 @@ const yValue = 0.907;
 
 export function createCards(scene) {
   const hoverArcherImageP1 = scene.add
-    .image(scene.scale.width * 0.5, scene.scale.height * 0.7, 'botCardPopUp')
+    .image(scene.scale.width * 0.5, scene.scale.height * 0.7, 'archerCardPopUp')
     .setOrigin(0.5, 0.5)
     .setDepth(2)
     .setScale(0.5)
@@ -54,6 +54,13 @@ export function createCards(scene) {
     hoverArcherImageP1.setVisible(false);
   });
 
+  const hoverBotImageP1 = scene.add
+    .image(scene.scale.width * 0.5, scene.scale.height * 0.7, 'botCardPopUp')
+    .setOrigin(0.5, 0.5)
+    .setDepth(2)
+    .setScale(0.5)
+    .setVisible(false); // Initially set to invisible
+
   const botCardP1 = scene.add
     .image(scene.scale.width * 0.13, scene.scale.height * yValue, 'botCard')
     .setOrigin(0.5, 0.5)
@@ -61,10 +68,12 @@ export function createCards(scene) {
     .setScale(0.38);
   botCardP1.setInteractive();
   botCardP1.on('pointerover', () => {
+    hoverBotImageP1.setVisible(true);
     botCardP1.setScale(0.45);
   });
   botCardP1.on('pointerout', () => {
     botCardP1.setScale(0.38);
+    hoverBotImageP1.setVisible(false);
   });
 
   const knightCardP1 = scene.add
