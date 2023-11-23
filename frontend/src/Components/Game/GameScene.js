@@ -236,7 +236,7 @@ player2CharactersGroup = this.physics.add.group();
       goToEndSceneButton.setY(450);
     });
     goToEndSceneButton.on('pointerdown', () => {
-      this.game.winner = this.player1;
+      this.game.winner = this.player1
       this.sound.stopAll();
       this.scene.stop('game-scene');
       this.scene.switch('end-scene');
