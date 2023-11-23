@@ -255,6 +255,40 @@ player2CharactersGroup = this.physics.add.group();
       loop: true,
     });
 
+    // New Timer
+    const newTimerText = this.add
+    .text(this.sys.game.config.width / 2, 120, '15:00', {
+      fontSize: '24px',
+      fill: '#ffffff',
+    })
+    .setOrigin(0.5)
+    .setDepth(1);
+
+    let newTimeLeft = 900; // 15 minutes in seconds
+
+    const updateNewTimer = () => {
+    const minutes = Math.floor(newTimeLeft / 60);
+    const seconds = newTimeLeft % 60;
+
+    // Format the timer text to display minutes and seconds
+    const formattedTime = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    newTimerText.setText(formattedTime);
+
+    newTimeLeft -= 1;
+
+    if (newTimeLeft === 0) {
+      // Redirect to EndScene
+      this.scene.start('end-scene')
+    }
+    };
+
+    const newTimerEvent = this.time.addEvent({
+    delay: 1000, // Update every second
+    callback: updateNewTimer,
+    callbackScope: this,
+    loop: true,
+    });
+
     this.player1Stats = {
       health: 10000,
       golds: Player.DEFAULT_GOLDS,

@@ -5,6 +5,13 @@ import knightCardAsset from '../../assets/knightCard.png';
 import necromancerCardAsset from '../../assets/necromancerCard.png';
 import warriorCardAsset from '../../assets/warriorCard.png';
 
+// Import the card image popup
+import archerCardPopup from '../../assets/archerPopUp.png';
+import botCardPopup from '../../assets/botPopUp.png';
+import knightCardPopup from '../../assets/knightPopUp.png';
+import necromancerCardPopup from '../../assets/necromancerPopUp.png';
+import warriorCardPopup from '../../assets/warriorPopUp.png';
+
 // Load the card images
 export function preloadCards(scene) {
   scene.load.image('archerCard', archerCardAsset);
@@ -12,12 +19,25 @@ export function preloadCards(scene) {
   scene.load.image('knightCard', knightCardAsset);
   scene.load.image('necromancerCard', necromancerCardAsset);
   scene.load.image('warriorCard', warriorCardAsset);
+
+  scene.load.image('archerCardPopUp', archerCardPopup);
+  scene.load.image('botCardPopUp', botCardPopup);
+  scene.load.image('knightCardPopUp', knightCardPopup);
+  scene.load.image('necromancerCardPopUp', necromancerCardPopup);
+  scene.load.image('warriorCardPopUp', warriorCardPopup);
 }
 
 // CardCreator.js
 const yValue = 0.907;
 
 export function createCards(scene) {
+  const hoverArcherImageP1 = scene.add
+    .image(scene.scale.width * 0.5, scene.scale.height * 0.7, 'archerCardPopUp')
+    .setOrigin(0.5, 0.5)
+    .setDepth(2)
+    .setScale(0.7)
+    .setVisible(false); // Initially set to invisible
+
   // Adding card for the charachters
   const archerCardP1 = scene.add
     .image(scene.scale.width * 0.05, scene.scale.height * yValue, 'archerCard')
@@ -27,10 +47,19 @@ export function createCards(scene) {
   archerCardP1.setInteractive();
   archerCardP1.on('pointerover', () => {
     archerCardP1.setScale(0.45);
+    hoverArcherImageP1.setVisible(true);
   });
   archerCardP1.on('pointerout', () => {
     archerCardP1.setScale(0.38);
+    hoverArcherImageP1.setVisible(false);
   });
+
+  const hoverBotImageP1 = scene.add
+    .image(scene.scale.width * 0.5, scene.scale.height * 0.7, 'botCardPopUp')
+    .setOrigin(0.5, 0.5)
+    .setDepth(2)
+    .setScale(0.7)
+    .setVisible(false); // Initially set to invisible
 
   const botCardP1 = scene.add
     .image(scene.scale.width * 0.13, scene.scale.height * yValue, 'botCard')
@@ -39,11 +68,20 @@ export function createCards(scene) {
     .setScale(0.38);
   botCardP1.setInteractive();
   botCardP1.on('pointerover', () => {
+    hoverBotImageP1.setVisible(true);
     botCardP1.setScale(0.45);
   });
   botCardP1.on('pointerout', () => {
     botCardP1.setScale(0.38);
+    hoverBotImageP1.setVisible(false);
   });
+
+  const hoverKnightImageP1 = scene.add
+    .image(scene.scale.width * 0.5, scene.scale.height * 0.7, 'knightCardPopUp')
+    .setOrigin(0.5, 0.5)
+    .setDepth(2)
+    .setScale(0.7)
+    .setVisible(false); // Initially set to invisible
 
   const knightCardP1 = scene.add
     .image(scene.scale.width * 0.21, scene.scale.height * yValue, 'knightCard')
@@ -53,10 +91,19 @@ export function createCards(scene) {
   knightCardP1.setInteractive();
   knightCardP1.on('pointerover', () => {
     knightCardP1.setScale(0.45);
+    hoverKnightImageP1.setVisible(true);
   });
   knightCardP1.on('pointerout', () => {
     knightCardP1.setScale(0.38);
+    hoverKnightImageP1.setVisible(false);
   });
+
+  const hoverNecromancerImageP1 = scene.add
+    .image(scene.scale.width * 0.5, scene.scale.height * 0.7, 'necromancerCardPopUp')
+    .setOrigin(0.5, 0.5)
+    .setDepth(2)
+    .setScale(0.7)
+    .setVisible(false); // Initially set to invisible
 
   const necromancerCardP1 = scene.add
     .image(scene.scale.width * 0.29, scene.scale.height * yValue, 'necromancerCard')
@@ -66,10 +113,19 @@ export function createCards(scene) {
   necromancerCardP1.setInteractive();
   necromancerCardP1.on('pointerover', () => {
     necromancerCardP1.setScale(0.45);
+    hoverNecromancerImageP1.setVisible(true);
   });
   necromancerCardP1.on('pointerout', () => {
     necromancerCardP1.setScale(0.38);
+    hoverNecromancerImageP1.setVisible(false);
   });
+
+  const hoverWarriorImageP1 = scene.add
+    .image(scene.scale.width * 0.5, scene.scale.height * 0.7, 'warriorCardPopUp')
+    .setOrigin(0.5, 0.5)
+    .setDepth(2)
+    .setScale(0.7)
+    .setVisible(false); // Initially set to invisible
 
   const warriorCardP1 = scene.add
     .image(scene.scale.width * 0.37, scene.scale.height * yValue, 'warriorCard')
@@ -79,10 +135,19 @@ export function createCards(scene) {
   warriorCardP1.setInteractive();
   warriorCardP1.on('pointerover', () => {
     warriorCardP1.setScale(0.45);
+    hoverWarriorImageP1.setVisible(true);
   });
   warriorCardP1.on('pointerout', () => {
     warriorCardP1.setScale(0.38);
+    hoverWarriorImageP1.setVisible(false);
   });
+
+  const hoverWarriorImageP2 = scene.add
+    .image(scene.scale.width * 0.5, scene.scale.height * 0.7, 'warriorCardPopUp')
+    .setOrigin(0.5, 0.5)
+    .setDepth(2)
+    .setScale(0.7)
+    .setVisible(false); // Initially set to invisible
 
   const warriorCardP2 = scene.add
     .image(scene.scale.width * 0.95, scene.scale.height * yValue, 'warriorCard')
@@ -92,10 +157,19 @@ export function createCards(scene) {
   warriorCardP2.setInteractive();
   warriorCardP2.on('pointerover', () => {
     warriorCardP2.setScale(0.45);
+    hoverWarriorImageP2.setVisible(true);
   });
   warriorCardP2.on('pointerout', () => {
     warriorCardP2.setScale(0.38);
+    hoverWarriorImageP2.setVisible(false);
   });
+
+  const hoverNecromancerImageP2 = scene.add
+    .image(scene.scale.width * 0.5, scene.scale.height * 0.7, 'necromancerCardPopUp')
+    .setOrigin(0.5, 0.5)
+    .setDepth(2)
+    .setScale(0.7)
+    .setVisible(false); // Initially set to invisible
 
   const necromancerCardP2 = scene.add
     .image(scene.scale.width * 0.87, scene.scale.height * yValue, 'necromancerCard')
@@ -105,10 +179,19 @@ export function createCards(scene) {
   necromancerCardP2.setInteractive();
   necromancerCardP2.on('pointerover', () => {
     necromancerCardP2.setScale(0.45);
+    hoverNecromancerImageP2.setVisible(true);
   });
   necromancerCardP2.on('pointerout', () => {
     necromancerCardP2.setScale(0.38);
+    hoverNecromancerImageP2.setVisible(false);
   });
+
+  const hoverKnightImageP2 = scene.add
+    .image(scene.scale.width * 0.5, scene.scale.height * 0.7, 'knightCardPopUp')
+    .setOrigin(0.5, 0.5)
+    .setDepth(2)
+    .setScale(0.7)
+    .setVisible(false); // Initially set to invisible
 
   const knightCardP2 = scene.add
     .image(scene.scale.width * 0.79, scene.scale.height * yValue, 'knightCard')
@@ -118,10 +201,19 @@ export function createCards(scene) {
   knightCardP2.setInteractive();
   knightCardP2.on('pointerover', () => {
     knightCardP2.setScale(0.45);
+    hoverKnightImageP2.setVisible(true);
   });
   knightCardP2.on('pointerout', () => {
     knightCardP2.setScale(0.38);
+    hoverKnightImageP2.setVisible(false);
   });
+
+  const hoverBotImageP2 = scene.add
+    .image(scene.scale.width * 0.5, scene.scale.height * 0.7, 'botCardPopUp')
+    .setOrigin(0.5, 0.5)
+    .setDepth(2)
+    .setScale(0.7)
+    .setVisible(false); // Initially set to invisible
 
   const botCardP2 = scene.add
     .image(scene.scale.width * 0.71, scene.scale.height * yValue, 'botCard')
@@ -131,10 +223,19 @@ export function createCards(scene) {
   botCardP2.setInteractive();
   botCardP2.on('pointerover', () => {
     botCardP2.setScale(0.45);
+    hoverBotImageP2.setVisible(true);
   });
   botCardP2.on('pointerout', () => {
     botCardP2.setScale(0.38);
+    hoverBotImageP2.setVisible(false);
   });
+
+  const hoverArcherImageP2 = scene.add
+    .image(scene.scale.width * 0.5, scene.scale.height * 0.7, 'archerCardPopUp')
+    .setOrigin(0.5, 0.5)
+    .setDepth(2)
+    .setScale(0.7)
+    .setVisible(false); // Initially set to invisible
 
   const archerCardP2 = scene.add
     .image(scene.scale.width * 0.63, scene.scale.height * yValue, 'archerCard')
@@ -144,8 +245,10 @@ export function createCards(scene) {
   archerCardP2.setInteractive();
   archerCardP2.on('pointerover', () => {
     archerCardP2.setScale(0.45);
+    hoverArcherImageP2.setVisible(true);
   });
   archerCardP2.on('pointerout', () => {
     archerCardP2.setScale(0.38);
+    hoverArcherImageP2.setVisible(false);
   });
 }

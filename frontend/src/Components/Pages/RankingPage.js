@@ -3,19 +3,8 @@ import { clearPage } from '../../utils/render';
 const RankingPage = () => {
   clearPage();
   renderRankingTable();
+  animateTable();
 };
-
-/* function renderGoBackHomeButton() {
-  const main = document.querySelector('main');
-  const backButton = document.createElement('input');
-  backButton.value = 'Go back to HomePage';
-  backButton.className = 'btn btn-secondary mt-3';
-  backButton.addEventListener('click', () => {
-    Navigate('/');
-  });
-
-  main.appendChild(backButton);
-} */
 
 function renderRankingTable() {
   const main = document.querySelector('main');
@@ -24,8 +13,7 @@ function renderRankingTable() {
   backgroundDiv.className = 'h-100 backgroundLogin';
 
   const rankingWrapper = document.createElement('div');
-  rankingWrapper.className = 'd-flex justify-content-center align-items-center';
-
+  rankingWrapper.className = 'ranking-wrapper d-flex justify-content-center align-items-center'; // Add 'ranking-wrapper' class
 
   // Assuming you want to create a table, you can use the following example code
   const table = document.createElement('table');
@@ -38,10 +26,9 @@ function renderRankingTable() {
   headers.forEach((headerText) => {
     const th = document.createElement('th');
     th.textContent = headerText;
-    th.className = 'border-bottom border-dark'
+    th.className = 'border-bottom border-dark';
     headerRow.appendChild(th);
   });
-
 
   table.appendChild(headerRow);
 
@@ -53,7 +40,6 @@ function renderRankingTable() {
     
     // Add more rows as needed
   ];
-
 
   // Create table rows with ranking data
   rankingData.forEach((data) => {
@@ -67,10 +53,23 @@ function renderRankingTable() {
   });
 
   rankingWrapper.appendChild(table);
-
   backgroundDiv.appendChild(rankingWrapper);
-
   main.appendChild(backgroundDiv);
+}
+
+function animateTable() {
+  const rankingWrapper = document.querySelector('.ranking-wrapper');
+
+  // Set initial styles for the animation
+  rankingWrapper.style.opacity = 0;
+  rankingWrapper.style.transform = 'translateY(-50px)';
+
+  // Trigger the animation after a short delay
+  setTimeout(() => {
+    rankingWrapper.style.transition = 'opacity 0.5s, transform 0.5s';
+    rankingWrapper.style.opacity = 1;
+    rankingWrapper.style.transform = 'translateY(250px)';
+  }, 300); // Adjust the delay as needed
 }
 
 export default RankingPage;
