@@ -35,7 +35,7 @@ export default class EndScene extends Phaser.Scene {
       .text(
         this.scale.width * 0.5,
         this.scale.height * 0.3,
-        `The winner is ${this.game.winner.playerName}!`,
+        `The winner is player1!`,
         {
           fontFamily: 'Blackletter, serif',
           fontSize: '32px',
