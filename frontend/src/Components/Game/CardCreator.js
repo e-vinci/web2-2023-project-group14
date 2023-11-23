@@ -146,11 +146,9 @@ export function createCards(scene) {
     .setScale(0.38);
   warriorCardP2.setInteractive();
   warriorCardP2.on('pointerover', () => {
-    warriorCardP2.setScale(0.45);
     hoverWarriorImageP2.setVisible(true);
   });
   warriorCardP2.on('pointerout', () => {
-    warriorCardP2.setScale(0.38);
     hoverWarriorImageP2.setVisible(false);
   });
 
@@ -168,11 +166,9 @@ export function createCards(scene) {
     .setScale(0.38);
   necromancerCardP2.setInteractive();
   necromancerCardP2.on('pointerover', () => {
-    necromancerCardP2.setScale(0.45);
     hoverNecromancerImageP2.setVisible(true);
   });
   necromancerCardP2.on('pointerout', () => {
-    necromancerCardP2.setScale(0.38);
     hoverNecromancerImageP2.setVisible(false);
   });
 
@@ -190,11 +186,9 @@ export function createCards(scene) {
     .setScale(0.38);
   knightCardP2.setInteractive();
   knightCardP2.on('pointerover', () => {
-    knightCardP2.setScale(0.45);
     hoverKnightImageP2.setVisible(true);
   });
   knightCardP2.on('pointerout', () => {
-    knightCardP2.setScale(0.38);
     hoverKnightImageP2.setVisible(false);
   });
 
@@ -212,11 +206,9 @@ export function createCards(scene) {
     .setScale(0.38);
   botCardP2.setInteractive();
   botCardP2.on('pointerover', () => {
-    botCardP2.setScale(0.45);
     hoverBotImageP2.setVisible(true);
   });
   botCardP2.on('pointerout', () => {
-    botCardP2.setScale(0.38);
     hoverBotImageP2.setVisible(false);
   });
 
@@ -234,11 +226,9 @@ export function createCards(scene) {
     .setScale(0.38);
   archerCardP2.setInteractive();
   archerCardP2.on('pointerover', () => {
-    archerCardP2.setScale(0.45);
     hoverArcherImageP2.setVisible(true);
   });
   archerCardP2.on('pointerout', () => {
-    archerCardP2.setScale(0.38);
     hoverArcherImageP2.setVisible(false);
   });
 

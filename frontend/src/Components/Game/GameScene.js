@@ -68,7 +68,7 @@ class GameScene extends Phaser.Scene {
   create() {
 
 
-    // fonction pour choisir cartes a gauche
+    // fonction pour choisir cartes a gauche P1
     this.input.keyboard.on('keydown-Q', (event) => {
       // Réduisez l'échelle de la carte précédemment sélectionnée
       this.cardsP1[this.indexP1].setScale(0.38);
@@ -82,7 +82,7 @@ class GameScene extends Phaser.Scene {
         this.cardsP1[this.indexP1].setScale(0.45);
   });
     
-  
+  // fonction pour choisir cartes a droite P1
   this.input.keyboard.on('keydown-D', (event) => {
     // Réduisez l'échelle de la carte précédemment sélectionnée
     this.cardsP1[this.indexP1].setScale(0.38);
@@ -97,8 +97,37 @@ class GameScene extends Phaser.Scene {
     this.cardsP1[this.indexP1].setScale(0.45);
 });
   
+
+// fonction pour choisir cartes a gauche P2
+this.input.keyboard.on('keydown-LEFT', (event) => {
+  // Réduisez l'échelle de la carte précédemment sélectionnée pour le joueur 2
+  this.cardsP2[this.indexP2].setScale(0.38);
+
+  // Mettez à jour l'index de la carte sélectionnée pour le joueur 2
+  this.indexP2--;
+  if (this.indexP2 < 0) {
+    this.indexP2 = this.cardsP2.length - 1; // Boucle vers la fin si nous sommes au début
+  }
+
+  // Mettez en évidence la nouvelle carte sélectionnée pour le joueur 2
+  this.cardsP2[this.indexP2].setScale(0.45);
+});
   
-  
+// fonction pour choisir cartes a droite P2
+this.input.keyboard.on('keydown-RIGHT', (event) => {
+  // Réduisez l'échelle de la carte précédemment sélectionnée pour le joueur 2
+  this.cardsP2[this.indexP2].setScale(0.38);
+
+  // Mettez à jour l'index de la carte sélectionnée pour le joueur 2
+  this.indexP2++;
+  if (this.indexP2 >= this.cardsP2.length) {
+    this.indexP2 = 0; // Boucle vers le début si nous sommes à la fin
+  }
+
+  // Mettez en évidence la nouvelle carte sélectionnée pour le joueur 2
+  this.cardsP2[this.indexP2].setScale(0.45);
+});
+
   // Adding card for the charachters
     createCards(this);
     this.cards=createCards(this);
@@ -115,6 +144,7 @@ class GameScene extends Phaser.Scene {
     console.log(this.cardsP2);
  
     this.cardsP1[this.indexP1].setScale(0.45);
+    this.cardsP2[this.indexP2].setScale(0.45);
 
     
 
