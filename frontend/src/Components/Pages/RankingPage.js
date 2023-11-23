@@ -68,7 +68,7 @@ function animateTable() {
   setTimeout(() => {
     rankingWrapper.style.transition = 'opacity 0.5s, transform 0.5s';
     rankingWrapper.style.opacity = 1;
-    rankingWrapper.style.transform = 'translateY(0)';
+    rankingWrapper.style.transform = 'translateY(250px)';
   }, 300); // Adjust the delay as needed
 }
 
