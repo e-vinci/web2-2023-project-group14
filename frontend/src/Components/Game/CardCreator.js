@@ -32,7 +32,7 @@ const yValue = 0.907;
 
 export function createCards(scene) {
   const hoverArcherImageP1 = scene.add
-    .image(scene.scale.width * 0.5, scene.scale.height * 0.5, 'archerCardPopup')
+    .image(scene.scale.width * 0.5, scene.scale.height * 0.7, 'botCardPopUp')
     .setOrigin(0.5, 0.5)
     .setDepth(2)
     .setScale(0.5)
