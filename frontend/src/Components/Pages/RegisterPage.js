@@ -1,12 +1,15 @@
-import Navigate from '../Router/Navigate';
+// import Navigate from '../Router/Navigate';
 import { clearPage } from '../../utils/render';
 
-const RegisterPage = () => {
-  clearPage();
-  renderRegisterForm();
+const RegisterPage = async () => {
+    clearPage();
+    renderRegisterForm();
 };
 
-function renderRegisterForm() {
+// TODO refactor le texte affiché sur la page en anglais stp
+
+async function renderRegisterForm() {
+
   const main = document.querySelector('main');
 
   const backgroundDiv = document.createElement('div');
@@ -28,6 +31,21 @@ function renderRegisterForm() {
 
   const form = document.createElement('form');
   form.className = 'mb-1';
+
+  const userEmailDiv = document.createElement('div');
+  userEmailDiv.className = 'mb-4 mx-4';
+
+  const userEmailLabel = document.createElement('label');
+  userEmailLabel.className = 'form-label ps-1';
+  userEmailLabel.htmlFor = 'userEmail';
+  userEmailLabel.innerHTML = "User email";
+
+  const userEmail = document.createElement('input');
+  userEmail.type = 'text';
+  userEmail.id = 'userEmail';
+  userEmail.placeholder = "user email";
+  userEmail.required = true;
+  userEmail.className = 'form-control mb-3 border border-3 rounded-3 border-dark';
 
   const usernameDiv = document.createElement('div');
   usernameDiv.className = 'mb-4 mx-4';
@@ -86,6 +104,9 @@ function renderRegisterForm() {
   alreadyAccountDiv.className = 'text-center';
   alreadyAccountDiv.innerHTML = `Déjà un compte? <a href="/login">Connectez-vous</a>`;
 
+  userEmailDiv.appendChild(userEmailLabel);
+  userEmailDiv.appendChild(userEmail);
+
   usernameDiv.appendChild(usernameLabel);
   usernameDiv.appendChild(username);
 
@@ -97,6 +118,7 @@ function renderRegisterForm() {
 
   submitDiv.appendChild(submit);
 
+  form.appendChild(userEmailDiv);
   form.appendChild(usernameDiv);
   form.appendChild(passwordDiv);
   form.appendChild(passwordConfDiv);
@@ -120,14 +142,37 @@ function renderRegisterForm() {
 
   main.appendChild(backgroundDiv);
 
-  submit.addEventListener('click', () => {
-   
-    // recuperer les champs ( document.getElementbyId)
-    // faire appel a l'api externe
-    // recup reponse
-    // si pas ok faire popup
-    // si ok register(email, usernzme,..)
-     Navigate('/');
+  submit.addEventListener('click', async () => {
+    // creating the new user object to send for verification to the backend
+    const newUserData = {
+      newUserEmail: document.getElementById(userEmail).value,
+      newUserName: document.getElementById(username).value,
+      newUserPassword: document.getElementById(password).value,
+      newUserConfirmedPassword: document.getElementById(passwordConf).value
+    }
+    try {
+      const response = await fetch ('/api/registerTestEmailAPI', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newUserData)
+
+      });
+    
+      if (response.ok) {
+        const responseData = await response.json();
+        console.log('Registration successful:', responseData);
+        // Navigate('/'); // just a placeholder currently
+        
+      } else {
+        console.error('Registration failed:', response.status);
+
+      }
+
+    } catch (err) {
+      console.error('RegisterPage::error: ', err);
+    }
   });
 }
 

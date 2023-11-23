@@ -1,7 +1,48 @@
 const express = require('express');
 const { register, login } = require('../models/users');
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
 const router = express.Router();
+
+// register a user (test email API) TODO later with database
+router.post('/registerTestEmailAPI', async (req, res) => {
+  const userData = req.body;
+  const newEmail = userData.newUserEmail;
+
+  try {
+    const requestBody = new URLSearchParams();
+    requestBody.append('email', newEmail);
+
+    const response = await fetch('https://disify.com/api/email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: requestBody.toString()
+    });
+
+    if (response.ok) {
+      const responseData = await response.json(); // parses the json response to javascript
+      // Handle the response data from the external API
+      if (responseData.format === true && responseData.disposable === false && responseData.dns === true && responseData.whitelist === true){
+        console.log("The email is valid");
+      // Now we can also save the whole user in the database TODO
+      }
+      // Send the response back to the client
+      res.status(200).json({ message: 'Email validation successful', responseData });
+    } else {
+      // Handle unsuccessful response (status other than 200 OK)
+      console.error('Request failed with status:', response.status);
+      res.status(response.status).json({ error: 'Failed to validate email' });
+    }
+
+    // Handle response...
+  } catch (err) {
+    console.error('auths::error: ', err);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
 
 /* Register a user */
 router.post('/register', async (req, res) => {
