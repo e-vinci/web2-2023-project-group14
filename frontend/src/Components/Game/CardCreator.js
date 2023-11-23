@@ -76,6 +76,13 @@ export function createCards(scene) {
     hoverBotImageP1.setVisible(false);
   });
 
+  const hoverKnightImageP1 = scene.add
+    .image(scene.scale.width * 0.5, scene.scale.height * 0.7, 'knightCardPopUp')
+    .setOrigin(0.5, 0.5)
+    .setDepth(2)
+    .setScale(0.7)
+    .setVisible(false); // Initially set to invisible
+
   const knightCardP1 = scene.add
     .image(scene.scale.width * 0.21, scene.scale.height * yValue, 'knightCard')
     .setOrigin(0.5, 0.5)
@@ -84,9 +91,11 @@ export function createCards(scene) {
   knightCardP1.setInteractive();
   knightCardP1.on('pointerover', () => {
     knightCardP1.setScale(0.45);
+    hoverKnightImageP1.setVisible(true);
   });
   knightCardP1.on('pointerout', () => {
     knightCardP1.setScale(0.38);
+    hoverKnightImageP1.setVisible(false);
   });
 
   const necromancerCardP1 = scene.add
