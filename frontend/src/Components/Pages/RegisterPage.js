@@ -152,18 +152,20 @@ async function renderRegisterForm() {
 
     event.preventDefault(); // I think this is needed; if not, the page refreshes itself and wipes out the response
 
+    const formInfos = document.querySelector('form'); // added for the new approach
     const newUserData = {
-      /*
+      /* this is what I had before:
       newUserEmail: document.getElementById(userEmail).value,
       newUserName: document.getElementById(username).value,
       newUserPassword: document.getElementById(password).value,
       newUserConfirmedPassword: document.getElementById(passwordConf).value
       */
-     // test with hardcoded values
-      newUserEmail: "flaviubilic@gmail.com",
-      newUserName: "flaviu",
-      newUserPassword: "flaviu123",
-      newUserConfirmedPassword: "flaviu123"
+      newUserEmail : formInfos.elements.userEmail.value,
+      newUserName : formInfos.elements.username.value,
+      newUserPassword : formInfos.elements.password.value,
+      newUserConfirmedPassword : formInfos.elements.passwordConf.value
+
+
     }
     console.log("checking if values are null here but i don t think so");
     try {
