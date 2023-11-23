@@ -151,7 +151,7 @@ async function renderRegisterForm() {
       newUserConfirmedPassword: document.getElementById(passwordConf).value
     }
     try {
-      const response = await fetch ('/api/registerTestEmailAPI', {
+      const response = await fetch ('http://localhost:3000/api/registerTestEmailAPI', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
