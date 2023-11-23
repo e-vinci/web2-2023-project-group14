@@ -120,6 +120,13 @@ export function createCards(scene) {
     hoverNecromancerImageP1.setVisible(false);
   });
 
+  const hoverWarriorImageP1 = scene.add
+    .image(scene.scale.width * 0.5, scene.scale.height * 0.7, 'warriorCardPopUp')
+    .setOrigin(0.5, 0.5)
+    .setDepth(2)
+    .setScale(0.7)
+    .setVisible(false); // Initially set to invisible
+
   const warriorCardP1 = scene.add
     .image(scene.scale.width * 0.37, scene.scale.height * yValue, 'warriorCard')
     .setOrigin(0.5, 0.5)
@@ -128,9 +135,11 @@ export function createCards(scene) {
   warriorCardP1.setInteractive();
   warriorCardP1.on('pointerover', () => {
     warriorCardP1.setScale(0.45);
+    hoverWarriorImageP1.setVisible(true);
   });
   warriorCardP1.on('pointerout', () => {
     warriorCardP1.setScale(0.38);
+    hoverWarriorImageP1.setVisible(false);
   });
 
   const warriorCardP2 = scene.add
