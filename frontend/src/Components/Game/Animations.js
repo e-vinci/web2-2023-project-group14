@@ -261,15 +261,15 @@ export function createEXTAnim(scene) {
 
     // Instances de Exterminator
     // eslint-disable-next-line prefer-const
-    let ext = scene.add.sprite(300, 300, 'ExterminatorMove');
+    let ext = scene.add.sprite(350, 350, 'ExterminatorMove');
     ext.play('ExtMove').setDepth(1);
 
     // eslint-disable-next-line prefer-const
-    let ext2 = scene.add.sprite(300, 350, 'ExterminatorDeath');
+    let ext2 = scene.add.sprite(400, 350, 'ExterminatorDeath');
     ext2.play('ExtDeath').setDepth(1);
 
     // eslint-disable-next-line prefer-const
-    let ext3 = scene.add.sprite(300, 400, 'ExterminatorAttack');
+    let ext3 = scene.add.sprite(450, 350, 'ExterminatorAttack');
     ext3.play('ExtAttack').setDepth(1);
 
 }
