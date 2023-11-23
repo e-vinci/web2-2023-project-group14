@@ -35,7 +35,7 @@ export function createCards(scene) {
     .image(scene.scale.width * 0.5, scene.scale.height * 0.7, 'archerCardPopUp')
     .setOrigin(0.5, 0.5)
     .setDepth(2)
-    .setScale(0.5)
+    .setScale(0.7)
     .setVisible(false); // Initially set to invisible
 
   // Adding card for the charachters
@@ -58,7 +58,7 @@ export function createCards(scene) {
     .image(scene.scale.width * 0.5, scene.scale.height * 0.7, 'botCardPopUp')
     .setOrigin(0.5, 0.5)
     .setDepth(2)
-    .setScale(0.5)
+    .setScale(0.7)
     .setVisible(false); // Initially set to invisible
 
   const botCardP1 = scene.add
