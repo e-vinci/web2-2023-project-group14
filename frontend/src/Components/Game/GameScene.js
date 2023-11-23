@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 /* eslint-disable no-unused-vars */
 import Phaser from 'phaser';
 import music from '../../assets/audio/theme_musics/C418 - Aria Math.mp3';
@@ -37,6 +38,11 @@ class GameScene extends Phaser.Scene {
     this.cursors = undefined;
     this.player1CharactersGroup = undefined;
     this.player2CharactersGroup = undefined;
+    this.cardsP1=[];
+    this.indexP1=0;
+    this.cardsP2=[];
+    this.indexP2=0;
+    
     // this.KnightSpawn = undefined;
   }
 
@@ -56,14 +62,65 @@ class GameScene extends Phaser.Scene {
     preloadCards(this);
 
     preloadPlayerBase(this);
+   
   }
 
   create() {
-    // Adding card for the charachters
+
+
+    // fonction pour choisir cartes a gauche
+    this.input.keyboard.on('keydown-Q', (event) => {
+      // Réduisez l'échelle de la carte précédemment sélectionnée
+      this.cardsP1[this.indexP1].setScale(0.38);
+  
+      // Mettez à jour l'index de la carte sélectionnée
+      this.indexP1--;
+      if (this.indexP1 < 0) {
+        this.indexP1 = this.cardsP1.length - 1; // Boucle vers la fin si nous sommes au début
+      }
+        // Mettez en évidence la nouvelle carte sélectionnée
+        this.cardsP1[this.indexP1].setScale(0.45);
+  });
+    
+  
+  this.input.keyboard.on('keydown-D', (event) => {
+    // Réduisez l'échelle de la carte précédemment sélectionnée
+    this.cardsP1[this.indexP1].setScale(0.38);
+
+    // Mettez à jour l'index de la carte sélectionnée
+    this.indexP1++;
+    if (this.indexP1 >= this.cardsP1.length) {
+      this.indexP1 = 0; // Boucle vers le début si nous sommes à la fin
+    }
+
+    // Mettez en évidence la nouvelle carte sélectionnée
+    this.cardsP1[this.indexP1].setScale(0.45);
+});
+  
+  
+  
+  // Adding card for the charachters
     createCards(this);
- // Define keybinds
+    this.cards=createCards(this);
+    console.log(this.cards);
+ 
+    for(let i=0; i<5; i++) {
+      this.cardsP1[i]=this.cards[i];
+    }
+    for(let j=0; j<5; j++) {
+      this.cardsP2[j]=this.cards[j+5];
+    }
+ 
+    console.log(this.cardsP1);
+    console.log(this.cardsP2);
+ 
+    this.cardsP1[this.indexP1].setScale(0.45);
+
+    
+
+    // Define keybinds
  cursors = this.input.keyboard.createCursorKeys();
-    createPlayerBase(this);
+  createPlayerBase(this);
 
   // creating archer animations 
   createArcherAnim(this);
@@ -300,6 +357,8 @@ player2CharactersGroup = this.physics.add.group();
       golds: Player.DEFAULT_GOLDS,
       maxUnits: Player.DEFAULT_MAX_UNITS,
     };
+    
+
   }
 
   // eslint-disable-next-line class-methods-use-this

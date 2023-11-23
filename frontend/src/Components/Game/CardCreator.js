@@ -46,11 +46,9 @@ export function createCards(scene) {
     .setScale(0.38);
   archerCardP1.setInteractive();
   archerCardP1.on('pointerover', () => {
-    archerCardP1.setScale(0.45);
     hoverArcherImageP1.setVisible(true);
   });
   archerCardP1.on('pointerout', () => {
-    archerCardP1.setScale(0.38);
     hoverArcherImageP1.setVisible(false);
   });
 
@@ -69,10 +67,8 @@ export function createCards(scene) {
   botCardP1.setInteractive();
   botCardP1.on('pointerover', () => {
     hoverBotImageP1.setVisible(true);
-    botCardP1.setScale(0.45);
   });
   botCardP1.on('pointerout', () => {
-    botCardP1.setScale(0.38);
     hoverBotImageP1.setVisible(false);
   });
 
@@ -90,11 +86,9 @@ export function createCards(scene) {
     .setScale(0.38);
   knightCardP1.setInteractive();
   knightCardP1.on('pointerover', () => {
-    knightCardP1.setScale(0.45);
     hoverKnightImageP1.setVisible(true);
   });
   knightCardP1.on('pointerout', () => {
-    knightCardP1.setScale(0.38);
     hoverKnightImageP1.setVisible(false);
   });
 
@@ -112,11 +106,9 @@ export function createCards(scene) {
     .setScale(0.38);
   necromancerCardP1.setInteractive();
   necromancerCardP1.on('pointerover', () => {
-    necromancerCardP1.setScale(0.45);
     hoverNecromancerImageP1.setVisible(true);
   });
   necromancerCardP1.on('pointerout', () => {
-    necromancerCardP1.setScale(0.38);
     hoverNecromancerImageP1.setVisible(false);
   });
 
@@ -134,11 +126,9 @@ export function createCards(scene) {
     .setScale(0.38);
   warriorCardP1.setInteractive();
   warriorCardP1.on('pointerover', () => {
-    warriorCardP1.setScale(0.45);
     hoverWarriorImageP1.setVisible(true);
   });
   warriorCardP1.on('pointerout', () => {
-    warriorCardP1.setScale(0.38);
     hoverWarriorImageP1.setVisible(false);
   });
 
@@ -251,4 +241,6 @@ export function createCards(scene) {
     archerCardP2.setScale(0.38);
     hoverArcherImageP2.setVisible(false);
   });
+
+  return [archerCardP1, botCardP1, knightCardP1, necromancerCardP1, warriorCardP1, archerCardP2, botCardP2, knightCardP2, necromancerCardP2, warriorCardP2];
 }
