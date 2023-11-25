@@ -1,48 +1,30 @@
 const express = require('express');
-const { register, login } = require('../models/users');
+const { register, login, externalEmailApiVerification } = require('../models/users');
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
 const router = express.Router();
 
-// register a user (test email API) TODO later with database
+// register a user (test email with external API) TODO later with database
 router.post('/registerTestEmailAPI', async (req, res) => {
-  const userData = req.body;
-  const newEmail = userData.newUserEmail;
+  const userData = req.body;    // The data the user gave in the register form
+  const emailToValidate = userData.newUserEmail;   // Here is the email we are checking with the external API
 
   try {
-    const requestBody = new URLSearchParams();
-    requestBody.append('email', newEmail);
-
-    const response = await fetch('https://disify.com/api/email', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      body: requestBody.toString()
-    });
-
-    if (response.ok) {
-      const responseData = await response.json(); // parses the json response to javascript
-      // Handle the response data from the external API
-      if (responseData.format === true && responseData.disposable === false && responseData.dns === true && responseData.whitelist === true){
-        console.log("The email is valid");
-      // Now we can also save the whole user in the database TODO
-      } else {
-        console.log("The email is invalid!");
-      }
-      // Send the response back to the client
-      res.status(200).json({ message: 'Email verification successful (or user got saved if correct, idk don t ask me, ask Dimitry brother XD', responseData });
+    const response = await externalEmailApiVerification(emailToValidate);
+    if (response.error) {
+      // If this condition is true, the email verification failed, we got no answear, we don t save the user
+      res.status(400).json(response);
     } else {
-      // Handle unsuccessful response (status other than 200 OK)
-      console.error('Request failed with status:', response.status);
-      res.status(response.status).json({ error: 'Failed to validate email' });
+      /* So here we check the answear from the API,
+      we check if the email is valid, if it is, 
+      we check if we can save the user and send a confirmation to the front end!
+      */
+      res.json(response); // Here we just send the the object from the external api as a test, this must be changed
     }
-
-    // Handle response...
   } catch (err) {
-    console.error('auths::error: ', err);
-    res.status(500).json({ error: 'Internal server error' });
+    console.error('Registe::error: ', err);
   }
+  
 });
 
 

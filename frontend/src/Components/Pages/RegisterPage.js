@@ -1,7 +1,7 @@
 // import Navigate from '../Router/Navigate';
 import { clearPage } from '../../utils/render';
 
-const RegisterPage = async () => {
+const RegisterPage = () => {
     clearPage();
     renderRegisterForm();
 };
@@ -148,26 +148,17 @@ async function renderRegisterForm() {
   backgroundDiv.appendChild(confEmailFeedback);
 
   submit.addEventListener('click', async (event) => {
-    // creating the new user object to send for verification to the backend
-
     event.preventDefault(); // I think this is needed; if not, the page refreshes itself and wipes out the response
-
+    
+    // creating the new user object to send for verification to the backend
     const formInfos = document.querySelector('form'); // added for the new approach
     const newUserData = {
-      /* this is what I had before:
-      newUserEmail: document.getElementById(userEmail).value,
-      newUserName: document.getElementById(username).value,
-      newUserPassword: document.getElementById(password).value,
-      newUserConfirmedPassword: document.getElementById(passwordConf).value
-      */
       newUserEmail : formInfos.elements.userEmail.value,
       newUserName : formInfos.elements.username.value,
       newUserPassword : formInfos.elements.password.value,
       newUserConfirmedPassword : formInfos.elements.passwordConf.value
-
-
     }
-    console.log("checking if values are null here but i don t think so");
+  
     try {
       const response = await fetch ('/api/auths/registerTestEmailAPI', {
         method: 'POST',
@@ -184,11 +175,7 @@ async function renderRegisterForm() {
         console.log('Registration successful: ', responseData);
         // Navigate('/'); // just a placeholder currently
         
-      } else {
-        confEmailFeedback.innerHTML = "Okay so it didn t work but it should have";
-        console.log("The email is invalid!");
       }
-
     } catch (err) {
       console.error('RegisterPage::error: ', err);
     }
