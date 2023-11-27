@@ -13,7 +13,7 @@ import PlayerBase, { createPlayerBase, preloadPlayerBase } from './PlayerBase';
 import MobP1Ex from '../../assets/mobPlayer1Ex.png';
 import {preloadSpriteSheets, createArcherAnim, createNecroAnim, createKnightAnim, createWarriorAnim, createEXTAnim} from './Animations'
 // eslint-disable-next-line import/no-cycle
-import Archer from './Units/Archer';
+import Archer from './Archer';
 import Exterminator from './Units/Exterminator';
 import Knight from './Units/Knight';
 import Necro from './Units/Necro';
@@ -235,8 +235,6 @@ function spawnWarriors2() {
  cursors = this.input.keyboard.createCursorKeys();
   createPlayerBase(this);
 
-  // creating archer animations 
-  createArcherAnim(this);
 
   // creating necro animations
   createNecroAnim(this);
@@ -394,7 +392,7 @@ function spawnWarriors2() {
       .setOrigin(0.5)
       .setDepth(1);
 
-    let timeLeft = 3;
+    let timeLeft = 5;
 
     let incrementAmount = 100;
 
@@ -409,7 +407,7 @@ function spawnWarriors2() {
         addWarriorP2(this.indexP2, this, team2);
         console.log(team1);
         console.log(team2);
-        timeLeft = 3; // Réinitialiser le temps à 15 une fois qu'il atteint zéro
+        timeLeft = 5; // Réinitialiser le temps à 15 une fois qu'il atteint zéro
         this.player1.addGolds(incrementAmount);
         const currentGolds = this.player1.golds; // Met à jour le nombre actuel de golds
         player1GoldsText.setText(`${currentGolds}`);
