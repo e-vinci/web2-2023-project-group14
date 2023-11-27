@@ -27,14 +27,14 @@ const KNIGHT_KEY = 'knight';
 let cursors;
 let player1CharactersGroup;
 let player2CharactersGroup;
-// eslint-disable-next-line prefer-const
-let team1=[];
-const team2=[];
+// eslint-disable-next-line prefer-const, import/no-mutable-exports
+export  let team1=[];
+// eslint-disable-next-line prefer-const, import/no-mutable-exports
+export  let team2=[];
 
 class GameScene extends Phaser.Scene {
   constructor() {
     super('game-scene');
-    this.necro= null;
     this.soundOn = true;
     this.soundButton = undefined;
     this.player1 = undefined;
@@ -116,10 +116,10 @@ class GameScene extends Phaser.Scene {
 
 
 
-function addWarriorP1(indexP1) {
+function addWarriorP1(indexP1, scene, team) {
   switch(indexP1) {
     case 0:
-      team1.push(new Archer());
+      team1.push(new Archer(scene,100,200));
       break;
     case 1:
       team1.push(new Exterminator());
@@ -137,7 +137,12 @@ function addWarriorP1(indexP1) {
       console.log(team1);
   }
 }
-
+// Spawn warriors
+function spawnWarriors1() {
+  for(let i = 0; i < team1.length; i++) {
+    team1[i].spawn();
+  }
+}
 
 
 // fonction pour choisir cartes a gauche P2
@@ -177,10 +182,10 @@ this.input.keyboard.on('keydown-RIGHT', (event) => {
 
 
 
-function addWarriorP2(indexP2) {
+function addWarriorP2(indexP2, scene, team) {
   switch(indexP2) {
     case 0:
-      team2.push(new Archer());
+      team2.push(new Archer(scene, 500, 400));
       break;
     case 1:
       team2.push(new Exterminator());
@@ -199,6 +204,12 @@ function addWarriorP2(indexP2) {
   }
 }
 
+// Spawn warriors
+function spawnWarriors2() {
+  for(let i = 0; i < team2.length; i++) {
+    team2[i].spawn();
+  }
+}
 
   // Adding card for the charachters
     createCards(this);
@@ -238,13 +249,7 @@ function addWarriorP2(indexP2) {
   // creating ext animations
   createEXTAnim(this);
 
-// Creating players (will need to modify with backend)
-this.player1= new Player();
-this.player2= new Player();
-// Adding Playerbases to the game
-createPlayerBase(this);
-player1CharactersGroup = this.physics.add.group();
-player2CharactersGroup = this.physics.add.group();
+
 
 
 
@@ -399,8 +404,8 @@ player2CharactersGroup = this.physics.add.group();
       if (timeLeft === 0) {
         console.log(this.indexP1);
         console.log(this.indexP2);
-        addWarriorP1(this.indexP1);
-        addWarriorP2(this.indexP2);
+        addWarriorP1(this.indexP1, this, team1);
+        addWarriorP2(this.indexP2, this, team2);
         console.log(team1);
         console.log(team2);
         timeLeft = 3; // Réinitialiser le temps à 15 une fois qu'il atteint zéro
@@ -409,6 +414,8 @@ player2CharactersGroup = this.physics.add.group();
         player1GoldsText.setText(`${currentGolds}`);
         player2GoldsText.setText(`${currentGolds}`);
         incrementAmount *= 1.5; // Montant à incrémenter (peut être ajusté)
+        spawnWarriors1();
+        spawnWarriors2();
       }
     };
 
@@ -474,14 +481,7 @@ player2CharactersGroup = this.physics.add.group();
     //  this.physics.moveToObject(knight, 'X', 10),
     // );
 
-  this.necro.x +=0.5 ;
-  const screenWidth = this.sys.game.config.width;
-
-        // Vérifiez si le nécromancien a atteint la limite de l'écran
-        if (this.necro.x === screenWidth) {
-            // Arrêtez le mouvement du nécromancien
-            this.necro.x -= 0.5;
-        }
+  
       }
 
   toggleSound() {

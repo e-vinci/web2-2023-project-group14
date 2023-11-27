@@ -82,8 +82,7 @@ scene.anims.create({
     repeat: -1,
   });
   
-  const ar = scene.add.sprite(600, 400, 'ArcherAll');
-  ar.play('RedRun').setDepth(1);
+  
   
   // Archer Attack Animation Creation
   
@@ -94,8 +93,7 @@ scene.anims.create({
     repeat: -1,
   });
   
-  const ar2 = scene.add.sprite(650, 400, 'ArcherAll');
-  ar2.play('RedAttack').setDepth(1);
+  
   
   
   // Archer Death Animation Creation
@@ -107,9 +105,7 @@ scene.anims.create({
     repeat: -1,
   });
   
-  const ar3 = scene.add.sprite(700, 400, 'ArcherAll');
-  ar3.play('RedDeath').setDepth(1);
-    };
+}
 
 
 export function createNecroAnim(scene){
@@ -135,17 +131,7 @@ scene.anims.create({
     frameRate: 10,
     repeat: -1,
   });
-  scene.necro = scene.physics.add.sprite(450, 300, 'NecroRun');
-  scene.necro.setInteractive(scene.input.makePixelPerfect());
-  scene.necro.play('NecRun').setDepth(1);
-  scene.necro.body.setOffset(70, 75)
-
-  const nc2 = scene.add.sprite(500, 300, 'NecroDeath');
-  nc2.play('NecDeath').setDepth(1);
- 
   
-  const nc3 = scene.add.sprite(550, 300, 'NecroAttack');
-  nc3.play('NecAttack').setDepth(1);
 }
 
 
@@ -173,14 +159,7 @@ scene.anims.create({
     frameRate: 10,
     repeat: -1,
 });
-const kn = scene.add.sprite(300, 200, 'KnightRun');
-kn.play('KnighRun').setDepth(1);
-  
-const kn2 = scene.add.sprite(360, 200, 'KnightAttack');
-kn2.play('KnighAttack').setDepth(1);
-    
-const kn3 = scene.add.sprite(450, 200, 'KnightDeath');
-kn3.play('KnighDeath').setDepth(1);
+
   
 
 }
@@ -215,17 +194,6 @@ export function createWarriorAnim(scene) {
   
       // Instances de warrior
   
-      // eslint-disable-next-line prefer-const
-      let warrior = scene.add.sprite(100, 250, 'NightBorneAll');
-      warrior.play('WarriorRun').setDepth(1);
-  
-      // eslint-disable-next-line prefer-const
-      let warrior2 = scene.add.sprite(150, 250, 'NightBorneall');
-      warrior2.play('WarriorHit').setDepth(1);
-  
-      // eslint-disable-next-line prefer-const
-      let warrior3 = scene.add.sprite(200, 250, 'NightBorneAll');
-      warrior3.play('WarriorDeath').setDepth(1);
   
 }
 
@@ -259,17 +227,6 @@ export function createEXTAnim(scene) {
       repeat: -1,
     });
 
-    // Instances de Exterminator
-    // eslint-disable-next-line prefer-const
-    let ext = scene.add.sprite(350, 350, 'ExterminatorMove');
-    ext.play('ExtMove').setDepth(1);
-
-    // eslint-disable-next-line prefer-const
-    let ext2 = scene.add.sprite(400, 350, 'ExterminatorDeath');
-    ext2.play('ExtDeath').setDepth(1);
-
-    // eslint-disable-next-line prefer-const
-    let ext3 = scene.add.sprite(450, 350, 'ExterminatorAttack');
-    ext3.play('ExtAttack').setDepth(1);
+   
 
 }
