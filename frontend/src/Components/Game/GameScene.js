@@ -12,6 +12,7 @@ import baseSpriteSheet from '../../assets/playerBase.png';
 import PlayerBase, { createPlayerBase, preloadPlayerBase } from './PlayerBase';
 import MobP1Ex from '../../assets/mobPlayer1Ex.png';
 import {preloadSpriteSheets, createArcherAnim, createNecroAnim, createKnightAnim, createWarriorAnim, createEXTAnim} from './Animations'
+// eslint-disable-next-line import/no-cycle
 import Archer from './Units/Archer';
 import Exterminator from './Units/Exterminator';
 import Knight from './Units/Knight';
@@ -116,10 +117,10 @@ class GameScene extends Phaser.Scene {
 
 
 
-function addWarriorP1(indexP1, scene, team) {
+function addWarriorP1(indexP1, scene) {
   switch(indexP1) {
     case 0:
-      team1.push(new Archer(scene,100,200));
+      team1.push(new Archer(scene,100,200,'right'));
       break;
     case 1:
       team1.push(new Exterminator());
@@ -182,10 +183,10 @@ this.input.keyboard.on('keydown-RIGHT', (event) => {
 
 
 
-function addWarriorP2(indexP2, scene, team) {
+function addWarriorP2(indexP2, scene) {
   switch(indexP2) {
     case 0:
-      team2.push(new Archer(scene, 500, 400));
+      team2.push(new Archer(scene, 500, 400,'left'));
       break;
     case 1:
       team2.push(new Exterminator());

@@ -1,14 +1,14 @@
 import Phaser from 'phaser';
 // eslint-disable-next-line import/no-cycle
-import { team1,team2 } from '../GameScene';
+
 
 export default class Archer extends Phaser.Physics.Arcade.Sprite{
-    constructor(scene, x, y, team) {
+    constructor(scene, x, y, direction) {
       super(scene, x, y, 'archer');
       this.health = 100;
       this.damage = 10;
       this.range = 50;
-      this.team=team;
+      this.direction=direction;
 
     // Add this entity to the scene's physics
     scene.physics.world.enable(this);
@@ -19,12 +19,12 @@ export default class Archer extends Phaser.Physics.Arcade.Sprite{
   
     // Method to spawn the archer
     spawn() {
-      if (this.team === team1) {
-        this.setVelocity(10);
-      } else if (this.team === team2) {
-        this.setVelocity(-10);
+      
+      if (this.direction === 'right') {
+        this.setVelocityX(10); // Move right
+      } else if (this.direction === 'left') {
+        this.setVelocityX(-10); // Move left
       }
-      this.setVelocity(10);
       this.setVisible(true);
       console.log(`Archer has been spawned with ${  this.health  } health, ${  this.damage  } damage, and ${  this.range  } range.`);
     }
