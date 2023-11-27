@@ -136,10 +136,10 @@ scene.anims.create({
     repeat: -1,
   });
   scene.necro = scene.physics.add.sprite(450, 300, 'NecroRun');
-  scene.necro.x=450;
   scene.necro.setInteractive(scene.input.makePixelPerfect());
   scene.necro.play('NecRun').setDepth(1);
-  
+  scene.necro.body.setOffset(70, 75)
+
   const nc2 = scene.add.sprite(500, 300, 'NecroDeath');
   nc2.play('NecDeath').setDepth(1);
  

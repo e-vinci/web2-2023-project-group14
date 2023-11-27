@@ -12,6 +12,11 @@ import baseSpriteSheet from '../../assets/playerBase.png';
 import PlayerBase, { createPlayerBase, preloadPlayerBase } from './PlayerBase';
 import MobP1Ex from '../../assets/mobPlayer1Ex.png';
 import {preloadSpriteSheets, createArcherAnim, createNecroAnim, createKnightAnim, createWarriorAnim, createEXTAnim} from './Animations'
+import Archer from './Units/Archer';
+import Exterminator from './Units/Exterminator';
+import Knight from './Units/Knight';
+import Necro from './Units/Necro';
+import Warrior from './Units/Warrior';
 
 
 
@@ -22,6 +27,9 @@ const KNIGHT_KEY = 'knight';
 let cursors;
 let player1CharactersGroup;
 let player2CharactersGroup;
+// eslint-disable-next-line prefer-const
+let team1=[];
+const team2=[];
 
 class GameScene extends Phaser.Scene {
   constructor() {
@@ -42,6 +50,7 @@ class GameScene extends Phaser.Scene {
     this.indexP1=0;
     this.cardsP2=[];
     this.indexP2=0;
+    
     
     // this.KnightSpawn = undefined;
   }
@@ -66,21 +75,52 @@ class GameScene extends Phaser.Scene {
   }
 
   create() {
-
+    this.debugShowBody = true;
 
     // fonction pour choisir cartes a gauche P1
     this.input.keyboard.on('keydown-Q', (event) => {
       // Réduisez l'échelle de la carte précédemment sélectionnée
-      this.cardsP1[this.indexP1].setScale(0.38);
+    this.cardsP1[this.indexP1].setScale(0.38);
   
       // Mettez à jour l'index de la carte sélectionnée
-      this.indexP1--;
+    this.indexP1--;
       if (this.indexP1 < 0) {
         this.indexP1 = this.cardsP1.length - 1; // Boucle vers la fin si nous sommes au début
       }
         // Mettez en évidence la nouvelle carte sélectionnée
-        this.cardsP1[this.indexP1].setScale(0.45);
+    this.cardsP1[this.indexP1].setScale(0.45);
   });
+
+
+
+
+
+
+
+  function addWarriorP1(indexP1) {
+    switch(indexP1) {
+      case 0:
+        team1.push(new Archer());
+        break;
+      case 1:
+        team1.push(new Exterminator());
+        break;
+      case 2:
+        team1.push(new Knight());
+        break;
+      case 3:
+        team1.push(new Necro());
+        break;
+      case 4:
+        team1.push(new Warrior());
+        break;
+      default:
+        console.log('Unknown warrior type');
+    }
+  }
+
+
+
     
   // fonction pour choisir cartes a droite P1
   this.input.keyboard.on('keydown-D', (event) => {
@@ -131,7 +171,7 @@ this.input.keyboard.on('keydown-RIGHT', (event) => {
   // Adding card for the charachters
     createCards(this);
     this.cards=createCards(this);
-    console.log(this.cards);
+    
  
     for(let i=0; i<5; i++) {
       this.cardsP1[i]=this.cards[i];
@@ -140,8 +180,7 @@ this.input.keyboard.on('keydown-RIGHT', (event) => {
       this.cardsP2[j]=this.cards[j+5];
     }
  
-    console.log(this.cardsP1);
-    console.log(this.cardsP2);
+    
  
     this.cardsP1[this.indexP1].setScale(0.45);
     this.cardsP2[this.indexP2].setScale(0.45);
@@ -401,7 +440,7 @@ player2CharactersGroup = this.physics.add.group();
   const screenWidth = this.sys.game.config.width;
 
         // Vérifiez si le nécromancien a atteint la limite de l'écran
-        if (this.necro.x >= screenWidth - this.necro.width / 2) {
+        if (this.necro.x === screenWidth) {
             // Arrêtez le mouvement du nécromancien
             this.necro.x -= 0.5;
         }
