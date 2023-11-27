@@ -94,33 +94,6 @@ class GameScene extends Phaser.Scene {
 
 
 
-
-
-
-  function addWarriorP1(indexP1) {
-    switch(indexP1) {
-      case 0:
-        team1.push(new Archer());
-        break;
-      case 1:
-        team1.push(new Exterminator());
-        break;
-      case 2:
-        team1.push(new Knight());
-        break;
-      case 3:
-        team1.push(new Necro());
-        break;
-      case 4:
-        team1.push(new Warrior());
-        break;
-      default:
-        console.log('Unknown warrior type');
-    }
-  }
-
-
-
     
   // fonction pour choisir cartes a droite P1
   this.input.keyboard.on('keydown-D', (event) => {
@@ -137,6 +110,35 @@ class GameScene extends Phaser.Scene {
     this.cardsP1[this.indexP1].setScale(0.45);
 });
   
+
+
+
+
+
+
+function addWarriorP1(indexP1) {
+  switch(indexP1) {
+    case 0:
+      team1.push(new Archer());
+      break;
+    case 1:
+      team1.push(new Exterminator());
+      break;
+    case 2:
+      team1.push(new Knight());
+      break;
+    case 3:
+      team1.push(new Necro());
+      break;
+    case 4:
+      team1.push(new Warrior());
+      break;
+    default:
+      console.log(team1);
+  }
+}
+
+
 
 // fonction pour choisir cartes a gauche P2
 this.input.keyboard.on('keydown-LEFT', (event) => {
@@ -167,6 +169,36 @@ this.input.keyboard.on('keydown-RIGHT', (event) => {
   // Mettez en évidence la nouvelle carte sélectionnée pour le joueur 2
   this.cardsP2[this.indexP2].setScale(0.45);
 });
+
+
+
+
+
+
+
+
+function addWarriorP2(indexP2) {
+  switch(indexP2) {
+    case 0:
+      team2.push(new Archer());
+      break;
+    case 1:
+      team2.push(new Exterminator());
+      break;
+    case 2:
+      team2.push(new Knight());
+      break;
+    case 3:
+      team2.push(new Necro());
+      break;
+    case 4:
+      team2.push(new Warrior());
+      break;
+    default:
+      console.log(team2);
+  }
+}
+
 
   // Adding card for the charachters
     createCards(this);
@@ -356,7 +388,7 @@ player2CharactersGroup = this.physics.add.group();
       .setOrigin(0.5)
       .setDepth(1);
 
-    let timeLeft = 15;
+    let timeLeft = 3;
 
     let incrementAmount = 100;
 
@@ -365,7 +397,13 @@ player2CharactersGroup = this.physics.add.group();
       timerText.setText(`${timeLeft}`);
 
       if (timeLeft === 0) {
-        timeLeft = 16; // Réinitialiser le temps à 15 une fois qu'il atteint zéro
+        console.log(this.indexP1);
+        console.log(this.indexP2);
+        addWarriorP1(this.indexP1);
+        addWarriorP2(this.indexP2);
+        console.log(team1);
+        console.log(team2);
+        timeLeft = 3; // Réinitialiser le temps à 15 une fois qu'il atteint zéro
         this.player1.addGolds(incrementAmount);
         const currentGolds = this.player1.golds; // Met à jour le nombre actuel de golds
         player1GoldsText.setText(`${currentGolds}`);
