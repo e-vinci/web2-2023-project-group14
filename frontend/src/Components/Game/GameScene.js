@@ -54,6 +54,12 @@ class GameScene extends Phaser.Scene {
     // this.KnightSpawn = undefined;
   }
 
+  // eslint-disable-next-line class-methods-use-this
+  handleSceneShutdown() {
+    team1.length = 0;
+    team2.length = 0;
+  }
+  
   preload() {
     // TEST FOR EXEMPLE DONT DELETE THIS
     this.load.image('KNIGHT_KEY', MobP1Ex)
@@ -74,6 +80,12 @@ class GameScene extends Phaser.Scene {
   }
 
   create() {
+    this.events.on('shutdown', this.handleSceneShutdown, this);
+    this.events.on('destroy', this.handleSceneShutdown, this);
+    
+
+    
+
     this.debugShowBody = true;
 
     // fonction pour choisir cartes a gauche P1
@@ -109,6 +121,7 @@ class GameScene extends Phaser.Scene {
     this.cardsP1[this.indexP1].setScale(0.45);
 });
   
+
 
 
 
@@ -392,17 +405,21 @@ function spawnWarriors2() {
         console.log(this.indexP1);
         console.log(this.indexP2);
         addWarriorP1(this.indexP1, this, team1);
-        addWarriorP2(this.indexP2, this, team2);
         console.log(team1);
+        spawnWarriors1();
+        addWarriorP2(this.indexP2, this, team2);
         console.log(team2);
+        spawnWarriors2();
+        
+       
         timeLeft = 5; // Réinitialiser le temps à 15 une fois qu'il atteint zéro
         this.player1.addGolds(incrementAmount);
         const currentGolds = this.player1.golds; // Met à jour le nombre actuel de golds
         player1GoldsText.setText(`${currentGolds}`);
         player2GoldsText.setText(`${currentGolds}`);
         incrementAmount *= 1.5; // Montant à incrémenter (peut être ajusté)
-        spawnWarriors1();
-        spawnWarriors2();
+        
+        
       }
     };
 

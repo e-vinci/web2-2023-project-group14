@@ -35,6 +35,12 @@ console.log('Animation created:', scene.anims.get('NecRun'));
     // Method to spawn the archer
     spawn() {
       
+     
+      this.setVisible(true);
+      
+      this.setOffset(65,75)
+      this.setDepth(1);
+      this.anims.play('NecRun');
       if (this.direction === 'right') {
         this.setVelocityX(10); // Move right
         this.flipX=false;
@@ -42,11 +48,6 @@ console.log('Animation created:', scene.anims.get('NecRun'));
         this.setVelocityX(-10); // Move left
         this.flipX=true;
       }
-      this.setVisible(true);
-      this.anims.play('NecRun');
-      this.setOffset(65,75)
-      this.setDepth(1);
-      console.log(`Necro has been spawned with ${  this.health  } health, ${  this.damage  } damage, and ${  this.range  } range.`);
     }
   
     // Method for the archer to attack
