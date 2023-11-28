@@ -13,7 +13,7 @@ import knightAttackSpriteSheet from '../../assets/sprites/KnightSprites/KnightAt
 import knightDeathSpriteSheet from '../../assets/sprites/KnightSprites/KnightDeath.png';
 
 // Necro Import
-import necroSpriteSheet from '../../assets/sprites/NecroSprites/Necro.png';
+import necroSpriteSheet from '../../assets/sprites/NecroSprites/NecroAll.png';
 
 
 // Archer Import
@@ -55,15 +55,15 @@ export function preloadSpriteSheets(scene) {
         frameHeight: 80,
       });
       // Exterminator Loads
-      scene.load.spritesheet('ExterminatorMove', extMoveSpriteSheet, {
+      scene.load.spritesheet('EXTmove', extMoveSpriteSheet, {
         frameWidth: 100,
         frameHeight: 26,
       });
-      scene.load.spritesheet('ExterminatorDeath', extDeathSpriteSheet, {
+      scene.load.spritesheet('EXTdeath', extDeathSpriteSheet, {
         frameWidth: 100,
         frameHeight: 26,
       });
-      scene.load.spritesheet('ExterminatorAttack', extAttackSpriteSheet, {
+      scene.load.spritesheet('EXTattack', extAttackSpriteSheet, {
         frameWidth: 100,
         frameHeight: 26,
       });
@@ -75,12 +75,7 @@ export function createArcherAnim(scene) {
     // Archer Creates
 // Archer Run Animation Creation
 
-scene.anims.create({
-    key: 'RedRun',
-    frames: scene.anims.generateFrameNumbers('ArcherAll', { start:0, end : 24}),
-    frameRate: 15,
-    repeat: -1,
-  });
+
   
   
   
@@ -202,12 +197,7 @@ export function createEXTAnim(scene) {
 
     // Exterminator move animation
 
-    scene.anims.create({
-      key: 'ExtMove',
-      frames: scene.anims.generateFrameNumbers('ExterminatorMove', { start: 0, end: 7 }),
-      frameRate: 10,
-      repeat: -1,
-    });
+   
 
     // Exterminator Death animation
 

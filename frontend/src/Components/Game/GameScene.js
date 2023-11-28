@@ -11,9 +11,9 @@ import Player from './Player';
 import baseSpriteSheet from '../../assets/playerBase.png';
 import PlayerBase, { createPlayerBase, preloadPlayerBase } from './PlayerBase';
 import MobP1Ex from '../../assets/mobPlayer1Ex.png';
-import {preloadSpriteSheets, createArcherAnim, createNecroAnim, createKnightAnim, createWarriorAnim, createEXTAnim} from './Animations'
+import {preloadSpriteSheets} from './Animations'
 // eslint-disable-next-line import/no-cycle
-import Archer from './Archer';
+import Archer from './Units/Archer';
 import Exterminator from './Units/Exterminator';
 import Knight from './Units/Knight';
 import Necro from './Units/Necro';
@@ -21,8 +21,6 @@ import Warrior from './Units/Warrior';
 
 
 
-// All the key 
-const KNIGHT_KEY = 'knight';
 
 // Variables here
 let cursors;
@@ -123,16 +121,16 @@ function addWarriorP1(indexP1, scene) {
       team1.push(new Archer(scene,100,200,'right'));
       break;
     case 1:
-      team1.push(new Exterminator());
+      team1.push(new Exterminator(scene,100,200,'right'));
       break;
     case 2:
-      team1.push(new Knight());
+      team1.push(new Knight(scene,100,200,'right'));
       break;
     case 3:
-      team1.push(new Necro());
+      team1.push(new Necro(scene,100,200,'right'));
       break;
     case 4:
-      team1.push(new Warrior());
+      team1.push(new Warrior(scene,100,200,'right'));
       break;
     default:
       console.log(team1);
@@ -189,16 +187,16 @@ function addWarriorP2(indexP2, scene) {
       team2.push(new Archer(scene, 500, 400,'left'));
       break;
     case 1:
-      team2.push(new Exterminator());
+      team2.push(new Exterminator(scene, 500, 400,'left'));
       break;
     case 2:
-      team2.push(new Knight());
+      team2.push(new Knight(scene, 500, 400,'left'));
       break;
     case 3:
-      team2.push(new Necro());
+      team2.push(new Necro(scene, 500, 400,'left'));
       break;
     case 4:
-      team2.push(new Warrior());
+      team2.push(new Warrior(scene, 500, 400,'left'));
       break;
     default:
       console.log(team2);
@@ -236,17 +234,7 @@ function spawnWarriors2() {
   createPlayerBase(this);
 
 
-  // creating necro animations
-  createNecroAnim(this);
-
-  // creating knight animations
-  createKnightAnim(this);
   
-  // creating warrior animations 
-  createWarriorAnim(this);
-
-  // creating ext animations
-  createEXTAnim(this);
 
 
 
