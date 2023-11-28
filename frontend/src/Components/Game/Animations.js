@@ -50,7 +50,7 @@ export function preloadSpriteSheets(scene) {
       });
   
       // Warrior Loads
-      scene.load.spritesheet('NightBorneAll', warriorSpriteSheet, {
+      scene.load.spritesheet('NightBorne', warriorSpriteSheet, {
         frameWidth: 80,
         frameHeight: 80,
       });
@@ -119,13 +119,7 @@ scene.anims.create({
     frameRate: 10,
     repeat: -1,
   });
-  // Necro Run Animation Creation
-  scene.anims.create({
-    key: 'NecRun',
-    frames: scene.anims.generateFrameNumbers('NecroAll', { start: 17, end: 24 }),
-    frameRate: 10,
-    repeat: -1,
-  });
+  
   
 }
 

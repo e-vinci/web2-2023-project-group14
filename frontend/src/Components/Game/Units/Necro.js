@@ -20,16 +20,16 @@ export default class Necro extends Phaser.Physics.Arcade.Sprite{
 
     // Archer Run Animation Creation
 
-    if (!scene.anims.exists('NecRun')) {
+    if (!scene.anims.exists('NecroRun')) {
       // Necro Run Animation Creation
   scene.anims.create({
-    key: 'NecRun',
+    key: 'NecroRun',
     frames: scene.anims.generateFrameNumbers('NecroAll', { start: 17, end: 24 }),
     frameRate: 10,
     repeat: -1,
   });
     }
-console.log('Animation created:', scene.anims.get('NecRun'));
+console.log('Animation created:', scene.anims.get('NecroRun'));
     }
   
     // Method to spawn the archer
@@ -40,7 +40,7 @@ console.log('Animation created:', scene.anims.get('NecRun'));
       
       this.setOffset(65,75)
       this.setDepth(1);
-      this.anims.play('NecRun');
+      this.anims.play('NecroRun');
       if (this.direction === 'right') {
         this.setVelocityX(10); // Move right
         this.flipX=false;
