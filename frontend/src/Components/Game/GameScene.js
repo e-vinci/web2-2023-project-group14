@@ -11,7 +11,8 @@ import hudAsset from '../../assets/armadaHUD.png';
 import { createCards, preloadCards } from './CardCreator';
 import Player from './Player';
 import baseSpriteSheet from '../../assets/playerBase.png';
-import PlayerBase, { createPlayerBase, preloadPlayerBase } from './PlayerBase';
+import { preloadPlayerBase } from './PlayerBase';
+import PlayerBase from './PlayerBase/Playerbase';
 import MobP1Ex from '../../assets/mobPlayer1Ex.png';
 import {preloadSpriteSheets} from './Animations'
 // eslint-disable-next-line import/no-cycle
@@ -102,12 +103,20 @@ class GameScene extends Phaser.Scene {
     
     player1CharactersGroup=this.add.group();
     player2CharactersGroup=this.add.group();
-    this.events.on('shutdown', this.handleSceneShutdown, this);
-    this.events.on('destroy', this.handleSceneShutdown, this);
     
-
     
+    player1CharactersGroup.add(new PlayerBase(this,50, 250));
+    player2CharactersGroup.add(new PlayerBase(this,750, 250));
 
+    let base1 = player1CharactersGroup.getChildren();
+    base1.forEach(base => {
+      base.spawn();
+  });
+    
+    let base2 = player2CharactersGroup.getChildren();
+    base2.forEach(base => {
+      base.spawn();
+    });
     this.debugShowBody = true;
 
     // fonction pour choisir cartes a gauche P1
@@ -275,7 +284,7 @@ const spawnWarriors2 = () => {
 
     // Define keybinds
  cursors = this.input.keyboard.createCursorKeys();
-  createPlayerBase(this);
+  
 
 
   

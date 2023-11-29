@@ -5,12 +5,8 @@ export function preloadPlayerBase(scene) {
 }
 
 export function createPlayerBase(scene) {
-  scene.anims.create({
-    key: 'baseFloating',
-    frames: scene.anims.generateFrameNumbers('base', { start: 0, end: 12 }),
-    frameRate: 10,
-    repeat: -1,
-  });
+ 
+
 
   // Ajoutez les bases des joueurs à la scène.
   const base1 = scene.add.sprite(50, 250, 'base').setOrigin(0.5, 0.5).setDepth(1);
