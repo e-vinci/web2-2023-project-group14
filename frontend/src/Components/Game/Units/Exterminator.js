@@ -9,6 +9,7 @@ export default class Exterminator extends Phaser.Physics.Arcade.Sprite{
       this.health = 100;
       this.damage = 10;
       this.range = 50;
+      this.speed = 10;
       this.direction=direction;
      
     // Add this entity to the scene's physics

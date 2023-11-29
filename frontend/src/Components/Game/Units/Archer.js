@@ -10,6 +10,7 @@ export default class Archer extends Phaser.Physics.Arcade.Sprite{
       this.damage = 10;
       this.range = 50;
       this.direction=direction;
+      this.speed = 10;
      
     // Add this entity to the scene's physics
   

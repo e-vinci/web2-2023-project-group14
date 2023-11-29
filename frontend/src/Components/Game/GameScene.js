@@ -1,3 +1,4 @@
+/* eslint-disable prefer-arrow-callback */
 /* eslint-disable prefer-const */
 /* eslint-disable no-plusplus */
 /* eslint-disable no-unused-vars */
@@ -503,11 +504,47 @@ const spawnWarriors2 = () => {
 
   // eslint-disable-next-line class-methods-use-this
   update() {
-    // Phaser.Actions.Call(this.knightSpawn.group.getChildren(), (knight) =>
-    //  this.physics.moveToObject(knight, 'X', 10),
-    // );
+   // Mettez à jour la position de chaque unité de l'équipe 1
+  // eslint-disable-next-line func-names
+  player1CharactersGroup.children.iterate(function (unit1) {
+    // Trouvez l'unité de l'équipe 2 la plus proche
+    let closestUnit2 = null;
+    let closestDistance = Infinity;
+    
+    // eslint-disable-next-line func-names
+    player2CharactersGroup.children.iterate(function(unit2)  {
+      let distance = Phaser.Math.Distance.Between(unit1.x, unit1.y, unit2.x, unit2.y);
+      if (distance < closestDistance) {
+        closestUnit2 = unit2;
+        closestDistance = distance;
+      }
+    });
 
+    // Déplacez l'unité de l'équipe 1 vers l'unité de l'équipe 2 la plus proche
+    if (closestUnit2) {
+      this.physics.moveToObject(unit1, closestUnit2, unit1.speed /* vitesse */);
+    }
+  }, this);
   
+  player2CharactersGroup.children.iterate(function (unit2) {
+    // Trouvez l'unité de l'équipe 1 la plus proche
+    let closestUnit1 = null;
+    let closestDistance = Infinity;
+    player1CharactersGroup.children.iterate(function (unit1) {
+      let distance = Phaser.Math.Distance.Between(unit2.x, unit2.y, unit1.x, unit1.y);
+      if (distance < closestDistance) {
+        closestUnit1 = unit1;
+        closestDistance = distance;
+      }
+    });
+
+    // Déplacez l'unité de l'équipe 2 vers l'unité de l'équipe 1 la plus proche
+    if (closestUnit1) {
+      this.physics.moveToObject(unit2, closestUnit1, unit2.speed /* vitesse */);
+    }
+  }, this);
+
+
       }
 
   toggleSound() {
