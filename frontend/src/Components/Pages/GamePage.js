@@ -143,6 +143,7 @@ const GamePage = () => {
   // therefore destroy any started game prior to recreate it
   if (game) game.destroy(true);
   game = new Phaser.Game(config);
+  game.scene.start('GameScene');
 };
 
 export default GamePage;

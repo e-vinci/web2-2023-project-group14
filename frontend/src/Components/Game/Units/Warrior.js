@@ -9,6 +9,7 @@ export default class Warrior extends Phaser.Physics.Arcade.Sprite{
       this.health = 100;
       this.damage = 10;
       this.range = 50;
+      this.speed= 20;
       this.direction=direction;
      
     // Add this entity to the scene's physics
@@ -36,10 +37,10 @@ console.log('Animation created:', scene.anims.get('NecRun'));
     spawn() {
       
       if (this.direction === 'right') {
-        this.setVelocityX(15); // Move right
+        this.setVelocityX(this.speed); // Move right
         this.flipX=false;
       } else if (this.direction === 'left') {
-        this.setVelocityX(-15); // Move left
+        this.setVelocityX(-this.speed); // Move left
         this.flipX=true;
       }
       this.setVisible(true);

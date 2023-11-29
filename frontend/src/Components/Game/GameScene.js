@@ -1,3 +1,4 @@
+/* eslint-disable prefer-const */
 /* eslint-disable no-plusplus */
 /* eslint-disable no-unused-vars */
 import Phaser from 'phaser';
@@ -24,12 +25,30 @@ import Warrior from './Units/Warrior';
 
 // Variables here
 let cursors;
-let player1CharactersGroup;
+
+
 let player2CharactersGroup;
-// eslint-disable-next-line prefer-const, import/no-mutable-exports
-export  let team1=[];
-// eslint-disable-next-line prefer-const, import/no-mutable-exports
-export  let team2=[];
+let player1CharactersGroup;
+
+let lastSpawnedIndex1 = 0;
+let lastSpawnedIndex2 = 0;
+
+let spawnPointsTeam1 = [
+  { x: 120, y: 350 },
+  { x: 140, y: 300 },
+  { x: 160, y: 250 },
+  { x: 140, y: 200 }
+];
+
+let spawnPointsTeam2 = [
+  { x: 650, y: 250 },
+  { x: 650, y: 350 },
+  { x: 600, y: 200 },
+  { x: 600, y: 300 }
+];
+
+
+
 
 class GameScene extends Phaser.Scene {
   constructor() {
@@ -56,8 +75,7 @@ class GameScene extends Phaser.Scene {
 
   // eslint-disable-next-line class-methods-use-this
   handleSceneShutdown() {
-    team1.length = 0;
-    team2.length = 0;
+   
   }
   
   preload() {
@@ -80,6 +98,9 @@ class GameScene extends Phaser.Scene {
   }
 
   create() {
+    
+    player1CharactersGroup=this.add.group();
+    player2CharactersGroup=this.add.group();
     this.events.on('shutdown', this.handleSceneShutdown, this);
     this.events.on('destroy', this.handleSceneShutdown, this);
     
@@ -125,35 +146,38 @@ class GameScene extends Phaser.Scene {
 
 
 
-
-
-
 function addWarriorP1(indexP1, scene) {
+  let spawnPointTeam1 = Phaser.Utils.Array.GetRandom(spawnPointsTeam1);
+  
   switch(indexP1) {
     case 0:
-      team1.push(new Archer(scene,100,200,'right'));
+      player1CharactersGroup.add(new Archer(scene,spawnPointTeam1.x,spawnPointTeam1.y,'right'));
+      console.log(spawnPointTeam1.x,spawnPointTeam1.y)
       break;
     case 1:
-      team1.push(new Exterminator(scene,100,200,'right'));
+      player1CharactersGroup.add(new Exterminator(scene,spawnPointTeam1.x,spawnPointTeam1.y,'right'));
       break;
     case 2:
-      team1.push(new Knight(scene,100,200,'right'));
+      player1CharactersGroup.add(new Knight(scene,spawnPointTeam1.x,spawnPointTeam1.y,'right'));
       break;
     case 3:
-      team1.push(new Necro(scene,100,200,'right'));
+      player1CharactersGroup.add(new Necro(scene,spawnPointTeam1.x,spawnPointTeam1.y,'right'));
       break;
     case 4:
-      team1.push(new Warrior(scene,100,200,'right'));
+      player1CharactersGroup.add(new Warrior(scene,spawnPointTeam1.x,spawnPointTeam1.y,'right'));
       break;
     default:
-      console.log(team1);
+      console.log(player1CharactersGroup);
   }
 }
 // Spawn warriors
-function spawnWarriors1() {
-  for(let i = 0; i < team1.length; i++) {
-    team1[i].spawn();
+const spawnWarriors1 = () => {
+  for(let i = lastSpawnedIndex1; i < player1CharactersGroup.getChildren().length; i++) {
+      let warrior = player1CharactersGroup.getChildren()[i];
+      warrior.spawn();
   }
+  lastSpawnedIndex1 = player1CharactersGroup.getChildren().length;
+  this.physics.add.collider(player1CharactersGroup, player1CharactersGroup);
 }
 
 
@@ -195,39 +219,45 @@ this.input.keyboard.on('keydown-RIGHT', (event) => {
 
 
 function addWarriorP2(indexP2, scene) {
+  let spawnPointTeam2 = Phaser.Utils.Array.GetRandom(spawnPointsTeam2);
+
   switch(indexP2) {
     case 0:
-      team2.push(new Archer(scene, 500, 400,'left'));
+      player2CharactersGroup.add(new Archer(scene, spawnPointTeam2.x, spawnPointTeam2.y,'left'));
       break;
     case 1:
-      team2.push(new Exterminator(scene, 500, 400,'left'));
+      player2CharactersGroup.add(new Exterminator(scene, spawnPointTeam2.x, spawnPointTeam2.y,'left'));
       break;
     case 2:
-      team2.push(new Knight(scene, 500, 400,'left'));
+      player2CharactersGroup.add(new Knight(scene, spawnPointTeam2.x, spawnPointTeam2.y,'left'));
       break;
     case 3:
-      team2.push(new Necro(scene, 500, 400,'left'));
+      player2CharactersGroup.add(new Necro(scene, spawnPointTeam2.x, spawnPointTeam2.y,'left'));
       break;
     case 4:
-      team2.push(new Warrior(scene, 500, 400,'left'));
+      player2CharactersGroup.add(new Warrior(scene, spawnPointTeam2.x, spawnPointTeam2.y,'left'));
       break;
     default:
-      console.log(team2);
+      console.log(player2CharactersGroup);
   }
 }
 
 // Spawn warriors
-function spawnWarriors2() {
-  for(let i = 0; i < team2.length; i++) {
-    team2[i].spawn();
+const spawnWarriors2 = () => {
+  for(let i = lastSpawnedIndex2; i < player2CharactersGroup.getChildren().length; i++) {
+      let warrior = player2CharactersGroup.getChildren()[i];
+      warrior.spawn();
   }
+  lastSpawnedIndex2 = player2CharactersGroup.getChildren().length;
+  this.physics.add.collider(player2CharactersGroup, player2CharactersGroup);
 }
 
   // Adding card for the charachters
     createCards(this);
     this.cards=createCards(this);
     
- 
+    this.physics.add.collider(player1CharactersGroup, player2CharactersGroup);
+
     for(let i=0; i<5; i++) {
       this.cardsP1[i]=this.cards[i];
     }
@@ -260,15 +290,7 @@ function spawnWarriors2() {
     
     // eslint-disable-next-line no-console
 
-    // Background map game
-    const backgroundGame = this.add
-      .image(this.scale.width * 0.5, this.scale.height * 0.5, 'backgroundGame')
-      .setOrigin(0.5)
-      .setDepth(-1);
-    backgroundGame.setScale(
-      this.scale.width / backgroundGame.width,
-      this.scale.height / backgroundGame.height,
-    );
+    
 
     // Hud creation
     const hudGame = this.add
@@ -404,11 +426,11 @@ function spawnWarriors2() {
       if (timeLeft === 0) {
         console.log(this.indexP1);
         console.log(this.indexP2);
-        addWarriorP1(this.indexP1, this, team1);
-        console.log(team1);
+        addWarriorP1(this.indexP1, this);
+        
         spawnWarriors1();
-        addWarriorP2(this.indexP2, this, team2);
-        console.log(team2);
+        addWarriorP2(this.indexP2, this);
+        
         spawnWarriors2();
         
        
