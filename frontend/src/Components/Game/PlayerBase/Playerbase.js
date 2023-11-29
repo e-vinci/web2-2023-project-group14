@@ -14,6 +14,10 @@ export default class PlayerBase extends Phaser.Physics.Arcade.Sprite{
     
     // Add this entity to the scene
     scene.add.existing(this);
+
+    // rendre base immuable
+
+    this.body.immovable = true;
     
     // Base Floating Animation Creation
     if (!scene.anims.exists('baseFloating')) {

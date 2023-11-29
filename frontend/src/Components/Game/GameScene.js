@@ -439,9 +439,9 @@ const spawnWarriors2 = () => {
         addWarriorP1(this.indexP1, this);
         
         spawnWarriors1();
-        addWarriorP2(this.indexP2, this);
+        // addWarriorP2(this.indexP2, this);
         
-        spawnWarriors2();
+        // spawnWarriors2();
         
        
         timeLeft = 5; // Réinitialiser le temps à 15 une fois qu'il atteint zéro
