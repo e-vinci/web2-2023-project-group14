@@ -23,7 +23,19 @@ import Necro from './Units/Necro';
 import Warrior from './Units/Warrior';
 
 
-
+function handleOverlap(unit1, unit2) {
+  // Si les unités se déplacent dans la même direction
+  if (unit1.body.velocity.x === unit2.body.velocity.x) {
+      // Si l'unité1 est devant l'unité2 et se déplace vers la droite (équipe 1)
+      if (unit1.x > unit2.x && unit1.body.velocity.x > 0) {
+          unit1.setVelocityX(0);
+      }
+      // Si l'unité1 est derrière l'unité2 et se déplace vers la gauche (équipe 2)
+      else if (unit1.x < unit2.x && unit1.body.velocity.x < 0) {
+          unit1.setVelocityX(0);
+      }
+  }
+}
 
 // Variables here
 let cursors;
@@ -32,8 +44,8 @@ let cursors;
 let player2CharactersGroup;
 let player1CharactersGroup;
 
-let lastSpawnedIndex1 = 0;
-let lastSpawnedIndex2 = 0;
+let lastSpawnedIndex1 = 1;
+let lastSpawnedIndex2 = 1;
 
 let spawnPointsTeam1 = [
   { x: 120, y: 350 },
@@ -100,7 +112,7 @@ class GameScene extends Phaser.Scene {
   }
 
   create() {
-    
+   
     player1CharactersGroup=this.add.group();
     player2CharactersGroup=this.add.group();
     
@@ -180,6 +192,8 @@ function addWarriorP1(indexP1, scene) {
       console.log(player1CharactersGroup);
   }
 }
+
+
 // Spawn warriors
 const spawnWarriors1 = () => {
   for(let i = lastSpawnedIndex1; i < player1CharactersGroup.getChildren().length; i++) {
@@ -187,8 +201,11 @@ const spawnWarriors1 = () => {
       warrior.spawn();
   }
   lastSpawnedIndex1 = player1CharactersGroup.getChildren().length;
-  this.physics.add.collider(player1CharactersGroup, player1CharactersGroup);
+  this.physics.add.collider(player1CharactersGroup, player1CharactersGroup,handleOverlap, null, this);
+
+  // Ajoutez la détection de collision ici
 }
+
 
 
 // fonction pour choisir cartes a gauche P2
@@ -260,13 +277,14 @@ const spawnWarriors2 = () => {
   }
   lastSpawnedIndex2 = player2CharactersGroup.getChildren().length;
   this.physics.add.collider(player2CharactersGroup, player2CharactersGroup);
+  this.physics.add.collider(player1CharactersGroup, player2CharactersGroup);
 }
 
   // Adding card for the charachters
     createCards(this);
     this.cards=createCards(this);
     
-    this.physics.add.collider(player1CharactersGroup, player2CharactersGroup);
+    
 
     for(let i=0; i<5; i++) {
       this.cardsP1[i]=this.cards[i];
@@ -439,9 +457,9 @@ const spawnWarriors2 = () => {
         addWarriorP1(this.indexP1, this);
         
         spawnWarriors1();
-        // addWarriorP2(this.indexP2, this);
+        addWarriorP2(this.indexP2, this);
         
-        // spawnWarriors2();
+        spawnWarriors2();
         
        
         timeLeft = 5; // Réinitialiser le temps à 15 une fois qu'il atteint zéro

@@ -9,8 +9,9 @@ export default class Warrior extends Phaser.Physics.Arcade.Sprite{
       this.health = 100;
       this.damage = 10;
       this.range = 50;
-      this.speed= 20;
+      this.speed= 15;
       this.direction=direction;
+      this.living=true;
      
     // Add this entity to the scene's physics
   
@@ -51,13 +52,21 @@ console.log('Animation created:', scene.anims.get('NecRun'));
     }
   
     // Method for the archer to attack
-    attack() {
+    attack(target) {
+      if(target.living) {
+        target.takeDamage(this.damage);
       console.log(`Archer attacks with ${  this.damage  } damage.`);
     }
-  
+    }
     // Method for the archer to take damage
+
     takeDamage(amount) {
       this.health -= amount;
-      console.log(`Archer takes ${  amount  } damage. Health is now ${  this.health}`);
+      if(this.health <= 0) {
+        this.health = 0;
+        this.living = false;
+        this.visible = false;  // this will hide the dead unit
+      console.log(`Warrior takes ${  amount  } damage. Health is now ${  this.health}`);
     }
   }
+}
