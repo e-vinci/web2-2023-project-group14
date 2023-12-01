@@ -71,37 +71,6 @@ export function preloadSpriteSheets(scene) {
 
 
 
-export function createArcherAnim(scene) {
-    // Archer Creates
-// Archer Run Animation Creation
-
-
-  
-  
-  
-  // Archer Attack Animation Creation
-  
-  scene.anims.create({
-    key: 'RedAttack',
-    frames: scene.anims.generateFrameNumbers('ArcherAll', { start:25, end : 34}),
-    frameRate: 15,
-    repeat: -1,
-  });
-  
-  
-  
-  
-  // Archer Death Animation Creation
-  
-  scene.anims.create({
-    key: 'RedDeath',
-    frames: scene.anims.generateFrameNumbers('ArcherAll', { start:120, end : 127}),
-    frameRate: 8,
-    repeat: -1,
-  });
-  
-}
-
 
 export function createNecroAnim(scene){
 // Necro Creates

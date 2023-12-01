@@ -48,8 +48,24 @@ export default class PlayerBase extends Phaser.Physics.Arcade.Sprite{
   }
 
   // Method for the base to take damage
-  takeDamage(amount) {
-    this.health -= amount;
-    console.log(`Base takes ${  amount  } damage. Health is now ${  this.health}`);
+  takeDamage(damage) {
+    this.health-=damage;
+    console.log(`Base takes ${  damage  } damage. Health is now ${  this.health}`);
+    if(this.health<0){
+      this.health=0
+      if(this.health===0){
+        this.die() // MEURT TA MEREEEEEEEEEE
+      }
+    }
+  }
+
+  die(){
+    this.setActive(false).setVisible(false);
+    this.destroy();
+    console.log('BASE has been destroyed1.');
+
+    // FLAVIU logque du joueur qui gagne. La base est ajoutée en premier dans le groupe ptetre ca t aide bg. fait un for int i et regarde si le premier element du groupe c une base
+
+
   }
 }
