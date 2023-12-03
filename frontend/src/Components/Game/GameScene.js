@@ -362,7 +362,7 @@ const spawnWarriors2 = () => {
       goToEndSceneButton.setY(450);
     });
     goToEndSceneButton.on('pointerdown', () => {
-      this.game.winner = this.player1
+      this.sys.game.global = {winner: this.player1.playerName};
       this.sound.stopAll();
       this.scene.stop('game-scene');
       this.scene.switch('end-scene');
@@ -531,6 +531,21 @@ const spawnWarriors2 = () => {
 
   // eslint-disable-next-line class-methods-use-this
   update() {
+
+    // logic to find out the winner
+    if(this.player1.health <= 0) {
+      this.sys.game.global = {winner: this.player2.playerName};
+      this.sound.stopAll();
+      this.scene.stop('game-scene');
+      this.scene.switch('end-scene');
+    }
+    if(this.player2.health <= 0) {
+      this.sys.game.global = {winner: this.player1.playerName};
+      this.sound.stopAll();
+      this.scene.stop('game-scene');
+      this.scene.switch('end-scene');
+    }
+
     // Mettez à jour la position de chaque unité de l'équipe 1
     player1CharactersGroup.children.iterate(function(unit1) {
       let closestUnit2 = null;
