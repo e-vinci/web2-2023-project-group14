@@ -546,78 +546,101 @@ const spawnWarriors2 = () => {
       this.scene.switch('end-scene');
     }
 
+
+    let closestUnit2 = this.base2;
+    
+    let closestDistance2 = Infinity;
     // Mettez à jour la position de chaque unité de l'équipe 1
     player1CharactersGroup.children.iterate(function(unit1) {
-      let closestUnit2 = null;
-      let closestDistance = Infinity;
+
     
       // Trouver l'unité de l'équipe 2 la plus proche
       player2CharactersGroup.children.iterate(function(unit2) {
         let distance = Phaser.Math.Distance.Between(unit1.x, unit1.y, unit2.x, unit2.y);
-        if (distance < closestDistance) {
+        if (distance < closestDistance2) {
           closestUnit2 = unit2;
-          closestDistance = distance;
+          closestDistance2 = distance;
+          console.log(typeof closestUnit2);
         }
       });
     
       // Déplacer l'unité de l'équipe 1 vers l'unité de l'équipe 2 la plus proche
-      if (closestUnit2.active) {
+      if (closestUnit2 && closestUnit2.active) {
         // Vérifier si la distance est inférieure au range de l'unité
-        if (closestDistance < unit1.range) {
+        if (closestDistance2 <= unit1.range) {
           // Arrêter le mouvement de l'unité
           unit1.setVelocity(0, 0);
           unit1.attackTarget(closestUnit2);
+          console.log('unit 2 est tapé');
           closestUnit2.takeDamage(unit1.damage);
           if(closestUnit2.health===0 || closestUnit2.health<0 ){
+            closestUnit2.setVisible(false).setActive(false);
+            closestUnit2.destroy();   
+            console.log("unit 1 est mort");
             closestUnit2=null;
           } 
           // Vérifier s'il y a un timer d'attaque et s'il est prêt
-          if (unit1.attackTimer && unit1.attackTimer.getElapsedSeconds() >= 2) {
-            // Infliger des dégâts à la cible
-           
+          if (unit1.attackTimer) {
+            console.log("le minuteur marche");
             // Réinitialiser le timer d'attaque
             unit1.attackTimer.reset();
           }
-        } else {
+        
+        }else{
           // Continuer le mouvement de l'unité
           this.physics.moveToObject(unit1, closestUnit2, unit1.speed);
           // Changer l'animation de l'unité pour le mouvement
         }
+        
       } else {
         console.log('No valid target for attack');
       }
     }, this);
     
+   if (closestUnit2===null){
+    closestUnit2=this.base2;
+  }
+
+    let closestUnit1 = this.base1;
+    let closestDistance1 = Infinity;
     // Faire la même chose pour l'équipe 2
     player2CharactersGroup.children.iterate(function(unit2) {
-      let closestUnit1 = null;
-      let closestDistance = Infinity;
+
     
       // Trouver l'unité de l'équipe 1 la plus proche
       player1CharactersGroup.children.iterate(function(unit1) {
         let distance = Phaser.Math.Distance.Between(unit2.x, unit2.y, unit1.x, unit1.y);
-        if (distance < closestDistance) {
+        if (distance < closestDistance1) {
           closestUnit1 = unit1;
-          closestDistance = distance;
+          closestDistance1 = distance;
         }
       });
     
       // Déplacer l'unité de l'équipe 2 vers l'unité de l'équipe 1 la plus proche
-      if (closestUnit1) {
+      if (closestUnit1 && closestUnit1.active) {
         // Vérifier si la distance est inférieure au range de l'unité
-        if (closestDistance < unit2.range) {
+        if (closestDistance1 < unit2.range) {
+          console.log("check de la range");
           // Arrêter le mouvement de l'unité
           unit2.setVelocity(0, 0);
           // Changer l'animation de l'unité pour l'attaque
          
           // Vérifier s'il y a un timer d'attaque et s'il est prêt
-          if (unit2.attackTimer && unit2.attackTimer.getElapsedSeconds() >= 2) {
+          if (unit2.attackTimer) { // && unit2.attackTimer.getElapsedSeconds() >= 2
             // Infliger des dégâts à la cible
             unit2.attackTarget(closestUnit1);
+            console.log("unit2 tape unit1");
+            if(closestUnit1.health===0 || closestUnit1.health<0 ){ // DIE
+            closestUnit1.setVisible(false).setActive(false);
+            closestUnit1.destroy();   
+            console.log("unit 1 est mort");
+            closestUnit1=null;
+            } 
             // Réinitialiser le timer d'attaque
             unit2.attackTimer.reset();
           }
-        } else {
+        
+        }else{
           // Continuer le mouvement de l'unité
           this.physics.moveToObject(unit2, closestUnit1, unit2.speed);
           // Changer l'animation de l'unité pour le mouvement
@@ -625,8 +648,16 @@ const spawnWarriors2 = () => {
         }
       }
     }, this);
+   if (closestUnit1===null){
+    closestUnit1=this.base1;}
   }
    // HERE END OF UPDATE
+
+   die() {  
+      this.setVisible(false).setActive(false);
+      console.log('an unit died');
+      this.destroy();    
+   }
 
   toggleSound() {
     this.soundOn = !this.soundOn;

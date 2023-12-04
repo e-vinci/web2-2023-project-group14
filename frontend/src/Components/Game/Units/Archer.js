@@ -79,10 +79,6 @@ console.log('Animation created:', scene.anims.get('RedAttack'));
     }
   
     update() {
-      if (this.health <= 0) {
-        this.die();
-      }
-  
       // Vérifiez si l'archer est en train d'attaquer et arrêtez le mouvement
       if (this.isAttacking) {
         this.setVelocityX(0);
@@ -91,7 +87,7 @@ console.log('Animation created:', scene.anims.get('RedAttack'));
   
     // Method for the archer to attack
     attackTarget(target) {
-      if (target && target.health > 0 && Phaser.Math.Distance.Between(this.x, this.y, target.x, target.y) <= this.range) {
+      if (target && target.health > 0) {
         // L'ennemi est à portée, effectuez l'attaque
         this.isAttacking = true;
         this.attackTimer.paused = true;
@@ -115,24 +111,6 @@ console.log('Animation created:', scene.anims.get('RedAttack'));
     takeDamage(damage){
       this.health-=damage;
       console.log("attack")
-      if(this.health<0){
-        this.health=0;
-        if(this.health===0){
-          this.die(); // DIE111!!!!!!!!!!!!!
-          console.log("redirection die")
-        }
-      }
-    }
-
-    die() {
-      
-      this.anims.play('RedDeath');
-      
-      this.on('animationcomplete', () => {
-        this.setVisible(false).setActive(false);
-        this.destroy();
-        console.log('Archer has died.');
-      });
     }
   }
   
