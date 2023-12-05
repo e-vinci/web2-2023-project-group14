@@ -383,7 +383,7 @@ const spawnWarriors2 = () => {
       goToEndSceneButton.setY(450);
     });
     goToEndSceneButton.on('pointerdown', () => {
-      this.game.winner = this.player1
+      this.sys.game.global = {winner: this.player1.playerName};
       this.sound.stopAll();
       this.scene.stop('game-scene');
       this.scene.switch('end-scene');
@@ -600,6 +600,12 @@ update() {
 
   
    // HERE END OF UPDATE
+
+   die() {  
+      this.setVisible(false).setActive(false);
+      console.log('an unit died');
+      this.destroy();    
+   }
 
   toggleSound() {
     this.soundOn = !this.soundOn;
