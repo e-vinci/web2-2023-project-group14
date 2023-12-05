@@ -7,7 +7,7 @@ import Phaser from 'phaser';
 export default class Exterminator extends Phaser.Physics.Arcade.Sprite{
     constructor(scene, x, y, direction) {
       super(scene, x, y, 'EXT');
-      this.health = 100;
+      this.health = 3000000;
       this.damage = 10;
       this.range = 50;
       this.speed = 10;
@@ -53,8 +53,37 @@ console.log('Animation created:', scene.anims.get('ExtRun'));
     }
   
     // Method for the archer to attack
-    attack() {
-      console.log(`Exterminator attacks with ${  this.damage  } damage.`);
+    attackTarget(target) {
+      if (this.isDead || !target || target.isDead ) {
+        // Don't attack if the attacker or the target is already dead
+        return;
+      }
+    
+      const distanceToTarget = Phaser.Math.Distance.Between(this.x, this.y, target.x, target.y);
+    
+      if (distanceToTarget <= this.range) {
+        // The enemy is in range, perform the attack
+        this.isAttacking = true;
+        this.setVelocityX(0); // Stop movement
+    
+        // Play the attack animation
+        this.anims.play('RedAttack');
+    
+        // Deal damage to the target
+        target.takeDamage(this.damage);
+    
+        // Delay to control the attack cooldown
+        this.scene.time.delayedCall(this.attackCooldown, () => {
+          this.isAttacking = false;
+          this.setVelocityX(this.initialSpeed); // Resume movement
+          console.log(`Archer attacks with ${this.damage} damage .`);
+        });
+      } else {
+        // No valid target in range for the attack, resume normal movement
+        this.isAttacking = false;
+        this.anims.play('ArcherRedRun');
+        console.log('No valid target in range for attack');
+      }
     }
   
     // Method for the archer to take damage

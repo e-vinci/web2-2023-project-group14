@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default */
 /* eslint-disable prefer-arrow-callback */
 /* eslint-disable prefer-const */
 /* eslint-disable no-plusplus */
@@ -9,6 +10,7 @@ import soundOffAsset from '../../assets/soundOff.png';
 import backgroundGameAsset from '../../assets/background.png';
 import hudAsset from '../../assets/armadaHUD.png';
 import { createCards, preloadCards } from './CardCreator';
+
 import Player from './Player';
 import baseSpriteSheet from '../../assets/playerBase.png';
 import { preloadPlayerBase } from './PlayerBase';
@@ -62,6 +64,24 @@ let spawnPointsTeam2 = [
 ];
 
 
+function findClosestUnit(unit, unitGroup) {
+  let closestUnit = null;
+  let closestDistance = Infinity;
+
+  unitGroup.children.iterate(function (otherUnit) {
+    if (otherUnit.isDead) {
+      return; // Skip dead units
+    }
+
+    const distance = Phaser.Math.Distance.Between(unit.x, unit.y, otherUnit.x, otherUnit.y);
+    if (distance < closestDistance) {
+      closestUnit = otherUnit;
+      closestDistance = distance;
+    }
+  });
+
+  return closestUnit;
+}
 
 
 class GameScene extends Phaser.Scene {
@@ -86,7 +106,8 @@ class GameScene extends Phaser.Scene {
     
     // this.KnightSpawn = undefined;
   }
-
+  
+  
   // eslint-disable-next-line class-methods-use-this
   handleSceneShutdown() {
    
@@ -528,89 +549,56 @@ const spawnWarriors2 = () => {
     
 
   }
+// Helper function to find the closest unit from a group to a given unit
 
-  // eslint-disable-next-line class-methods-use-this
-  update() {
-    // Mettez à jour la position de chaque unité de l'équipe 1
-    player1CharactersGroup.children.iterate(function(unit1) {
-      let closestUnit2 = null;
-      let closestDistance = Infinity;
-    
-      // Trouver l'unité de l'équipe 2 la plus proche
-      player2CharactersGroup.children.iterate(function(unit2) {
-        let distance = Phaser.Math.Distance.Between(unit1.x, unit1.y, unit2.x, unit2.y);
-        if (distance < closestDistance) {
-          closestUnit2 = unit2;
-          closestDistance = distance;
-        }
-      });
-    
-      // Déplacer l'unité de l'équipe 1 vers l'unité de l'équipe 2 la plus proche
-      if (closestUnit2.active) {
-        // Vérifier si la distance est inférieure au range de l'unité
-        if (closestDistance < unit1.range) {
-          // Arrêter le mouvement de l'unité
-          unit1.setVelocity(0, 0);
-          unit1.attackTarget(closestUnit2);
-          closestUnit2.takeDamage(unit1.damage);
-          if(closestUnit2.health===0 || closestUnit2.health<0 ){
-            closestUnit2=null;
-          } 
-          // Vérifier s'il y a un timer d'attaque et s'il est prêt
-          if (unit1.attackTimer && unit1.attackTimer.getElapsedSeconds() >= 2) {
-            // Infliger des dégâts à la cible
-           
-            // Réinitialiser le timer d'attaque
-            unit1.attackTimer.reset();
-          }
-        } else {
-          // Continuer le mouvement de l'unité
-          this.physics.moveToObject(unit1, closestUnit2, unit1.speed);
-          // Changer l'animation de l'unité pour le mouvement
-        }
+
+update() {
+  // Mettre à jour la position et le comportement de chaque unité de l'équipe 1
+  player1CharactersGroup.children.iterate(function  (unit1) {
+    if (unit1.health <= 0) {
+      unit1.die();
+      return; // Ignorer les mises à jour pour les unités mortes
+    }
+
+    let closestUnit2 = findClosestUnit(unit1, player2CharactersGroup);
+
+    if (closestUnit2) {
+      if (Phaser.Math.Distance.Between(unit1.x, unit1.y, closestUnit2.x, closestUnit2.y) < unit1.range) {
+        // Arrêter le mouvement et attaquer l'unité la plus proche de l'équipe 2
+        unit1.attackTarget(closestUnit2);
       } else {
-        console.log('No valid target for attack');
+        // Se déplacer vers l'unité la plus proche de l'équipe 2
+        this.physics.moveToObject(unit1, closestUnit2, unit1.speed);
       }
-    }, this);
-    
-    // Faire la même chose pour l'équipe 2
-    player2CharactersGroup.children.iterate(function(unit2) {
-      let closestUnit1 = null;
-      let closestDistance = Infinity;
-    
-      // Trouver l'unité de l'équipe 1 la plus proche
-      player1CharactersGroup.children.iterate(function(unit1) {
-        let distance = Phaser.Math.Distance.Between(unit2.x, unit2.y, unit1.x, unit1.y);
-        if (distance < closestDistance) {
-          closestUnit1 = unit1;
-          closestDistance = distance;
-        }
-      });
-    
-      // Déplacer l'unité de l'équipe 2 vers l'unité de l'équipe 1 la plus proche
-      if (closestUnit1) {
-        // Vérifier si la distance est inférieure au range de l'unité
-        if (closestDistance < unit2.range) {
-          // Arrêter le mouvement de l'unité
-          unit2.setVelocity(0, 0);
-          // Changer l'animation de l'unité pour l'attaque
-         
-          // Vérifier s'il y a un timer d'attaque et s'il est prêt
-          if (unit2.attackTimer && unit2.attackTimer.getElapsedSeconds() >= 2) {
-            // Infliger des dégâts à la cible
-            unit2.attackTarget(closestUnit1);
-            // Réinitialiser le timer d'attaque
-            unit2.attackTimer.reset();
-          }
-        } else {
-          // Continuer le mouvement de l'unité
-          this.physics.moveToObject(unit2, closestUnit1, unit2.speed);
-          // Changer l'animation de l'unité pour le mouvement
-        
-        }
+    } else {
+      console.log('Pas de cible valide pour l\'équipe 1');
+    }
+  }, this);
+
+  // Mettre à jour la position et le comportement de chaque unité de l'équipe 2
+  player2CharactersGroup.children.iterate(function (unit2) {
+    if (unit2.health <= 0) {
+      unit2.die();
+      return; // Ignorer les mises à jour pour les unités mortes
+    }
+
+    let closestUnit1 = findClosestUnit(unit2, player1CharactersGroup);
+
+    if (closestUnit1) {
+      if (Phaser.Math.Distance.Between(unit2.x, unit2.y, closestUnit1.x, closestUnit1.y) < unit2.range) {
+        // Arrêter le mouvement et attaquer l'unité la plus proche de l'équipe 1
+        unit2.attackTarget(closestUnit1);
+      } else {
+        // Se déplacer vers l'unité la plus proche de l'équipe 1
+        this.physics.moveToObject(unit2, closestUnit1, unit2.speed);
       }
-    }, this);
-  }
+    } else {
+      console.log('Pas de cible valide pour l\'équipe 2');
+    }
+  }, this);
+}
+
+  
    // HERE END OF UPDATE
 
   toggleSound() {
