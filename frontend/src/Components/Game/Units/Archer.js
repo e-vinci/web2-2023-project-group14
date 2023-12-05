@@ -1,19 +1,19 @@
 import Phaser from 'phaser';
 
 export default class Archer extends Phaser.Physics.Arcade.Sprite{
-    constructor(scene, x, y, direction) {
+    constructor(scene, x, y, direction, group) {
       super(scene, x, y, 'archer');
       this.health = 100;
       this.damage = 0.5;
-      this.range = 50;
+      this.range = 500;
       this.direction=direction;
-      this.speed = 100;
+      this.speed = 10;
       this.attackCooldown = 2000;
       this.lastAttackTime = 0;
-      this.attackAnimation = 'RedAttack';
-      this.runAnim = 'ArcherRedRun'
-     
-    // Add this entity to the scene's physics
+      this.scene = scene;
+      this.group = group;
+      this.hasSpawned = false;
+      // Add this entity to the scene's physics
   
     scene.physics.world.enable(this);
     
@@ -55,7 +55,8 @@ console.log('Animation created:', scene.anims.get('RedDeath'));
 
     // Method to spawn the archer
     spawn() {
-      
+    
+      this.setVisible(true);
       if (this.direction === 'right') {
         this.setVelocityX(10); // Move right
         this.flipX=true;
@@ -63,7 +64,7 @@ console.log('Animation created:', scene.anims.get('RedDeath'));
         this.setVelocityX(-10); // Move left
         this.flipX=false
       }
-      this.setVisible(true);
+      
       this.anims.play('ArcherRedRun');
       this.setOffset(40,65)
       this.setDepth(1);
@@ -126,19 +127,21 @@ console.log('Animation created:', scene.anims.get('RedDeath'));
         }
       }
     }
-    
+
     die() {
-      if (!this.isDead) {
-        this.isDead = true;
-        this.setImmovable(true); // Rend l'unité immobile
-        this.anims.play('RedDeath');
-    
-        this.once('animationcomplete', () => {
-          this.setVisible(false).setActive(false);
-          this.destroy();
-          console.log('Archer has died.');
-        });
-      }
-    }
+  if (!this.isDead) {
+    this.isDead = true;
+    this.setImmovable(true); // Rend l'unité immobile
+    this.anims.play('RedDeath');
+
+    this.once('animationcomplete', () => {
+      // Use the remove method of Physics.Arcade.Group or Physics.Arcade.StaticGroup
+      this.scene.physics.add.group().remove(this);
+      this.destroy();
+      console.log('Archer has died.');
+    });
+  }
+}
+
   }
   

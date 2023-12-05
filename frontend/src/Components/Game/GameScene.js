@@ -46,8 +46,8 @@ let cursors;
 let player2CharactersGroup;
 let player1CharactersGroup;
 
-let lastSpawnedIndex1 = 1;
-let lastSpawnedIndex2 = 1;
+let lastSpawnedIndex1 = 0;
+let lastSpawnedIndex2 = 0;
 
 let spawnPointsTeam1 = [
   { x: 120, y: 350 },
@@ -194,8 +194,7 @@ function addWarriorP1(indexP1, scene) {
   
   switch(indexP1) {
     case 0:
-      player1CharactersGroup.add(new Archer(scene,spawnPointTeam1.x,spawnPointTeam1.y,'right'));
-      console.log(spawnPointTeam1.x,spawnPointTeam1.y)
+      player1CharactersGroup.add(new Archer(scene,spawnPointTeam1.x,spawnPointTeam1.y,'right',player1CharactersGroup.get));
       break;
     case 1:
       player1CharactersGroup.add(new Exterminator(scene,spawnPointTeam1.x,spawnPointTeam1.y,'right'));
@@ -217,16 +216,16 @@ function addWarriorP1(indexP1, scene) {
 
 // Spawn warriors
 const spawnWarriors1 = () => {
-  for(let i = lastSpawnedIndex1; i < player1CharactersGroup.getChildren().length; i++) {
-      let warrior = player1CharactersGroup.getChildren()[i];
+  player1CharactersGroup.getChildren().forEach(warrior => {
+    if (!warrior.hasSpawned) {
       warrior.spawn();
-  }
-  lastSpawnedIndex1 = player1CharactersGroup.getChildren().length;
-  this.physics.add.collider(player1CharactersGroup, player1CharactersGroup,handleOverlap, null, this);
-
-  // Ajoutez la détection de collision ici
+      // eslint-disable-next-line no-param-reassign
+      warrior.hasSpawned = true;
+    }
+  });
+  this.physics.add.collider(player1CharactersGroup, player1CharactersGroup);
+  this.physics.add.collider(player2CharactersGroup, player1CharactersGroup);
 }
-
 
 
 // fonction pour choisir cartes a gauche P2
@@ -271,7 +270,7 @@ function addWarriorP2(indexP2, scene) {
 
   switch(indexP2) {
     case 0:
-      player2CharactersGroup.add(new Archer(scene, spawnPointTeam2.x, spawnPointTeam2.y,'left'));
+      player2CharactersGroup.add(new Archer(scene, spawnPointTeam2.x, spawnPointTeam2.y,'left', player2CharactersGroup.get));
       break;
     case 1:
       player2CharactersGroup.add(new Exterminator(scene, spawnPointTeam2.x, spawnPointTeam2.y,'left'));
@@ -290,13 +289,15 @@ function addWarriorP2(indexP2, scene) {
   }
 }
 
-// Spawn warriors
+/// Spawn warriors
 const spawnWarriors2 = () => {
-  for(let i = lastSpawnedIndex2; i < player2CharactersGroup.getChildren().length; i++) {
-      let warrior = player2CharactersGroup.getChildren()[i];
+  player2CharactersGroup.getChildren().forEach(warrior => {
+    if (!warrior.hasSpawned) {
       warrior.spawn();
-  }
-  lastSpawnedIndex2 = player2CharactersGroup.getChildren().length;
+      // eslint-disable-next-line no-param-reassign
+      warrior.hasSpawned = true;
+    }
+  });
   this.physics.add.collider(player2CharactersGroup, player2CharactersGroup);
   this.physics.add.collider(player1CharactersGroup, player2CharactersGroup);
 }
@@ -321,22 +322,9 @@ const spawnWarriors2 = () => {
 
     
 
-    // Define keybinds
- cursors = this.input.keyboard.createCursorKeys();
-  
-
 
   
 
-
-
-
-
-
-
- 
-    
-    
     // eslint-disable-next-line no-console
 
     
