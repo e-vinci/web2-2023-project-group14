@@ -67,12 +67,14 @@
 
 ## Cas d'utilisations 
 - **High priority** :
+    - Animation des personnages (Robert)
     - Faire bouger les personnages(Robert)
-    - Faire apparaitre la base des deux joueurs(Robert)
+    - Faire apparaitre la base des deux joueurs(Robert/Laurent)
     - Afficher le hud (perso disponibles etc) (Igor)
-    - Pouvoir tuer un ennemi(Robert)
+    - Logique des attaques(Laurent)
     - Pouvoir quitter la partie(Laurent)
     - Indication des ressources et statistiques du joueur(vie,or,nombre d'unités) (Laurent)
+    - Mise à jour de l'or (Robert)
     - Afficher le vainqueur(Flaviu)
     - Statistiques des personnages(hp,atk,atkspd,def,speed,range) (Igor)
     - paramètres du jeu (Igor)
@@ -88,6 +90,7 @@
     - logo + bouton home (Igor)
     - création de compte et de connexion (Hubert)
     - classement (en fonction du nbr de victoires) (Igor)
+    - Base de données (Igor et Hubert)
 - **Medium priority** :
     - historiques des parties(Flaviu)
     - pouvoirs (boule de feu, foudre,etc) (Hubert)
