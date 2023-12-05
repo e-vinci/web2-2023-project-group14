@@ -24,6 +24,7 @@ import Knight from './Units/Knight';
 import Necro from './Units/Necro';
 import Warrior from './Units/Warrior';
 
+import arrowSounds from '../../assets/audio/Sound-effects/arrow.mp3';
 
 function handleOverlap(unit1, unit2) {
   // Si les unités se déplacent dans la même direction
@@ -114,9 +115,10 @@ class GameScene extends Phaser.Scene {
   }
   
   preload() {
-    // TEST FOR EXEMPLE DONT DELETE THIS
-    this.load.image('KNIGHT_KEY', MobP1Ex)
-    // thx
+    
+    this.load.audio('arrowSound', arrowSounds);
+
+
     this.load.image('backgroundGame', backgroundGameAsset);
     this.load.image('hud', hudAsset);
     this.load.image('soundOn', soundOnAsset);
