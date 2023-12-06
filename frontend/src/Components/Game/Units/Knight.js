@@ -8,10 +8,12 @@ export default class Knight extends Phaser.Physics.Arcade.Sprite{
     constructor(scene, x, y, direction) {
       super(scene, x, y, 'archer');
       this.health = 100;
-      this.damage = 10;
-      this.range = 50;
-      this.speed = 10;
+      this.damage = 30;
       this.direction=direction;
+      this.range = 70;
+      this.speed = 50;
+      this.hasSpawned = false;
+      this.isDead=false;
      
     // Add this entity to the scene's physics
   
@@ -20,7 +22,7 @@ export default class Knight extends Phaser.Physics.Arcade.Sprite{
     // Add this entity to the scene
     scene.add.existing(this);
 
-    // Archer Run Animation Creation
+    // Knight Animation Creation
 
     if (!scene.anims.exists('KnighRun')) {
       scene.anims.create({
@@ -30,7 +32,29 @@ export default class Knight extends Phaser.Physics.Arcade.Sprite{
         repeat: -1,
       });
     }
+
+    if (!scene.anims.exists('KnighAttack')){
+      scene.anims.create({
+        key: 'KnighAttack',
+        frames: scene.anims.generateFrameNumbers('KnightAttack', { start: 0, end: 17 }),
+        frameRate: 14,
+        repeat: 0,
+      });
+    }
+
+    if (!scene.anims.exists('KnighDeath')){
+      scene.anims.create({
+        key: 'KnighDeath',
+        frames: scene.anims.generateFrameNumbers('KnightDeath', { start: 0, end: 12 }),
+        frameRate: 10,
+        repeat: 0,
+      });
+    }
+
 console.log('Animation created:', scene.anims.get('KnighRun'));
+console.log('Animation created:', scene.anims.get('KnighAttack'));
+console.log('Animation created:', scene.anims.get('KnighDeath'));
+
     }
   
     // Method to spawn the archer
@@ -51,13 +75,64 @@ console.log('Animation created:', scene.anims.get('KnighRun'));
     }
   
     // Method for the archer to attack
-    attack() {
-      console.log(`Archer attacks with ${  this.damage  } damage.`);
+    attackTarget(target) {
+      if (!this.isDead && target && !target.isDead) {
+        const distanceToTarget = Phaser.Math.Distance.Between(this.x, this.y, target.x, target.y);
+    
+        if (distanceToTarget <= this.range) {
+          this.setVelocityX(0); // Stop moving
+          this.setVelocityY(0);
+    
+          // Only start the attack animation if it's not already playing
+          if (!this.anims.isPlaying || this.anims.currentAnim.key !== 'KnighAttack') {
+            this.anims.play('KnighAttack').chain('KnighRun');
+    
+            this.once('animationcomplete', () => {
+              // eslint-disable-next-line prefer-const
+              this.scene.sound.play('swordSound');
+              
+              target.takeDamage(this.damage);
+    
+              if (!target.isDead && target.health > 0) {
+                // If the target is still alive, attack again
+                this.attackTarget(target);
+              } else {
+                // If the target is dead, stop the 'RedAttack' animation
+                this.anims.stop('KnighAttack');
+              }
+            });
+          }
+        }
+      }
     }
   
-    // Method for the archer to take damage
-    takeDamage(amount) {
-      this.health -= amount;
-      console.log(`Archer takes ${  amount  } damage. Health is now ${  this.health}`);
+    // Method for the knight to take damage
+    takeDamage(damage) {
+      console.log("i take damagseKNGTH");
+      if (!this.isDead) {
+        this.health -= damage;
+        if (this.health <= 0) {
+          this.health = 0;
+        }
+      }
+    }
+
+
+    die() {
+      if (!this.isDead) {
+        this.setImmovable(true); // Rend l'unité immobile
+        this.isDead = true;
+
+        
+        this.anims.play('KnighDeath');
+        this.setVelocityX(0); // Stop moving
+        this.setVelocityY(0);
+        this.once('animationcomplete', () => {
+          // Use the remove method of Physics.Arcade.Group or Physics.Arcade.StaticGroup
+          this.scene.physics.add.group().remove(this);
+          this.destroy();
+          console.log('Knight has died.');
+        });
+      }
     }
   }

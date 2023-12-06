@@ -20,7 +20,8 @@ import necroSpriteSheet from '../../assets/sprites/NecroSprites/NecroAll.png';
 import redSpriteSheet from '../../assets/sprites/RedSprites/Archer.png';
 
 
-export function preloadSpriteSheets(scene) {
+ // eslint-disable-next-line import/prefer-default-export
+ export function preloadSpriteSheets(scene) {
     // Archer Loads
 
     scene.load.spritesheet('ArcherAll', redSpriteSheet, {
@@ -69,36 +70,6 @@ export function preloadSpriteSheets(scene) {
       });
   }
 
-
-
-export function createKnightAnim(scene){
-// Knight Creates
-// Knight Attack Animation Creation
-scene.anims.create({
-    key: 'KnighAttack',
-    frames: scene.anims.generateFrameNumbers('KnightAttack', { start: 0, end: 17 }),
-    frameRate: 14,
-    repeat: -1,
-});
-    // Knight Run Animation Creation
-scene.anims.create({
-    key: 'KnighRun',
-    frames: scene.anims.generateFrameNumbers('KnightRun', { start: 0, end: 8 }),
-    frameRate: 10,
-    repeat: -1,
-});
-  
-    // Knight Run Animation Creation
-scene.anims.create({
-    key: 'KnighDeath',
-    frames: scene.anims.generateFrameNumbers('KnightDeath', { start: 0, end: 12 }),
-    frameRate: 10,
-    repeat: -1,
-});
-
-  
-
-}
 
 
 

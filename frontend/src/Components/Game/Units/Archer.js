@@ -115,7 +115,7 @@ console.log('Animation created:', scene.anims.get('RedDeath'));
       }
     }
 
-    die() {
+  die() {
   if (!this.isDead) {
     this.isDead = true;
     this.setImmovable(true); // Rend l'unité immobile

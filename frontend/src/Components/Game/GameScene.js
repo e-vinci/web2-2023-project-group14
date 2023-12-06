@@ -28,20 +28,8 @@ import arrowSounds from '../../assets/audio/Sound-effects/arrow.mp3';
 import laserSounds from '../../assets/audio/Sound-effects/laser.mp3';
 import magics from '../../assets/audio/Sound-effects/magic.mp3';
 import lightsaberSounds from '../../assets/audio/Sound-effects/lightsaberGood.mp3';
+import swordSounds from '../../assets/audio/Sound-effects/sword.mp3';
 
-function handleOverlap(unit1, unit2) {
-  // Si les unités se déplacent dans la même direction
-  if (unit1.body.velocity.x === unit2.body.velocity.x) {
-      // Si l'unité1 est devant l'unité2 et se déplace vers la droite (équipe 1)
-      if (unit1.x > unit2.x && unit1.body.velocity.x > 0) {
-          unit1.setVelocityX(0);
-      }
-      // Si l'unité1 est derrière l'unité2 et se déplace vers la gauche (équipe 2)
-      else if (unit1.x < unit2.x && unit1.body.velocity.x < 0) {
-          unit1.setVelocityX(0);
-      }
-  }
-}
 
 
 
@@ -118,6 +106,7 @@ class GameScene extends Phaser.Scene {
     this.load.audio('laserSound', laserSounds);
     this.load.audio('magicSound', magics);
     this.load.audio('lightsaberSound', lightsaberSounds);
+    this.load.audio('swordSound', swordSounds);
 
 
     this.load.image('backgroundGame', backgroundGameAsset);
