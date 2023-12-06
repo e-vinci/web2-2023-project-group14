@@ -101,35 +101,5 @@ scene.anims.create({
 }
 
 
-export function createWarriorAnim(scene) {
-    // Warrior Creates
 
-    // Warrior Run Animation Creation
-    scene.anims.create({
-        key: 'WarriorRun',
-        frames: scene.anims.generateFrameNumbers('NightBorneAll', { start: 23, end: 28 }),
-        frameRate: 10,
-        repeat: -1,
-      });
-  
-      // Warrior Hit Animation Creation
-      scene.anims.create({
-        key: 'WarriorHit',
-        frames: scene.anims.generateFrameNumbers('NightBorneAll', { start: 46, end: 57 }),
-        frameRate: 15,
-        repeat: -1,
-      });
-  
-      // Warrior Death Animation Creation
-      scene.anims.create({
-        key: 'WarriorDeath',
-        frames: scene.anims.generateFrameNumbers('NightBorneAll', { start: 93, end:  116}),
-        frameRate: 7,
-        repeat: -1,
-      });
-  
-      // Instances de warrior
-  
-  
-}
 

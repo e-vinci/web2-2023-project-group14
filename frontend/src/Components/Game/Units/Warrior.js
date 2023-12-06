@@ -6,12 +6,13 @@ import Phaser from 'phaser';
 export default class Warrior extends Phaser.Physics.Arcade.Sprite{
     constructor(scene, x, y, direction) {
       super(scene, x, y, 'NightBorn');
-      this.health = 100;
-      this.damage = 10;
-      this.range = 50;
-      this.speed= 15;
+      this.health = 50;
+      this.damage = 50;
+      this.range = 40;
+      this.speed = 50;
       this.direction=direction;
-      this.living=true;
+      this.hasSpawned = false;
+      this.isDead=false;
      
     // Add this entity to the scene's physics
   
@@ -20,21 +21,41 @@ export default class Warrior extends Phaser.Physics.Arcade.Sprite{
     // Add this entity to the scene
     scene.add.existing(this);
 
-    // Archer Run Animation Creation
+    // Warrior Animation Creation
 
-    if (!scene.anims.exists('NecRun')) {
-      // Necro Run Animation Creation
-  scene.anims.create({
-    key: 'NecRun',
-    frames: scene.anims.generateFrameNumbers('NightBorne', { start: 23, end: 28 }),
-    frameRate: 10,
-    repeat: -1,
-  });
+    if (!scene.anims.exists('WarriorRun')) {
+      
+      scene.anims.create({
+        key: 'WarriorRun',
+        frames: scene.anims.generateFrameNumbers('NightBorne', { start: 23, end: 28 }),
+        frameRate: 10,
+        repeat: -1,
+      });
     }
-console.log('Animation created:', scene.anims.get('NecRun'));
+
+    if (!scene.anims.exists('WarriorHit')){
+      scene.anims.create({
+        key: 'WarriorHit',
+        frames: scene.anims.generateFrameNumbers('NightBorne', { start: 46, end: 57 }),
+        frameRate: 15,
+        repeat: 0,
+      });
     }
+    if (!scene.anims.exists('WarriorDeath')){
+      scene.anims.create({
+        key: 'WarriorDeath',
+        frames: scene.anims.generateFrameNumbers('NightBorne', { start: 70, end: 75 }),
+        frameRate: 10,
+        repeat: 0,
+      });
+    }
+console.log('Animation created:', scene.anims.get('WarriorRun'));
+console.log('Animation created:', scene.anims.get('WarriorHit'));    
+console.log('Animation created:', scene.anims.get('WarriorDeath')); 
+
+}
   
-    // Method to spawn the archer
+    // Method to spawn the warrior
     spawn() {
       
       if (this.direction === 'right') {
@@ -45,28 +66,70 @@ console.log('Animation created:', scene.anims.get('NecRun'));
         this.flipX=true;
       }
       this.setVisible(true);
-      this.anims.play('NecRun');
+      this.anims.play('WarriorRun');
       this.setOffset(27,30)
       this.setDepth(1);
       console.log(`Warrior has been spawned with ${  this.health  } health, ${  this.damage  } damage, and ${  this.range  } range.`);
     }
   
-    // Method for the archer to attack
-    attack(target) {
-      if(target.living) {
-        target.takeDamage(this.damage);
-      console.log(`Archer attacks with ${  this.damage  } damage.`);
-    }
+    // Method for the warrior to attack
+    attackTarget(target) {
+      if (!this.isDead && target && !target.isDead) {
+        const distanceToTarget = Phaser.Math.Distance.Between(this.x, this.y, target.x, target.y);
+    
+        if (distanceToTarget <= this.range) {
+          this.setVelocityX(0); // Stop moving
+          this.setVelocityY(0);
+    
+          // Only start the attack animation if it's not already playing
+          if (!this.anims.isPlaying || this.anims.currentAnim.key !== 'WarriorHit') {
+            this.anims.play('WarriorHit').chain('WarriorRun');
+    
+            this.once('animationcomplete', () => {
+              // eslint-disable-next-line prefer-const
+              this.scene.sound.play('lightsaberSound');
+              
+              target.takeDamage(this.damage);
+    
+              if (!target.isDead && target.health > 0) {
+                // If the target is still alive, attack again
+                this.attackTarget(target);
+              } else {
+                // If the target is dead, stop the 'ExtAttack' animation
+                this.anims.stop('WarriorHit');
+              }
+            });
+          }
+        }
+      }
     }
     // Method for the archer to take damage
 
-    takeDamage(amount) {
-      this.health -= amount;
-      if(this.health <= 0) {
-        this.health = 0;
-        this.living = false;
-        this.visible = false;  // this will hide the dead unit
-      console.log(`Warrior takes ${  amount  } damage. Health is now ${  this.health}`);
+    takeDamage(damage) {
+      console.log("i take damagse WAR");
+      if (!this.isDead) {
+        this.health -= damage;
+    
+        if (this.health <= 0) {
+          this.health = 0;
+         
+        }
+      }
     }
-  }
+
+    die() {
+      if (!this.isDead) {
+        this.isDead = true;
+        this.setImmovable(true); // Rend l'unité immobile
+        this.anims.play('WarriorDeath');
+    
+        this.once('animationcomplete', () => {
+          // Use the remove method of Physics.Arcade.Group or Physics.Arcade.StaticGroup
+          this.scene.physics.add.group().remove(this);
+          this.destroy();
+          console.log('Warrior has died.');
+        });
+      }
+    }
+
 }

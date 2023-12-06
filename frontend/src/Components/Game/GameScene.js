@@ -27,6 +27,7 @@ import Warrior from './Units/Warrior';
 import arrowSounds from '../../assets/audio/Sound-effects/arrow.mp3';
 import laserSounds from '../../assets/audio/Sound-effects/laser.mp3';
 import magics from '../../assets/audio/Sound-effects/magic.mp3';
+import lightsaberSounds from '../../assets/audio/Sound-effects/lightsaberGood.mp3';
 
 function handleOverlap(unit1, unit2) {
   // Si les unités se déplacent dans la même direction
@@ -116,6 +117,7 @@ class GameScene extends Phaser.Scene {
     this.load.audio('arrowSound', arrowSounds);
     this.load.audio('laserSound', laserSounds);
     this.load.audio('magicSound', magics);
+    this.load.audio('lightsaberSound', lightsaberSounds);
 
 
     this.load.image('backgroundGame', backgroundGameAsset);
