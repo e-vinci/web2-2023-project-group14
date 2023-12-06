@@ -122,9 +122,11 @@ console.log('Animation created:', scene.anims.get('NecAttack'));
     die() {
       if (!this.isDead) {
         this.isDead = true;
-        this.setImmovable(true); // Rend l'unité immobile
+        this.setImmovable(true); // Makes the unit immovable
         this.setVelocityX(0); // Stop moving
         this.setVelocityY(0);
+        this.body.checkCollision.none = true; // Disables collisions
+    
         this.anims.play('NecDeath');
     
         this.once('animationcomplete', () => {
