@@ -31,13 +31,25 @@ import lightsaberSounds from '../../assets/audio/Sound-effects/lightsaberGood.mp
 import swordSounds from '../../assets/audio/Sound-effects/sword.mp3';
 
 
-
-
+ // Create a health bar for objPlayerBase1
+ let healthBarWidth1 = 296; // Adjust the width of the health bar
+ let healthBarHeight = 6; // Adjust the height of the health bar
+ // Create a health bar for objPlayerBase2
+ let healthBarWidth2 = 296; // Adjust the width of the health bar
+ 
 let player2CharactersGroup;
 let player1CharactersGroup;
 
 let objPlayerBase1;
 let objPlayerBase2;
+
+let baseHealthBarValue;
+
+const minimumHpNeededToTurnHealthBarInRed = 400;
+let colorGreen = 0x008000;
+let colorRed = 0xFF0000;
+let colorUsedP1 = null;
+let colorUsedP2 = null;
 
 let spawnPointsTeam1 = [
   { x: 120, y: 350 },
@@ -92,6 +104,8 @@ class GameScene extends Phaser.Scene {
     this.indexP1=0;
     this.cardsP2=[];
     this.indexP2=0;
+    this.graphics1 = null;
+    this.graphics2 = null;
     
     
     // this.KnightSpawn = undefined;
@@ -129,11 +143,24 @@ class GameScene extends Phaser.Scene {
 
   create() {
    
+  // Draw a background rectangle for the health bar
+  this.graphics1 = this.add.graphics();
+  this.graphics1.fillStyle(0x008000, 1);
+  this.graphics1.fillRect(14, 28, healthBarWidth1, healthBarHeight).setDepth(1);
+
+  // Draw a background rectangle for the health bar
+  this.graphics2 = this.add.graphics();
+  this.graphics2.fillStyle(0x008000, 1);
+  this.graphics2.fillRect(490, 28, healthBarWidth2, healthBarHeight).setDepth(1);
+
     player1CharactersGroup=this.add.group();
     player2CharactersGroup=this.add.group();
     
     objPlayerBase1 = new PlayerBase(this,50,250);
     objPlayerBase2 = new PlayerBase(this,750,250);
+
+    // this updates the healthbar lenght in function of the const base hp of the "base"
+    baseHealthBarValue = objPlayerBase1.health;
 
     player1CharactersGroup.add(objPlayerBase1);
     player2CharactersGroup.add(objPlayerBase2);
@@ -536,9 +563,13 @@ const spawnWarriors2 = () => {
   }
 // Helper function to find the closest unit from a group to a given unit
 
+// to delete
+// let healthBarWidth1 = 296; // Adjust the width of the health bar
+// let healthBarWidth2 = 296; // Adjust the width of the health bar
 
 update() {
   // logic to find out the winner
+    healthBarWidth1 = 296 * (objPlayerBase1.health / baseHealthBarValue);
     if(objPlayerBase1.health <= 0) {
       this.sys.game.global = {winner: this.player2.playerName};
       this.sound.stopAll();
@@ -546,6 +577,7 @@ update() {
       this.scene.switch('end-scene');
     }
     
+    healthBarWidth2 = 296 * (objPlayerBase2.health / baseHealthBarValue);
     if(objPlayerBase2.health <= 0) {
       this.sys.game.global = {winner: this.player1.playerName};
       this.sound.stopAll();
@@ -553,6 +585,27 @@ update() {
       this.scene.switch('end-scene');
     }
 
+    /* eslint-disable no-undef */
+    // Update the graphics for health bars
+    if(objPlayerBase1.health <= minimumHpNeededToTurnHealthBarInRed) {
+      colorUsedP1 = colorRed
+    } else {
+      colorUsedP1 = colorGreen;
+    }
+
+    if(objPlayerBase2.health <= minimumHpNeededToTurnHealthBarInRed) {
+      colorUsedP2 = colorRed
+    } else {
+      colorUsedP2 = colorGreen;
+    }
+    this.graphics1.clear(); // Clear the previous graphics to redraw
+    this.graphics1.fillStyle(colorUsedP1, 1);
+    this.graphics1.fillRect(14, 28, healthBarWidth1, healthBarHeight).setDepth(1);
+    
+    this.graphics2.clear();
+    this.graphics2.fillStyle(colorUsedP2, 1);
+    this.graphics2.fillRect(490, 28, healthBarWidth2, healthBarHeight).setDepth(1);
+    
   // Mettre à jour la position et le comportement de chaque unité de l'équipe 1
   player1CharactersGroup.children.iterate(function  (unit1) {
     if (unit1.health <= 0) {
