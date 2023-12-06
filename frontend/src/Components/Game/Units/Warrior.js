@@ -120,10 +120,13 @@ console.log('Animation created:', scene.anims.get('WarriorDeath'));
     die() {
       if (!this.isDead) {
         this.isDead = true;
-        this.setImmovable(true); // Rend l'unité immobile
+        this.setImmovable(true); // Makes the unit immovable
+        this.body.checkCollision.none = true; // Disables collisions
+    
         this.anims.play('WarriorDeath');
         this.setVelocityX(0); // Stop moving
         this.setVelocityY(0);
+    
         this.once('animationcomplete', () => {
           // Use the remove method of Physics.Arcade.Group or Physics.Arcade.StaticGroup
           this.scene.physics.add.group().remove(this);
