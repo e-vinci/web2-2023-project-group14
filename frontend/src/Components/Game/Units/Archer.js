@@ -1,17 +1,13 @@
 import Phaser from 'phaser';
 
 export default class Archer extends Phaser.Physics.Arcade.Sprite{
-    constructor(scene, x, y, direction, group) {
+    constructor(scene, x, y, direction) {
       super(scene, x, y, 'archer');
       this.health = 100;
       this.damage = 30;
       this.range = 200;
       this.direction=direction;
       this.speed = 10;
-      this.attackCooldown = 2000;
-      this.lastAttackTime = 0;
-      this.scene = scene;
-      this.group = group;
       this.hasSpawned = false;
       this.isDead=false;
       // Add this entity to the scene's physics
@@ -36,7 +32,7 @@ export default class Archer extends Phaser.Physics.Arcade.Sprite{
       key: 'RedAttack',
       frames: scene.anims.generateFrameNumbers('ArcherAll', { start:25, end : 34}),
       frameRate: 15,
-      repeat: 1,
+      repeat: 0,
     });
   }
 
@@ -70,27 +66,9 @@ console.log('Animation created:', scene.anims.get('RedDeath'));
       this.setOffset(40,65)
       this.setDepth(1);
       console.log(`Archer has been spawned with ${  this.health  } health, ${  this.damage  } damage, and ${  this.range  } range.`);
-
-     
-      this.attackTimer = this.scene.time.addEvent({
-        delay: this.attackCooldown,
-        callback: () => {
-          this.attackTarget();
-        },
-        loop: true,
-      });
     }
   
-    update() {
-      if (this.health <= 0) {
-        this.die();
-      }
     
-      // Vérifiez si l'archer est en train d'attaquer et arrêtez le mouvement
-      if (this.isAttacking) {
-        this.setVelocityX(0);
-      }
-    }
   
     attackTarget(target) {
       if (!this.isDead && target && !target.isDead) {

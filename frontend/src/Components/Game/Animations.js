@@ -155,31 +155,3 @@ export function createWarriorAnim(scene) {
   
 }
 
-export function createEXTAnim(scene) {
-  // Creates de Exterminator
-
-    // Exterminator move animation
-
-   
-
-    // Exterminator Death animation
-
-    scene.anims.create({
-      key: 'ExtDeath',
-      frames: scene.anims.generateFrameNumbers('ExterminatorDeath', { start: 0, end: 5 }),
-      frameRate: 7,
-      repeat: -1,
-    });
-
-    // Exterminator Attack Animation
-
-    scene.anims.create({
-      key: 'ExtAttack',
-      frames: scene.anims.generateFrameNumbers('ExterminatorAttack', { start: 0, end: 4 }),
-      frameRate: 7,
-      repeat: -1,
-    });
-
-   
-
-}

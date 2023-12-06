@@ -25,6 +25,7 @@ import Necro from './Units/Necro';
 import Warrior from './Units/Warrior';
 
 import arrowSounds from '../../assets/audio/Sound-effects/arrow.mp3';
+import laserSounds from '../../assets/audio/Sound-effects/laser.mp3';
 
 function handleOverlap(unit1, unit2) {
   // Si les unités se déplacent dans la même direction
@@ -40,15 +41,10 @@ function handleOverlap(unit1, unit2) {
   }
 }
 
-// Variables here
-let cursors;
 
 
 let player2CharactersGroup;
 let player1CharactersGroup;
-
-let lastSpawnedIndex1 = 0;
-let lastSpawnedIndex2 = 0;
 
 let spawnPointsTeam1 = [
   { x: 120, y: 350 },
@@ -117,6 +113,7 @@ class GameScene extends Phaser.Scene {
   preload() {
     
     this.load.audio('arrowSound', arrowSounds);
+    this.load.audio('laserSound', laserSounds);
 
 
     this.load.image('backgroundGame', backgroundGameAsset);
@@ -196,7 +193,7 @@ function addWarriorP1(indexP1, scene) {
   
   switch(indexP1) {
     case 0:
-      player1CharactersGroup.add(new Archer(scene,spawnPointTeam1.x,spawnPointTeam1.y,'right',player1CharactersGroup.get));
+      player1CharactersGroup.add(new Archer(scene,spawnPointTeam1.x,spawnPointTeam1.y,'right'));
       break;
     case 1:
       player1CharactersGroup.add(new Exterminator(scene,spawnPointTeam1.x,spawnPointTeam1.y,'right'));

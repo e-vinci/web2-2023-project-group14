@@ -7,11 +7,13 @@ import Phaser from 'phaser';
 export default class Exterminator extends Phaser.Physics.Arcade.Sprite{
     constructor(scene, x, y, direction) {
       super(scene, x, y, 'EXT');
-      this.health = 3000000;
+      this.health = 50;
       this.damage = 10;
       this.range = 50;
       this.speed = 10;
       this.direction=direction;
+      this.hasSpawned = false;
+      this.isDead=false;
      
     // Add this entity to the scene's physics
   
@@ -20,7 +22,7 @@ export default class Exterminator extends Phaser.Physics.Arcade.Sprite{
     // Add this entity to the scene
     scene.add.existing(this);
 
-    // Archer Run Animation Creation
+    // Exterminator Animation Creation
 
     if (!scene.anims.exists('ExtRun')) {
       scene.anims.create({
@@ -30,12 +32,31 @@ export default class Exterminator extends Phaser.Physics.Arcade.Sprite{
         repeat: -1,
       });
     }
+    if (!scene.anims.exists('ExtAttack')){
+      scene.anims.create({
+        key: 'ExtAttack',
+        frames: scene.anims.generateFrameNumbers('EXTattack', { start: 0, end: 4 }),
+        frameRate: 7,
+        repeat: 0,
+      });
+    }
+    if (!scene.anims.exists('ExtDeath')){
+    scene.anims.create({
+      key: 'ExtDeath',
+      frames: scene.anims.generateFrameNumbers('EXTdeath', { start: 0, end: 5 }),
+      frameRate: 7,
+      repeat: 0,
+    });
+  }
+
 console.log('Animation created:', scene.anims.get('ExtRun'));
+console.log('Animation created:', scene.anims.get('ExtAttack'));
+console.log('Animation created:', scene.anims.get('ExtDeath'));
     }
   
-    // Method to spawn the archer
+    // Method to spawn the exterminator
     spawn() {
-      
+      this.setVisible(true);
       if (this.direction === 'right') {
         this.setVelocityX(10); // Move right
         this.flipX=false;
@@ -52,43 +73,63 @@ console.log('Animation created:', scene.anims.get('ExtRun'));
       console.log(`Exterminator has been spawned with ${  this.health  } health, ${  this.damage  } damage, and ${  this.range  } range.`);
     }
   
-    // Method for the archer to attack
+    // Method for the Exterminator to attack
     attackTarget(target) {
-      if (this.isDead || !target || target.isDead ) {
-        // Don't attack if the attacker or the target is already dead
-        return;
-      }
+      if (!this.isDead && target && !target.isDead) {
+        const distanceToTarget = Phaser.Math.Distance.Between(this.x, this.y, target.x, target.y);
     
-      const distanceToTarget = Phaser.Math.Distance.Between(this.x, this.y, target.x, target.y);
+        if (distanceToTarget <= this.range) {
+          this.setVelocityX(0); // Stop moving
+          this.setVelocityY(0);
     
-      if (distanceToTarget <= this.range) {
-        // The enemy is in range, perform the attack
-        this.isAttacking = true;
-        this.setVelocityX(0); // Stop movement
+          // Only start the attack animation if it's not already playing
+          if (!this.anims.isPlaying || this.anims.currentAnim.key !== 'ExtAttack') {
+            this.anims.play('ExtAttack').chain('ExtRun');
     
-        // Play the attack animation
-        this.anims.play('RedAttack');
+            this.once('animationcomplete', () => {
+              // eslint-disable-next-line prefer-const
+              this.scene.sound.play('laserSound');
+              
+              target.takeDamage(this.damage);
     
-        // Deal damage to the target
-        target.takeDamage(this.damage);
-    
-        // Delay to control the attack cooldown
-        this.scene.time.delayedCall(this.attackCooldown, () => {
-          this.isAttacking = false;
-          this.setVelocityX(this.initialSpeed); // Resume movement
-          console.log(`Archer attacks with ${this.damage} damage .`);
-        });
-      } else {
-        // No valid target in range for the attack, resume normal movement
-        this.isAttacking = false;
-        this.anims.play('ArcherRedRun');
-        console.log('No valid target in range for attack');
+              if (!target.isDead && target.health > 0) {
+                // If the target is still alive, attack again
+                this.attackTarget(target);
+              } else {
+                // If the target is dead, stop the 'ExtAttack' animation
+                this.anims.stop('ExtAttack');
+              }
+            });
+          }
+        }
       }
     }
   
     // Method for the archer to take damage
-    takeDamage(amount) {
-      this.health -= amount;
-      console.log(`Exterminator takes ${  amount  } damage. Health is now ${  this.health}`);
+    takeDamage(damage) {
+      console.log("i take damage EXT");
+      if (!this.isDead) {
+        this.health -= damage;
+    
+        if (this.health <= 0) {
+          this.health = 0;
+         
+        }
+      }
+    }
+
+    die() {
+      if (!this.isDead) {
+        this.isDead = true;
+        this.setImmovable(true); // Rend l'unité immobile
+        this.anims.play('ExtDeath');
+    
+        this.once('animationcomplete', () => {
+          // Use the remove method of Physics.Arcade.Group or Physics.Arcade.StaticGroup
+          this.scene.physics.add.group().remove(this);
+          this.destroy();
+          console.log('EXT has died.');
+        });
+      }
     }
   }
