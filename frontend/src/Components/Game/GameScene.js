@@ -36,6 +36,9 @@ import swordSounds from '../../assets/audio/Sound-effects/sword.mp3';
 let player2CharactersGroup;
 let player1CharactersGroup;
 
+let objPlayerBase1;
+let objPlayerBase2;
+
 let spawnPointsTeam1 = [
   { x: 120, y: 350 },
   { x: 140, y: 300 },
@@ -129,9 +132,11 @@ class GameScene extends Phaser.Scene {
     player1CharactersGroup=this.add.group();
     player2CharactersGroup=this.add.group();
     
-    
-    player1CharactersGroup.add(new PlayerBase(this,50, 250));
-    player2CharactersGroup.add(new PlayerBase(this,750, 250));
+    objPlayerBase1 = new PlayerBase(this,50,250);
+    objPlayerBase2 = new PlayerBase(this,750,250);
+
+    player1CharactersGroup.add(objPlayerBase1);
+    player2CharactersGroup.add(objPlayerBase2);
 
     let base1 = player1CharactersGroup.getChildren();
     base1.forEach(base => {
@@ -533,6 +538,21 @@ const spawnWarriors2 = () => {
 
 
 update() {
+  // logic to find out the winner
+    if(objPlayerBase1.health <= 0) {
+      this.sys.game.global = {winner: this.player2.playerName};
+      this.sound.stopAll();
+      this.scene.stop('game-scene');
+      this.scene.switch('end-scene');
+    }
+    
+    if(objPlayerBase2.health <= 0) {
+      this.sys.game.global = {winner: this.player1.playerName};
+      this.sound.stopAll();
+      this.scene.stop('game-scene');
+      this.scene.switch('end-scene');
+    }
+
   // Mettre à jour la position et le comportement de chaque unité de l'équipe 1
   player1CharactersGroup.children.iterate(function  (unit1) {
     if (unit1.health <= 0) {
