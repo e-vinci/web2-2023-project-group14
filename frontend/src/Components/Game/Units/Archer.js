@@ -119,6 +119,8 @@ console.log('Animation created:', scene.anims.get('RedDeath'));
   if (!this.isDead) {
     this.isDead = true;
     this.setImmovable(true); // Rend l'unité immobile
+    this.setVelocityX(0); // Stop moving
+    this.setVelocityY(0);
     this.anims.play('RedDeath');
 
     this.once('animationcomplete', () => {

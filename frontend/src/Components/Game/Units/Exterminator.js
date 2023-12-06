@@ -122,6 +122,8 @@ console.log('Animation created:', scene.anims.get('ExtDeath'));
       if (!this.isDead) {
         this.isDead = true;
         this.setImmovable(true); // Rend l'unité immobile
+        this.setVelocityX(0); // Stop moving
+        this.setVelocityY(0);
         this.anims.play('ExtDeath');
     
         this.once('animationcomplete', () => {
