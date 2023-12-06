@@ -71,28 +71,6 @@ export function preloadSpriteSheets(scene) {
 
 
 
-
-export function createNecroAnim(scene){
-// Necro Creates
-// Necro Attack Animation Creation
-scene.anims.create({
-    key: 'NecAttack',
-    frames: scene.anims.generateFrameNumbers('NecroAll', { start: 34, end: 46 }),
-    frameRate: 10,
-    repeat: -1,
-  });
-  // Necro Death Animation Creation
-  scene.anims.create({
-    key: 'NecDeath',
-    frames: scene.anims.generateFrameNumbers('NecroAll', { start: 102, end: 113 }),
-    frameRate: 10,
-    repeat: -1,
-  });
-  
-  
-}
-
-
 export function createKnightAnim(scene){
 // Knight Creates
 // Knight Attack Animation Creation
