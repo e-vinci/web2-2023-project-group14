@@ -115,22 +115,24 @@ console.log('Animation created:', scene.anims.get('RedDeath'));
       }
     }
 
-  die() {
-  if (!this.isDead) {
-    this.isDead = true;
-    this.setImmovable(true); // Rend l'unité immobile
-    this.setVelocityX(0); // Stop moving
-    this.setVelocityY(0);
-    this.anims.play('RedDeath');
-
-    this.once('animationcomplete', () => {
-      // Use the remove method of Physics.Arcade.Group or Physics.Arcade.StaticGroup
-      this.scene.physics.add.group().remove(this);
-      this.destroy();
-      console.log('Archer has died.');
-    });
-  }
-}
+    die() {
+      if (!this.isDead) {
+        this.isDead = true;
+        this.setImmovable(true); // Makes the unit immovable
+        this.setVelocityX(0); // Stop moving
+        this.setVelocityY(0);
+        this.body.checkCollision.none = true; // Disables collisions
+    
+        this.anims.play('RedDeath');
+    
+        this.once('animationcomplete', () => {
+          // Use the remove method of Physics.Arcade.Group or Physics.Arcade.StaticGroup
+          this.scene.physics.add.group().remove(this);
+          this.destroy();
+          console.log('Archer has died.');
+        });
+      }
+    }
 
   }
   
