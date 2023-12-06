@@ -1,5 +1,6 @@
 const express = require('express');
-const { register, login, externalEmailApiVerification } = require('../models/users');
+const { register, login } = require('../models/users');
+const {externalEmailApiVerification } = require('../utils/auths');
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
 const router = express.Router();
