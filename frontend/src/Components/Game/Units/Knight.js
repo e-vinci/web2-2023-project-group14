@@ -120,13 +120,14 @@ console.log('Animation created:', scene.anims.get('KnighDeath'));
 
     die() {
       if (!this.isDead) {
-        this.setImmovable(true); // Rend l'unité immobile
+        this.setImmovable(true); // Makes the unit immovable
         this.isDead = true;
-
-        
+        this.body.checkCollision.none = true; // Disables collisions
+    
         this.anims.play('KnighDeath');
         this.setVelocityX(0); // Stop moving
         this.setVelocityY(0);
+    
         this.once('animationcomplete', () => {
           // Use the remove method of Physics.Arcade.Group or Physics.Arcade.StaticGroup
           this.scene.physics.add.group().remove(this);
