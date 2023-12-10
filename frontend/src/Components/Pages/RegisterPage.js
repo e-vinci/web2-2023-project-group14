@@ -193,7 +193,7 @@ async function renderRegisterForm() {
     async function onRegister(e) {
       e.preventDefault();
       const email = document.querySelector('#userEmail').value;
-      // eslint-disable-next-line no-shadow
+      //  eslint-disable-next-line no-shadow
       const username = document.querySelector('#username').value;
       // eslint-disable-next-line no-shadow
       const password = document.querySelector('#password').value;
