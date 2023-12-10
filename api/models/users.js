@@ -1,22 +1,22 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const path = require('node:path');
-const { parse, serialize } = require('../utils/json');
+
+const client = require('../utils/database');
 
 const jwtSecret = 'ilovemypizza!';
 const lifetimeJwt = 24 * 60 * 60 * 1000; // in ms : 24 * 60 * 60 * 1000 = 24h
 
 const saltRounds = 10;
 
-const jsonDbPath = path.join(__dirname, '/../data/users.json');
-
-const defaultUsers = [
-  {
-    id: 1,
-    username: 'admin',
-    password: bcrypt.hashSync('admin', saltRounds),
-  },
-];
+client.query('SELECT * from users', (err, res) => {
+  if (!err) {
+    console.log(res.rows);
+  } else {
+    console.log(err.message);
+  }
+  // eslint-disable-next-line no-unused-expressions
+  client.end;
+});
 
 async function login(username, password) {
   const userFound = readOneUserFromUsername(username);
@@ -39,11 +39,12 @@ async function login(username, password) {
   return authenticatedUser;
 }
 
-async function register(username, password) {
+async function register(email, username, password) {
   const userFound = readOneUserFromUsername(username);
   if (userFound) return undefined;
 
-  await createOneUser(username, password);
+  // eslint-disable-next-line no-undef
+  await createOneUser(email, username, password);
 
   const token = jwt.sign(
     { username }, // session data added to the payload (payload : part 2 of a JWT)
@@ -60,37 +61,76 @@ async function register(username, password) {
 }
 
 function readOneUserFromUsername(username) {
-  const users = parse(jsonDbPath, defaultUsers);
-  const indexOfUserFound = users.findIndex((user) => user.username === username);
-  if (indexOfUserFound < 0) return undefined;
-
-  return users[indexOfUserFound];
+  let user = null;
+  client.query('SELECT id_user from users where username = $1', [username], (err, res) => {
+    if (!err) {
+      if (res.rows.length > 0) {
+        // eslint-disable-next-line prefer-destructuring
+        user = res.rows[0];
+        console.log(user);
+        // Do something with the user data if needed
+      } else {
+        console.log('User not found');
+      }
+    } else {
+      console.error(err.message);
+    }
+    // Properly end the database connection
+    client.end();
+  });
+  if (user == null) return undefined;
+  return user;
 }
 
-async function createOneUser(username, password) {
-  const users = parse(jsonDbPath, defaultUsers);
-
+async function createOneUser(email, username, password) {
+  let createdUser;
   const hashedPassword = await bcrypt.hash(password, saltRounds);
 
-  const createdUser = {
-    id: getNextId(),
-    username,
-    password: hashedPassword,
-  };
-
-  users.push(createdUser);
-
-  serialize(jsonDbPath, users);
+  client.query('INSERT INTO users(id_user, email, username, password) VALUES($1, $2, $3, $4)', [getNextId(), email, username, hashedPassword], (err, res) => {
+    if (!err) {
+      if (res.rows.length > 0) {
+        // eslint-disable-next-line prefer-destructuring
+        createdUser = {
+          id: getNextId(),
+          email,
+          username,
+          password: hashedPassword,
+        };
+        console.log(createdUser);
+        // Do something with the user data if needed
+      } else {
+        console.log('User not found');
+      }
+    } else {
+      console.error(err.message);
+    }
+    // Properly end the database connection
+    client.end();
+  });
 
   return createdUser;
 }
 
 function getNextId() {
-  const users = parse(jsonDbPath, defaultUsers);
-  const lastItemIndex = users?.length !== 0 ? users.length - 1 : undefined;
-  if (lastItemIndex === undefined) return 1;
-  const lastId = users[lastItemIndex]?.id;
-  const nextId = lastId + 1;
+  let nextId = 0;
+  client.query('SELECT MAX(id_user) AS maxId FROM users', (err, res) => {
+    if (!err) {
+      if (res.rows.length > 0) {
+        const maxId = res[0].maxId || 0;
+
+        // Increment the maximum ID to get the next ID
+        nextId = maxId + 1;
+        console.log(nextId);
+        // Do something with the user data if needed
+      } else {
+        console.log(nextId, 'Should be 0');
+      }
+    } else {
+      console.error(err.message);
+    }
+    // Properly end the database connection
+    client.end();
+  });
   return nextId;
 }
 
