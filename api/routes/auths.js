@@ -1,42 +1,48 @@
+/* eslint-disable max-len */
 const express = require('express');
 const { register, login } = require('../models/users');
-const {externalEmailApiVerification } = require('../utils/auths');
-const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+// const { externalEmailApiVerification } = require('../utils/auths');
+
+// eslint-disable-next-line no-unused-vars, no-shadow
+// const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
 const router = express.Router();
-
+/*
 // register a user (test email with external API) TODO later with database
 router.post('/registerTestEmailAPI', async (req, res) => {
-  const userData = req.body;    // The data the user gave in the register form
-  const emailToValidate = userData.newUserEmail;   // Here is the email we are checking with the external API
+  const userData = req.body;// The data the user gave in the register form
+  // eslint-disable-next-line max-len, max-len, max-len
+  const emailToValidate = userData.newUserEmail; // Here is the email we are checking with the external API
 
   try {
     const response = await externalEmailApiVerification(emailToValidate);
     if (response.error) {
+      // eslint-disable-next-line max-len
       // If this condition is true, the email verification failed, we got no answear, we don t save the user
       res.status(400).json(response);
     } else {
       /* So here we check the answear from the API,
-      we check if the email is valid, if it is, 
+      we check if the email is valid, if it is,
       we check if we can save the user and send a confirmation to the front end!
       */
-      res.json(response); // Here we just send the the object from the external api as a test, this must be changed
-    }
-  } catch (err) {
-    console.error('Registe::error: ', err);
-  }
-  
-});
-
+// eslint-disable-next-line max-len
+//  res.json(response); // Here we just send the the object from the external api as a test, this must be changed
+//  }
+//  } catch (err) {
+//  console.error('Registe::error: ', err);
+//  }
+// });
 
 /* Register a user */
 router.post('/register', async (req, res) => {
+  const email = req?.body?.userEmail?.length !== 0 ? req.body.userEmail : undefined;
   const username = req?.body?.username?.length !== 0 ? req.body.username : undefined;
   const password = req?.body?.password?.length !== 0 ? req.body.password : undefined;
 
-  if (!username || !password) return res.sendStatus(400); // 400 Bad Request
+  console.log('dsdfds');
+  if (!email || !password || !username) return res.sendStatus(400); // 400 Bad Request
 
-  const authenticatedUser = await register(username, password);
+  const authenticatedUser = await register(email, username, password);
 
   if (!authenticatedUser) return res.sendStatus(409); // 409 Conflict
 
