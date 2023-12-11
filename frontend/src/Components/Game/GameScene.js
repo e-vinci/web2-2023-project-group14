@@ -476,33 +476,70 @@ const spawnWarriors2 = () => {
       .setOrigin(0.5)
       .setDepth(1);
 
-    let timeLeft = 5;
+    let timeLeft = 10;
 
     let incrementAmount = 100;
+
+    const unitCosts = [90, 110, 150, 100, 120]; // cost of differents units
+
+    const getUnitCost = (index) => {
+      // Assurez-vous que l'index est valide, sinon retournez 0
+      if (index >= 0 && index < unitCosts.length) {
+        return unitCosts[index];
+      } 
+        console.error("Index d'unité invalide");
+        return 0;
+      
+    };
+
+    const MaxNbrUnit1=20;
+    const MaxNbrUnit2=20;
+    let tailleGroupe1 = player1CharactersGroup.getLength();
+    let tailleGroupe2 = player2CharactersGroup.getLength();
 
     const updateTimer = () => {
       timeLeft -= 1;
       timerText.setText(`${timeLeft}`);
-
+    
       if (timeLeft === 0) {
         console.log(this.indexP1);
         console.log(this.indexP2);
-        addWarriorP1(this.indexP1, this);
-        
-        spawnWarriors1();
-        addWarriorP2(this.indexP2, this);
-        
-        spawnWarriors2();
-        
-       
-        timeLeft = 5; // Réinitialiser le temps à 15 une fois qu'il atteint zéro
+    
+        const costP1 = getUnitCost(this.indexP1); // Obtenez le coût de l'unité en fonction de l'index
+        let intervalP1 = setInterval(() => {
+          if (this.player1.golds >= costP1 && !(tailleGroupe1>=MaxNbrUnit1)) {
+            addWarriorP1(this.indexP1, this);
+            spawnWarriors1();
+            this.player1.addGolds(-costP1); // Soustrayez le coût de l'unité des golds du joueur 1
+            const currentGoldsP1 = Math.floor(this.player1.golds);
+            player1GoldsText.setText(`${currentGoldsP1}`);
+          } else {
+            clearInterval(intervalP1);
+          }
+        }, 1000); // 1 seconde de délai
+    
+        // Joueur 2
+        const costP2 = getUnitCost(this.indexP2); // Obtenez le coût de l'unité en fonction de l'index
+        let intervalP2 = setInterval(() => {
+          if (this.player2.golds >= costP2 && !(tailleGroupe2>=MaxNbrUnit2)) {
+            addWarriorP2(this.indexP2, this);
+            spawnWarriors2();
+            this.player2.addGolds(-costP2); // Soustrayez le coût de l'unité des golds du joueur 2
+            const currentGoldsP2 = Math.floor(this.player2.golds);
+            player2GoldsText.setText(`${currentGoldsP2}`);
+          } else {
+            clearInterval(intervalP2);
+          }
+        }, 1000); // 1 seconde de délai
+    
+        timeLeft = 15;
         this.player1.addGolds(incrementAmount);
-        const currentGolds = this.player1.golds; // Met à jour le nombre actuel de golds
-        player1GoldsText.setText(`${currentGolds}`);
-        player2GoldsText.setText(`${currentGolds}`);
-        incrementAmount *= 1.5; // Montant à incrémenter (peut être ajusté)
-        
-        
+        this.player2.addGolds(incrementAmount);
+        const currentGolds1 = Math.floor(this.player1.golds); // Utilisez Math.floor pour arrondir vers le bas
+        const currentGolds2 = Math.floor(this.player2.golds);
+        player1GoldsText.setText(`${currentGolds1}`);
+        player2GoldsText.setText(`${currentGolds2}`);
+        incrementAmount *= 1.25;
       }
     };
 
@@ -522,7 +559,7 @@ const spawnWarriors2 = () => {
     .setOrigin(0.5)
     .setDepth(1);
 
-    let newTimeLeft = 900; // 15 minutes in seconds
+    let newTimeLeft = 899; // 15 minutes in seconds
 
     const updateNewTimer = () => {
     const minutes = Math.floor(newTimeLeft / 60);
@@ -649,10 +686,7 @@ update() {
       console.log('Pas de cible valide pour l\'équipe 2');
     }
   }, this);
-}
-
-  
-   // HERE END OF UPDATE
+} // HERE END OF UPDATE
 
    die() {  
       this.setVisible(false).setActive(false);
