@@ -1,5 +1,7 @@
 // import Navigate from '../Router/Navigate';
 import { clearPage } from '../../utils/render';
+import { setAuthenticatedUser } from '../../utils/auths';
+import Navigate from '../Router/Navigate';
 
 const RegisterPage = () => {
     clearPage();
@@ -142,14 +144,20 @@ async function renderRegisterForm() {
 
   main.appendChild(backgroundDiv);
 
+  form.addEventListener('submit', onRegister);
+
   // adding confirmation text to the dom for confiramtion
   const confEmailFeedback = document.createElement('div');
   confEmailFeedback.className = 'testAPI my-5'
   backgroundDiv.appendChild(confEmailFeedback);
 
-  submit.addEventListener('click', async (event) => {
-    event.preventDefault(); // I think this is needed; if not, the page refreshes itself and wipes out the response
-    
+
+
+
+  };
+
+  /* submit.addEventListener('click', async () => {
+    // event.preventDefault(); // I think this is needed; if not, the page refreshes itself and wipes out the response
     // creating the new user object to send for verification to the backend
     const formInfos = document.querySelector('form'); // added for the new approach
     const newUserData = {
@@ -179,7 +187,42 @@ async function renderRegisterForm() {
     } catch (err) {
       console.error('RegisterPage::error: ', err);
     }
-  });
-}
+    onRegister();
+    });
+*/
+    async function onRegister(e) {
+      e.preventDefault();
+      const email = document.querySelector('#userEmail').value;
+      //  eslint-disable-next-line no-shadow
+      const username = document.querySelector('#username').value;
+      // eslint-disable-next-line no-shadow
+      const password = document.querySelector('#password').value;
+
+      const options = {
+        method: 'POST',
+        body: JSON.stringify({
+          email,
+          username,
+          password,
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      };
+  
+      console.log('Newly registered & authenticated user :');
+  
+      const response = await fetch('/api/auths/register', options);
+  
+      if (!response.ok) throw new Error(`fetch error : ${response.status} : ${response.statusText}`);
+  
+      const authenticatedUser = await response.json();
+  
+      // eslint-disable-next-line no-console
+      console.log('Newly registered & authenticated user : ', authenticatedUser);
+  
+      setAuthenticatedUser(authenticatedUser);
+      Navigate('/');
+    }
 
 export default RegisterPage;

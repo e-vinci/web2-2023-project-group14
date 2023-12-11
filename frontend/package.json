@@ -34,9 +34,14 @@
     "animejs": "^3.2.1",
     "bootstrap": "^5.0.1",
     "clean-webpack-plugin": "^4.0.0",
+    "cors": "^2.8.5",
     "gh-pages": "^4.0.0",
+    "pg": "^8.11.3",
     "phaser": "^3.55.2",
     "terser-webpack-plugin": "^5.3.6",
+    "validator": "^13.11.0",
     "webpack-merge": "^5.8.0"
-  }
+  },
+  "main": ".eslintrc.js",
+  "keywords": []
 }

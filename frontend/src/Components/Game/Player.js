@@ -1,6 +1,6 @@
 class Player {
   
-  static DEFAULT_GOLDS = 100;
+  static DEFAULT_GOLDS = 0;
 
   static DEFAULT_MAX_UNITS = 5;
 
