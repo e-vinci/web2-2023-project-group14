@@ -605,7 +605,7 @@ const spawnWarriors2 = () => {
 // let healthBarWidth2 = 296; // Adjust the width of the health bar
 
 update() {
-  // logic to find out the winner
+    // logic to find out the winner
     healthBarWidth1 = 296 * (objPlayerBase1.health / baseHealthBarValue);
     if(objPlayerBase1.health <= 0) {
       this.sys.game.global = {winner: this.player2.playerName};
