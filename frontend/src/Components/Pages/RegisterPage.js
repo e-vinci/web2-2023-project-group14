@@ -168,7 +168,7 @@ async function renderRegisterForm() {
     }
   
     try {
-      const response = await fetch ('/api/auths/registerTestEmailAPI', {
+      const response = await fetch (`${process.env.API_BASE_URL}/auths/registerTestEmailAPI`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
