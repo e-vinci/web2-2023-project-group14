@@ -1,4 +1,4 @@
-import baseSpriteSheet from '../../assets/playerBase.png';
+import baseSpriteSheet from '../../../assets/playerBase.png';
 
 export function preloadPlayerBase(scene) {
   scene.load.spritesheet('base', baseSpriteSheet, { frameWidth: 200, frameHeight: 400 });

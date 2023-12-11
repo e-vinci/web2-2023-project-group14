@@ -13,8 +13,8 @@ import { createCards, preloadCards } from './CardCreator';
 
 import Player from './Player';
 import baseSpriteSheet from '../../assets/playerBase.png';
-import { preloadPlayerBase } from './PlayerBase';
-import PlayerBase from './PlayerBase/Playerbase';
+import { preloadPlayerBase } from './PlayerBase/PlayerBaseGraphic';
+import PlayerBase from './PlayerBase/PlayerBaseLogic';
 import MobP1Ex from '../../assets/mobPlayer1Ex.png';
 import {preloadSpriteSheets} from './Animations'
 // eslint-disable-next-line import/no-cycle, import/no-named-as-default
