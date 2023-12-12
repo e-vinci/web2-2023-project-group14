@@ -131,7 +131,7 @@ const GamePage = () => {
       default: 'arcade',
       arcade: {
         gravity: { y: 0 },
-        debug: true,
+        debug: false,
       },
     },
     scene: [StartScene, GameScene, PauseScene, InstructionScene, EndScene],
