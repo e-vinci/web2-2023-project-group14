@@ -238,7 +238,7 @@ const HomePage = () => {
   const introRow7 = document.createElement('div');
   introRow7.className = 'row justify-content-center appearsDelay';
   const introCol7 = document.createElement('div');
-  introCol7.className = 'col-sm-10 col-md-5';
+  introCol7.className = 'col-sm-10 col-md-10';
   const introText3 = document.createElement('div');
   introText3.innerHTML = accordion1;
 
