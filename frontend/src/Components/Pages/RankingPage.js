@@ -20,7 +20,7 @@ function renderRankingTable() {
   table.className = 'ranking-table text-center col-lg-6 border border-3 border-dark footerColor my-5 formDiv';
 
   // Create table headers
-  const headers = ['Rank', 'Player', 'Wins'];
+  const headers = ['Rank', 'Player', 'Wins', 'Losses'];
   const headerRow = document.createElement('tr');
 
   headers.forEach((headerText) => {
@@ -34,9 +34,9 @@ function renderRankingTable() {
 
   // Create sample data (replace this with your actual ranking data)
   const rankingData = [
-    { rank: 1, player: 'Player 1', wins: 10 },
-    { rank: 2, player: 'Player 2', wins: 8 },
-    { rank: 3, player: 'Player 3', wins: 6 },
+    { rank: 1, player: 'Player 1', wins: 10, loss: 5 },
+    { rank: 2, player: 'Player 2', wins: 8 , loss: 7},
+    { rank: 3, player: 'Player 3', wins: 6, loss: 10 },
     
     // Add more rows as needed
   ];
