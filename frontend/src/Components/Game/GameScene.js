@@ -477,7 +477,6 @@ const spawnWarriors2 = () => {
       .setDepth(1);
 
     let timeLeft = 10;
-
     let incrementAmount = 100;
 
     const unitCosts = [50, 30, 200, 70, 500]; // cost of differents units
@@ -539,8 +538,9 @@ const spawnWarriors2 = () => {
         const currentGolds2 = Math.floor(this.player2.golds);
         player1GoldsText.setText(`${currentGolds1}`);
         player2GoldsText.setText(`${currentGolds2}`);
-        incrementAmount *= 1.25;
-      }
+        if(incrementAmount<1200) incrementAmount *= 1.25;
+        if(incrementAmount>1200) incrementAmount =1200;
+      };
     };
 
     const timerEvent = this.time.addEvent({
