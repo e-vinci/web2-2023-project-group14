@@ -7,10 +7,10 @@ import Phaser from 'phaser';
 export default class Exterminator extends Phaser.Physics.Arcade.Sprite{
     constructor(scene, x, y, direction) {
       super(scene, x, y, 'EXT');
-      this.health = 50;
-      this.damage = 10;
-      this.range = 50;
-      this.speed = 10;
+      this.health = 40;
+      this.damage = 30;
+      this.range = 60;
+      this.speed = 30;
       this.direction=direction;
       this.hasSpawned = false;
       this.isDead=false;

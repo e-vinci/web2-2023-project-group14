@@ -7,11 +7,11 @@ import Phaser from 'phaser';
 export default class Knight extends Phaser.Physics.Arcade.Sprite{
     constructor(scene, x, y, direction) {
       super(scene, x, y, 'archer');
-      this.health = 100;
-      this.damage = 30;
+      this.health = 1000;
+      this.damage = 15;
       this.direction=direction;
       this.range = 70;
-      this.speed = 50;
+      this.speed = 20;
       this.hasSpawned = false;
       this.isDead=false;
      
@@ -28,7 +28,7 @@ export default class Knight extends Phaser.Physics.Arcade.Sprite{
       scene.anims.create({
         key: 'KnighRun',
         frames: scene.anims.generateFrameNumbers('KnightRun', { start:0, end : 18}),
-        frameRate: 15,
+        frameRate: 10,
         repeat: -1,
       });
     }

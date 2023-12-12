@@ -3,11 +3,11 @@ import Phaser from 'phaser';
 export default class Archer extends Phaser.Physics.Arcade.Sprite{
     constructor(scene, x, y, direction) {
       super(scene, x, y, 'archer');
-      this.health = 100;
-      this.damage = 30;
-      this.range = 200;
+      this.health = 160;
+      this.damage = 15;
+      this.range = 100;
       this.direction=direction;
-      this.speed = 10;
+      this.speed = 8;
       this.hasSpawned = false;
       this.isDead=false;
       // Add this entity to the scene's physics
@@ -31,7 +31,7 @@ export default class Archer extends Phaser.Physics.Arcade.Sprite{
     scene.anims.create({
       key: 'RedAttack',
       frames: scene.anims.generateFrameNumbers('ArcherAll', { start:25, end : 34}),
-      frameRate: 15,
+      frameRate: 10,
       repeat: 0,
     });
   }

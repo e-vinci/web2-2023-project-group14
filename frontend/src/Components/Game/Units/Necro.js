@@ -6,10 +6,10 @@ import Phaser from 'phaser';
 export default class Necro extends Phaser.Physics.Arcade.Sprite{
     constructor(scene, x, y, direction) {
       super(scene, x, y, 'NEC');
-      this.health = 50;
+      this.health = 40;
       this.damage = 50;
-      this.range = 50;
-      this.speed = 50;
+      this.range = 120;
+      this.speed = 20;
       this.direction=direction;
       this.hasSpawned = false;
       this.isDead=false;

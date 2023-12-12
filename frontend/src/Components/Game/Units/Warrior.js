@@ -6,9 +6,9 @@ import Phaser from 'phaser';
 export default class Warrior extends Phaser.Physics.Arcade.Sprite{
     constructor(scene, x, y, direction) {
       super(scene, x, y, 'NightBorn');
-      this.health = 50;
-      this.damage = 50;
-      this.range = 40;
+      this.health = 400;
+      this.damage = 70;
+      this.range = 35;
       this.speed = 50;
       this.direction=direction;
       this.hasSpawned = false;

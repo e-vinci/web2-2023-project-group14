@@ -480,7 +480,7 @@ const spawnWarriors2 = () => {
 
     let incrementAmount = 100;
 
-    const unitCosts = [90, 110, 150, 100, 120]; // cost of differents units
+    const unitCosts = [50, 30, 200, 70, 500]; // cost of differents units
 
     const getUnitCost = (index) => {
       // Assurez-vous que l'index est valide, sinon retournez 0
