@@ -548,6 +548,7 @@ const spawnWarriors2 = () => {
       timerText.setText(`${timeLeft}`);
     
       if (timeLeft === 0) {
+       
         console.log(this.indexP1);
         
         console.log(this.indexP2);
