@@ -6,8 +6,8 @@ import Phaser from 'phaser';
 export default class Warrior extends Phaser.Physics.Arcade.Sprite{
     constructor(scene, x, y, direction) {
       super(scene, x, y, 'NightBorn');
-      this.health = 400;
-      this.damage = 70;
+      this.health = 3000;
+      this.damage = 80;
       this.range = 40;
       this.speed = 50;
       this.direction=direction;
@@ -55,6 +55,8 @@ console.log('Animation created:', scene.anims.get('WarriorDeath'));
 
 }
   
+static price=500;
+
     // Method to spawn the warrior
     spawn() {
       

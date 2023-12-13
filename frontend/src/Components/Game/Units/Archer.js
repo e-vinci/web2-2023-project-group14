@@ -50,6 +50,8 @@ console.log('Animation created:', scene.anims.get('RedAttack'));
 console.log('Animation created:', scene.anims.get('RedDeath'));
     }
 
+    static price=50;
+
     // Method to spawn the archer
     spawn() {
     

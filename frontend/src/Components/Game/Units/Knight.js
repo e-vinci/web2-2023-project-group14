@@ -56,7 +56,9 @@ console.log('Animation created:', scene.anims.get('KnighAttack'));
 console.log('Animation created:', scene.anims.get('KnighDeath'));
 
     }
-  
+
+    static price=200;
+    
     // Method to spawn the archer
     spawn() {
       

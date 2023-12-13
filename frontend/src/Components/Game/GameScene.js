@@ -1,3 +1,4 @@
+/* eslint-disable prefer-destructuring */
 /* eslint-disable import/no-named-as-default */
 /* eslint-disable prefer-arrow-callback */
 /* eslint-disable prefer-const */
@@ -44,7 +45,7 @@ let objPlayerBase2;
 
 let baseHealthBarValue;
 
-const minimumHpNeededToTurnHealthBarInRed = 400;
+const minimumHpNeededToTurnHealthBarInRed = 500;
 let colorGreen = 0x008000;
 let colorRed = 0xFF0000;
 let colorUsedP1 = null;
@@ -478,16 +479,63 @@ const spawnWarriors2 = () => {
     let timeLeft = 10;
     let incrementAmount = 100;
 
-    const unitCosts = [50, 30, 200, 70, 500]; // cost of differents units
+    // const unitCosts = [50, 30, 200, 70, 500]; // cost of differents units
 
-    const getUnitCost = (index) => {
-      // Assurez-vous que l'index est valide, sinon retournez 0
-      if (index >= 0 && index < unitCosts.length) {
-        return unitCosts[index];
-      } 
-        console.error("Index d'unité invalide");
-        return 0;
+    let getUnitCostP1 = (index) => {
+      let price;
       
+      switch(index) {
+        case 0:
+          price = Archer.price;
+          break;
+        case 1:
+          price = Exterminator.price;
+          break;
+        case 2:
+          price = Knight.price;
+          break;
+        case 3:
+          price = Necro.price;
+          break;
+        case 4:
+          price = Warrior.price;
+          break;
+        default:
+          console.error("Index d'unité invalide");
+          return 0;
+      }
+      
+      // Return the price of the unit
+      return price;
+    };
+
+
+    let getUnitCostP2 = (index) => {
+      let price;
+      
+      switch(index) {
+        case 0:
+          price = Archer.price;
+          break;
+        case 1:
+          price = Exterminator.price;
+          break;
+        case 2:
+          price = Knight.price;
+          break;
+        case 3:
+          price = Necro.price;
+          break;
+        case 4:
+          price = Warrior.price;
+          break;
+        default:
+          console.error("Index d'unité invalide");
+          return 0;
+      }
+      
+      // Return the price of the unit
+      return price;
     };
 
     const MaxNbrUnit1=20;
@@ -501,10 +549,13 @@ const spawnWarriors2 = () => {
     
       if (timeLeft === 0) {
         console.log(this.indexP1);
+        
         console.log(this.indexP2);
     
-        const costP1 = getUnitCost(this.indexP1); // Obtenez le coût de l'unité en fonction de l'index
+        
         let intervalP1 = setInterval(() => {
+          let costP1 = getUnitCostP1(this.indexP1); // Obtenez le coût de l'unité en fonction de l'index
+          console.log(costP1);
           if (this.player1.golds >= costP1 && !(tailleGroupe1>=MaxNbrUnit1)) {
             addWarriorP1(this.indexP1, this);
             spawnWarriors1();
@@ -517,8 +568,9 @@ const spawnWarriors2 = () => {
         }, 1000); // 1 seconde de délai
     
         // Joueur 2
-        const costP2 = getUnitCost(this.indexP2); // Obtenez le coût de l'unité en fonction de l'index
+        
         let intervalP2 = setInterval(() => {
+          const costP2 = getUnitCostP2(this.indexP2); // Obtenez le coût de l'unité en fonction de l'index
           if (this.player2.golds >= costP2 && !(tailleGroupe2>=MaxNbrUnit2)) {
             addWarriorP2(this.indexP2, this);
             spawnWarriors2();

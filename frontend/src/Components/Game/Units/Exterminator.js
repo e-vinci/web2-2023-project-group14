@@ -53,7 +53,9 @@ console.log('Animation created:', scene.anims.get('ExtRun'));
 console.log('Animation created:', scene.anims.get('ExtAttack'));
 console.log('Animation created:', scene.anims.get('ExtDeath'));
     }
-  
+    
+    static price=30;
+
     // Method to spawn the exterminator
     spawn() {
       this.setVisible(true);

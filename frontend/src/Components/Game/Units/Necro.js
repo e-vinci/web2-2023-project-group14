@@ -57,6 +57,9 @@ console.log('Animation created:', scene.anims.get('NecAttack'));
 
     }
   
+    static price=70;
+
+
     // Method to spawn the archer
     spawn() {
       this.setVisible(true);
