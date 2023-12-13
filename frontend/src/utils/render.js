@@ -6,7 +6,7 @@ const clearPage = () => {
 const renderPageTitle = (title) => {
   if (!title) return;
   const main = document.querySelector('main');
-  const pageTitle = document.createElement('h4');
+  const pageTitle = document.createElement('p');
   pageTitle.innerText = title;
   main.appendChild(pageTitle);
 };

@@ -1,3 +1,32 @@
+.page-specific-link {
+  text-decoration: none; /* Remove underline */
+  color: #004997; /* Change link color */
+}
+
+/* Apply different color when hovered */
+.page-specific-link:hover {
+  color: #006797; /* Change link color on hover */
+}
+
+.glow-div {
+  background-color: rgba(255, 0, 0, 0); /* Set your desired background color */
+  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.195); /* Adjust the values for your desired glow effect */
+  border-radius: 10px; /* Set your desired border-radius */
+}
+
+.equal-height-content {
+  flex: 1;  /* I have no idea how this works but might be usefull for future projects */
+}
+
+.noTextJustify {
+  text-align:left;
+}
+
+.resourcePageBackGround {
+  background-color: rgb(136, 95, 26);
+  height: 100%;
+}
+
 .footerColor {
   background-color: #808080;
   color: #fffff0;
@@ -137,6 +166,14 @@
   background-color: #b2b2b2cd;
   border-radius: 10px;
   text-indent: 25px;
+  text-align: justify;
+}
+
+.textContentResource {
+  color: black;
+  background-color: #b2b2b2cd;
+  border-radius: 10px;
+  text-align: justify;
 }
 
 .accordion {

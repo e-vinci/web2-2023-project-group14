@@ -19,7 +19,7 @@ const Navbar = () => {
 function renderNavbar() {
   const navbarWrapper = document.querySelector('#navbarWrapper');
   const nonAuthUserNavBar = `
-  <nav class="navbar navbar-expand-md navbar-dark footerColor">
+  <nav class="navbar navbar-expand-lg navbar-dark footerColor">
         <div class="container-fluid navbar-container">
           <a class="navbar-brand d-flex align-itms-center" href="#" data-uri="/"> 
           <div class="logo ms-3 me-1"></div>
