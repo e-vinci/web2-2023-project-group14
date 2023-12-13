@@ -1,16 +1,18 @@
 /* eslint-disable no-console */
 import Phaser from 'phaser';
 
-
-
+const HEALTH = 40;
+const DAMAGE = 30;
+const RANGE = 60;
+const SPEED = 30;
 
 export default class Exterminator extends Phaser.Physics.Arcade.Sprite{
     constructor(scene, x, y, direction) {
       super(scene, x, y, 'EXT');
-      this.health = 40;
-      this.damage = 30;
-      this.range = 60;
-      this.speed = 30;
+      this.health = HEALTH;
+      this.damage = DAMAGE;
+      this.range = RANGE;
+      this.speed = SPEED;
       this.direction=direction;
       this.hasSpawned = false;
       this.isDead=false;
@@ -55,6 +57,16 @@ console.log('Animation created:', scene.anims.get('ExtDeath'));
     }
     
     static price=30;
+
+    static getStats() {
+      return {
+        health: HEALTH,
+        damage: DAMAGE,
+        range: RANGE,
+        speed: SPEED,
+        price: this.price,
+      };
+    }
 
     // Method to spawn the exterminator
     spawn() {

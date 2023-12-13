@@ -1,13 +1,17 @@
 import Phaser from 'phaser';
 
+const HEALTH = 160;
+const DAMAGE = 15;
+const RANGE = 100;
+const SPEED = 8;
 export default class Archer extends Phaser.Physics.Arcade.Sprite{
     constructor(scene, x, y, direction) {
       super(scene, x, y, 'archer');
-      this.health = 160;
-      this.damage = 15;
-      this.range = 100;
+      this.health = HEALTH;
+      this.damage = DAMAGE;
+      this.range = RANGE;
       this.direction=direction;
-      this.speed = 8;
+      this.speed = SPEED;
       this.hasSpawned = false;
       this.isDead=false;
       // Add this entity to the scene's physics
@@ -51,6 +55,16 @@ console.log('Animation created:', scene.anims.get('RedDeath'));
     }
 
     static price=50;
+
+    static getStats() {
+      return {
+        health: HEALTH,
+        damage: DAMAGE,
+        range: RANGE,
+        speed: SPEED,
+        price: this.price,
+      };
+    }
 
     // Method to spawn the archer
     spawn() {

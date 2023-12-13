@@ -1,15 +1,16 @@
 import Phaser from 'phaser';
 
-
-
-
+const HEALTH = 3000;
+const DAMAGE = 80;
+const RANGE = 40;
+const SPEED = 50;
 export default class Warrior extends Phaser.Physics.Arcade.Sprite{
     constructor(scene, x, y, direction) {
       super(scene, x, y, 'NightBorn');
-      this.health = 3000;
-      this.damage = 80;
-      this.range = 40;
-      this.speed = 50;
+      this.health = HEALTH;
+      this.damage = DAMAGE;
+      this.range = RANGE;
+      this.speed = SPEED;
       this.direction=direction;
       this.hasSpawned = false;
       this.isDead=false;
@@ -56,6 +57,16 @@ console.log('Animation created:', scene.anims.get('WarriorDeath'));
 }
   
 static price=500;
+
+static getStats() {
+  return {
+    health: HEALTH,
+    damage: DAMAGE,
+    range: RANGE,
+    speed: SPEED,
+    price: this.price,
+  };
+}
 
     // Method to spawn the warrior
     spawn() {
