@@ -6,6 +6,7 @@ const DAMAGE = 30;
 const RANGE = 60;
 const SPEED = 30;
 
+const VOLUME_ATTACK_VALUE = 0.03;
 export default class Exterminator extends Phaser.Physics.Arcade.Sprite{
     constructor(scene, x, y, direction) {
       super(scene, x, y, 'EXT');
@@ -102,7 +103,7 @@ console.log('Animation created:', scene.anims.get('ExtDeath'));
     
             this.once('animationcomplete', () => {
               // eslint-disable-next-line prefer-const
-              this.scene.sound.play('laserSound');
+              this.scene.sound.play('laserSound', { volume: VOLUME_ATTACK_VALUE });
               
               target.takeDamage(this.damage);
     

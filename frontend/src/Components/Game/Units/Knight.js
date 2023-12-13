@@ -6,6 +6,7 @@ const DAMAGE = 15;
 const RANGE = 70;
 const SPEED = 20;
 
+const VOLUME_ATTACK_VALUE = 0.03;
 export default class Knight extends Phaser.Physics.Arcade.Sprite{
     constructor(scene, x, y, direction) {
       super(scene, x, y, 'archer');
@@ -103,7 +104,7 @@ console.log('Animation created:', scene.anims.get('KnighDeath'));
     
             this.once('animationcomplete', () => {
               // eslint-disable-next-line prefer-const
-              this.scene.sound.play('swordSound');
+              this.scene.sound.play('swordSound', { volume: VOLUME_ATTACK_VALUE });
               
               target.takeDamage(this.damage);
     

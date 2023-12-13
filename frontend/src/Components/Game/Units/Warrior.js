@@ -4,6 +4,8 @@ const HEALTH = 3000;
 const DAMAGE = 80;
 const RANGE = 40;
 const SPEED = 50;
+
+const VOLUME_ATTACK_VALUE = 0.03;
 export default class Warrior extends Phaser.Physics.Arcade.Sprite{
     constructor(scene, x, y, direction) {
       super(scene, x, y, 'NightBorn');
@@ -100,7 +102,7 @@ static getStats() {
     
             this.once('animationcomplete', () => {
               // eslint-disable-next-line prefer-const
-              this.scene.sound.play('lightsaberSound');
+              this.scene.sound.play('lightsaberSound', { volume: VOLUME_ATTACK_VALUE });
               
               target.takeDamage(this.damage);
     

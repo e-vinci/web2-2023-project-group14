@@ -5,6 +5,7 @@ const DAMAGE = 50;
 const RANGE = 120;
 const SPEED = 20;
 
+const VOLUME_ATTACK_VALUE = 0.03;
 export default class Necro extends Phaser.Physics.Arcade.Sprite{
     constructor(scene, x, y, direction) {
       super(scene, x, y, 'NEC');
@@ -104,7 +105,7 @@ console.log('Animation created:', scene.anims.get('NecAttack'));
     
             this.once('animationcomplete', () => {
               // eslint-disable-next-line prefer-const
-              this.scene.sound.play('magicSound');
+              this.scene.sound.play('magicSound', { volume: VOLUME_ATTACK_VALUE });
               
               target.takeDamage(this.damage);
     

@@ -4,6 +4,8 @@ const HEALTH = 160;
 const DAMAGE = 15;
 const RANGE = 100;
 const SPEED = 8;
+
+const VOLUME_ATTACK_VALUE = 0.03;
 export default class Archer extends Phaser.Physics.Arcade.Sprite{
     constructor(scene, x, y, direction) {
       super(scene, x, y, 'archer');
@@ -100,7 +102,7 @@ console.log('Animation created:', scene.anims.get('RedDeath'));
     
             this.once('animationcomplete', () => {
               // eslint-disable-next-line prefer-const
-              this.scene.sound.play('arrowSound');
+              this.scene.sound.play('arrowSound', { volume: VOLUME_ATTACK_VALUE });
               
               target.takeDamage(this.damage);
     
