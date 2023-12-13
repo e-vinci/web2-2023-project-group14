@@ -486,19 +486,19 @@ const spawnWarriors2 = () => {
       
       switch(index) {
         case 0:
-          price = Archer.price;
+          price = 50;
           break;
         case 1:
-          price = Exterminator.price;
+          price = 30;
           break;
         case 2:
-          price = Knight.price;
+          price = 200;
           break;
         case 3:
-          price = Necro.price;
+          price = 70;
           break;
         case 4:
-          price = Warrior.price;
+          price = 500;
           break;
         default:
           console.error("Index d'unité invalide");
@@ -515,19 +515,19 @@ const spawnWarriors2 = () => {
       
       switch(index) {
         case 0:
-          price = Archer.price;
+          price = 50;
           break;
         case 1:
-          price = Exterminator.price;
+          price = 30;
           break;
         case 2:
-          price = Knight.price;
+          price = 200;
           break;
         case 3:
-          price = Necro.price;
+          price = 70;
           break;
         case 4:
-          price = Warrior.price;
+          price = 500;
           break;
         default:
           console.error("Index d'unité invalide");
