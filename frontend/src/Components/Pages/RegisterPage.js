@@ -192,29 +192,25 @@ async function renderRegisterForm() {
 */
     async function onRegister(e) {
       e.preventDefault();
-      const email = document.querySelector('#userEmail').value;
-      //  eslint-disable-next-line no-shadow
-      const username = document.querySelector('#username').value;
-      // eslint-disable-next-line no-shadow
-      const password = document.querySelector('#password').value;
-
-      const options = {
+      const formInfos = document.querySelector('form'); // added for the new approach
+      const newUserData = {
+        newUserEmail : formInfos.elements.userEmail.value,
+        newUserName : formInfos.elements.username.value,
+        newUserPassword : formInfos.elements.password.value,
+      }
+  
+      const response = await fetch (`${process.env.API_BASE_URL}/auths/register`, {
         method: 'POST',
-        body: JSON.stringify({
-          email,
-          username,
-          password,
-        }),
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
-      };
+        body: JSON.stringify(newUserData)
+      });
   
       console.log('Newly registered & authenticated user :');
+
   
-      const response = await fetch(`${process.env.API_BASE_URL}/auths/register`, options);
-  
-      if (!response.ok) throw new Error(`fetch error : ${response.status} : ${response.statusText}`);
+      if (!response.ok) throw new Error(`fetch error : ${response.status} : dsadsa ${response.statusText}`);
   
       const authenticatedUser = await response.json();
   

@@ -24,8 +24,10 @@ POST {{baseUrl}}/auths/register
 Content-Type: application/json
 
 {
+    "userEmail":"hubert.lopaciuk@student.vinci.be",
     "username":"manager",
-    "password":"manager"
+    "password":"manager",
+    "confPassword":"manager"
 }
 
 ### Login the manager user
