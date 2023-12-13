@@ -8,7 +8,7 @@ export default class Warrior extends Phaser.Physics.Arcade.Sprite{
       super(scene, x, y, 'NightBorn');
       this.health = 400;
       this.damage = 70;
-      this.range = 35;
+      this.range = 40;
       this.speed = 50;
       this.direction=direction;
       this.hasSpawned = false;
