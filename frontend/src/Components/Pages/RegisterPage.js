@@ -32,7 +32,7 @@ async function renderRegisterForm() {
   const formTopDiv = document.createElement('div');
   const formTopTitle = document.createElement('h1');
   formTopDiv.className = 'text-center p-3 ';
-  formTopTitle.innerHTML = 'Inscription';
+  formTopTitle.innerHTML = 'Register';
 
   const formBottom = document.createElement('div');
   formBottom.className = 'form-bottom w-100 p-3 ';
@@ -61,12 +61,12 @@ async function renderRegisterForm() {
   const usernameLabel = document.createElement('label');
   usernameLabel.className = 'form-label ps-1';
   usernameLabel.htmlFor = 'username';
-  usernameLabel.innerHTML = "Nom d'utilisateur";
+  usernameLabel.innerHTML = "Username";
 
   const username = document.createElement('input');
   username.type = 'text';
   username.id = 'username';
-  username.placeholder = "nom d'utilisateur";
+  username.placeholder = "username";
   username.required = true;
   username.className = 'form-control mb-3 border border-3 rounded-3 border-dark';
 
@@ -76,13 +76,13 @@ async function renderRegisterForm() {
   const passwordLabel = document.createElement('label');
   passwordLabel.className = 'form-label ps-1';
   passwordLabel.htmlFor = 'password';
-  passwordLabel.innerHTML = 'Mot de passe';
+  passwordLabel.innerHTML = 'Password';
 
   const password = document.createElement('input');
   password.type = 'password';
   password.id = 'password';
   password.required = true;
-  password.placeholder = 'mot de passe';
+  password.placeholder = 'password';
   password.className = 'form-control mb-3 border border-3 rounded-3 border-dark';
 
   const passwordConfDiv = document.createElement('div');
@@ -91,26 +91,26 @@ async function renderRegisterForm() {
   const passwordConfLabel = document.createElement('label');
   passwordConfLabel.className = 'form-label ps-1';
   passwordConfLabel.htmlFor = 'passwordConf';
-  passwordConfLabel.innerHTML = 'Confirmation de mot de passe';
+  passwordConfLabel.innerHTML = 'Password Confirmation';
 
   const passwordConf = document.createElement('input');
   passwordConf.type = 'password';
   passwordConf.id = 'passwordConf';
   passwordConf.required = true;
-  passwordConf.placeholder = 'confirmation de mot de passe';
+  passwordConf.placeholder = 'password confirmation';
   passwordConf.className = 'form-control mb-3 border border-3 rounded-3 border-dark';
 
   const submitDiv = document.createElement('div');
   submitDiv.className = 'text-center mb-4';
   const submit = document.createElement('input');
-  submit.value = "S'inscrire";
+  submit.value = "Register";
   submit.type = 'submit';
   submit.className = 'btn btn-dark';
 
   const alreadyAccountDiv = document.createElement('div');
   const alreadyAccountP = document.createElement('p');
   alreadyAccountDiv.className = 'text-center';
-  alreadyAccountDiv.innerHTML = `Déjà un compte? <a href="/login">Connectez-vous</a>`;
+  alreadyAccountDiv.innerHTML = `Already have an account? <a href="/login">Login now</a>`;
 
   const validationErrorDiv = document.createElement('div');
   const validationErrorP = document.createElement('div');

@@ -85,7 +85,7 @@ function renderLoginForm() {
     const formTopDiv2 = document.createElement('div');
     formTopDiv2.className = 'text-center p-3 ';
     const formTopTitle2 = document.createElement('h1');
-    formTopTitle2.innerHTML = 'Connexion Joueur 1';
+    formTopTitle2.innerHTML = 'Login Player 1';
 
     const formBottom2 = document.createElement('div');
     formBottom2.className = 'form-bottom w-100 p-3 ';
@@ -100,12 +100,12 @@ function renderLoginForm() {
     const usernameLabel2 = document.createElement('label');
     usernameLabel2.className = 'form-label ps-1';
     usernameLabel2.htmlFor = 'username';
-    usernameLabel2.innerHTML = "Nom d'utilisateur";
+    usernameLabel2.innerHTML = "Username";
 
     const username2 = document.createElement('input');
     username2.type = 'text';
     username2.id = 'username';
-    username2.placeholder = "nom d'utilisateur";
+    username2.placeholder = "username";
     username2.required = true;
     username2.className = 'form-control mb-3 border border-3 rounded-3 border-dark';
 
@@ -115,26 +115,26 @@ function renderLoginForm() {
     const passwordLabel2 = document.createElement('label');
     passwordLabel2.className = 'form-label ps-1';
     passwordLabel2.htmlFor = 'password';
-    passwordLabel2.innerHTML = 'Mot de passe';
+    passwordLabel2.innerHTML = 'Password';
 
     const password2 = document.createElement('input');
     password2.type = 'password';
     password2.id = 'password';
     password2.required = true;
-    password2.placeholder = 'mot de passe';
+    password2.placeholder = 'password';
     password2.className = 'form-control mb-3 border border-3 rounded-3 border-dark';
 
     const submitDiv2 = document.createElement('div');
     submitDiv2.className = 'text-center mb-4';
     const submit2 = document.createElement('input');
-    submit2.value = 'Se connecter';
+    submit2.value = 'Login';
     submit2.type = 'submit';
     submit2.className = 'btn btn-dark';
 
     const noAccountDiv2 = document.createElement('div');
     const noAccountP2 = document.createElement('p');
     noAccountDiv2.className = 'text-center';
-    noAccountDiv2.innerHTML = `Pas encore de compte? <a href="/register">Inscrivez-vous</a>`;
+    noAccountDiv2.innerHTML = `Don't have an account yet? <a href="/register">Register now</a>`;
 
     usernameDiv2.appendChild(usernameLabel2);
     usernameDiv2.appendChild(username2);
@@ -186,7 +186,7 @@ function renderLoginForm() {
     const formTopDiv = document.createElement('div');
     formTopDiv.className = 'text-center p-3 ';
     const formTopTitle = document.createElement('h1');
-    formTopTitle.innerHTML = 'Joueur 2 est connecté'; // mettre le nom du user
+    formTopTitle.innerHTML = 'Player 2 is connected'; // mettre le nom du user
 
     const formBottom = document.createElement('div');
     formBottom.className = 'form-bottom w-100 p-3 ';
@@ -235,7 +235,7 @@ function renderLoginForm() {
     const formTopDiv = document.createElement('div');
     formTopDiv.className = 'text-center p-3 ';
     const formTopTitle = document.createElement('h1');
-    formTopTitle.innerHTML = 'Connexion Joueur 2';
+    formTopTitle.innerHTML = 'Login Player 2';
 
     const formBottom = document.createElement('div');
     formBottom.className = 'form-bottom w-100 p-3 ';
@@ -250,12 +250,12 @@ function renderLoginForm() {
     const usernameLabel = document.createElement('label');
     usernameLabel.className = 'form-label ps-1';
     usernameLabel.htmlFor = 'username';
-    usernameLabel.innerHTML = "Nom d'utilisateur";
+    usernameLabel.innerHTML = "Username";
 
     const username = document.createElement('input');
     username.type = 'text';
     username.id = 'username';
-    username.placeholder = "nom d'utilisateur";
+    username.placeholder = "username";
     username.required = true;
     username.className = 'form-control mb-3 border border-3 rounded-3 border-dark';
 
@@ -265,26 +265,26 @@ function renderLoginForm() {
     const passwordLabel = document.createElement('label');
     passwordLabel.className = 'form-label ps-1';
     passwordLabel.htmlFor = 'password';
-    passwordLabel.innerHTML = 'Mot de passe';
+    passwordLabel.innerHTML = 'Password';
 
     const password = document.createElement('input');
     password.type = 'password';
     password.id = 'password';
     password.required = true;
-    password.placeholder = 'mot de passe';
+    password.placeholder = 'password';
     password.className = 'form-control mb-3 border border-3 rounded-3 border-dark';
 
     const submitDiv = document.createElement('div');
     submitDiv.className = 'text-center mb-4';
     const submit = document.createElement('input');
-    submit.value = 'Se connecter';
+    submit.value = 'Login';
     submit.type = 'submit';
     submit.className = 'btn btn-dark';
 
     const noAccountDiv = document.createElement('div');
     const noAccountP = document.createElement('p');
     noAccountDiv.className = 'text-center';
-    noAccountDiv.innerHTML = `Pas encore de compte? <a href="/register">Inscrivez-vous</a>`;
+    noAccountDiv.innerHTML = `Don't have an account yet? <a href="/register">Register now</a>`;
 
     usernameDiv.appendChild(usernameLabel);
     usernameDiv.appendChild(username);
