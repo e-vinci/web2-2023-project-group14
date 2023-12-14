@@ -1,7 +1,7 @@
 // import Navigate from '../Router/Navigate';
 import { clearPage } from '../../utils/render';
 // eslint-disable-next-line no-unused-vars
-import { setAuthenticatedUser1, clearAuthenticatedUser1, clearAuthenticatedUser2, getAuthenticatedUser1 } from '../../utils/auths';
+import { setAuthenticatedUser1, setAuthenticatedUser2, clearAuthenticatedUser1, clearAuthenticatedUser2, getAuthenticatedUser1, isAuthenticated1 } from '../../utils/auths';
 import Navigate from '../Router/Navigate';
 import Navbar from '../Navbar/Navbar';
 // eslint-disable-next-line no-unused-vars
@@ -257,7 +257,12 @@ async function renderRegisterForm() {
   
       if (!response.ok) throw new Error(`fetch error : ${response.status} : dsadsa ${response.statusText}`);
       const authenticatedUser = await response.json();
-      setAuthenticatedUser1(authenticatedUser);
+      if(isAuthenticated1()){
+        setAuthenticatedUser2(authenticatedUser);
+      } else {
+        setAuthenticatedUser1(authenticatedUser);
+      }
+
       console.log('Newly registered & authenticated user : ', authenticatedUser);
     }
     catch (err) {
