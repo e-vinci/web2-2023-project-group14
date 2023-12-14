@@ -4,6 +4,8 @@ import { Navbar as BootstrapNavbar } from 'bootstrap';
 import logoImage from '../../img/ARMADA_ASSAULT_LOGO_TEXT_NOBACKGROUND.png';
 import Navigate from '../Router/Navigate';
 import { renderImage } from '../../utils/render';
+// eslint-disable-next-line no-unused-vars
+import { isAuthenticated1, isAuthenticated2, getAuthenticatedUser2, getAuthenticatedUser1 } from '../../utils/auths';
 
 /**
  * Render the Navbar which is styled by using Bootstrap
@@ -52,17 +54,161 @@ function renderNavbar() {
             </ul>
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="btn nav-link auth-btn px-3" href="#" data-uri="/login">Se connecter</a>
+                <a class="btn nav-link auth-btn px-3" href="#" data-uri="/login">Login</a>
               </li>   
               <li class="nav-item ms-3">
-                <a class="btn nav-link auth-btn me-3 px-3" href="#" data-uri="/register">S'inscrire</a>
+                <a class="btn nav-link auth-btn me-3 px-3" href="#" data-uri="/register">Register</a>
               </li>                         
             </ul>
           </div>
         </div>
       </nav>
   `;
-  navbarWrapper.innerHTML = nonAuthUserNavBar;
+  const oneLeftUserNavbar = `
+  <nav class="navbar navbar-expand-lg navbar-dark footerColor">
+        <div class="container-fluid navbar-container">
+          <a class="navbar-brand d-flex align-itms-center" href="#" data-uri="/"> 
+          <div class="logo ms-3 me-1"></div>
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#" data-uri="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-uri="/game">Game</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#" data-uri="/ranking">Ranking</a>
+                </li>          
+                <li class="nav-item">
+                  <a class="nav-link" href="#" data-uri="/resource">Resource Hub</a>
+                </li>                       
+            </ul>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="btn nav-link auth-btn px-3" href="#" data-uri="/logout1">Logout Player 1</a>
+              </li>   
+              <li class="nav-item">
+                <a class="btn nav-link auth-btn px-3" href="#" data-uri="/login">Login Player 2</a>
+              </li>                        
+            </ul>
+          </div>
+        </div>
+      </nav>
+  `;
+  const oneRightUserNavbar = `
+  <nav class="navbar navbar-expand-lg navbar-dark footerColor">
+        <div class="container-fluid navbar-container">
+          <a class="navbar-brand d-flex align-itms-center" href="#" data-uri="/"> 
+          <div class="logo ms-3 me-1"></div>
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#" data-uri="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-uri="/game">Game</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#" data-uri="/ranking">Ranking</a>
+                </li>          
+                <li class="nav-item">
+                  <a class="nav-link" href="#" data-uri="/resource">Resource Hub</a>
+                </li>                       
+            </ul>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="btn nav-link auth-btn px-3" href="#" data-uri="/login">Login Player 1</a>
+              </li>   
+              <li class="nav-item">
+                <a class="btn nav-link auth-btn px-3" href="#" data-uri="/logout2">Logout Player 2</a>
+              </li>                        
+            </ul>
+          </div>
+        </div>
+      </nav>
+  `;
+  const twoUserNavbar = `
+  <nav class="navbar navbar-expand-lg navbar-dark footerColor">
+        <div class="container-fluid navbar-container">
+          <a class="navbar-brand d-flex align-itms-center" href="#" data-uri="/"> 
+          <div class="logo ms-3 me-1"></div>
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#" data-uri="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-uri="/game">Game</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#" data-uri="/ranking">Ranking</a>
+                </li>          
+                <li class="nav-item">
+                  <a class="nav-link" href="#" data-uri="/resource">Resource Hub</a>
+                </li>                       
+            </ul>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="btn nav-link auth-btn px-3" href="#" data-uri="/logout1">Logout 1</a>
+              </li>   
+              <li class="nav-item">
+                <a class="btn nav-link auth-btn px-3" href="#" data-uri="/logout2">Logout 2</a>
+              </li>                       
+            </ul>
+          </div>
+        </div>
+      </nav>
+  `;
+  const user = getAuthenticatedUser2();
+  const users = isAuthenticated2();
+  console.log('users: ', user, ' i ', users)
+  if(isAuthenticated1() && isAuthenticated2()){
+    navbarWrapper.innerHTML = twoUserNavbar;
+  }else if(isAuthenticated1()){
+    navbarWrapper.innerHTML = oneLeftUserNavbar;
+  }else if(isAuthenticated2()){
+    navbarWrapper.innerHTML = oneRightUserNavbar;
+  }
+  else {
+    navbarWrapper.innerHTML = nonAuthUserNavBar;
+  }
   renderImage(logoImage, 'logo-img-div', 40, '.logo');
 
   const logo = document.querySelector('.logo');

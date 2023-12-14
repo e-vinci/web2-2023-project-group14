@@ -1,8 +1,10 @@
 import Navigate from '../Router/Navigate';
 import { clearPage } from '../../utils/render';
+import Navbar from '../Navbar/Navbar';
+// eslint-disable-next-line no-unused-vars
+import { isAuthenticated1, isAuthenticated2, getAuthenticatedUser2, getAuthenticatedUser1, setAuthenticatedUser1, setAuthenticatedUser2 } from '../../utils/auths';
 
-const J1connected = false;
-const J2connected = true; // A FAIRE ajouter la logique des users
+// A FAIRE ajouter la logique des users
 // ainsi que les eventListener plus bas sur les submit
 // et encore d'autres trucs surement
 
@@ -13,6 +15,8 @@ const LoginPage = () => {
 
 function renderLoginForm() {
   const main = document.querySelector('main');
+  const J1connected = isAuthenticated1();
+  const J2connected = isAuthenticated2(); // A FAIRE ajouter la logique des users
 
   const backgroundDiv = document.createElement('div');
   backgroundDiv.className = 'h-100 backgroundLogin d-flex';
@@ -63,7 +67,7 @@ function renderLoginForm() {
     leftSection.appendChild(formWrapper2);
 
     submit2.addEventListener('click', () => {
-      Navigate('/');
+      Navigate('/logout1');
     });
 
     backgroundDiv.appendChild(leftSection);
@@ -88,6 +92,7 @@ function renderLoginForm() {
 
     const form2 = document.createElement('form');
     form2.className = 'mb-1';
+    form2.id = 'formLeft'
 
     const usernameDiv2 = document.createElement('div');
     usernameDiv2.className = 'mb-4 mx-4';
@@ -157,9 +162,10 @@ function renderLoginForm() {
 
     leftSection.appendChild(formWrapper2);
 
-    submit2.addEventListener('click', () => {
-      Navigate('/');
+    form2.addEventListener('submit', (e) => {
+      login(e,true);
     });
+
 
     backgroundDiv.appendChild(leftSection);
   }
@@ -211,7 +217,7 @@ function renderLoginForm() {
     rightSection.appendChild(formWrapper);
 
     submit.addEventListener('click', () => {
-      Navigate('/');
+      Navigate('/logout2');
     });
 
     backgroundDiv.appendChild(rightSection);
@@ -236,6 +242,7 @@ function renderLoginForm() {
 
     const form = document.createElement('form');
     form.className = 'mb-1';
+    form.id = 'formRight'
 
     const usernameDiv = document.createElement('div');
     usernameDiv.className = 'mb-4 mx-4';
@@ -305,13 +312,59 @@ function renderLoginForm() {
 
     rightSection.appendChild(formWrapper);
 
+    form.addEventListener('submit', login);
+    form.addEventListener('submit', (e) => {
+      login(e,false);
+    });
     backgroundDiv.appendChild(rightSection);
 
-    submit.addEventListener('click', () => {
-      Navigate('/');
-    });
   }
   main.appendChild(backgroundDiv);
+}
+
+async function login(e, left) {
+  e.preventDefault();
+  console.log("e:  ", e);
+  let formInfos;
+  if(left){
+    formInfos = document.querySelector('#formLeft'); // added for the new approach
+  } else {
+    formInfos = document.querySelector('#formRight'); // added for the new approach
+  }
+
+  const userData = {
+    newUserName : formInfos.elements.username.value,
+    newUserPassword : formInfos.elements.password.value,
+  }
+
+  try {
+  const response = await fetch (`${process.env.API_BASE_URL}/auths/login`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(userData)
+  });
+
+  if (!response.ok){
+   throw new Error(`fetch error : ${response.status} : ${response.statusText}`);
+  }
+  const authenticatedUser = await response.json();
+
+  // eslint-disable-next-line no-console
+  console.log('Authenticated user : ', authenticatedUser);
+  if(left){
+    setAuthenticatedUser1(authenticatedUser);
+  } else {
+    setAuthenticatedUser2(authenticatedUser);
+  }
+
+  } catch (err) {
+    console.error('LoginPage::error: ', err);
+  }
+
+  Navbar();
+  Navigate('/');
 }
 
 export default LoginPage;

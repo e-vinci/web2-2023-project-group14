@@ -1,7 +1,11 @@
 // import Navigate from '../Router/Navigate';
 import { clearPage } from '../../utils/render';
-import { setAuthenticatedUser } from '../../utils/auths';
+// eslint-disable-next-line no-unused-vars
+import { setAuthenticatedUser1, clearAuthenticatedUser1, clearAuthenticatedUser2, getAuthenticatedUser1 } from '../../utils/auths';
 import Navigate from '../Router/Navigate';
+import Navbar from '../Navbar/Navbar';
+// eslint-disable-next-line no-unused-vars
+import { checkRegistrationPassword, checkRegistrationPassword2, checkRegistrationUsername } from '../../utils/validator';
 
 const RegisterPage = () => {
     clearPage();
@@ -11,7 +15,9 @@ const RegisterPage = () => {
 // TODO refactor le texte affiché sur la page en anglais stp
 
 async function renderRegisterForm() {
-
+  const tak = getAuthenticatedUser1();
+  console.log('dsadas: ', tak)
+  Navbar();
   const main = document.querySelector('main');
 
   const backgroundDiv = document.createElement('div');
@@ -106,6 +112,11 @@ async function renderRegisterForm() {
   alreadyAccountDiv.className = 'text-center';
   alreadyAccountDiv.innerHTML = `Déjà un compte? <a href="/login">Connectez-vous</a>`;
 
+  const validationErrorDiv = document.createElement('div');
+  const validationErrorP = document.createElement('div');
+  validationErrorDiv.className = "validation-error-div";
+  validationErrorP.className = "validation-error-p";
+
   userEmailDiv.appendChild(userEmailLabel);
   userEmailDiv.appendChild(userEmail);
 
@@ -127,9 +138,11 @@ async function renderRegisterForm() {
   form.appendChild(submitDiv);
 
   alreadyAccountDiv.appendChild(alreadyAccountP);
+  validationErrorDiv.appendChild(validationErrorP);
 
   formBottom.appendChild(form);
   formBottom.appendChild(alreadyAccountDiv);
+  formBottom.appendChild(validationErrorDiv);
 
   formTopDiv.appendChild(formTopTitle);
 
@@ -190,6 +203,37 @@ async function renderRegisterForm() {
     onRegister();
     });
 */
+/*
+    username.addEventListener('input', debounce(async () =>  {
+      const registerFormGroup1 = username.parentElement.parentElement;
+      const usernameSmall = document.querySelector('.username-small')
+
+      if (username.value.trim() === '') {
+        registerFormGroup1.className = "register-form-group failure";
+        usernameSmall.innerHTML = "Veuillez introduire un nom d'utilisateur";
+      } else {
+        const response = await fetch(`${process.env.API_BASE_URL}/users/${username.value}`);
+        if (response.ok) {
+          registerFormGroup1.className = "register-form-group failure";
+          usernameSmall.innerHTML = "Nom d'utilisateur déjà existant";
+          usernameValid = false;
+        } else {
+          const { errors, isValid } = checkRegistrationUsername(username.value);
+          if (!isValid) {
+            registerFormGroup1.className = "register-form-group failure";
+            usernameSmall.innerHTML = `${errors}`;
+            usernameValid = false;
+          } else {
+            registerFormGroup1.className = "register-form-group success";
+            usernameSmall.innerHTML = "Nom d'utilisateur disponible";
+            usernameValid = true;
+          }
+          
+        }
+      }
+    }, 1000));
+*/
+
     async function onRegister(e) {
       e.preventDefault();
       const formInfos = document.querySelector('form'); // added for the new approach
@@ -198,7 +242,8 @@ async function renderRegisterForm() {
         newUserName : formInfos.elements.username.value,
         newUserPassword : formInfos.elements.password.value,
       }
-  
+
+      try {
       const response = await fetch (`${process.env.API_BASE_URL}/auths/register`, {
         method: 'POST',
         headers: {
@@ -211,13 +256,16 @@ async function renderRegisterForm() {
 
   
       if (!response.ok) throw new Error(`fetch error : ${response.status} : dsadsa ${response.statusText}`);
-  
       const authenticatedUser = await response.json();
-  
-      // eslint-disable-next-line no-console
+      setAuthenticatedUser1(authenticatedUser);
       console.log('Newly registered & authenticated user : ', authenticatedUser);
-  
-      setAuthenticatedUser(authenticatedUser);
+    }
+    catch (err) {
+      console.error('RegisterPage::error: ', err);
+    }
+      // eslint-disable-next-line no-console
+      Navbar();
+
       Navigate('/');
     }
 
