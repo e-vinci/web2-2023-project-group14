@@ -196,9 +196,7 @@ function renderNavbar() {
         </div>
       </nav>
   `;
-  const user = getAuthenticatedUser2();
-  const users = isAuthenticated2();
-  console.log('users: ', user, ' i ', users)
+
   if(isAuthenticated1() && isAuthenticated2()){
     navbarWrapper.innerHTML = twoUserNavbar;
   }else if(isAuthenticated1()){
