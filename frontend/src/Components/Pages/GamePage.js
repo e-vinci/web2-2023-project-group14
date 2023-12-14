@@ -18,11 +18,23 @@ import warriorWiki from '../../assets/artwork_wiki/warriorWiki.png';
 import EndScene from '../Game/EndScene';
 import { clearPage } from '../../utils/render';
 
+import Archer from '../Game/Units/Archer';
+import Exterminator from '../Game/Units/Exterminator';
+import Knight from '../Game/Units/Knight';
+import Necro from '../Game/Units/Necro';
+import Warrior from '../Game/Units/Warrior';
+
 let game;
 
 const GamePage = () => {
 
   clearPage();
+
+  const archerStats = Archer.getStats();
+  const exterminatorStats = Exterminator.getStats();
+  const knightStats = Knight.getStats();
+  const necroStats = Necro.getStats();
+  const warriorStats = Warrior.getStats();
 
   const wikiContent = `<div class="d-flex flex-wrap card-container card-text">
   <div class="card card-color m-3 border-archer">
@@ -31,12 +43,11 @@ const GamePage = () => {
       <h5 class="card-title">Stats:</h5>
       <p class="card-text">
         <ul>
-            <li>HP: 70</li>
-            <li>Range: 8</li>
-            <li>Damage: 25</li>
-            <li>Attack speed : 0.67s</li>
-            <li>Movement speed: 4</li>
-            <li>Price: 90 Gold</li>
+            <li>Health: ${archerStats.health} hp.</li>
+            <li>Range: ${archerStats.range} units.</li>
+            <li>Damage: ${archerStats.damage} ad.</li>
+            <li>Movement speed: ${archerStats.speed} ms.</li>
+            <li>Price: ${archerStats.price} gold.</li>
         </ul>
       </p>
     </div>
@@ -47,14 +58,13 @@ const GamePage = () => {
     <div class="card-body">
       <h5 class="card-title">Stats:</h5>
       <p class="card-text">
-        <ul>
-              <li>HP: 60</li>
-              <li>Range: 10</li>
-              <li>Damage: 35</li>
-              <li>Attack speed : 0.4/s</li>
-              <li>Movement speed: 4</li>
-              <li>Price: 110 Gold</li>
-          </ul>
+      <ul>
+        <li>Health: ${exterminatorStats.health} hp.</li>
+        <li>Range: ${exterminatorStats.range} units.</li>
+        <li>Damage: ${exterminatorStats.damage} ad.</li>
+        <li>Movement speed: ${exterminatorStats.speed} ms.</li>
+        <li>Price: ${exterminatorStats.price} gold.</li>
+      </ul>
       </p>
     </div>
     <img class="card-img-bottom" src="${exterminatorWiki}" alt="Card image cap">
@@ -65,13 +75,12 @@ const GamePage = () => {
       <h5 class="card-title">Stats:</h5>
       <p class="card-text">
         <ul>
-              <li>HP: 100</li>
-              <li>Range: 4</li>
-              <li>Damage: 20</li>
-              <li>Attack speed : 0.5/s</li>
-              <li>Movement speed: 4</li>
-              <li>Price: 150 Gold</li>
-          </ul>
+          <li>Health: ${knightStats.health} hp.</li>
+          <li>Range: ${knightStats.range} units.</li>
+          <li>Damage: ${knightStats.damage} ad.</li>
+          <li>Movement speed: ${knightStats.speed} ms.</li>
+          <li>Price: ${knightStats.price} gold.</li>
+        </ul>
       </p>
     </div>
     <img class="card-img-bottom" src="${knightWiki}" alt="Card image cap">
@@ -82,13 +91,12 @@ const GamePage = () => {
       <h5 class="card-title">Stats:</h5>
       <p class="card-text">
         <ul>
-              <li>HP: 80</li>
-              <li>Range: 6</li>
-              <li>Damage: 30</li>
-              <li>Attack speed : 0.5/s</li>
-              <li>Movement speed: 3</li>
-              <li>Price: 100 Gold</li>
-          </ul>
+          <li>Health: ${necroStats.health} hp.</li>
+          <li>Range: ${necroStats.range} units.</li>
+          <li>Damage: ${necroStats.damage} ad.</li>
+          <li>Movement speed: ${necroStats.speed} ms.</li>
+          <li>Price: ${necroStats.price} gold.</li>
+        </ul>
       </p>
     </div>
     <img class="card-img-bottom" src="${necromancerWiki}" alt="Card image cap">
@@ -99,13 +107,12 @@ const GamePage = () => {
       <h5 class="card-title">Stats:</h5>
       <p class="card-text">
         <ul>
-              <li>HP: 50</li>
-              <li>Range: 2</li>
-              <li>Damage: 40</li>
-              <li>Attack speed : 1/s</li>
-              <li>Movement speed: 6</li>
-              <li>Price: 120 Gold</li>
-          </ul>
+          <li>Health: ${warriorStats.health} hp.</li>
+          <li>Range: ${warriorStats.range} units.</li>
+          <li>Damage: ${warriorStats.damage} ad.</li>
+          <li>Movement speed: ${warriorStats.speed} ms.</li>
+          <li>Price: ${warriorStats.price} gold.</li>
+        </ul>
       </p>
     </div>
     <img class="card-img-bottom" src="${warriorWiki}" alt="Card image cap">

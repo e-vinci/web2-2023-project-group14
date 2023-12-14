@@ -1,15 +1,18 @@
 import Phaser from 'phaser';
 
+const HEALTH = 40;
+const DAMAGE = 50;
+const RANGE = 120;
+const SPEED = 20;
 
-
-
+const VOLUME_ATTACK_VALUE = 0.03;
 export default class Necro extends Phaser.Physics.Arcade.Sprite{
     constructor(scene, x, y, direction) {
       super(scene, x, y, 'NEC');
-      this.health = 40;
-      this.damage = 50;
-      this.range = 120;
-      this.speed = 20;
+      this.health = HEALTH;
+      this.damage = DAMAGE;
+      this.range = RANGE;
+      this.speed = SPEED;
       this.direction=direction;
       this.hasSpawned = false;
       this.isDead=false;
@@ -57,6 +60,19 @@ console.log('Animation created:', scene.anims.get('NecAttack'));
 
     }
   
+    static price=70;
+
+    static getStats() {
+      return {
+        health: HEALTH,
+        damage: DAMAGE,
+        range: RANGE,
+        speed: SPEED,
+        price: this.price,
+      };
+    }
+
+
     // Method to spawn the archer
     spawn() {
       this.setVisible(true);
@@ -89,7 +105,7 @@ console.log('Animation created:', scene.anims.get('NecAttack'));
     
             this.once('animationcomplete', () => {
               // eslint-disable-next-line prefer-const
-              this.scene.sound.play('magicSound');
+              this.scene.sound.play('magicSound', { volume: VOLUME_ATTACK_VALUE });
               
               target.takeDamage(this.damage);
     

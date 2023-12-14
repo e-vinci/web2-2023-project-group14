@@ -1,17 +1,20 @@
 /* eslint-disable no-console */
 import Phaser from 'phaser';
 
+const HEALTH = 1000;
+const DAMAGE = 15;
+const RANGE = 70;
+const SPEED = 20;
 
-
-
+const VOLUME_ATTACK_VALUE = 0.03;
 export default class Knight extends Phaser.Physics.Arcade.Sprite{
     constructor(scene, x, y, direction) {
       super(scene, x, y, 'archer');
-      this.health = 1000;
-      this.damage = 15;
+      this.health = HEALTH;
+      this.damage = DAMAGE;
       this.direction=direction;
-      this.range = 70;
-      this.speed = 20;
+      this.range = RANGE;
+      this.speed = SPEED;
       this.hasSpawned = false;
       this.isDead=false;
      
@@ -56,7 +59,19 @@ console.log('Animation created:', scene.anims.get('KnighAttack'));
 console.log('Animation created:', scene.anims.get('KnighDeath'));
 
     }
-  
+
+    static price=200;
+
+    static getStats() {
+      return {
+        health: HEALTH,
+        damage: DAMAGE,
+        range: RANGE,
+        speed: SPEED,
+        price: this.price,
+      };
+    }
+    
     // Method to spawn the archer
     spawn() {
       
@@ -89,7 +104,7 @@ console.log('Animation created:', scene.anims.get('KnighDeath'));
     
             this.once('animationcomplete', () => {
               // eslint-disable-next-line prefer-const
-              this.scene.sound.play('swordSound');
+              this.scene.sound.play('swordSound', { volume: VOLUME_ATTACK_VALUE });
               
               target.takeDamage(this.damage);
     

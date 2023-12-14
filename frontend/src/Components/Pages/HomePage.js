@@ -58,7 +58,7 @@ const HomePage = () => {
   introCol1.className = 'col-sm-10 col-md-6 text-center';
   const introTitle1 = document.createElement('h1');
   introTitle1.textContent = 'Embark on an Epic Journey';
-  introTitle1.className = 'title-main-h1 glow-div';
+  introTitle1.className = 'title-main-h1 glow-div mx-2';
   introCol1.appendChild(introTitle1);
   introRow1.appendChild(introCol1);
   divSection1.appendChild(introRow1);
@@ -70,7 +70,7 @@ const HomePage = () => {
   const introText1 = document.createElement('p');
   introText1.textContent =
     'Step into a world where bravery meets darkness, valor confronts malevolence, and mysteries await your discovery. Before diving into the adventure, immerse yourself in the captivating lore that defines our fantastical realm.';
-  introText1.className = 'textContent px-2';
+  introText1.className = 'textContent px-2 mx-2';
   introCol2.appendChild(introText1);
   introRow2.appendChild(introCol2);
   divSection1.appendChild(introRow2);
@@ -126,7 +126,7 @@ const HomePage = () => {
   introCol3.className = 'col-sm-10 col-md-6 text-center';
   const introTitle2 = document.createElement('h2');
   introTitle2.textContent = 'Unveil the Mysteries...';
-  introTitle2.className = 'title-main-h2 glow-div';
+  introTitle2.className = 'title-main-h2 glow-div mx-2';
   introCol3.appendChild(introTitle2);
   introRow3.appendChild(introCol3);
   divSection1.appendChild(introRow3);
@@ -138,7 +138,7 @@ const HomePage = () => {
   const introText2 = document.createElement('p');
   introText2.textContent =
     'Engage with the enigmatic tales of heroes and villains, where each character bears a unique story waiting to be unraveled. Explore their intertwined destinies, a symphony of light and shadow, through the choice of their narratives before you start your own saga.';
-  introText2.className = 'px-2 textContent';
+  introText2.className = 'px-2 textContent mx-2';
   introCol4.appendChild(introText2);
   introRow4.appendChild(introCol4);
   divSection1.appendChild(introRow4);
@@ -203,7 +203,7 @@ const HomePage = () => {
   introCol6.className = 'col-sm-10 col-md-6 text-center';
   const introTitle3 = document.createElement('h2');
   introTitle3.textContent = 'Discover our story and universe...';
-  introTitle3.className = 'title-main-h2 glow-div';
+  introTitle3.className = 'title-main-h2 glow-div mx-2';
   introCol6.appendChild(introTitle3);
   introRow6.appendChild(introCol6);
   divSection1.appendChild(introRow6);
@@ -404,7 +404,7 @@ const HomePage = () => {
   endCol1.className = 'col-sm-10 col-md-6 text-center';
   const endTitle1 = document.createElement('h2');
   endTitle1.textContent = 'Forge Your Legend';
-  endTitle1.className = 'title-main-h2 glow-div';
+  endTitle1.className = 'title-main-h2 glow-div mx-2';
   endCol1.appendChild(endTitle1);
   endRow1.appendChild(endCol1);
   divSection2.appendChild(endRow1);
@@ -416,7 +416,7 @@ const HomePage = () => {
   const endText2 = document.createElement('p');
   endText2.textContent =
     "Now that you've delved into the rich lore and intricacies of our world, the stage is set for you to become a part of this enthralling tale. Embrace your destiny, choose your character, and step forth into this surreal landscape. Will you uphold the virtues of courage and honor, or shall you succumb to the temptations of darkness? Your legend awaits your creation.";
-  endText2.className = 'px-2 textContent';
+  endText2.className = 'px-2 textContent mx-2';
   endCol2.appendChild(endText2);
   endRow2.appendChild(endCol2);
   divSection2.appendChild(endRow2);
@@ -428,7 +428,7 @@ const HomePage = () => {
   endCol3.className = 'col-sm-10 col-md-6 text-center';
   const endTitle2 = document.createElement('h2');
   endTitle2.textContent = 'Begin Your Adventure';
-  endTitle2.className = 'title-main-h2 glow-div';
+  endTitle2.className = 'title-main-h2 glow-div mx-2';
   endCol3.appendChild(endTitle2);
   endRow3.appendChild(endCol3);
   divSection2.appendChild(endRow3);
@@ -440,7 +440,7 @@ const HomePage = () => {
   const endText4 = document.createElement('p');
   endText4.textContent =
     'Click the play button and immerse yourself in an experience unlike any other. Embark on a journey where every decision shapes your path, where the clash of opposing forces creates an unforgettable adventure. Join us and make your mark in this tapestry of bravery and malevolence.';
-  endText4.className = 'px-2 textContent';
+  endText4.className = 'px-2 textContent mx-2';
   endCol4.appendChild(endText4);
   endRow4.appendChild(endCol4);
   divSection2.appendChild(endRow4);
