@@ -2,6 +2,7 @@
 import Phaser from 'phaser';
 import backgroundAssetEnd from '../../assets/end_background.png';
 import musicAsset from '../../assets/audio/theme_musics/Casey_Tells_the_Truth.mp3';
+import { getAuthenticatedUser1, getAuthenticatedUser2, isAuthenticated1, isAuthenticated2 } from '../../utils/auths';
 
 export default class EndScene extends Phaser.Scene {
   constructor() {
@@ -29,6 +30,41 @@ export default class EndScene extends Phaser.Scene {
       this.scale.height / backgroundEnd.height,
     );
     backgroundEnd.setTint(0x999999);
+    
+    // Adding or removing ranking_points
+    if(isAuthenticated1() && isAuthenticated2()){
+      if(this.sys.game.global.winner === 'player1'){
+        console.log('player 1 win')
+        addRanking(getAuthenticatedUser1())
+        console.log('player 2 lose')
+        removeRanking(getAuthenticatedUser2())
+      }
+      else{
+        console.log('player 1 lose')
+        removeRanking(getAuthenticatedUser1())
+        console.log('player 2 win')
+        addRanking(getAuthenticatedUser2())
+      };
+    } else if (isAuthenticated1()) {
+      if(this.sys.game.global.winner === 'player1'){
+        console.log('player 1 win')
+        addRanking(getAuthenticatedUser1())
+      }
+      else{
+        console.log('player 1 lose')
+        removeRanking(getAuthenticatedUser1())
+      };
+    } else if (isAuthenticated2()){
+      if(this.sys.game.global.winner === 'player2'){
+        console.log('player 2 win')
+        addRanking(getAuthenticatedUser2())
+      }
+      else{
+        console.log('player 2 lose')
+        removeRanking(getAuthenticatedUser2())
+      };
+    }
+
 
     // showing winner
     const winnerName = this.add
@@ -90,5 +126,46 @@ export default class EndScene extends Phaser.Scene {
       this.sound.stopAll();
       this.scene.start('start-scene');
     });
+  }
+}
+
+async function addRanking(username) {
+  try {
+  const response = await fetch (`${process.env.API_BASE_URL}/ranking/addRanking`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(username)
+  });
+
+  if (!response.ok) throw new Error(`fetch error : ${response.status} : ${response.statusText}`);
+  const updatedRankingUser = await response.json();
+
+  console.log('Updated user: ', updatedRankingUser);
+  }
+  catch (err) {
+    console.error('addRanking::error: ', err);
+  }
+}
+
+async function removeRanking(username) {
+
+  try {
+  const response = await fetch (`${process.env.API_BASE_URL}/ranking/removeRanking`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(username)
+  });
+
+  if (!response.ok) throw new Error(`fetch error : ${response.status} : ${response.statusText}`);
+  const updatedRankingUser = await response.json();
+
+  console.log('Updated user: ', updatedRankingUser);
+  }
+  catch (err) {
+    console.error('removeRanking::error: ', err);
   }
 }

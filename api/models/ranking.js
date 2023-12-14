@@ -1,4 +1,5 @@
 const { pool } = require('../utils/database');
+const { membersDB } = require('./users');
 /*
 client.query('SELECT * from users', (err, res) => {
   if (!err) {
@@ -30,6 +31,41 @@ const rankingDB = {
     }
   },
 
+  addRanking: async (username) => {
+    const userFound = await membersDB.readOneUserFromUsername(username.username);
+    if (!userFound) return undefined;
+    console.log('username:', username.username);
+    const query = 'UPDATE users SET ranking_points = ranking_points + 5, wins = wins + 1 WHERE username = $1';
+    const values = [username.username];
+
+    const client = await pool.connect();
+    try {
+      const res = await client.query(query, values);
+      console.log(res.rows[0]);
+
+      return res;
+    } finally {
+      client.release();
+    }
+  },
+
+  removeRanking: async (username) => {
+    const userFound = await membersDB.readOneUserFromUsername(username.username);
+    if (!userFound) return undefined;
+    console.log('username:', username.username);
+    const update = 'UPDATE users SET ranking_points = ranking_points - 5, loses = loses + 1 WHERE username = $1';
+    const values = [username.username];
+
+    const client = await pool.connect();
+    try {
+      const res = await client.query(update, values);
+      console.log(res.rows[0]);
+
+      return res;
+    } finally {
+      client.release();
+    }
+  },
 };
 
 module.exports = {
