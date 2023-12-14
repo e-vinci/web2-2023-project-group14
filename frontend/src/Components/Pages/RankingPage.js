@@ -4,7 +4,7 @@ import { clearPage } from '../../utils/render';
 const RankingPage = () => {
   clearPage();
   renderRankingTable();
-
+  // animateTable();
 };
 
 async function renderRankingTable() {
@@ -70,8 +70,22 @@ async function renderRankingTable() {
   main.appendChild(backgroundDiv);
 }
 
+/*
+function animateTable() {
+  const rankingWrapper = document.querySelector('.ranking-wrapper');
 
+  // Set initial styles for the animation
+  rankingWrapper.style.opacity = 0;
+  rankingWrapper.style.transform = 'translateY(-50px)';
 
+  // Trigger the animation after a short delay
+  setTimeout(() => {
+    rankingWrapper.style.transition = 'opacity 0.5s, transform 0.5s';
+    rankingWrapper.style.opacity = 1;
+    rankingWrapper.style.transform = 'translateY(250px)';
+  }, 300); // Adjust the delay as needed
+}
+*/
 async function getRanking() {
   try {
     const response = await fetch(`${process.env.API_BASE_URL}/ranking`);
