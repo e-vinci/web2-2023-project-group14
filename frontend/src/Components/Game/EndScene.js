@@ -65,7 +65,7 @@ export default class EndScene extends Phaser.Scene {
       };
     }
 
-    let winnerNameDefault = this.sys.game.global.winner;
+    let winnerNameDefault = `${this.sys.game.global.winner},\nplease log in or register to save your score`;
     const authUser1 = getAuthenticatedUser1();
     const authUser2 = getAuthenticatedUser2();
 

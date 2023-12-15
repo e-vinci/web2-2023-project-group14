@@ -17,6 +17,70 @@ const HomePage = () => {
   // Get the main element
   const main = document.querySelector('main');
 
+  // Creating modal for the GDPR
+
+  const modalGdpr = document.createElement('div');
+  modalGdpr.innerHTML = `<!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content bg-dark">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Privacy Policy for Armada Assault (GDPR)</h5>
+        </div>
+        <div class="modal-body">
+          <h4>1. Introduction</h4>
+          
+          <p>We are committed to respecting and protecting your online privacy. This Privacy Policy outlines the information we collect and how we use that information.</p>
+          
+          <h4>2. Data We Collect</h4>
+          
+          <p>When creating an account on our website, we require the following information:</p>
+            <ul>
+              <li>Email address</li>
+              <li>Username</li>
+              <li>Login credentials</li>
+            </ul>
+          
+          <p>We also store the following data related to your activities on our website:</p>
+            <ul>
+              <li>Wins and losses</li>
+              <li>Ranking points</li>
+            </ul>
+          
+          <p>Based on this data, we assign players a rank.<p>
+          
+          <h4>3. How We Use Your Data</h4>
+          
+          <p>The data we collect is used to provide and improve our services, and to offer a personalized gaming experience. We do not share your personal data with third parties.</p>
+          
+          <h4>4. Your Rights Under the GDPR</h4>
+          
+          <p>As per the General Data Protection Regulation (GDPR), you have the right to access, rectify, and delete your personal data.<p>
+          
+          <h4> 5. Non-Registered Users </h4>
+          
+          <p>If you do not register or log in, we do not collect any data and the game does not save any score.<p>
+          
+          <h4> 6. Contact Us </h4>
+          
+          <p>If you have any questions about this Privacy Policy, please contact us at flaviu.bilic@student.vinci.be.<p>
+          
+          <h4>7. Changes to This Privacy Policy</h4>
+          
+          <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">I understand</button>
+        </div>
+      </div>
+    </div>
+  </div>`
+
   // Create a "Play Now 1" button image element
   const playNowButton = document.createElement('img');
   playNowButton.src = playNowImage; // Set image path
@@ -455,6 +519,7 @@ const HomePage = () => {
   divSection2.appendChild(endRow5);
 
   // Append rows to the intro container
+  introContainer.appendChild(modalGdpr);
   introContainer.appendChild(divSection1);
   introContainer.appendChild(cardsContainer);
   introContainer.appendChild(divSection2);
