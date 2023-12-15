@@ -65,13 +65,24 @@ export default class EndScene extends Phaser.Scene {
       };
     }
 
+    let winnerNameDefault = this.sys.game.global.winner;
+    const authUser1 = getAuthenticatedUser1();
+    const authUser2 = getAuthenticatedUser2();
+
+    if(this.sys.game.global.winner === "player1" && authUser1 !== undefined){
+      winnerNameDefault = authUser1.username;
+    }
+
+    if(this.sys.game.global.winner === "player2" && authUser2 !== undefined){
+      winnerNameDefault= authUser2.username;
+    }
 
     // showing winner
     const winnerName = this.add
       .text(
         this.scale.width * 0.5,
         this.scale.height * 0.3,
-        `The winner is ${this.sys.game.global.winner}!`,
+        `The winner is ${winnerNameDefault}!`,
         {
           fontFamily: 'Blackletter, serif',
           fontSize: '32px',
