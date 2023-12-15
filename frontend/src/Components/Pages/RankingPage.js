@@ -1,4 +1,5 @@
 import { clearPage } from '../../utils/render';
+import initializeGdpr from '../../utils/gdprUtils';
 
 
 const RankingPage = () => {
@@ -12,6 +13,7 @@ async function renderRankingTable() {
 
   const backgroundDiv = document.createElement('div');
   backgroundDiv.className = 'h-100 backgroundLogin';
+  backgroundDiv.id = 'containerGdpr';
 
   const rankingWrapper = document.createElement('div');
   rankingWrapper.className = 'ranking-wrapper d-flex justify-content-center align-items-center'; // Add 'ranking-wrapper' class
@@ -93,6 +95,11 @@ async function getRanking() {
 
     const ranking = await response.json();
     console.log('ranking after fetch: ', ranking);
+
+    setTimeout(() => {
+      initializeGdpr('#containerGdpr');
+     }, 0);
+
     return ranking;
   } catch (err) {
     /* eslint-disable no-console */

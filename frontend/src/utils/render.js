@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-use-before-define */
 const clearPage = () => {
   const main = document.querySelector('main');
   main.innerHTML = '';
@@ -19,4 +21,5 @@ const renderImage = (url, className, height, div) => {
   const imageWrapper = document.querySelector(div);
   imageWrapper.append(image);
 };
+
 export { clearPage, renderPageTitle, renderImage };

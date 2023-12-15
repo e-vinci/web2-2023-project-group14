@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { clearPage } from '../../utils/render';
+import initializeGdpr from '../../utils/gdprUtils';
 
 const ResourcePage = () =>{
     clearPage();
@@ -13,6 +14,7 @@ const ResourcePage = () =>{
     // Creation of the main div containing the whole page (used for background image mainly)
     const container = document.createElement('div');
     container.className = 'resourcePageBackGround mainText row secondSection py-4';
+    container.id = 'containerGdpr';
 
     // Creation of the first section (Introduction Resource Hub)
     const section1ResourceHub = document.createElement('div');
@@ -89,10 +91,16 @@ const ResourcePage = () =>{
      section4Images.appendChild(section4ImagesContent);
 
      // Appending everything to the main
-     container.appendChild(section1ResourceHub);
-     container.appendChild(section2Assets);
-     container.appendChild(section3Songs);
-     container.appendChild(section4Images);
+     setTimeout(() => {
+      initializeGdpr('#containerGdpr');
+     }, 0);
+     
+     setTimeout(() => {
+      container.appendChild(section1ResourceHub);
+      container.appendChild(section2Assets);
+      container.appendChild(section3Songs);
+      container.appendChild(section4Images);
+     }, 0);
      
      main.appendChild(container);
 }

@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+/* eslint-disable consistent-return */
 // Import necessary dependencies
 import anime from 'animejs/lib/anime.es';
 import Navigate from '../Router/Navigate';
@@ -9,6 +10,7 @@ import exterminatorAsset from '../../assets/artwork_wiki/exterminatorWiki.png';
 import knightAsset from '../../assets/artwork_wiki/knightWiki.png';
 import necromancerAsset from '../../assets/artwork_wiki/necromancerWiki.png';
 import warriorAsset from '../../assets/artwork_wiki/warriorWiki.png';
+import initializeGdpr from '../../utils/gdprUtils';
 
 const HomePage = () => {
   // Clear the page content
@@ -16,70 +18,6 @@ const HomePage = () => {
 
   // Get the main element
   const main = document.querySelector('main');
-
-  // Creating modal for the GDPR
-
-  const modalGdpr = document.createElement('div');
-  modalGdpr.innerHTML = `<!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Launch demo modal
-  </button>
-  
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content bg-dark">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Privacy Policy for Armada Assault (GDPR)</h5>
-        </div>
-        <div class="modal-body">
-          <h4>1. Introduction</h4>
-          
-          <p>We are committed to respecting and protecting your online privacy. This Privacy Policy outlines the information we collect and how we use that information.</p>
-          
-          <h4>2. Data We Collect</h4>
-          
-          <p>When creating an account on our website, we require the following information:</p>
-            <ul>
-              <li>Email address</li>
-              <li>Username</li>
-              <li>Login credentials</li>
-            </ul>
-          
-          <p>We also store the following data related to your activities on our website:</p>
-            <ul>
-              <li>Wins and losses</li>
-              <li>Ranking points</li>
-            </ul>
-          
-          <p>Based on this data, we assign players a rank.<p>
-          
-          <h4>3. How We Use Your Data</h4>
-          
-          <p>The data we collect is used to provide and improve our services, and to offer a personalized gaming experience. We do not share your personal data with third parties.</p>
-          
-          <h4>4. Your Rights Under the GDPR</h4>
-          
-          <p>As per the General Data Protection Regulation (GDPR), you have the right to access, rectify, and delete your personal data.<p>
-          
-          <h4> 5. Non-Registered Users </h4>
-          
-          <p>If you do not register or log in, we do not collect any data and the game does not save any score.<p>
-          
-          <h4> 6. Contact Us </h4>
-          
-          <p>If you have any questions about this Privacy Policy, please contact us at flaviu.bilic@student.vinci.be.<p>
-          
-          <h4>7. Changes to This Privacy Policy</h4>
-          
-          <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">I understand</button>
-        </div>
-      </div>
-    </div>
-  </div>`
 
   // Create a "Play Now 1" button image element
   const playNowButton = document.createElement('img');
@@ -110,6 +48,7 @@ const HomePage = () => {
   // Create an intro container
   const introContainer = document.createElement('div');
   introContainer.className = ' mainText';
+  introContainer.id = 'containerGdpr';
 
   // Create 1 out of 3 section for background pourposes
   const divSection1 = document.createElement('div');
@@ -181,7 +120,7 @@ const HomePage = () => {
       duration: 1500,
       easing: 'easeInOutQuad',
     });
-  }, 700); // Delay the animation for 1 second (1000 milliseconds)
+  }, 200); // Delay the animation for 1 second (1000 milliseconds)
 
   // Second Section - Title and Description
   const introRow3 = document.createElement('div');
@@ -227,7 +166,7 @@ const HomePage = () => {
       duration: 1500,
       easing: 'easeInOutQuad',
     });
-  }, 2500); // Delay the animation for 1 second (1000 milliseconds)
+  }, 200); // Delay the animation for 1 second (1000 milliseconds)
 
   // Animation first section - Row 2 - Slide form left to right
   setTimeout(() => {
@@ -249,7 +188,7 @@ const HomePage = () => {
       duration: 1500,
       easing: 'easeInOutQuad',
     });
-  }, 3000); // Delay the animation for 1 second (1000 milliseconds)
+  }, 200); // Delay the animation for 1 second (1000 milliseconds)
 
   // Third Section - "Play Now" button
   const introRow5 = document.createElement('div');
@@ -322,7 +261,7 @@ const HomePage = () => {
       duration: 1500,
       easing: 'easeInOutQuad',
     });
-  }, 4000);
+  }, 2000);
 
   // Animation - Appears
   setTimeout(() => {
@@ -335,7 +274,7 @@ const HomePage = () => {
       duration: 1500,
       easing: 'easeInOutQuad',
     });
-  }, 5800);
+  }, 700);
 
   // cards imports
   const archerImg = document.createElement('img');
@@ -519,7 +458,11 @@ const HomePage = () => {
   divSection2.appendChild(endRow5);
 
   // Append rows to the intro container
-  introContainer.appendChild(modalGdpr);
+
+  setTimeout(() => {
+    initializeGdpr('#containerGdpr');
+   }, 0);
+  
   introContainer.appendChild(divSection1);
   introContainer.appendChild(cardsContainer);
   introContainer.appendChild(divSection2);

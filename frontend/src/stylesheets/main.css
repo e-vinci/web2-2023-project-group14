@@ -23,7 +23,7 @@
 }
 
 .resourcePageBackGround {
-  background-color: rgb(136, 95, 26);
+  background-color: rgb(0, 0, 0);
   height: 100%;
 }
 
@@ -165,7 +165,6 @@
   color: black;
   background-color: #b2b2b2cd;
   border-radius: 10px;
-  text-indent: 25px;
   text-align: justify;
 }
 

@@ -24,6 +24,8 @@ import Knight from '../Game/Units/Knight';
 import Necro from '../Game/Units/Necro';
 import Warrior from '../Game/Units/Warrior';
 
+import initializeGdpr from '../../utils/gdprUtils';
+
 let game;
 
 const GamePage = () => {
@@ -126,6 +128,11 @@ const GamePage = () => {
   const divBackground = document.createElement('div');
   divBackground.className = 'mainColor';
   divBackground.innerHTML = phaserGame + wikiContent;
+  divBackground.id = 'containerGdpr';
+
+  setTimeout(() => {
+    initializeGdpr('#containerGdpr');
+   }, 0);
 
   const main = document.querySelector('main');
   main.appendChild(divBackground);
