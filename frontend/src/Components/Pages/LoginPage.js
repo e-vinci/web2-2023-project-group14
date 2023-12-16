@@ -3,6 +3,7 @@ import { clearPage } from '../../utils/render';
 import Navbar from '../Navbar/Navbar';
 // eslint-disable-next-line no-unused-vars
 import { isAuthenticated1, isAuthenticated2, getAuthenticatedUser2, getAuthenticatedUser1, setAuthenticatedUser1, setAuthenticatedUser2 } from '../../utils/auths';
+import initializeGdpr from '../../utils/gdprUtils';
 
 // A FAIRE ajouter la logique des users
 // ainsi que les eventListener plus bas sur les submit
@@ -20,6 +21,11 @@ function renderLoginForm() {
 
   const backgroundDiv = document.createElement('div');
   backgroundDiv.className = 'h-100 backgroundLogin d-flex';
+  backgroundDiv.id = 'containerGdpr';
+
+  setTimeout(() => {
+    initializeGdpr('#containerGdpr');
+   }, 0);
 
   // Div pour la partie gauche
   if (J1connected) {

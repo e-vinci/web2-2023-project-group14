@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+/* eslint-disable consistent-return */
 // Import necessary dependencies
 import anime from 'animejs/lib/anime.es';
 import Navigate from '../Router/Navigate';
@@ -9,6 +10,7 @@ import exterminatorAsset from '../../assets/artwork_wiki/exterminatorWiki.png';
 import knightAsset from '../../assets/artwork_wiki/knightWiki.png';
 import necromancerAsset from '../../assets/artwork_wiki/necromancerWiki.png';
 import warriorAsset from '../../assets/artwork_wiki/warriorWiki.png';
+import initializeGdpr from '../../utils/gdprUtils';
 
 const HomePage = () => {
   // Clear the page content
@@ -46,6 +48,7 @@ const HomePage = () => {
   // Create an intro container
   const introContainer = document.createElement('div');
   introContainer.className = ' mainText';
+  introContainer.id = 'containerGdpr';
 
   // Create 1 out of 3 section for background pourposes
   const divSection1 = document.createElement('div');
@@ -117,7 +120,7 @@ const HomePage = () => {
       duration: 1500,
       easing: 'easeInOutQuad',
     });
-  }, 700); // Delay the animation for 1 second (1000 milliseconds)
+  }, 200); // Delay the animation for 1 second (1000 milliseconds)
 
   // Second Section - Title and Description
   const introRow3 = document.createElement('div');
@@ -163,7 +166,7 @@ const HomePage = () => {
       duration: 1500,
       easing: 'easeInOutQuad',
     });
-  }, 2500); // Delay the animation for 1 second (1000 milliseconds)
+  }, 200); // Delay the animation for 1 second (1000 milliseconds)
 
   // Animation first section - Row 2 - Slide form left to right
   setTimeout(() => {
@@ -185,7 +188,7 @@ const HomePage = () => {
       duration: 1500,
       easing: 'easeInOutQuad',
     });
-  }, 3000); // Delay the animation for 1 second (1000 milliseconds)
+  }, 200); // Delay the animation for 1 second (1000 milliseconds)
 
   // Third Section - "Play Now" button
   const introRow5 = document.createElement('div');
@@ -258,7 +261,7 @@ const HomePage = () => {
       duration: 1500,
       easing: 'easeInOutQuad',
     });
-  }, 4000);
+  }, 2000);
 
   // Animation - Appears
   setTimeout(() => {
@@ -271,7 +274,7 @@ const HomePage = () => {
       duration: 1500,
       easing: 'easeInOutQuad',
     });
-  }, 5800);
+  }, 700);
 
   // cards imports
   const archerImg = document.createElement('img');
@@ -455,6 +458,11 @@ const HomePage = () => {
   divSection2.appendChild(endRow5);
 
   // Append rows to the intro container
+
+  setTimeout(() => {
+    initializeGdpr('#containerGdpr');
+   }, 0);
+  
   introContainer.appendChild(divSection1);
   introContainer.appendChild(cardsContainer);
   introContainer.appendChild(divSection2);

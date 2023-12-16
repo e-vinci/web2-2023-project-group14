@@ -6,6 +6,7 @@ import Navigate from '../Router/Navigate';
 import Navbar from '../Navbar/Navbar';
 // eslint-disable-next-line no-unused-vars
 import { checkRegistrationPassword, checkRegistrationPassword2, checkRegistrationUsername } from '../../utils/validator';
+import initializeGdpr from '../../utils/gdprUtils';
 
 const RegisterPage = () => {
     clearPage();
@@ -22,6 +23,11 @@ async function renderRegisterForm() {
 
   const backgroundDiv = document.createElement('div');
   backgroundDiv.className = 'h-100 backgroundLogin';
+  backgroundDiv.id = 'containerGdpr';
+
+  setTimeout(() => {
+    initializeGdpr('#containerGdpr');
+   }, 0);
 
   const registerWrapper = document.createElement('div');
   registerWrapper.className = 'd-flex justify-content-center align-items-center h-75 pt-5 backgroundLogin';

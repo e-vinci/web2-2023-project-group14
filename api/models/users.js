@@ -125,6 +125,23 @@ const membersDB = {
     return nextId;
   },
 
+  deleteUser: async (username) => {
+    const query = 'DELETE FROM users WHERE username = $1';
+    const values = [username];
+    const client = await pool.connect();
+    try {
+      const result = await client.query(query, values);
+      if (result.rowCount > 0) {
+        console.log(`User deleted: ${username}`);
+        return true;
+      }
+      console.log(`User not found: ${username}`);
+      return false;
+    } finally {
+      client.release();
+    }
+  },
+
 };
 module.exports = {
   membersDB,
