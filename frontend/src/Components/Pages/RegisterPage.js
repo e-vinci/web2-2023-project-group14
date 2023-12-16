@@ -6,7 +6,7 @@ import Navigate from '../Router/Navigate';
 import Navbar from '../Navbar/Navbar';
 // eslint-disable-next-line no-unused-vars
 import { checkRegistrationPassword, checkRegistrationPassword2, checkRegistrationUsername } from '../../utils/validator';
-import initializeGdpr from '../../utils/gdprUtils';
+import {initializeGdpr, renderGdpr} from '../../utils/gdprUtils';
 
 const RegisterPage = () => {
     clearPage();
@@ -116,7 +116,10 @@ async function renderRegisterForm() {
   const alreadyAccountDiv = document.createElement('div');
   const alreadyAccountP = document.createElement('p');
   alreadyAccountDiv.className = 'text-center';
-  alreadyAccountDiv.innerHTML = `Already have an account? <a href="/login">Login now</a>`;
+  alreadyAccountDiv.innerHTML = `Already have an account? <a href="/login">Login now</a>
+  <br>Read our  <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"> policy</a>`;
+
+  backgroundDiv.appendChild(renderGdpr());
 
   const validationErrorDiv = document.createElement('div');
   const validationErrorP = document.createElement('div');

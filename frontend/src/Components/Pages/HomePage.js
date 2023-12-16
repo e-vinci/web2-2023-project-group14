@@ -10,7 +10,7 @@ import exterminatorAsset from '../../assets/artwork_wiki/exterminatorWiki.png';
 import knightAsset from '../../assets/artwork_wiki/knightWiki.png';
 import necromancerAsset from '../../assets/artwork_wiki/necromancerWiki.png';
 import warriorAsset from '../../assets/artwork_wiki/warriorWiki.png';
-import initializeGdpr from '../../utils/gdprUtils';
+import {initializeGdpr} from '../../utils/gdprUtils';
 
 const HomePage = () => {
   // Clear the page content
