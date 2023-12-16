@@ -24,7 +24,7 @@ import Knight from '../Game/Units/Knight';
 import Necro from '../Game/Units/Necro';
 import Warrior from '../Game/Units/Warrior';
 
-import initializeGdpr from '../../utils/gdprUtils';
+import {initializeGdpr} from '../../utils/gdprUtils';
 
 let game;
 

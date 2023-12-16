@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { clearPage } from '../../utils/render';
-import initializeGdpr from '../../utils/gdprUtils';
+import {initializeGdpr} from '../../utils/gdprUtils';
 
 const ResourcePage = () =>{
     clearPage();

@@ -1,10 +1,10 @@
-.page-specific-link {
+a {
   text-decoration: none; /* Remove underline */
   color: #004997; /* Change link color */
 }
 
 /* Apply different color when hovered */
-.page-specific-link:hover {
+a:hover {
   color: #006797; /* Change link color on hover */
 }
 

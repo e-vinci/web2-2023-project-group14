@@ -119,4 +119,4 @@ if (userData && userData.hasSeenGdpr === false) {
 }
 };
   
-  export default initializeGdpr;
+  export {initializeGdpr, renderGdpr}

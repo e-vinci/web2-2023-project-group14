@@ -1,5 +1,5 @@
 import { clearPage } from '../../utils/render';
-import initializeGdpr from '../../utils/gdprUtils';
+import {initializeGdpr} from '../../utils/gdprUtils';
 
 
 const RankingPage = () => {

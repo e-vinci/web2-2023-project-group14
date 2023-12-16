@@ -3,7 +3,7 @@ import { clearPage } from '../../utils/render';
 import Navbar from '../Navbar/Navbar';
 // eslint-disable-next-line no-unused-vars
 import { isAuthenticated1, isAuthenticated2, getAuthenticatedUser2, getAuthenticatedUser1, setAuthenticatedUser1, setAuthenticatedUser2 } from '../../utils/auths';
-import initializeGdpr from '../../utils/gdprUtils';
+import {initializeGdpr, renderGdpr} from '../../utils/gdprUtils';
 
 // A FAIRE ajouter la logique des users
 // ainsi que les eventListener plus bas sur les submit
@@ -140,7 +140,12 @@ function renderLoginForm() {
     const noAccountDiv2 = document.createElement('div');
     const noAccountP2 = document.createElement('p');
     noAccountDiv2.className = 'text-center';
-    noAccountDiv2.innerHTML = `Don't have an account yet? <a href="/register">Register now</a>`;
+    noAccountDiv2.innerHTML = `Don't have an account yet? <a href="/register">Register now</a>
+    <br>Read our  <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"> policy</a>`;
+
+    
+
+    backgroundDiv.appendChild(renderGdpr());
 
     usernameDiv2.appendChild(usernameLabel2);
     usernameDiv2.appendChild(username2);
@@ -290,7 +295,8 @@ function renderLoginForm() {
     const noAccountDiv = document.createElement('div');
     const noAccountP = document.createElement('p');
     noAccountDiv.className = 'text-center';
-    noAccountDiv.innerHTML = `Don't have an account yet? <a href="/register">Register now</a>`;
+    noAccountDiv.innerHTML = `Don't have an account yet? <a href="/register">Register now</a>
+    <br>Read our  <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"> policy</a>`;
 
     usernameDiv.appendChild(usernameLabel);
     usernameDiv.appendChild(username);
