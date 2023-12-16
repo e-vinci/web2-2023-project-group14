@@ -1,5 +1,5 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-const validator = require('validator');
+// eslint-disable-next-line import/no-extraneous-dependencies, import/no-self-import
+const validator = require('./validator');
 
 
 function checkRegistrationUsername(username) {

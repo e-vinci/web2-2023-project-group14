@@ -40,7 +40,6 @@ const membersDB = {
       username,
       token,
     };
-
     return authenticatedUser;
   },
 
