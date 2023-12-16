@@ -1,11 +1,10 @@
 import { clearPage } from '../../utils/render';
 import initializeGdpr from '../../utils/gdprUtils';
-
+import { isAuthenticated1, isAuthenticated2, getAuthenticatedUser1, getAuthenticatedUser2 } from '../../utils/auths';
 
 const RankingPage = () => {
   clearPage();
   renderRankingTable();
-  // animateTable();
 };
 
 async function renderRankingTable() {
@@ -16,14 +15,12 @@ async function renderRankingTable() {
   backgroundDiv.id = 'containerGdpr';
 
   const rankingWrapper = document.createElement('div');
-  rankingWrapper.className = 'ranking-wrapper d-flex justify-content-center align-items-center'; // Add 'ranking-wrapper' class
+  rankingWrapper.className = 'ranking-wrapper d-flex justify-content-center align-items-center';
 
-  // Assuming you want to create a table, you can use the following example code
   const table = document.createElement('table');
   table.className = 'ranking-table text-center col-lg-6 border border-3 border-dark footerColor my-5 formDiv';
 
-  // Create table headers
-  const headers = ['Rank', 'Player','Ranking Points', 'Wins', 'Losses'];
+  const headers = ['Rank', 'Player', 'Ranking Points', 'Wins', 'Losses'];
   const headerRow = document.createElement('tr');
 
   headers.forEach((headerText) => {
@@ -35,22 +32,8 @@ async function renderRankingTable() {
 
   table.appendChild(headerRow);
 
-  // eslint-disable-next-line no-unused-vars
   const rankingData = await getRanking();
-  console.log('rankingData: ', rankingData)
 
-  // Create sample data (replace this with your actual ranking data)
-  /*
-  const rankingData = [
-    { rank: 1, player: 'Player 1', wins: 10, loss: 5 },
-    { rank: 2, player: 'Player 2', wins: 8 , loss: 7},
-    { rank: 3, player: 'Player 3', wins: 6, loss: 10 },
-    
-    // Add more rows as needed
-  ];
-  */
-
-  // Create table rows with ranking data
   let rank = 0;
   rankingData.forEach((data) => {
     const row = document.createElement('tr');
@@ -59,50 +42,71 @@ async function renderRankingTable() {
     const tdRank = document.createElement('td');
     tdRank.textContent = rank;
     row.append(tdRank);
+
     Object.values(data).forEach((value) => {
       const td = document.createElement('td');
       td.textContent = value;
       row.appendChild(td);
     });
+
     table.appendChild(row);
   });
+
+  // Fetch stats for Player 1 if connected
+  let statsPlayer1;
+  if (isAuthenticated1()) {
+    statsPlayer1 = await getAuthenticatedUser1();
+  }
+
+  // Fetch stats for Player 2 if connected
+  let statsPlayer2;
+  if (isAuthenticated2()) {
+    statsPlayer2 = await getAuthenticatedUser2();
+  }
+
+  // Create additional rows for Player 1 and Player 2 stats
+  if (statsPlayer1) {
+    createPlayerStatsRow(statsPlayer1, table, 'Player 1');
+  }
+
+  if (statsPlayer2) {
+    createPlayerStatsRow(statsPlayer2, table, 'Player 2');
+  }
 
   rankingWrapper.appendChild(table);
   backgroundDiv.appendChild(rankingWrapper);
   main.appendChild(backgroundDiv);
 }
 
-/*
-function animateTable() {
-  const rankingWrapper = document.querySelector('.ranking-wrapper');
+function createPlayerStatsRow(stats, table, playerName) {
+  const statsRow = document.createElement('tr');
+  const playerNameCell = document.createElement('td');
+  playerNameCell.textContent = playerName;
+  statsRow.appendChild(playerNameCell);
 
-  // Set initial styles for the animation
-  rankingWrapper.style.opacity = 0;
-  rankingWrapper.style.transform = 'translateY(-50px)';
+  // Assuming stats has properties like 'elo', 'wins', 'losses'
+  ['elo', 'wins', 'losses'].forEach((stat) => {
+    const td = document.createElement('td');
+    td.textContent = stats[stat];
+    statsRow.appendChild(td);
+  });
 
-  // Trigger the animation after a short delay
-  setTimeout(() => {
-    rankingWrapper.style.transition = 'opacity 0.5s, transform 0.5s';
-    rankingWrapper.style.opacity = 1;
-    rankingWrapper.style.transform = 'translateY(250px)';
-  }, 300); // Adjust the delay as needed
+  table.appendChild(statsRow);
 }
-*/
+
 async function getRanking() {
   try {
     const response = await fetch(`${process.env.API_BASE_URL}/ranking`);
     if (!response.ok) throw new Error(`fetch error:: ranking : ${response.status} : ${response.statusText}`);
 
     const ranking = await response.json();
-    console.log('ranking after fetch: ', ranking);
 
     setTimeout(() => {
       initializeGdpr('#containerGdpr');
-     }, 0);
+    }, 0);
 
     return ranking;
   } catch (err) {
-    /* eslint-disable no-console */
     console.error('getAllScores::error ', err);
     throw err;
   }
