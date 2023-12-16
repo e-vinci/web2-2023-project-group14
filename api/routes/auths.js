@@ -63,4 +63,28 @@ router.post('/login', async (req, res) => {
   return res.json(authenticatedUser);
 });
 
+router.delete('/delete2/:username', async (req, res) => {
+  const { username } = req.params;
+
+  // Validate the input
+  if (!username) {
+    return res.status(400).json({ error: 'Username is required in the request parameters' });
+  }
+
+  try {
+    // Perform the deletion logic
+    const deletedUser = await membersDB.deleteUser(username);
+
+    if (!deletedUser) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    // Respond with a success message
+    return res.json({ message: 'User account deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting user account:', error);
+    return res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 module.exports = router;
