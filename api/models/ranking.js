@@ -66,6 +66,26 @@ const rankingDB = {
       client.release();
     }
   },
+  deletePlayer: async (username) => {
+    try {
+      const userFound = await membersDB.readOneUserFromUsername(username);
+      if (!userFound) return undefined;
+
+      const query = 'DELETE FROM users WHERE username = $1';
+      const values = [username];
+
+      const client = await pool.connect();
+      const res = await client.query(query, values);
+      console.log(`${username} has been deleted from the database`);
+
+      return res;
+    } catch (error) {
+      console.error('Error in deletePlayer:', error.message);
+      throw error;
+    } finally {
+      client.release();
+    }
+  },
 };
 
 module.exports = {
