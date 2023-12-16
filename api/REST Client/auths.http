@@ -38,3 +38,6 @@ Content-Type: application/json
     "username":"manager",
     "password":"manager"
 }
+
+DELETE {{baseUrl}}/auths/delete2/hubert
+Content-Type: application/json
