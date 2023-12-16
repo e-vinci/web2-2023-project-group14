@@ -202,6 +202,20 @@ function renderNavbar() {
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#" data-uri="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-uri="/game">Game</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#" data-uri="/ranking">Ranking</a>
+                </li>          
+                <li class="nav-item">
+                  <a class="nav-link" href="#" data-uri="/resource">Resource Hub</a>
+                </li>                       
+            </ul>
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item dropdown">
             <a class="btn nav-link auth-btn px-3 dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="margin-right: 20px;">
