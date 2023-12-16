@@ -67,6 +67,7 @@ const rankingDB = {
     }
   },
   deletePlayer: async (username) => {
+    const client = await pool.connect();
     try {
       const userFound = await membersDB.readOneUserFromUsername(username);
       if (!userFound) return undefined;
@@ -74,7 +75,6 @@ const rankingDB = {
       const query = 'DELETE FROM users WHERE username = $1';
       const values = [username];
 
-      const client = await pool.connect();
       const res = await client.query(query, values);
       console.log(`${username} has been deleted from the database`);
 
