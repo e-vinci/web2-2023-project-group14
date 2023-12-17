@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
 import Phaser from 'phaser';
 
-const HEALTH = 40;
+const HEALTH = 130;
 const DAMAGE = 30;
-const RANGE = 60;
+const RANGE = 30;
 const SPEED = 30;
 
 const VOLUME_ATTACK_VALUE = 0.03;
@@ -57,7 +57,7 @@ console.log('Animation created:', scene.anims.get('ExtAttack'));
 console.log('Animation created:', scene.anims.get('ExtDeath'));
     }
     
-    static price=30;
+    static price=40;
 
     static getStats() {
       return {

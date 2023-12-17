@@ -1,10 +1,10 @@
 /* eslint-disable no-console */
 import Phaser from 'phaser';
 
-const HEALTH = 1000;
-const DAMAGE = 15;
+const HEALTH = 1200;
+const DAMAGE = 25;
 const RANGE = 70;
-const SPEED = 20;
+const SPEED = 25;
 
 const VOLUME_ATTACK_VALUE = 0.03;
 export default class Knight extends Phaser.Physics.Arcade.Sprite{
@@ -60,7 +60,7 @@ console.log('Animation created:', scene.anims.get('KnighDeath'));
 
     }
 
-    static price=200;
+    static price=250;
 
     static getStats() {
       return {

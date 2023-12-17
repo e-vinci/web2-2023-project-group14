@@ -1,9 +1,9 @@
 import Phaser from 'phaser';
 
-const HEALTH = 40;
-const DAMAGE = 50;
-const RANGE = 120;
-const SPEED = 20;
+const HEALTH = 120;
+const DAMAGE = 60;
+const RANGE = 130;
+const SPEED = 25;
 
 const VOLUME_ATTACK_VALUE = 0.03;
 export default class Necro extends Phaser.Physics.Arcade.Sprite{
@@ -60,7 +60,7 @@ console.log('Animation created:', scene.anims.get('NecAttack'));
 
     }
   
-    static price=70;
+    static price=90;
 
     static getStats() {
       return {

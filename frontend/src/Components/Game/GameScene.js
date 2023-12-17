@@ -45,7 +45,7 @@ let objPlayerBase2;
 
 let baseHealthBarValue;
 
-const minimumHpNeededToTurnHealthBarInRed = 500;
+const minimumHpNeededToTurnHealthBarInRed = 1000;
 let colorGreen = 0x008000;
 let colorRed = 0xFF0000;
 let colorUsedP1 = null;
@@ -486,19 +486,19 @@ const spawnWarriors2 = () => {
       
       switch(index) {
         case 0:
-          price = 50;
+          price = Archer.getStats().price;
           break;
         case 1:
-          price = 30;
+          price = Exterminator.getStats().price;
           break;
         case 2:
-          price = 200;
+          price = Knight.getStats().price;
           break;
         case 3:
-          price = 70;
+          price = Necro.getStats().price;
           break;
         case 4:
-          price = 500;
+          price = Warrior.getStats().price;
           break;
         default:
           console.error("Index d'unité invalide");
@@ -515,19 +515,19 @@ const spawnWarriors2 = () => {
       
       switch(index) {
         case 0:
-          price = 50;
+          price = Archer.getStats().price;
           break;
         case 1:
-          price = 30;
+          price = Exterminator.getStats().price;
           break;
         case 2:
-          price = 200;
+          price = Knight.getStats().price;
           break;
         case 3:
-          price = 70;
+          price = Necro.getStats().price;
           break;
         case 4:
-          price = 500;
+          price = Warrior.getStats().price;
           break;
         default:
           console.error("Index d'unité invalide");
@@ -583,7 +583,7 @@ const spawnWarriors2 = () => {
           }
         }, 1000); // 1 seconde de délai
     
-        timeLeft = 15;
+        timeLeft = 20;
         this.player1.addGolds(incrementAmount);
         this.player2.addGolds(incrementAmount);
         const currentGolds1 = Math.floor(this.player1.golds); // Utilisez Math.floor pour arrondir vers le bas

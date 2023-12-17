@@ -1,9 +1,9 @@
 import Phaser from 'phaser';
 
-const HEALTH = 3000;
-const DAMAGE = 80;
+const HEALTH = 3500;
+const DAMAGE = 100;
 const RANGE = 40;
-const SPEED = 50;
+const SPEED = 55;
 
 const VOLUME_ATTACK_VALUE = 0.03;
 export default class Warrior extends Phaser.Physics.Arcade.Sprite{
@@ -58,7 +58,7 @@ console.log('Animation created:', scene.anims.get('WarriorDeath'));
 
 }
   
-static price=500;
+static price=600;
 
 static getStats() {
   return {

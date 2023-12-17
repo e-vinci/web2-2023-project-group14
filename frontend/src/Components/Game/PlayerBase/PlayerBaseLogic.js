@@ -3,7 +3,7 @@ import Phaser from 'phaser';
 export default class PlayerBase extends Phaser.Physics.Arcade.Sprite{
     constructor(scene, x, y) {
       super(scene, x, y, 'Base');
-      this.health = 2500;
+      this.health = 5000;
       this.speed = 0;
      
     // Add this entity to the scene's physics
