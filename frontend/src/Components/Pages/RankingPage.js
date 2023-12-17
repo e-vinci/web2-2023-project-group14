@@ -1,5 +1,5 @@
 import { clearPage } from '../../utils/render';
-import initializeGdpr from '../../utils/gdprUtils';
+import {initializeGdpr} from '../../utils/gdprUtils';
 import { isAuthenticated1, isAuthenticated2, getAuthenticatedUser1, getAuthenticatedUser2 } from '../../utils/auths';
 
 const RankingPage = () => {
