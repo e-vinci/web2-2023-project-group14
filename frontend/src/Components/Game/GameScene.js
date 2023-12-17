@@ -583,7 +583,7 @@ const spawnWarriors2 = () => {
           }
         }, 1000); // 1 seconde de délai
     
-        timeLeft = 20;
+        timeLeft = 25;
         this.player1.addGolds(incrementAmount);
         this.player2.addGolds(incrementAmount);
         const currentGolds1 = Math.floor(this.player1.golds); // Utilisez Math.floor pour arrondir vers le bas

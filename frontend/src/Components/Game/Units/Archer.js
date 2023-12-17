@@ -56,7 +56,7 @@ console.log('Animation created:', scene.anims.get('RedAttack'));
 console.log('Animation created:', scene.anims.get('RedDeath'));
     }
 
-    static price=60;
+    static price=100;
 
     static getStats() {
       return {

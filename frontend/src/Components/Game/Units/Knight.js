@@ -60,7 +60,7 @@ console.log('Animation created:', scene.anims.get('KnighDeath'));
 
     }
 
-    static price=250;
+    static price=350;
 
     static getStats() {
       return {

@@ -60,7 +60,7 @@ console.log('Animation created:', scene.anims.get('NecAttack'));
 
     }
   
-    static price=90;
+    static price=150;
 
     static getStats() {
       return {
