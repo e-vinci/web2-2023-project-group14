@@ -262,59 +262,6 @@ function renderNavbar() {
     e.preventDefault();
     Navigate('/');
   });
-  
-  const deleteAccountButton1 = document.getElementById('delete1');
-  if (deleteAccountButton1) {
-    deleteAccountButton1.addEventListener('click', () => {
-      // Show confirmation dialog
-      const confirmDeletion = window.confirm('Are you sure you want to delete your account?');
-      if (confirmDeletion) {
-        // Invoke the function to delete the account (adjust the function name accordingly)
-        deleteAccountFunction(username1);
-      }
-    });
-  }
-
-  const deleteAccountButton2 = document.getElementById('delete2');
-  if (deleteAccountButton2) {
-    deleteAccountButton2.addEventListener('click', () => {
-      // Show confirmation dialog
-      const confirmDeletion = window.confirm('Are you sure you want to delete your account?');
-      if (confirmDeletion) {
-        // Invoke the function to delete the account (adjust the function name accordingly)
-        deleteAccountFunction(username2);
-      }
-    });
-  }
-
-  function deleteAccountFunction(username) {
-    // Perform the deletion logic here, such as making an AJAX request to your server
-    // You can use the fetch API or any other method to send a request to your server
-    // Example using fetch:
-    fetch(`/api/deleteAccount/${username}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        // Add any other headers if needed (e.g., authentication headers)
-      },
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`Failed to delete account: ${response.status} ${response.statusText}`);
-        }
-        return response.json();
-      })
-      .then(data => {
-        // Handle the success response from the server
-        console.log('Account deleted successfully', data);
-        // Redirect to a new page or perform any other actions
-      })
-      .catch(error => {
-        // Handle errors during the deletion process
-        console.error('Error deleting account:', error.message);
-        // Display an error message to the user or perform other error-handling actions
-      });
-  }
 
 
 
