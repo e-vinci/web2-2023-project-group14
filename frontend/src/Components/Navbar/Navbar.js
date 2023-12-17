@@ -6,6 +6,10 @@ import Navigate from '../Router/Navigate';
 import { renderImage } from '../../utils/render';
 // eslint-disable-next-line no-unused-vars
 import { isAuthenticated1, isAuthenticated2, getAuthenticatedUser2, getAuthenticatedUser1 } from '../../utils/auths';
+// eslint-disable-next-line import/no-cycle
+import Logout1 from '../Logout/Logout1';
+// eslint-disable-next-line import/no-cycle
+import Logout2 from '../Logout/Logout2';
 
 let username1;
 let username2;
@@ -224,7 +228,7 @@ function renderNavbar() {
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
               <li><a class="dropdown-item" href="#" data-uri="/logout1">Logout</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#" >Delete Account</a></li>
+              <li><a class="dropdown-item" href="# id="delete1">Delete Account</a></li>
             </ul>
           </li>   
           <li class="nav-item dropdown">
@@ -234,7 +238,7 @@ function renderNavbar() {
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
               <li><a class="dropdown-item" href="#" data-uri="/logout2">Logout</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Delete Account</a></li>
+              <li><a class="dropdown-item" href="#" id="delete2">Delete Account</a></li>
             </ul>
           </li>                       
         </ul>
@@ -271,6 +275,7 @@ function renderNavbar() {
       if (confirmDeletion) {
         // Invoke the function to delete the account (adjust the function name accordingly)
         deleteAccountFunction(username1);
+        Logout1();
       }
     });
   }
@@ -283,6 +288,7 @@ function renderNavbar() {
       if (confirmDeletion) {
         // Invoke the function to delete the account (adjust the function name accordingly)
         deleteAccountFunction(username2);
+        Logout2();
       }
     });
   }
@@ -291,7 +297,7 @@ function renderNavbar() {
     // Perform the deletion logic here, such as making an AJAX request to your server
     // You can use the fetch API or any other method to send a request to your server
     // Example using fetch:
-    fetch(`/api/deleteAccount/${username}`, {
+    fetch(`${process.env.API_BASE_URL}/auths/delete2/${username}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',

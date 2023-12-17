@@ -3,10 +3,10 @@ import { clearAuthenticatedUser1 } from '../../utils/auths';
 import Navbar from '../Navbar/Navbar';
 import Navigate from '../Router/Navigate';
 
-const Logout = () => {
+const Logout1 = () => {
   clearAuthenticatedUser1();
   Navbar();
   Navigate('/');
 };
 
-export default Logout;
+export default Logout1;

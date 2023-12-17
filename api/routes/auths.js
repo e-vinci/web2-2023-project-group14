@@ -65,6 +65,7 @@ router.post('/login', async (req, res) => {
 
 router.delete('/delete2/:username', async (req, res) => {
   const { username } = req.params;
+  console.log('username: ', { username });
 
   // Validate the input
   if (!username) {

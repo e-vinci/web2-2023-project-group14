@@ -5,8 +5,8 @@ POST {{baseUrl}}/auths/login
 Content-Type: application/json
 
 {
-    "username":"unknown",
-    "password":"admin"
+    "newUserName":"hubert2",
+    "newUserPassword":"admin"
 }
 
 ### Login the default admin
@@ -38,6 +38,6 @@ Content-Type: application/json
     "username":"manager",
     "password":"manager"
 }
-
-DELETE {{baseUrl}}/auths/delete2/hubert
+###
+DELETE {{baseUrl}}/auths/delete2/hl4
 Content-Type: application/json
