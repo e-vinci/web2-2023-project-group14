@@ -141,7 +141,7 @@ function renderLoginForm() {
     const noAccountP2 = document.createElement('p');
     noAccountDiv2.className = 'text-center';
     noAccountDiv2.innerHTML = `Don't have an account yet? <a href="/register">Register now</a>
-    <br>Read our  <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"> policy</a>`;
+    <br>Read our  <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">confidentiality policy</a>`;
 
     
 
@@ -296,7 +296,7 @@ function renderLoginForm() {
     const noAccountP = document.createElement('p');
     noAccountDiv.className = 'text-center';
     noAccountDiv.innerHTML = `Don't have an account yet? <a href="/register">Register now</a>
-    <br>Read our  <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"> policy</a>`;
+    <br>Read our  <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">confidentiality policy</a>`;
 
     usernameDiv.appendChild(usernameLabel);
     usernameDiv.appendChild(username);

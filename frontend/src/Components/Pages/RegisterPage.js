@@ -117,7 +117,7 @@ async function renderRegisterForm() {
   const alreadyAccountP = document.createElement('p');
   alreadyAccountDiv.className = 'text-center';
   alreadyAccountDiv.innerHTML = `Already have an account? <a href="/login">Login now</a>
-  <br>Read our  <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"> policy</a>`;
+  <br>Read our  <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"> confidentiality policy</a>`;
 
   backgroundDiv.appendChild(renderGdpr());
 
