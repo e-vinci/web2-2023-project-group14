@@ -212,14 +212,9 @@ const HomePage = () => {
   divSection1.appendChild(introRow6);
 
   const introTextLong = `
-  <p>Amidst the whispering trees and veils of mist that draped the mystical forest, an unlikely alliance emerged, a tapestry woven with threads of bravery, darkness, valor, and enigma.</p>
-  <p>At the heart of this shadowy realm stood a young girl, the Archer, draped in her iconic red hood, her bow strung with determination. She navigated the labyrinthine woods, confronting creatures of nightmare, each encounter etching tales of resilience into the fabric of her being. Her unwavering courage, honed through trials, painted her as a beacon of hope in this enigmatic world.</p>
-  <p>Beside her strode the Knight, a figure towering in red armor, his fiery longblade casting warm hues against the gloom. His noble heart beat in unison with the virtues of valor and honor, his presence illuminating the darkness that threatened to engulf the forest. He embodied the very essence of chivalry, a guardian of light in this shadowy domain.</p>
-  <p>In the depths of the mist-laden groves, a black automaton, the Exterminator, stood sentinel. Its darkened form, wielding a weapon not for malice but protection, served as a silent guardian, guided by a virtuous code that transcended its metallic frame. Amidst the haunting fog, it stood as a symbol of justice, a silent sentinel warding off encroaching darkness.</p>
-  <p>Yet, in the deeper recesses, cloaked in black, was the Necromancer, a haunting figure whose very aura exuded an ominous energy. His staff aflame with crimson fire pierced through the obscurity, marking his malevolent dominion over forbidden arts. His presence whispered of dark forces at play, a harbinger of danger in the murky depths.</p>
-  <p>And emerging from the shadows, a devilish entity, the Warrior, a being dark as the abyss itself, with horns that seemed to pierce the very fabric of reality. His purple eyes radiated an eerie glow, his electrified sword crackling with ominous energy. His malevolent presence cast a foreboding shadow across the land, marking him as the undisputed antagonist of this surreal world.</p>
-  <p>As fate wove their destinies together, these disparate figures found themselves entwined in a dance of opposing forces. The Archer's resolve clashed with the Necromancer's dark influence, while the Knight's valor stood against the Warrior's malevolence. The Exterminator, a silent witness, stood vigilant amidst the clash, a beacon of justice amidst the chaos.</p>
-  <p>Their intertwined stories, a symphony of light and shadow, bravery and malevolence, painted the canvas of this fantastical world, a tale waiting to be unfurled, inviting explorers to delve into the depths of mystery, courage, and the eternal struggle between darkness and light.</p>
+  <p>Amidst the whispering trees and veils of mist that draped the mystical forest, an unlikely alliance emerged, a tapestry woven with threads of bravery, darkness, valor, and enigma. At the heart of this shadowy realm stood a young girl, the Archer, draped in her iconic red hood, her bow strung with determination. She navigated the labyrinthine woods, confronting creatures of nightmare, each encounter etching tales of resilience into the fabric of her being. Her unwavering courage, honed through trials, painted her as a beacon of hope in this enigmatic world. Beside her strode the Knight, a figure towering in red armor, his fiery longblade casting warm hues against the gloom. His noble heart beat in unison with the virtues of valor and honor, his presence illuminating the darkness that threatened to engulf the forest. He embodied the very essence of chivalry, a guardian of light in this shadowy domain.</p>
+  <p>In the depths of the mist-laden groves, a black automaton, the Exterminator, stood sentinel. Its darkened form, wielding a weapon not for malice but protection, served as a silent guardian, guided by a virtuous code that transcended its metallic frame. Amidst the haunting fog, it stood as a symbol of justice, a silent sentinel warding off encroaching darkness. Yet, in the deeper recesses, cloaked in black, was the Necromancer, a haunting figure whose very aura exuded an ominous energy. His staff aflame with crimson fire pierced through the obscurity, marking his malevolent dominion over forbidden arts. His presence whispered of dark forces at play, a harbinger of danger in the murky depths.</p>
+  <p>And emerging from the shadows, a devilish entity, the Warrior, a being dark as the abyss itself, with horns that seemed to pierce the very fabric of reality. His purple eyes radiated an eerie glow, his electrified sword crackling with ominous energy. His malevolent presence cast a foreboding shadow across the land, marking him as the undisputed antagonist of this surreal world. As fate wove their destinies together, these disparate figures found themselves entwined in a dance of opposing forces. The Archer's resolve clashed with the Necromancer's dark influence, while the Knight's valor stood against the Warrior's malevolence. The Exterminator, a silent witness, stood vigilant amidst the clash, a beacon of justice amidst the chaos. Their intertwined stories, a symphony of light and shadow, bravery and malevolence, painted the canvas of this fantastical world, a tale waiting to be unfurled, inviting explorers to delve into the depths of mystery, courage, and the eternal struggle between darkness and light.</p>
   `;
 
   const accordion1 = `<div class="accordion" id="accordionLore">
@@ -298,28 +293,22 @@ const HomePage = () => {
   warriorImg.alt = 'Warrior artwork'; // Set alt text for accessibility
 
   // cards content
-  const archerCardBodyText = `<p>In the heart of an enigmatic forest, shrouded in the mystery of ancient whispers, there stands a young girl, a figure of both innocence and unwavering courage. Wrapped in a vibrant red hood, she appears almost ethereal against the backdrop of looming trees and the lurking shadows that dance amidst the foliage.</p>
-  <p>With every step through this labyrinth of secrets, the girl confronts terrifying creatures, their twisted forms challenging her mettle. Yet, she stands resolute, her bow taut with determination, each arrow fired a testament to her unyielding spirit. Each monstrous adversary becomes a stepping stone, fortifying her resolve and sculpting her into a beacon of bravery in this darkened realm.</p>
-  <p>Her story is not merely one of survival but of transformation, from a solitary figure navigating the unknown to a beacon of hope cutting through the veil of the mysterious forest. Each challenge embraced, each battle won, etches her name into the lore of this surreal world as a true heroine, a young archer of unparalleled strength and unwavering will.</p>`;
+  const archerCardBodyText = `<p>In an enigmatic forest, shrouded in ancient whispers, a young girl stands. Cloaked in a vibrant red hood, she is a beacon of innocence and courage against the backdrop of towering trees and lurking shadows. As she navigates this labyrinth of secrets, she confronts terrifying creatures. Yet, she remains resolute, her bow taut with determination. Each arrow fired is a testament to her spirit, each monstrous adversary a stepping stone, fortifying her resolve and molding her into a beacon of bravery.</p>
+<p>Her journey is not merely survival but transformation. From a solitary figure navigating the unknown to a beacon of hope piercing the veil of the mysterious forest. Each challenge embraced, each battle won, etches her name into the lore of this surreal world. She emerges as a true heroine, a young archer of unparalleled strength and unwavering will.</p>`;
 
-  const extCardBodyText = `<p>Deep within the mist-laden embrace of an ancient forest, an imposing figure stands guard amidst the ominous shadows, a blackened automaton, its metallic frame bearing the scars of time and trials. This solemn guardian, despite its foreboding appearance, is not a harbinger of malevolence but a vigilant protector wielding its weapon not in aggression but in defense.</p>
-  <p>Through the veil of fog and uncertainty, this machine holds steadfast, guided by an inner code of righteousness that surpasses its mechanical existence. Its presence is a beacon of justice amid the eerie wilderness, a silent sentinel watching over the enigmatic depths of the forest.</p>
-  <p>This guardian's tale is one of quiet heroism, its metallic heart pulsating with a noble purpose. In the stillness of the misty groves, it embodies not fear but a sense of security, a vigilant force ensuring the delicate balance between light and shadow remains undisturbed, a silent warrior standing resolute against the encroaching darkness.</p>`;
+const extCardBodyText = `<p>Deep within an ancient forest, shrouded in mist, stands an imposing figure. A blackened automaton, its metallic frame scarred by time and trials, guards amidst ominous shadows. Despite its foreboding appearance, this solemn guardian is a vigilant protector, wielding its weapon in defense, not aggression. Through the fog and uncertainty, it holds steadfast, guided by an inner code of righteousness that transcends its mechanical existence.</p>
+<p>Its presence is a beacon of justice in the eerie wilderness, a silent sentinel overseeing the forest's enigmatic depths. The guardian's tale is one of quiet heroism, its metallic heart pulsating with noble purpose. Amid the stillness of the misty groves, it embodies security, not fear. It is a vigilant force maintaining the delicate balance between light and shadow, a silent warrior resolute against encroaching darkness.</p>`;
 
-  const knightCardBodyText = `<p>Within the heart of the darkened woods, cloaked in an aura of mystery, stands a knight adorned in resplendent red armor. His towering figure, a contrast against the gloom, holds a fire longblade ablaze with a radiant glow that cuts through the murk, illuminating his path with an unwavering warmth.</p>
-  <p>This valiant warrior is more than a mere guardian; he embodies the virtues of honor and courage. His noble heart beats in harmony with the rhythm of his resplendent armor, casting an aura that resonates hope into the shadows. He is a beacon of light in this shadowy world, a symbol of valor and unwavering determination.</p>
-  <p>His story, etched in the annals of this mystical realm, is a testament to bravery—a knight who embodies the virtues of righteousness and valor, a stalwart defender whose fiery resolve refuses to be extinguished by the encroaching darkness.</p>`;
+const knightCardBodyText = `<p>In the heart of the darkened woods, a knight in resplendent red armor stands, cloaked in mystery. His towering figure contrasts the gloom, his fire longblade ablaze with a radiant glow that cuts through the murk, illuminating his path. More than a guardian, this valiant warrior embodies honor and courage. His noble heart beats in harmony with his armor, casting an aura of hope into the shadows.</p>
+<p>His story, etched in the annals of this mystical realm, is a testament to bravery. A knight embodying righteousness and valor, a stalwart defender whose fiery resolve refuses to be extinguished by the encroaching darkness. An undisputed villain reigning supreme within the eerie confines of this fog-shrouded domain, his dominion over dark powers casts a foreboding shadow across the land.</p>`;
 
-  const necroCardBodyText = `<p>Cloaked in the deepest shades of black, adorned with a menacing crimson belt, the necromancer roams the depths of a shrouded, fog-laden forest. His presence, marked by a staff ablaze with crimson fire, pierces through the darkness, casting an ominous glow that betrays the malevolent power he commands.</p>
-  <p>In his left hand, a skull rests as a chilling testament to his mastery over the darker arts. His very essence permeates the forest, chilling the air with an aura that whispers of imminent danger. His enigmatic figure, veiled in the fog, is a harbinger of the macabre, a force to be reckoned with, marking the boundaries between life and death with an unsettling prowess.</p>
-  <p>This necromancer's tale is one of forbidden knowledge and the wielding of dark forces. His presence, a looming threat within the obscurity, shapes the very fabric of this mysterious world, a sinister enigma whose mere existence sends shivers down the spine of all who dare to tread within the foggy depths.</p>`;
+const necroCardBodyText = `<p>Cloaked in deep black, adorned with a menacing crimson belt, the necromancer roams a shrouded, fog-laden forest. His presence, marked by a staff ablaze with crimson fire, pierces the darkness, casting an ominous glow that reveals his malevolent power. In his left hand, a skull rests, a chilling testament to his mastery over the darker arts. His essence permeates the forest, chilling the air with an aura whispering of imminent danger.</p>
+<p>His tale is one of forbidden knowledge and dark forces. His presence, a looming threat within the obscurity, shapes this mysterious world. A sinister enigma, his mere existence sends shivers down the spine of all who dare tread within the foggy depths. He is a harbinger of the macabre, a force marking the boundaries between life and death with unsettling prowess.</p>`;
 
-  const warriorCardBodyText = `<p>Emerging from the depths of an impenetrable forest shrouded in dense fog, a malevolent entity strides forth—a devilish figure, dark as the abyss itself. His elongated horns and piercing purple eyes radiate an eerie luminescence, a stark contrast against the murky surroundings. Adorned with a neon purple belt and wielding an electrified sword crackling with ominous energy, he embodies the epitome of darkness.</p>
-  <p>Every step he takes resonates with an unsettling power that sends tremors through the very core of the forest. His presence, an embodiment of sinister authority, marks him as the unequivocal antagonist of this realm—a malevolent force whose dominion over dark powers casts a foreboding shadow across the land.</p>
-  <p>His tale, whispered in hushed tones among the denizens of this enigmatic world, is a saga of formidable darkness—a warrior whose maleficent prowess and ominous presence strike fear into the hearts of all who dare to cross his path, an undisputed villain reigning supreme within the eerie confines of this fog-shrouded domain.</p>`;
-
+const warriorCardBodyText = `<p>From the depths of a fog-shrouded forest, a malevolent entity strides forth. A devilish figure, dark as the abyss, with elongated horns and piercing purple eyes. Adorned with a neon purple belt and wielding an electrified sword, he embodies darkness. Each step resonates with power, sending tremors through the forest. His presence, an embodiment of sinister authority, marks him as the realm's antagonist.</p>
+<p>His tale, whispered among the denizens of this world, is a saga of formidable darkness. A warrior whose maleficent prowess and ominous presence strike fear into the hearts of all who dare cross his path. An undisputed villain reigning supreme within the eerie confines of this fog-shrouded domain, his dominion over dark powers casts a foreboding shadow.</p>`;
   // cards creations
-  const cardArcherContent = `<div class="card my-5 border-archermain card-color">
+  const cardArcherContent = `<div class="card my-5 border-archermain card-color min-vh-100">
   <img src="${archerImg.src}" class="card-img-top" alt="Archer image artwork">
   <div class="card-body">
     <h5 class="card-title">The Archer</h5>
@@ -327,7 +316,7 @@ const HomePage = () => {
   </div>
 </div>`;
 
-  const cardExtContent = `<div class="card my-5 border-bot-main card-color">
+  const cardExtContent = `<div class="card my-5 border-bot-main card-color min-vh-100">
   <img src="${extImg.src}" class="card-img-top" alt="Exterminator image artwork">
   <div class="card-body">
     <h5 class="card-title">The Exterminator</h5>
@@ -335,7 +324,7 @@ const HomePage = () => {
   </div>
   </div>`;
 
-  const cardKnightContent = `<div class="card my-5 border-knight-main card-color">
+  const cardKnightContent = `<div class="card my-5 border-knight-main card-color min-vh-100">
   <img src="${knightImg.src}" class="card-img-top" alt="knight image artwork">
   <div class="card-body">
     <h5 class="card-title">The Knight</h5>
@@ -343,7 +332,7 @@ const HomePage = () => {
   </div>
   </div>`;
 
-  const cardNecroContent = `<div class="card my-5 border-necro-main card-color">
+  const cardNecroContent = `<div class="card my-5 border-necro-main card-color min-vh-100">
   <img src="${necroImg.src}" class="card-img-top" alt="necro image artwork">
   <div class="card-body">
     <h5 class="card-title">The Necromancer</h5>
@@ -351,7 +340,7 @@ const HomePage = () => {
   </div>
   </div>`;
 
-  const cardWarriorContent = `<div class="card my-5 border-warrior-main card-color">
+  const cardWarriorContent = `<div class="card my-5 border-warrior-main card-color min-vh-100">
   <img src="${warriorImg.src}" class="card-img-top" alt="warrior image artwork">
   <div class="card-body">
     <h5 class="card-title">The Warrior</h5>
