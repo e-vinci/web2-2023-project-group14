@@ -7,7 +7,6 @@ const corsOptions = {
   origin: ['http://localhost:8080', 'https://e-baron.github.io', 'https://flaviu-bilic-vinci.github.io'],
 }; // 'https://e-baron.github.io'   Should we delete this?
 
-const usersRouter = require('./routes/users');
 const authsRouter = require('./routes/auths');
 const rankingRouter = require('./routes/ranking');
 
@@ -20,7 +19,6 @@ app.use(cookieParser());
 
 app.use(cors(corsOptions));
 
-app.use('/users', usersRouter);
 app.use('/auths', cors(corsOptions), authsRouter);
 app.use('/ranking', rankingRouter);
 
