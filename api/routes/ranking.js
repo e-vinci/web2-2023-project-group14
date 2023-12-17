@@ -21,7 +21,6 @@ router.get('/', async (req, res) => {
 router.post('/addRanking', async (req, res) => {
   const username = req.body;
 
-  console.log(username);
   if (!username) return res.sendStatus(400); // 400 Bad Request
 
   const updatedRankingUser = await rankingDB.addRanking(username);
@@ -35,7 +34,6 @@ router.post('/addRanking', async (req, res) => {
 router.post('/removeRanking', async (req, res) => {
   const username = req.body;
 
-  console.log(username);
   if (!username) return res.sendStatus(400); // 400 Bad Request
 
   const updatedRankingUser = await rankingDB.removeRanking(username);

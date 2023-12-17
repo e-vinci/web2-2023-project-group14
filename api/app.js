@@ -8,7 +8,6 @@ const corsOptions = {
 }; // 'https://e-baron.github.io'   Should we delete this?
 
 const usersRouter = require('./routes/users');
-const pizzaRouter = require('./routes/pizzas');
 const authsRouter = require('./routes/auths');
 const rankingRouter = require('./routes/ranking');
 
@@ -22,7 +21,6 @@ app.use(cookieParser());
 app.use(cors(corsOptions));
 
 app.use('/users', usersRouter);
-app.use('/pizzas', pizzaRouter);
 app.use('/auths', cors(corsOptions), authsRouter);
 app.use('/ranking', rankingRouter);
 

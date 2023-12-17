@@ -324,7 +324,6 @@ function renderLoginForm() {
 
     rightSection.appendChild(formWrapper);
 
-    form.addEventListener('submit', login);
     form.addEventListener('submit', (e) => {
       login(e,false);
     });

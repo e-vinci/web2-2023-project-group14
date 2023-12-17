@@ -16,7 +16,6 @@ const routes = {
   '/resource': ResourcePage,
   '/logout1': Logout1,
   '/logout2': Logout2,
-  // '/delete2/:username': 'delete2/:
 };
 
 export default routes;

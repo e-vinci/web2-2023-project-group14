@@ -5,7 +5,6 @@ import { setAuthenticatedUser1, setAuthenticatedUser2, clearAuthenticatedUser1, 
 import Navigate from '../Router/Navigate';
 import Navbar from '../Navbar/Navbar';
 // eslint-disable-next-line no-unused-vars
-import { checkRegistrationPassword, checkRegistrationPassword2, checkRegistrationUsername } from '../../utils/validator';
 import {initializeGdpr, renderGdpr} from '../../utils/gdprUtils';
 
 const RegisterPage = () => {
@@ -168,80 +167,7 @@ async function renderRegisterForm() {
 
   form.addEventListener('submit', onRegister);
 
-  // adding confirmation text to the dom for confiramtion
-  const confEmailFeedback = document.createElement('div');
-  confEmailFeedback.className = 'testAPI my-5'
-  backgroundDiv.appendChild(confEmailFeedback);
-
-
-
-
   };
-
-  /* submit.addEventListener('click', async () => {
-    // event.preventDefault(); // I think this is needed; if not, the page refreshes itself and wipes out the response
-    // creating the new user object to send for verification to the backend
-    const formInfos = document.querySelector('form'); // added for the new approach
-    const newUserData = {
-      newUserEmail : formInfos.elements.userEmail.value,
-      newUserName : formInfos.elements.username.value,
-      newUserPassword : formInfos.elements.password.value,
-      newUserConfirmedPassword : formInfos.elements.passwordConf.value
-    }
-  
-    try {
-      const response = await fetch (`${process.env.API_BASE_URL}/auths/registerTestEmailAPI`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(newUserData)
-
-      });
-    
-      if (response.ok) {
-        const responseData = await response.json();
-        confEmailFeedback.innerHTML = JSON.stringify(responseData);
-        console.log('Registration successful: ', responseData);
-        // Navigate('/'); // just a placeholder currently
-        
-      }
-    } catch (err) {
-      console.error('RegisterPage::error: ', err);
-    }
-    onRegister();
-    });
-*/
-/*
-    username.addEventListener('input', debounce(async () =>  {
-      const registerFormGroup1 = username.parentElement.parentElement;
-      const usernameSmall = document.querySelector('.username-small')
-
-      if (username.value.trim() === '') {
-        registerFormGroup1.className = "register-form-group failure";
-        usernameSmall.innerHTML = "Veuillez introduire un nom d'utilisateur";
-      } else {
-        const response = await fetch(`${process.env.API_BASE_URL}/users/${username.value}`);
-        if (response.ok) {
-          registerFormGroup1.className = "register-form-group failure";
-          usernameSmall.innerHTML = "Nom d'utilisateur déjà existant";
-          usernameValid = false;
-        } else {
-          const { errors, isValid } = checkRegistrationUsername(username.value);
-          if (!isValid) {
-            registerFormGroup1.className = "register-form-group failure";
-            usernameSmall.innerHTML = `${errors}`;
-            usernameValid = false;
-          } else {
-            registerFormGroup1.className = "register-form-group success";
-            usernameSmall.innerHTML = "Nom d'utilisateur disponible";
-            usernameValid = true;
-          }
-          
-        }
-      }
-    }, 1000));
-*/
 
     async function onRegister(e) {
       e.preventDefault();
@@ -250,6 +176,7 @@ async function renderRegisterForm() {
         newUserEmail : formInfos.elements.userEmail.value,
         newUserName : formInfos.elements.username.value,
         newUserPassword : formInfos.elements.password.value,
+        passwordConf : formInfos.elements.passwordConf.value
       }
 
       try {

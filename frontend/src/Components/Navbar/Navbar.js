@@ -297,7 +297,7 @@ function renderNavbar() {
     // Perform the deletion logic here, such as making an AJAX request to your server
     // You can use the fetch API or any other method to send a request to your server
     // Example using fetch:
-    fetch(`${process.env.API_BASE_URL}/auths/delete2/${username}`, {
+    fetch(`${process.env.API_BASE_URL}/auths/deleteUser/${username}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',

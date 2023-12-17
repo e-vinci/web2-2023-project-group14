@@ -1,6 +1,6 @@
 import { clearPage } from '../../utils/render';
 import {initializeGdpr} from '../../utils/gdprUtils';
-import { isAuthenticated1, isAuthenticated2, getAuthenticatedUser1, getAuthenticatedUser2 } from '../../utils/auths';
+
 
 const RankingPage = () => {
   clearPage();
@@ -52,47 +52,13 @@ async function renderRankingTable() {
     table.appendChild(row);
   });
 
-  // Fetch stats for Player 1 if connected
-  let statsPlayer1;
-  if (isAuthenticated1()) {
-    statsPlayer1 = await getAuthenticatedUser1();
-  }
-
-  // Fetch stats for Player 2 if connected
-  let statsPlayer2;
-  if (isAuthenticated2()) {
-    statsPlayer2 = await getAuthenticatedUser2();
-  }
-
-  // Create additional rows for Player 1 and Player 2 stats
-  if (statsPlayer1) {
-    createPlayerStatsRow(statsPlayer1, table, 'Player 1');
-  }
-
-  if (statsPlayer2) {
-    createPlayerStatsRow(statsPlayer2, table, 'Player 2');
-  }
+  
 
   rankingWrapper.appendChild(table);
   backgroundDiv.appendChild(rankingWrapper);
   main.appendChild(backgroundDiv);
 }
 
-function createPlayerStatsRow(stats, table, playerName) {
-  const statsRow = document.createElement('tr');
-  const playerNameCell = document.createElement('td');
-  playerNameCell.textContent = playerName;
-  statsRow.appendChild(playerNameCell);
-
-  // Assuming stats has properties like 'elo', 'wins', 'losses'
-  ['elo', 'wins', 'losses'].forEach((stat) => {
-    const td = document.createElement('td');
-    td.textContent = stats[stat];
-    statsRow.appendChild(td);
-  });
-
-  table.appendChild(statsRow);
-}
 
 async function getRanking() {
   try {

@@ -22,12 +22,8 @@ client.query('SELECT * from users', (err, res) => {
 const membersDB = {
   login: async (username, password) => {
     const userFound = await membersDB.readOneUserFromUsername(username);
-    console.log('user w membersDB: ', userFound);
     if (!userFound) return undefined;
-
-    console.log('poro: ', userFound.rows[0].password);
     const passwordMatch = await bcrypt.compare(password, userFound.rows[0].password);
-    console.log(passwordMatch);
     if (!passwordMatch) return undefined;
 
     const token = jwt.sign(
@@ -45,7 +41,8 @@ const membersDB = {
 
   register: async (email, username, password) => {
     const userFound = await membersDB.readOneUserFromUsername(username);
-    if (userFound) return undefined;
+    const userFoundByEmail = await membersDB.readOneUserFromEmail(email);
+    if (userFound || userFoundByEmail) return undefined;
 
     // eslint-disable-next-line no-undef
     const hashedPassword = await bcrypt.hash(password, saltRounds);
@@ -94,6 +91,26 @@ const membersDB = {
       // eslint-disable-next-line no-else-return
       } else {
         console.log(`User not found: ${username}`);
+      }
+    } finally {
+      client.release();
+    }
+  },
+
+  // eslint-disable-next-line consistent-return
+  readOneUserFromEmail: async (email) => {
+    const query = 'SELECT * FROM users WHERE email = $1';
+    const values = [email];
+    const client = await pool.connect();
+    try {
+      const result = await client.query(query, values);
+      if (result.rowCount > 0) {
+        const userId = result.rows[0].id_user;
+        console.log(`User ID for ${email}: ${userId}`);
+        return result;
+      // eslint-disable-next-line no-else-return
+      } else {
+        console.log(`User not found: ${email}`);
       }
     } finally {
       client.release();

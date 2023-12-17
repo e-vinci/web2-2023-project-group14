@@ -1,0 +1,36 @@
+@baseUrl = http://localhost:3000
+
+### Read all ranking
+GET {{baseUrl}}/ranking
+
+### Add ranking for user1
+POST {{baseUrl}}/ranking/addRanking
+Content-Type: application/json
+
+{
+    "username": "user1"
+}
+
+### Remove ranking for user1
+POST {{baseUrl}}/ranking/removeRanking
+Content-Type: application/json
+
+{
+    "username": "user1"
+}
+
+### Add ranking for unknown user
+POST {{baseUrl}}/ranking/addRanking
+Content-Type: application/json
+
+{
+    "username": "unknown"
+}
+
+### Remove ranking for unknown user
+POST {{baseUrl}}/ranking/addRanking
+Content-Type: application/json
+
+{
+    "username": "unknown"
+}
