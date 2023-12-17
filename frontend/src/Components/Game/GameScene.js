@@ -376,31 +376,6 @@ const spawnWarriors2 = () => {
       this.soundButton.setScale(1);
     });
 
-    // Dev button to go to the end scene (to be delted later in developement)
-    const goToEndSceneButton = this.add
-      .text(400, 450, 'Dev: go to end scene', { font: '24px Arial', fill: '#ffffff' })
-      .setDepth(1);
-    goToEndSceneButton.setInteractive();
-
-    goToEndSceneButton.on('pointerover', () => {
-      goToEndSceneButton.setFontSize(30);
-      goToEndSceneButton.setColor('#ffff99');
-      goToEndSceneButton.setX(400);
-      goToEndSceneButton.setY(445);
-    });
-    goToEndSceneButton.on('pointerout', () => {
-      goToEndSceneButton.setFontSize(24);
-      goToEndSceneButton.setColor('#ffffff');
-      goToEndSceneButton.setX(400);
-      goToEndSceneButton.setY(450);
-    });
-    goToEndSceneButton.on('pointerdown', () => {
-      this.sys.game.global = {winner: this.player1.playerName};
-      this.sound.stopAll();
-      this.scene.stop('game-scene');
-      this.scene.switch('end-scene');
-    });
-
     // Add pause button
     const pauseButton = this.add
       .text(10, 450, 'Pause', { font: '24px Arial', fill: '#ffffff' })
