@@ -1,38 +1,93 @@
 @baseUrl = http://localhost:3000
 
-### Try to login an unknow user
+### Try to login an unknown user
 POST {{baseUrl}}/auths/login
 Content-Type: application/json
 
 {
-    "username":"unknown",
-    "password":"admin"
+    "newUserName":"unknown",
+    "newUserPassword":"unknown"
 }
 
-### Login the default admin
-POST {{baseUrl}}/auths/login
-Content-Type: application/json
-
-{
-    "username":"admin",
-    "password":"admin"
-}
-
-
-### Create the manager user
+### Create user1
 POST {{baseUrl}}/auths/register
 Content-Type: application/json
 
 {
-    "username":"manager",
-    "password":"manager"
+    "newUserEmail":"user1@gmail.com",
+    "newUserName":"user1",
+    "newUserPassword":"user1",
+    "passwordConf":"user1"
 }
 
-### Login the manager user
+### Try to login user1 with wrong password
 POST {{baseUrl}}/auths/login
 Content-Type: application/json
 
 {
-    "username":"manager",
-    "password":"manager"
+    "newUserName":"user1",
+    "newUserPassword":"user100"
 }
+
+### Login user1
+POST {{baseUrl}}/auths/login
+Content-Type: application/json
+
+{
+    "newUserName":"user1",
+    "newUserPassword":"user1"
+}
+
+
+### Try to create an user with username already taken
+POST {{baseUrl}}/auths/register
+Content-Type: application/json
+
+{
+    "newUserEmail":"user2@gmail.com",
+    "newUserName":"user1",
+    "newUserPassword":"user2",
+    "passwordConf":"user2"
+}
+
+### Try to create an user with differenct passwords
+POST {{baseUrl}}/auths/register
+Content-Type: application/json
+
+{
+    "newUserEmail":"user2@gmail.com",
+    "newUserName":"user2",
+    "newUserPassword":"user2",
+    "passwordConf":"user3"
+}
+
+
+### Try to create an user with username already taken
+POST {{baseUrl}}/auths/register
+Content-Type: application/json
+
+{
+    "newUserEmail":"user5@gmailcom",
+    "newUserName":"user5",
+    "newUserPassword":"user5",
+    "passwordConf":"user5"
+}
+
+### Try to create an user with email already taken
+POST {{baseUrl}}/auths/register
+Content-Type: application/json
+
+{
+    "newUserEmail":"user1@gmail.com",
+    "newUserName":"user2",
+    "newUserPassword":"user2",
+    "passwordConf":"user2"
+}
+
+### Delete user 1
+DELETE {{baseUrl}}/auths/deleteUser/user1
+Content-Type: application/json
+
+### Try to delete unknown user
+DELETE {{baseUrl}}/auths/deleteUser/unknown
+Content-Type: application/json

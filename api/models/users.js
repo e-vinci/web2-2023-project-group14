@@ -1,101 +1,165 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const path = require('node:path');
-const { parse, serialize } = require('../utils/json');
+
+const { pool } = require('../utils/database');
 
 const jwtSecret = 'ilovemypizza!';
 const lifetimeJwt = 24 * 60 * 60 * 1000; // in ms : 24 * 60 * 60 * 1000 = 24h
 
 const saltRounds = 10;
+/*
+client.query('SELECT * from users', (err, res) => {
+  if (!err) {
+    console.log(res.rows);
+  } else {
+    console.log(err.message);
+  }
+  // eslint-disable-next-line no-unused-expressions
+  client.end;
+});
+*/
 
-const jsonDbPath = path.join(__dirname, '/../data/users.json');
+const membersDB = {
+  login: async (username, password) => {
+    const userFound = await membersDB.readOneUserFromUsername(username);
+    if (!userFound) return undefined;
+    const passwordMatch = await bcrypt.compare(password, userFound.rows[0].password);
+    if (!passwordMatch) return undefined;
 
-const defaultUsers = [
-  {
-    id: 1,
-    username: 'admin',
-    password: bcrypt.hashSync('admin', saltRounds),
+    const token = jwt.sign(
+      { username }, // session data added to the payload (payload : part 2 of a JWT)
+      jwtSecret, // secret used for the signature (signature part 3 of a JWT)
+      { expiresIn: lifetimeJwt }, // lifetime of the JWT (added to the JWT payload)
+    );
+
+    const authenticatedUser = {
+      username,
+      token,
+    };
+    return authenticatedUser;
   },
-];
 
-async function login(username, password) {
-  const userFound = readOneUserFromUsername(username);
-  if (!userFound) return undefined;
+  register: async (email, username, password) => {
+    const userFound = await membersDB.readOneUserFromUsername(username);
+    const userFoundByEmail = await membersDB.readOneUserFromEmail(email);
+    if (userFound || userFoundByEmail) return undefined;
 
-  const passwordMatch = await bcrypt.compare(password, userFound.password);
-  if (!passwordMatch) return undefined;
+    // eslint-disable-next-line no-undef
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
 
-  const token = jwt.sign(
-    { username }, // session data added to the payload (payload : part 2 of a JWT)
-    jwtSecret, // secret used for the signature (signature part 3 of a JWT)
-    { expiresIn: lifetimeJwt }, // lifetime of the JWT (added to the JWT payload)
-  );
+    const insert = `INSERT INTO users(id_user, email, username, password)
+    VALUES ($1, $2, $3, $4)`;
 
-  const authenticatedUser = {
-    username,
-    token,
-  };
+    const id = await membersDB.getNextId();
 
-  return authenticatedUser;
-}
+    const client = await pool.connect();
+    try {
+      const res = await client.query(insert, [
+        id,
+        email,
+        username,
+        hashedPassword,
+      ]);
+      console.log(res.rows[0]);
 
-async function register(username, password) {
-  const userFound = readOneUserFromUsername(username);
-  if (userFound) return undefined;
+      const token = jwt.sign(
+        { username }, // session data added to the payload (payload : part 2 of a JWT)
+        jwtSecret, // secret used for the signature (signature part 3 of a JWT)
+        { expiresIn: lifetimeJwt }, // lifetime of the JWT (added to the JWT payload)
+      );
+      const authenticatedUser = {
+        username,
+        token,
+      };
+      return authenticatedUser;
+    } finally {
+      client.release();
+    }
+  },
 
-  await createOneUser(username, password);
+  // eslint-disable-next-line consistent-return
+  readOneUserFromUsername: async (username) => {
+    const query = 'SELECT * FROM users WHERE username = $1';
+    const values = [username];
+    const client = await pool.connect();
+    try {
+      const result = await client.query(query, values);
+      if (result.rowCount > 0) {
+        const userId = result.rows[0].id_user;
+        console.log(`User ID for ${username}: ${userId}`);
+        return result;
+      // eslint-disable-next-line no-else-return
+      } else {
+        console.log(`User not found: ${username}`);
+      }
+    } finally {
+      client.release();
+    }
+  },
 
-  const token = jwt.sign(
-    { username }, // session data added to the payload (payload : part 2 of a JWT)
-    jwtSecret, // secret used for the signature (signature part 3 of a JWT)
-    { expiresIn: lifetimeJwt }, // lifetime of the JWT (added to the JWT payload)
-  );
+  // eslint-disable-next-line consistent-return
+  readOneUserFromEmail: async (email) => {
+    const query = 'SELECT * FROM users WHERE email = $1';
+    const values = [email];
+    const client = await pool.connect();
+    try {
+      const result = await client.query(query, values);
+      if (result.rowCount > 0) {
+        const userId = result.rows[0].id_user;
+        console.log(`User ID for ${email}: ${userId}`);
+        return result;
+      // eslint-disable-next-line no-else-return
+      } else {
+        console.log(`User not found: ${email}`);
+      }
+    } finally {
+      client.release();
+    }
+  },
 
-  const authenticatedUser = {
-    username,
-    token,
-  };
+  getNextId: async () => {
+    let nextId = 0;
 
-  return authenticatedUser;
-}
+    const query = 'SELECT MAX(id_user) AS maxId FROM users';
+    const client = await pool.connect();
+    try {
+      const result = await client.query(query);
+      console.log(result);
+      console.log('result.rows:', result.rows);
+      console.log('result.rows[0]:', result.rows[0]);
+      console.log('result.rows[0].maxid:', result.rows[0].maxId);
+      const maxId = result.rows[0].maxid || 0;
+      if (result.rows[0].maxid === null) {
+        console.log('id = 0');
+        return nextId;
+      }
+      // Increment the maximum ID to get the next ID
+      nextId = maxId + 1;
+      console.log(nextId);
+    } finally {
+      client.release();
+    }
+    return nextId;
+  },
 
-function readOneUserFromUsername(username) {
-  const users = parse(jsonDbPath, defaultUsers);
-  const indexOfUserFound = users.findIndex((user) => user.username === username);
-  if (indexOfUserFound < 0) return undefined;
+  deleteUser: async (username) => {
+    const query = 'DELETE FROM users WHERE username = $1';
+    const values = [username];
+    const client = await pool.connect();
+    try {
+      const result = await client.query(query, values);
+      if (result.rowCount > 0) {
+        console.log(`User deleted: ${username}`);
+        return true;
+      }
+      console.log(`User not found: ${username}`);
+      return false;
+    } finally {
+      client.release();
+    }
+  },
 
-  return users[indexOfUserFound];
-}
-
-async function createOneUser(username, password) {
-  const users = parse(jsonDbPath, defaultUsers);
-
-  const hashedPassword = await bcrypt.hash(password, saltRounds);
-
-  const createdUser = {
-    id: getNextId(),
-    username,
-    password: hashedPassword,
-  };
-
-  users.push(createdUser);
-
-  serialize(jsonDbPath, users);
-
-  return createdUser;
-}
-
-function getNextId() {
-  const users = parse(jsonDbPath, defaultUsers);
-  const lastItemIndex = users?.length !== 0 ? users.length - 1 : undefined;
-  if (lastItemIndex === undefined) return 1;
-  const lastId = users[lastItemIndex]?.id;
-  const nextId = lastId + 1;
-  return nextId;
-}
-
+};
 module.exports = {
-  login,
-  register,
-  readOneUserFromUsername,
+  membersDB,
 };

@@ -31,4 +31,30 @@ const isAdmin = (req, res, next) => {
   return next();
 };
 
-module.exports = { authorize, isAdmin };
+// external API to check email validity
+async function externalEmailApiVerification(email) {
+  try {
+    const requestBody = new URLSearchParams();
+    requestBody.append('email', email);
+    const response = await fetch('https://disify.com/api/email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: requestBody.toString(),
+    });
+    if (!response.ok) {
+      return { error: 'Email validation failed' };
+    // eslint-disable-next-line no-else-return
+    } else {
+      const responseData = await response.json(); // parses the json response to javascript
+      return responseData;
+    }
+  } catch (err) {
+    console.error('auths::error: ', err);
+    // eslint-disable-next-line no-undef
+    return json({ error: 'Internal server error' });
+  }
+}
+
+module.exports = { authorize, isAdmin, externalEmailApiVerification };

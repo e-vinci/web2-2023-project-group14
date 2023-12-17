@@ -1,0 +1,221 @@
+a {
+  text-decoration: none; /* Remove underline */
+  color: #004997; /* Change link color */
+}
+
+/* Apply different color when hovered */
+a:hover {
+  color: #006797; /* Change link color on hover */
+}
+
+.glow-div {
+  background-color: rgba(255, 0, 0, 0); /* Set your desired background color */
+  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.195); /* Adjust the values for your desired glow effect */
+  border-radius: 10px; /* Set your desired border-radius */
+}
+
+.equal-height-content {
+  flex: 1;  /* I have no idea how this works but might be usefull for future projects */
+}
+
+.noTextJustify {
+  text-align:left;
+}
+
+.resourcePageBackGround {
+  background-color: rgb(0, 0, 0);
+  height: 100%;
+}
+
+.footerColor {
+  background-color: #808080;
+  color: #fffff0;
+  font-family: 'Impact', sans-serif;
+}
+
+.mainText {
+  background-repeat: no-repeat;
+  color: #ffffff;
+  font-family: 'Tahoma';
+}
+
+.firstSection {
+  background-image: url('../assets/site_background/placeHolderBackground2.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.secondSection {
+  background-image: url('../assets/site_background/placeHolderBackground.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.thirdSection {
+  background-image: url('../assets/site_background/OIG.gXgEjGngjB6-transformed.png');
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
+}
+
+.mainColor {
+  background-image: url('../assets/site_background/OIG.gXgEjGngjB6-transformed.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card-color {
+  background-color: #b2b2b2cd;
+}
+
+/* Charachters cards */
+.border-archer {
+  border-width: 3px;
+  border-color: red;
+  max-width: 18rem;
+}
+
+.border-game {
+  background-color: rgba(255, 255, 255, 0.205);
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.border-bot {
+  border-width: 3px;
+  border-color: white;
+  max-width: 18rem;
+}
+
+.border-knight {
+  border-width: 3px;
+  border-color: yellow;
+  max-width: 18rem;
+}
+
+.border-necro {
+  border-width: 3px;
+  border-color: black;
+  max-width: 18rem;
+}
+
+.border-warrior {
+  border-width: 3px;
+  border-color: rgb(230, 0, 230);
+  max-width: 18rem;
+}
+
+/* borders main page */
+.border-archermain {
+  border-width: 3px;
+  border-color: red;
+}
+
+.border-bot-main {
+  border-width: 3px;
+  border-color: white;
+}
+
+.border-knight-main {
+  border-width: 3px;
+  border-color: yellow;
+}
+
+.border-necro-main {
+  border-width: 3px;
+  border-color: black;
+}
+
+.border-warrior-main {
+  border-width: 3px;
+  border-color: rgb(230, 0, 230);
+}
+
+.title-main-h1 {
+  margin-top: 30px;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-style: italic;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  padding-bottom: 5px;
+}
+
+.title-main-h2 {
+  margin-top: 15px;
+  font-style: italic;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  padding-top: 2px;
+  padding-bottom: 5px;
+}
+
+.textContent {
+  color: black;
+  background-color: #b2b2b2cd;
+  border-radius: 10px;
+  text-align: justify;
+}
+
+.textContentResource {
+  color: black;
+  background-color: #b2b2b2cd;
+  border-radius: 10px;
+  text-align: justify;
+}
+
+.accordion {
+  --bs-accordion-color: black;
+  --bs-accordion-btn-bg: #7e7e7e;
+  --bs-accordion-active-bg: #7e7e7e;
+  --bs-accordion-active-color: rgb(255, 255, 255);
+  --bs-accordion-bg: #ffffff1f;
+  --bs-accordion-btn-focus-box-shadow: none;
+}
+
+.slide_Initial_Position_Left {
+  transform: translateX(-100vw); /* Move the element 100% of the viewport width to the left */
+  /* Additional styles */
+}
+
+.slide_Initial_Position_Right {
+  transform: translateX(+100vw); /* Move the element 100% of the viewport width to the left */
+  /* Additional styles */
+}
+
+.appears {
+  opacity: 0;
+}
+
+.appearsDelay {
+  opacity: 0;
+}
+
+/* LoginPage - RegisterPage - RankingPage */
+.backgroundLogin {
+  background-image: url('../assets/site_background/placeHolderBackground.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.formDiv {
+  min-width: 350px;
+}
+
+/* test css for api TO BE DELETED AFTER */
+.testAPI {
+  
+  background-color: white;
+  color: black;
+}

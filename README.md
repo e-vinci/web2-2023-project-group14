@@ -1,3 +1,4 @@
+[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-718a45dd9cf7e7f842a935f5ebbe5719a5e09af4491e668f4dbf3b35d5cca122.svg)](https://classroom.github.com/online_ide?assignment_repo_id=12388778&assignment_repo_type=AssignmentRepo)
 # Projet Web2 2023
 ## Introduction
 - Ce boilerplate vous offre l'architecture de base de votre frontend et de votre API pour développer un projet qui vous tient à coeur et qui répond aux exigences résumées ci-dessous (et détaillées dans le template du rapport de projet). 
@@ -63,3 +64,39 @@
 
 ## Revues de projets par les pairs
 - Une fois votre projet soumis, vous devrez réaliser un minimum de 5 revues qui vous seront attribuées automatiquement via le site du cours.
+
+## Cas d'utilisations 
+- **High priority** :
+    - Animation des personnages (Robert)
+    - Faire bouger les personnages(Robert)
+    - Faire apparaitre la base des deux joueurs(Robert/Laurent)
+    - Afficher le hud (perso disponibles etc) (Igor)
+    - Logique des attaques(Laurent/Robert)
+    - Pouvoir quitter la partie(Laurent)
+    - Indication des ressources et statistiques du joueur(vie,or,nombre d'unités) (Laurent)
+    - Mise à jour de l'or (Laurent)
+    - Afficher le vainqueur(Flaviu)
+    - Statistiques des personnages(hp,atk,atkspd,def,speed,range) + BALANCING (Laurent/Flaviu/Robert)
+    - paramètres du jeu (Igor)
+    - Miniatures des personnages (Igor)
+    - Afficher les regles du jeux(Flaviu).
+    - afficher timer pour gold (Hubert)
+    - afficher timer de la partie (Hubert)
+    - mode de jeu à deux joueurs en local(Robert)
+    - page "About" (crédits, explication du projets, etc)(Flaviu)
+    - affichage de l'écran de pause(Laurent)
+    - affichage de l'écran de chargement du jeu (Laurent)
+    - background du jeu/map(Flaviu)
+    - logo + bouton home (Igor)
+    - création de compte et de connexion (Hubert)
+    - classement (en fonction du nbr de victoires) (Igor)
+    - Base de données (Igor et Hubert)
+- **Medium priority** :
+    - historiques des parties(Flaviu)
+    - pouvoirs (boule de feu, foudre,etc) (Hubert)
+    - drop bonus à la mort d'un ennemis (kit de soin, or, invicibilité,etc) (Flaviu)
+    - Wiki pour chaque unités(Flaviu)
+    
+- **Low priority** :
+    - minimap avec positions des unités (Flaviu)
+    - mode de jeu 1vs1 contre une IA (Laurent)
