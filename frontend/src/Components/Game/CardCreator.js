@@ -12,17 +12,17 @@ import knightCardPopup from '../../assets/knightPopUp.png';
 import necromancerCardPopup from '../../assets/necromancerPopUp.png';
 import warriorCardPopup from '../../assets/warriorPopUp.png';
 
-import Archer from './Units/Archer';
-import Exterminator from './Units/Exterminator';
-import Knight from './Units/Knight';
-import Necro from './Units/Necro';
-import Warrior from './Units/Warrior';
+// import Archer from './Units/Archer';
+// import Exterminator from './Units/Exterminator';
+// import Knight from './Units/Knight';
+// import Necro from './Units/Necro';
+// import Warrior from './Units/Warrior';
 
-const archerStats = Archer.getStats();
-const exterminatorStats = Exterminator.getStats();
-const knightStats = Knight.getStats();
-const necroStats = Necro.getStats();
-const warriorStats = Warrior.getStats();
+// const archerStats = Archer.getStats();
+// const exterminatorStats = Exterminator.getStats();
+// const knightStats = Knight.getStats();
+// const necroStats = Necro.getStats();
+// const warriorStats = Warrior.getStats();
 
 
 
@@ -62,11 +62,11 @@ export function createCards(scene) {
 .setAlpha(0.8)
 .setVisible(false); // Initially set to invisible
 
-hoverArcherImageP2.setText(`Health: ${archerStats.health} hp
-Range: ${archerStats.range} units
-Damage: ${archerStats.damage} ad
-Movement speed: ${archerStats.speed} ms
-Price: ${archerStats.price} gold`);
+hoverArcherImageP2.setText(`Health: 160 hp
+Range: 100 units
+Damage: 15 ad
+Movement speed: 8 ms
+Price: 50 gold`);
 
 const hoverWarriorImageP2 = scene.add
   .text(scene.scale.width * 0.5, scene.scale.height * 0.7, '', {
@@ -84,11 +84,11 @@ const hoverWarriorImageP2 = scene.add
 .setAlpha(0.8)
 .setVisible(false); // Initially set to invisible
 
-hoverWarriorImageP2.setText(`Health: ${warriorStats.health} hp
-Range: ${warriorStats.range} units
-Damage: ${warriorStats.damage} ad
-Movement speed: ${warriorStats.speed} ms
-Price: ${warriorStats.price} gold`);
+hoverWarriorImageP2.setText(`Health: 3000 hp
+Range: 40 units
+Damage: 80 ad
+Movement speed: 50 ms
+Price: 500 gold`);
 
 const hoverBotImageP2 = scene.add
     .text(scene.scale.width * 0.5, scene.scale.height * 0.7, '', {
@@ -106,11 +106,11 @@ const hoverBotImageP2 = scene.add
 .setAlpha(0.8)
 .setVisible(false); // Initially set to invisible
 
-hoverBotImageP2.setText(`Health: ${exterminatorStats.health} hp
-Range: ${exterminatorStats.range} units
-Damage: ${exterminatorStats.damage} ad
-Movement speed: ${exterminatorStats.speed} ms
-Price: ${exterminatorStats.price} gold`);
+hoverBotImageP2.setText(`Health: 40 hp
+Range: 60 units
+Damage: 30 ad
+Movement speed: 30 ms
+Price: 30 gold`);
 
 const hoverNecromancerImageP2 = scene.add
   .text(scene.scale.width * 0.5, scene.scale.height * 0.7, '', {
@@ -128,11 +128,11 @@ const hoverNecromancerImageP2 = scene.add
 .setAlpha(0.8)
 .setVisible(false); // Initially set to invisible
 
-hoverNecromancerImageP2.setText(`Health: ${necroStats.health} hp
-Range: ${necroStats.range} units
-Damage: ${necroStats.damage} ad
-Movement speed: ${necroStats.speed} ms
-Price: ${necroStats.price} gold`);
+hoverNecromancerImageP2.setText(`Health: 40 hp
+Range: 120 units
+Damage: 50 ad
+Movement speed: 20 ms
+Price: 70 gold`);
 
 const hoverKnightImageP2 = scene.add
     .text(scene.scale.width * 0.5, scene.scale.height * 0.7, '', {
@@ -150,11 +150,11 @@ const hoverKnightImageP2 = scene.add
 .setAlpha(0.8)
 .setVisible(false); // Initially set to invisible
 
-hoverKnightImageP2.setText(`Health: ${knightStats.health} hp
-Range: ${knightStats.range} units
-Damage: ${knightStats.damage} ad
-Movement speed: ${knightStats.speed} ms
-Price: ${knightStats.price} gold`);
+hoverKnightImageP2.setText(`Health: 1000 hp
+Range: 70 units
+Damage: 15 ad
+Movement speed: 20 ms
+Price: 200 gold`);
 
 
 
@@ -176,11 +176,11 @@ Price: ${knightStats.price} gold`);
 .setAlpha(0.8)
 .setVisible(false); // Initially set to invisible
 
-hoverArcherImageP1.setText(`Health: ${archerStats.health} hp
-Range: ${archerStats.range} units
-Damage: ${archerStats.damage} ad
-Movement speed: ${archerStats.speed} ms
-Price: ${archerStats.price} gold`);
+hoverArcherImageP1.setText(`Health: 160 hp
+Range: 100 units
+Damage: 15 ad
+Movement speed: 8 ms
+Price: 50 gold`);
 
   // Adding card for the charachters
   const archerCardP1 = scene.add
@@ -212,11 +212,11 @@ Price: ${archerStats.price} gold`);
 .setAlpha(0.8)
 .setVisible(false); // Initially set to invisible
 
-hoverBotImageP1.setText(`Health: ${exterminatorStats.health} hp
-Range: ${exterminatorStats.range} units
-Damage: ${exterminatorStats.damage} ad
-Movement speed: ${exterminatorStats.speed} ms
-Price: ${exterminatorStats.price} gold`);
+hoverBotImageP1.setText(`Health: 40 hp
+Range: 60 units
+Damage: 30 ad
+Movement speed: 30 ms
+Price: 30 gold`);
 
   const botCardP1 = scene.add
     .image(scene.scale.width * 0.13, scene.scale.height * yValue, 'botCard')
@@ -247,11 +247,11 @@ Price: ${exterminatorStats.price} gold`);
 .setAlpha(0.8)
 .setVisible(false); // Initially set to invisible
 
-hoverKnightImageP1.setText(`Health: ${knightStats.health} hp
-Range: ${knightStats.range} units
-Damage: ${knightStats.damage} ad
-Movement speed: ${knightStats.speed} ms
-Price: ${knightStats.price} gold`);
+hoverKnightImageP1.setText(`Health: 1000 hp
+Range: 70 units
+Damage: 15 ad
+Movement speed: 20 ms
+Price: 200 gold`);
 
   const knightCardP1 = scene.add
     .image(scene.scale.width * 0.21, scene.scale.height * yValue, 'knightCard')
@@ -282,11 +282,11 @@ Price: ${knightStats.price} gold`);
 .setAlpha(0.8)
 .setVisible(false); // Initially set to invisible
 
-hoverNecromancerImageP1.setText(`Health: ${necroStats.health} hp
-Range: ${necroStats.range} units
-Damage: ${necroStats.damage} ad
-Movement speed: ${necroStats.speed} ms
-Price: ${necroStats.price} gold`);
+hoverNecromancerImageP1.setText(`Health: 40 hp
+Range: 120 units
+Damage: 50 ad
+Movement speed: 20 ms
+Price: 70 gold`);
 
   const necromancerCardP1 = scene.add
     .image(scene.scale.width * 0.29, scene.scale.height * yValue, 'necromancerCard')
@@ -317,11 +317,11 @@ Price: ${necroStats.price} gold`);
 .setAlpha(0.8)
 .setVisible(false); // Initially set to invisible
 
-hoverWarriorImageP1.setText(`Health: ${warriorStats.health} hp
-Range: ${warriorStats.range} units
-Damage: ${warriorStats.damage} ad
-Movement speed: ${warriorStats.speed} ms
-Price: ${warriorStats.price} gold`);
+hoverWarriorImageP1.setText(`Health: 3000 hp
+Range: 40 units
+Damage: 80 ad
+Movement speed: 50 ms
+Price: 500 gold`);
 
   const warriorCardP1 = scene.add
     .image(scene.scale.width * 0.37, scene.scale.height * yValue, 'warriorCard')
